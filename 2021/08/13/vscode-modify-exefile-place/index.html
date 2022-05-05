@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/PDPENG/pdpeng.github.io/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/PDPENG/pdpeng.github.io/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/PDPENG/pdpeng.github.io/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/PDPENG/pdpeng.github.io/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/PDPENG/pdpeng.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/PDPENG/pdpeng.github.io/","images":"/PDPENG/pdpeng.github.io/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":false,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/PDPENG/pdpeng.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/PDPENG/pdpeng.github.io/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://github.com/PDPENG/pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/PDPENG/pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/","path":"2021/08/13/vscode-modify-exefile-place/","title":"Vscode修改.exe文件生成位置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vscode修改.exe文件生成位置 | 杰森的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/PDPENG/pdpeng.github.io/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/PDPENG/pdpeng.github.io/atom.xml" title="杰森的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/PDPENG/pdpeng.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰森的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">全栈杰森</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/PDPENG/pdpeng.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/PDPENG/pdpeng.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/PDPENG/pdpeng.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a></li><li class="menu-item menu-item-tags"><a href="/PDPENG/pdpeng.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a></li><li class="menu-item menu-item-about"><a href="/PDPENG/pdpeng.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%BB%BA%E7%AB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">文件建立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.2.</span> <span class="nav-text">重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tasks-json"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">tasks.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#launch-json"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">launch.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-Runner"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">Code Runner</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.3.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason"
+      src="/PDPENG/pdpeng.github.io/images/head_portrait.png">
+  <p class="site-author-name" itemprop="name">Jason</p>
+  <div class="site-description" itemprop="description">A blacksmith must be strong</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/PDPENG/pdpeng.github.io/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/PDPENG/pdpeng.github.io/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/PDPENG/pdpeng.github.io/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAzOTcxOTcxMzk1Mg==" title="FaceBook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100039719713952"><i class="fab fa-facebook fa-fw"></i>FaceBook</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbl9jb2Rpbmc=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jason_coding"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/PDPENG/pdpeng.github.io/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/PDPENG/pdpeng.github.io/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/PDPENG/pdpeng.github.io/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/dos/" rel="tag">dos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/git/" rel="tag">git</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">3</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/PDPENG" class="github-corner" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/PDPENG/pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PDPENG/pdpeng.github.io/images/head_portrait.png">
+      <meta itemprop="name" content="Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰森的博客">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Vscode修改.exe文件生成位置 | 杰森的博客">
+      <meta itemprop="description" content="带你修改 .exe 文件生成位置，强迫症必读">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vscode修改.exe文件生成位置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-13 22:16:17" itemprop="dateCreated datePublished" datetime="2021-08-13T22:16:17+08:00">2021-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/PDPENG/pdpeng.github.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/PDPENG/pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/" class="post-meta-item leancloud_visitors" data-flag-title="Vscode修改.exe文件生成位置" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">带你修改 .exe 文件生成位置，强迫症必读</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>今天在写C语言练习题时，发现Vscode工作区中出现了这样的情况</p>
+<p><img src="https://img-blog.csdnimg.cn/1c0ba776ffff45578d04bfa026e69cc8.png"></p>
+<p>程序运行产生的可执行文件和源码混在一起，作为一名强迫症，我怎能容忍它 “如此放肆”，特意查看了一波<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy9jcHAvY29uZmlnLW1pbmd3">官方文档<i class="fa fa-external-link-alt"></i></span>后终于找到了解决办法，这是对<code>.exe</code>文件位置重定向后的工作区文件目录</p>
+<p><img src="https://img-blog.csdnimg.cn/8c22d60ff7d64a86b78df21b04534180.png"></p>
+<p>怎么样？看起来是不是舒服多了？emmm……强迫症表示非常友好哦，下面就带大家看看我是如何解决的</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h2 id="文件建立"><a href="#文件建立" class="headerlink" title="文件建立"></a>文件建立</h2><p>现在关闭Vscode，在桌面新建一个文件夹，命名随意，然后直接拖拽到Vscode图标处打开，这个文件就是我们的工作区</p>
+<image src="https://img-blog.csdnimg.cn/4567e72239e741108ee40a57221d88d5.gif" width="70%">
+
+<p>打开之后我们新建文件夹 <strong>Demo</strong> ，其下新建文件 <strong>Hello.c</strong> ，输入代码以便我们后续测试</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击左侧的调试按钮-&gt;创建<code>launch.json</code>文件</p>
+<p><img src="https://img-blog.csdnimg.cn/1c551eaf4b4d4c67a290d7296c9b7f54.png#pic_center"></p>
+<p>选择<code>C++(GDB/LLDB)</code></p>
+<p><img src="https://img-blog.csdnimg.cn/df5e54f772654496a00e2cab6d1a359e.png#pic_center"></p>
+<p>选择<code>gcc.exe-生成和调试活动文件</code></p>
+<p><img src="https://img-blog.csdnimg.cn/5e6884df435447308e2b78a9ef4b3180.png#pic_center"></p>
+<p>返回工作区文件目录，发现生成了.vscode文件夹，包含<code>launch.json</code>和<code>tasks.json</code>文件。简单了解下：<code>tasks</code>用于编译，<code>launch</code>用于执行编译后的文件，详情<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy9jcHAvY29uZmlnLXdzbCNfY3JlYXRlLWEtYnVpbGQtdGFzaw==">点击这里<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>为了方便大家修改，直接给出文件，修改位置有特殊标注。可以使用 <a class="btn" href="#">Ctrl</a> +<a class="btn" href="#">F</a> 组合键搜索，简单粗暴的可以直接删除生成的文件内容，复制下面对应文件操作</p>
+<h4 id="tasks-json"><a href="#tasks-json" class="headerlink" title="tasks.json"></a>tasks.json</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">        &#123;//构建配置项</span><br><span class="line">            <span class="string">&quot;type&quot;</span>:<span class="string">&quot;shell&quot;</span>,//任务类型,<span class="type">Vscode</span>将预定义变量转义解析后直接传给<span class="type">command</span>;<span class="type">shell</span>-&gt;先打开<span class="type">shell</span>再输入命令,因此<span class="type">args</span>会经过<span class="type">shell</span>再次解析</span><br><span class="line">            <span class="string">&quot;label&quot;</span>: <span class="string">&quot;C/C++: gcc.exe 生成活动文件&quot;</span>,//任务名称</span><br><span class="line">            <span class="string">&quot;command&quot;</span>: <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gcc.exe&quot;</span>,//本地编译器路径</span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [ //包含传给<span class="type">gcc</span>命令的参数,用于实现特定功能</span><br><span class="line">                <span class="string">&quot;-g&quot;</span>, //生成和调试有关的信息</span><br><span class="line">                <span class="string">&quot;<span class="variable">$</span>&#123;file&#125;&quot;</span>, //指定编译文件为当前文件</span><br><span class="line">                <span class="string">&quot;-o&quot;</span>,//指定输出文件的路径和名称</span><br><span class="line">                <span class="string">&quot;<span class="variable">$</span>&#123;workspaceFolder&#125;\\build\\<span class="variable">$</span>&#123;fileBasenameNoExtension&#125;.exe&quot;</span>//修改<span class="type">.exe</span>文件生成位置</span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;options&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;C:\\Program Files\\mingw64\\bin&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;problemMatcher&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;<span class="variable">$gcc</span>&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;group&quot;</span>: &#123;//包含很多<span class="type">task</span>,归为<span class="type">group</span></span><br><span class="line">                <span class="string">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,//表名该组任务类型是构建</span><br><span class="line">                <span class="string">&quot;isDefault&quot;</span>: <span class="type">true</span>//表明此任务为此组任务中的默认任务</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;detail&quot;</span>: <span class="string">&quot;调试器生成的任务。&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（1）将命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;<span class="variable">$</span>&#123;fileDirname&#125;\\<span class="variable">$</span>&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;<span class="variable">$</span>&#123;workspaceFolder&#125;\\build\\<span class="variable">$</span>&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br></pre></td></tr></table></figure>
+<p>（2）将命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;<span class="variable">$</span>&#123;fileDirname&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;C:\\Program Files\\mingw64\\bin&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a>launch.json</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;//包含<span class="type">Debug</span>配置</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;gcc.exe - 生成和调试活动文件&quot;</span>,//配置名称</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>, //配置类型,对应<span class="type">cpptools</span>提供的调试功能</span><br><span class="line">            <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>, //请求配置类型,可以是启动/附加类型[<span class="type">launch</span>/<span class="type">attach</span>]</span><br><span class="line">            <span class="string">&quot;program&quot;</span>: <span class="string">&quot;<span class="variable">$</span>&#123;workspaceFolder&#125;\\build\\<span class="variable">$</span>&#123;fileBasenameNoExtension&#125;.exe&quot;</span>,//待调试程序本地路径</span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [], //程序调试时传递给程序的命令行参数,设为空值</span><br><span class="line">            <span class="string">&quot;stopAtEntry&quot;</span>: <span class="type">false</span>,//改为<span class="type">true</span>时程序暂停在程序入口位置,即<span class="type">main</span>处打上断点</span><br><span class="line">            <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;<span class="variable">$</span>&#123;fileDirname&#125;&quot;</span>, //调试程序时的工作目录,这里表示源码目录</span><br><span class="line">            <span class="string">&quot;environment&quot;</span>: [], //环境变量,设为空值</span><br><span class="line">            <span class="string">&quot;externalConsole&quot;</span>: <span class="type">false</span>, //<span class="type">true</span>:<span class="type">cmd</span>窗口; <span class="type">false</span>:<span class="type">Vscode</span>的内置终端输出</span><br><span class="line">            <span class="string">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>, //指定连接的调试器,<span class="type">minGW64</span>中调试程序-&gt;<span class="type">gdb</span></span><br><span class="line">            <span class="string">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gdb.exe&quot;</span>, //指定调试器所在路径,安装位置不同注意需要修改,间隔为\\</span><br><span class="line">            <span class="string">&quot;setupCommands&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;为 gdb 启用整齐打印&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;ignoreFailures&quot;</span>: <span class="type">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;C/C++: gcc.exe 生成活动文件&quot;</span> //调试开始前执行需要执行的任务,调试前要编译构建 名称要和<span class="type">tasks.json</span>的<span class="type">label</span>保持一致</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;program&quot;</span>: <span class="string">&quot;<span class="variable">$</span>&#123;fileDirname&#125;\\<span class="variable">$</span>&#123;fileBasenameNoExtension&#125;.exe&quot;</span>,</span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;program&quot;</span>: <span class="string">&quot;<span class="variable">$</span>&#123;workspaceFolder&#125;\\build\\<span class="variable">$</span>&#123;fileBasenameNoExtension&#125;.exe&quot;</span>,</span><br></pre></td></tr></table></figure>
+<h4 id="Code-Runner"><a href="#Code-Runner" class="headerlink" title="Code Runner"></a>Code Runner</h4><p>点击<code>Edit in settings.json</code>打开配置项，由于Code Runner中配置文件较多，我们只修改相关部分即可</p>
+<p><img src="https://img-blog.csdnimg.cn/892f538dac8a404eb9923e030c12e64f.png#pic_center"></p>
+<p>（1）将命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;c&quot;</span>: <span class="string">&quot;cd <span class="variable">$dir</span> &amp;&amp; gcc <span class="variable">$fileName</span> -o <span class="variable">$fileNameWithoutExt</span> &amp;&amp; <span class="variable">$dir</span><span class="variable">$fileNameWithoutExt</span>&quot;</span>, </span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;c&quot;</span>: <span class="string">&quot;cd <span class="variable">$dir</span> &amp;&amp; gcc <span class="variable">$fileName</span> -o <span class="variable">$workspaceRoot</span>/build/<span class="variable">$fileNameWithoutExt</span> &amp;&amp; <span class="variable">$workspaceRoot</span>/build/<span class="variable">$fileNameWithoutExt</span>&quot;</span>,</span><br></pre></td></tr></table></figure>
+<p>（2）将命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;cpp&quot;</span>: <span class="string">&quot;cd <span class="variable">$dir</span> &amp;&amp; g++ <span class="variable">$fileName</span> -o <span class="variable">$fileNameWithoutExt</span> &amp;&amp; <span class="variable">$dir</span><span class="variable">$fileNameWithoutExt</span>&quot;</span>, </span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;cpp&quot;</span>: <span class="string">&quot;cd <span class="variable">$dir</span> &amp;&amp; g++ <span class="variable">$fileName</span> -o <span class="variable">$workspaceRoot</span>/build/<span class="variable">$fileNameWithoutExt</span> &amp;&amp; <span class="variable">$workspaceRoot</span>/build/<span class="variable">$fileNameWithoutExt</span>&quot;</span>, </span><br></pre></td></tr></table></figure>
+<p>最后在工作区新建文件夹<strong>build</strong>，作为<strong>Test</strong>文件子项，确定好文件从属关系</p>
+<p><img src="https://img-blog.csdnimg.cn/43fb85e5f92a488bb402192085aa5699.png"></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><img src="https://img-blog.csdnimg.cn/9887a5f0e6aa4f178195e73d74abef84.gif#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/6c703ec866584978ba2c0f28f8731f89.png#pic_center"></p>
+<p>完成，强迫症表示很su服~~</p>
+<hr>
+<p>如果帮到了您，别忘了三连支持下哦！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/official-accounts.png" width="80%">
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/PDPENG/pdpeng.github.io/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/PDPENG/pdpeng.github.io/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/PDPENG/pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/" title="Vscode修改.exe文件生成位置">https://github.com/PDPENG/pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/PDPENG/pdpeng.github.io/tags/vscode/" rel="tag"><i class="fa fa-tag"></i> vscode</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/PDPENG/pdpeng.github.io/2021/08/14/exercise9/" rel="prev" title="练习9-数据计算">
+                  <i class="fa fa-chevron-left"></i> 练习9-数据计算
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/PDPENG/pdpeng.github.io/2021/08/13/exercise8/" rel="next" title="练习8-指针实现排序">
+                  练习8-指针实现排序 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:56</span>
+  </span>
+</div>
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
+  <div class="busuanzi-count" style="display:inline-block">
+      <span class="post-meta-item" id="busuanzi_container_site_uv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="site-uv" title="总访客量">
+          <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span class="post-meta-item" id="busuanzi_container_site_pv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-eye"></i>
+        </span>
+        <span class="site-pv" title="总访问量">
+          <span id="busuanzi_value_site_pv"></span>
+        </span>
+      </span>
+  </div>
+  </span>
+</div>
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+      <img src="/PDPENG/pdpeng.github.io/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+  </div>
+
+
+<div class="powered-upyun-jsdelivr-aliyun">
+  <a href="https://www.upyun.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/upyun.png" width="7%" alt="upyun" style="display:inline;"></a>&nbsp;
+  <a href="https://www.jsdelivr.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/jsdelivr.svg" width="10%" alt="jsdelivr" style="display:inline;"></a>&nbsp;
+  <a href="https://www.aliyun.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/aliyun.png" width="8%" alt="aliyun" style="display:inline;"></a>&nbsp;
+   <a href="https://www.github.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/github.png" width="7%" alt="github" style="display:inline;"></a> 提供CDN/云资源支持
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6157d91d9141f476" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/PDPENG/pdpeng.github.io/js/comments.js"></script><script src="/PDPENG/pdpeng.github.io/js/utils.js"></script><script src="/PDPENG/pdpeng.github.io/js/motion.js"></script><script src="/PDPENG/pdpeng.github.io/js/schemes/muse.js"></script><script src="/PDPENG/pdpeng.github.io/js/next-boot.js"></script><script src="/PDPENG/pdpeng.github.io/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/PDPENG/pdpeng.github.io/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
+<script src="/PDPENG/pdpeng.github.io/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qpUganIAeAN1PbLWuG7zCdbA-MdYXbMMI","app_key":"fDuhsPwm05Fj0DGcYhHLdg3x","server_url":null,"security":false}</script>
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/Utterances-Comment-System","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/PDPENG/pdpeng.github.io/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

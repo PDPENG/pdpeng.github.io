@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/PDPENG/pdpeng.github.io/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/PDPENG/pdpeng.github.io/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/PDPENG/pdpeng.github.io/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/PDPENG/pdpeng.github.io/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/PDPENG/pdpeng.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/PDPENG/pdpeng.github.io/","images":"/PDPENG/pdpeng.github.io/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":false,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/PDPENG/pdpeng.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/PDPENG/pdpeng.github.io/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://github.com/PDPENG/pdpeng.github.io/2022/01/19/setup-personal-blog/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/PDPENG/pdpeng.github.io/2022/01/19/setup-personal-blog/","path":"2022/01/19/setup-personal-blog/","title":"快速搭建个人博客——保姆级教程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>快速搭建个人博客——保姆级教程 | 杰森的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/PDPENG/pdpeng.github.io/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/PDPENG/pdpeng.github.io/atom.xml" title="杰森的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/PDPENG/pdpeng.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰森的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">全栈杰森</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/PDPENG/pdpeng.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/PDPENG/pdpeng.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/PDPENG/pdpeng.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a></li><li class="menu-item menu-item-tags"><a href="/PDPENG/pdpeng.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a></li><li class="menu-item menu-item-about"><a href="/PDPENG/pdpeng.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%AB%99"><span class="nav-number">2.</span> <span class="nav-text">本地网站</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">2.1.</span> <span class="nav-text">开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WebStorm"><span class="nav-number">2.1.1.</span> <span class="nav-text">WebStorm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vscode"><span class="nav-number">2.1.2.</span> <span class="nav-text">Vscode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">2.2.</span> <span class="nav-text">框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo%EF%BC%88%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">Hexo（强烈推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WordPress"><span class="nav-number">2.2.2.</span> <span class="nav-text">WordPress</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83"><span class="nav-number">2.3.</span> <span class="nav-text">本地环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-number">2.3.1.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-js"><span class="nav-number">2.3.2.</span> <span class="nav-text">node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number">2.4.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.4.2.</span> <span class="nav-text">初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98"><span class="nav-number">2.5.</span> <span class="nav-text">主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Butterfly"><span class="nav-number">2.5.2.</span> <span class="nav-text">Butterfly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.5.3.</span> <span class="nav-text">应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E4%B8%8A%E7%BA%BF"><span class="nav-number">3.</span> <span class="nav-text">正式上线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A"><span class="nav-number">3.1.</span> <span class="nav-text">图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Butterfly%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">Butterfly配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Pages%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">GitHub Pages配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%89%E8%B4%AD%E6%94%BB%E7%95%A5"><span class="nav-number">3.4.</span> <span class="nav-text">服务器选购攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91"><span class="nav-number">3.4.1.</span> <span class="nav-text">阿里云</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E7%94%9F%E4%B8%93%E4%BA%AB"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">学生专享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8%E4%B8%93%E4%BA%AB"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">活动专享</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%85%BE%E8%AE%AF%E4%BA%91"><span class="nav-number">3.4.2.</span> <span class="nav-text">腾讯云</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E7%94%9F%E4%B8%93%E4%BA%AB-1"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">学生专享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8%E4%B8%93%E4%BA%AB-1"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">活动专享</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D"><span class="nav-number">3.5.</span> <span class="nav-text">域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0"><span class="nav-number">3.5.1.</span> <span class="nav-text">购买</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS%E8%A7%A3%E6%9E%90"><span class="nav-number">3.5.2.</span> <span class="nav-text">DNS解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">添加域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">添加解析记录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.6.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0-1"><span class="nav-number">3.6.1.</span> <span class="nav-text">购买</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">3.6.2.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E8%AE%BE%E5%AE%9A"><span class="nav-number">3.6.2.1.</span> <span class="nav-text">密码设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.6.2.2.</span> <span class="nav-text">远程连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git%E9%85%8D%E7%BD%AE"><span class="nav-number">3.6.2.3.</span> <span class="nav-text">git配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="nav-number">3.6.2.4.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">3.6.2.5.</span> <span class="nav-text">Hexo配置修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%87%E6%A1%88"><span class="nav-number">3.7.</span> <span class="nav-text">备案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ICP"><span class="nav-number">3.7.1.</span> <span class="nav-text">ICP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%94%E7%BD%91%E5%A4%87%E6%A1%88"><span class="nav-number">3.7.2.</span> <span class="nav-text">联网备案</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason"
+      src="/PDPENG/pdpeng.github.io/images/head_portrait.png">
+  <p class="site-author-name" itemprop="name">Jason</p>
+  <div class="site-description" itemprop="description">A blacksmith must be strong</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/PDPENG/pdpeng.github.io/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/PDPENG/pdpeng.github.io/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/PDPENG/pdpeng.github.io/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAzOTcxOTcxMzk1Mg==" title="FaceBook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100039719713952"><i class="fab fa-facebook fa-fw"></i>FaceBook</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbl9jb2Rpbmc=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jason_coding"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/PDPENG/pdpeng.github.io/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/PDPENG/pdpeng.github.io/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/PDPENG/pdpeng.github.io/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/dos/" rel="tag">dos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/git/" rel="tag">git</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/PDPENG/pdpeng.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">3</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/PDPENG" class="github-corner" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/PDPENG/pdpeng.github.io/2022/01/19/setup-personal-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/PDPENG/pdpeng.github.io/images/head_portrait.png">
+      <meta itemprop="name" content="Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰森的博客">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="快速搭建个人博客——保姆级教程 | 杰森的博客">
+      <meta itemprop="description" content="谈谈本站的建设过程，主要开发环境：Hexo、git、Nodejs、Hexo、弹性 ECS、JavaScript、GitHub Pages">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          快速搭建个人博客——保姆级教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-19 11:23:04" itemprop="dateCreated datePublished" datetime="2022-01-19T11:23:04+08:00">2022-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/PDPENG/pdpeng.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" itemprop="url" rel="index"><span itemprop="name">网站建设</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/PDPENG/pdpeng.github.io/2022/01/19/setup-personal-blog/" class="post-meta-item leancloud_visitors" data-flag-title="快速搭建个人博客——保姆级教程" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">谈谈本站的建设过程，主要开发环境：Hexo、git、Nodejs、Hexo、弹性 ECS、JavaScript、GitHub Pages</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note danger"><p>本站点主题现已更换为 Next，文中除主题外的配置参数均不受影响</p>
+</div>
+
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>偶然间，看到某乎上高赞的一个问题：怎么证明下计算机专业学生的能力？问题下面呢，也是有众多网友评论哈，我记得最清晰、也最现实的一条是：有什么能力的，为了装个 X 罢了</p>
+<p><img src="https://img-blog.csdnimg.cn/ea2783af495240279e29d90c6db3dc5e.png"></p>
+<p>看到这个我就不得不站出来说一句了，证明能力的方式也不是只有建网站这一种方式是吧，那毕竟还是“术业有专攻”呢，对吧。也不知道为什么锻炼下自己的实操能力，拓宽下学识就成了键盘侠下的装 X，咱也喷不过，求饶求饶啊</p>
+<p>好了，回归正题，我建立个人网站呢，初衷其实非常简单，说不定你也想过，只是没去做而已。我是想：现在的网络中有好多的写作平台，比如我现在在用的C站，它已经非常成熟，社区讨论、问题发布、Blink动态等等，一应俱全。我在学完相关知识后，为什么不能自己写一个呢？也许更多的是我爱折腾罢了，哈哈</p>
+<p><img src="https://img-blog.csdnimg.cn/ca8d2f14076a4376aef1c62f70b46c55.png"></p>
+<p>最开始接触是在C站文章发布“板块自定义”模块中，输入几行代码，就能有漂亮的界面。当时因为还没有接触到CSS、Web前端这些，是从网上白嫖来的，更是激起了我深入学习的兴趣</p>
+<p>什么是博客，博客是大家分享、交流的一个平台，我们可以从中吸取别人的经验，提升自己。对于看博客的人来说是这样，对于写博客的博主呢，更是对自己所学的总结，能理清自己的思路，便于日后复盘，养成良好的习惯。技术博客，能记录我们遇到的问题，更好的Bug处理方案，在我们日后开发的过程中遇到同样的问题，记忆会更加深刻</p>
+<p>有了想法就要动手，当我真正动手去实现的时候，才发现并不是一些标题党发的文章，像“十分钟建立属于你的网站、你还不会自己建网站？”。等到自己真正看着他们的视频、文章去操作的时候，有的是真大神，他默认的一些东西你应该是会的，会写的简单一些。还有一些，就是“伟大的搬运工”了，完完全全就是发布了别人的文章，还不放原文链接那种</p>
+<p>正是我没有发现一套完整的，能帮助新手开发一个网站的资源，所以决定写下 UP 建站的过程，分享我从初学到最后实现的一些经验。所以，如果你也想要拥有一个属于自己的网站，可以跟着上手操作下，过程中如果遇到问题可以私信或留言。下面，让我们一起开始吧</p>
+<p>思考下，我们查资料用的最多的是什么？有些朋友就会说了：那还用问，必须是“在B站上大学“啦，亦或是搜索引擎了。没错，我想这正是我们大多数人学习新东西、不断探索向前时使用最多的工具了。那，我们搜些什么呢？比如，你可以这样：</p>
+<p><img src="https://img-blog.csdnimg.cn/832f424d141a46cbbffdf9bb78f4efa5.png"></p>
+<p>或许，你还可以这样：</p>
+<p><img src="https://img-blog.csdnimg.cn/710508a41cf74abfae9034e86f4da8b3.png"></p>
+<p>的确能搜到很多的视频、文章。但是在这部分，我以我是初学者的角度来描述下我的心路历程：因为这东西目前在我的脑子里就是一个初步的想法，我还不知道怎么去实现它。就像是一个人在山里迷路了，我只知道要出去，可我找不到路啊</p>
+<p><img src="https://img-blog.csdnimg.cn/fa7494f0e63146d2ac35388ef35df12d.png"></p>
+<p>这一 pa，我们就来聊一些建站，我应该准备什么。网上大多数教程啊，都是一个大长篇，鼠标滑好几下都不带滑完的那种。会给刚入门的朋友一种：”哇，好难啊，这么多东西啊“的感觉，所以这里我对各部分的内容进行了分类，你只要按照顺序，一步步往下走就好啦</p>
+<h1 id="本地网站"><a href="#本地网站" class="headerlink" title="本地网站"></a>本地网站</h1><p>这里为什么要强调是”本地“呢，一开始啊，我也是看的教程，跟着别人的思路来走，像什么先买个域名，买台服务器啥的，我都踩过坑。这对刚入门的朋友在购买或者选择上会造成困难，我们莫不如换一种思考方式，现在我自己的电脑上建立一个网站，然后在”发送“出去，让别人都能看到。你看，这不就很明确了吗？</p>
+<p>在自己的电脑上实现网站，必须的两个东西<strong>浏览器</strong>、<strong>开发工具</strong>，前者大家肯定是都有了，不做赘述（不然你拿什么看到的我这篇文章呢，嘿嘿），我们重点介绍后者</p>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="WebStorm"><a href="#WebStorm" class="headerlink" title="WebStorm"></a>WebStorm</h3><p>WebStorm 是JetBrains公司旗下一款JavaScript 开发工具。已经被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaScript IDE”等。与IntelliJ IDEA同源，继承了IntelliJ IDEA强大的JS部分的功能</p>
+<p>废话少说，来这里下载 <span class="exturl" data-url="aHR0cHM6Ly93d3cuamV0YnJhaW5zLmNvbS93ZWJzdG9ybS8=">传送门<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/a2e3c8a3ffc94521bf59282e28284cea.png"></p>
+<p>这儿呢，有个小问题，这玩意是收费的，如果你是一名大学生，可以通过学生认证免费申请到教育账号，如果……（不多说奥，自己去问度娘，能找到方法），直接无脑下一步安装就行，不要慌</p>
+<h3 id="Vscode"><a href="#Vscode" class="headerlink" title="Vscode"></a>Vscode</h3><p>Visual Studio Code（简称“VS Code” ）是Microsoft在2015年4月30日Build开发者大会上正式宣布一个运行于 Mac OS X、Windows和 Linux 之上的，针对于编写现代Web和云应用的跨平台源代码编辑器，可在桌面上运行，并且可用于Windows，macOS和Linux。它具有对JavaScript，TypeScript和Node.js的内置支持，并具有丰富的其他语言（例如C++，C＃，Java，Python，PHP，Go）和运行时（例如.NET和Unity）扩展的生态系统</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">传送门<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/45fb2c8b80ef40538892f88fb09c5f31.png"></p>
+<p>这两个工具具体来说就是：前者是全家桶（啥都有，不用你管，直接用就行），后者是一个空壳公司，需要各种员工（插件）去实现一些功能。所以如果你懒得去配置了，就直接下第一个，第二个可能在写博客<strong>Markdown</strong>语法上更方便一些，这个我后面会说到。此处如果你是新手，我建议你下<strong>WebStorm</strong>，后文的一些配置上，会更加方便</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>“框架”这是啥，懵了吧，嘿嘿。遇到事情不要慌，且听杰森娓娓道来。这里咱们看下某度词条的解释：</p>
+<blockquote>
+<p>框架（framework）是一个框子——指其约束性，也是一个架子——指其支撑性。是一个基本概念上的结构，用于去解决或者处理复杂的问题<br>框架这个广泛的定义使用的十分流行，尤其在软件概念。框架也能用于机械结构</p>
+</blockquote>
+<p>这东西相当于什么呢，比如咱们建房子，你说你怎么建？咱不能没有图纸、没有工人就开始吧，这不是“天方夜谭”嘛。首先肯定是需要设计师根据用户需求设计好这个图纸，然后工人再依据这张图纸开始建房子对吧。这里省略了很多，行业大咖求放过，举个栗子哈</p>
+<p>我们搭建网站也一样如此，你真的以为那么多的网站，都是程序猿没日没夜一行一行从零开始写出来的吗？emmm，其实最开始对于这个问题，我的回答是：嗯，是的，那肯定得呀。直到我去实习的时候，才发现企业里的一些东西也并不是全部从零开始开发的。（开源大法好，哈哈哈）难道你想成为这样？</p>
+<p><img src="https://img-blog.csdnimg.cn/ca5458a3fa854d45b7900dcb43468d74.png"></p>
+<p>一个产品、项目、网站……只要是有前人做过的东西，我们都可以从中汲取经验啊，学习好的编码，开源的，别人已经实现的我们何必浪费时间再去搞一遍呢？尤其是下文要将的<strong>WordPress</strong>，简直就是“无脑式操作”，你可能都不知道自己做了什么，但一个属于你的网站就那么出来了</p>
+<p><strong>博客框架</strong>通俗的说就是别人写好的一套源码，你拿过来会用就行，改一改自己的配置啊，配上想要的主题啊，这种就足够了（大佬请绕路）。所以下面我会给大家分享一些在搭建我的个人网站时，了解到的一些框架，并简单分析，供大家选择</p>
+<p>还是老话，此专栏受众对象是刚接触的朋友，所以一些复杂，不需要知道的参数我并不会提及，只涉及到最关键的部分，方便大家快速找到适合自己的那一个</p>
+<blockquote>
+<p>提前声明，杰森用的框架是 &#x3D;&#x3D;Hexo&#x3D;&#x3D; ，各位可以和我选择不同，但配置不尽相同，同理可得的那种</p>
+</blockquote>
+<h3 id="Hexo（强烈推荐）"><a href="#Hexo（强烈推荐）" class="headerlink" title="Hexo（强烈推荐）"></a>Hexo（强烈推荐）</h3><p>Hexo 是一个快速、简单且功能强大的博客框架。你用Markdown（或其他标记语言）写帖子，Hexo 会在几秒钟内生成带有漂亮主题的静态文件。<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2luZGV4Lmh0bWw=">&gt;点我直达&lt;<i class="fa fa-external-link-alt"></i></span></p>
+<p>Hexo特性：</p>
+<ul>
+<li>运行效果极佳，成本低</li>
+<li>多平台：本地、云、PC、移动端通吃</li>
+<li>支持多种<strong>CDN</strong>服务（开启可以提高网页的打卡速度）</li>
+<li>各大搜索引擎对网站的收录及<strong>权重</strong>有较大优势（用户搜到你发布的内容可能性更大）</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/cc55ace4c77f4bd8a0038735dc0f69c7.png"></p>
+<p>如果你喜欢配置，对代码操作后完成一定的配置，这款符合你胃口。放上配置截图供参考：</p>
+<p><img src="https://img-blog.csdnimg.cn/e4fdf3733f1140b291cefc1ea382c8c1.png"></p>
+<h3 id="WordPress"><a href="#WordPress" class="headerlink" title="WordPress"></a>WordPress</h3><p>WordPress是基于PHP和MySQL的免费开源内容管理系统（CMS）。 是全球使用最广泛的CMS软件，从最开始一款简单的博客系统，发展成为现在具有数千款插件，小工具和主题功能完整的CMS系统。<span class="exturl" data-url="aHR0cHM6Ly9jbi53b3JkcHJlc3Mub3JnLw==">&gt; 点我直达 &lt;<i class="fa fa-external-link-alt"></i></span><br>WordPress特性：</p>
+<ul>
+<li>商用范围广</li>
+<li>方便后续备份和转移，有自带的工具支持</li>
+<li>扩展性强大（此处可联想Google的插件商城）</li>
+<li>对自定义用户非常友好（绝对可以打造出你想要的）</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/bf10fc73dc664e74bd343e85bae709dc.png"></p>
+<p>如果你并不像看那些代码，可以用这款，<strong>WordPress</strong>自带后端管理，选择自己想要的主题，然后拖拽所需控件（比如你想实现显示时间这个功能，会有一个像手机端桌面小组件一样的东西，拖拽到想显示的位置即可实现）。<strong>另外最重要的是，使用它你需要先搞一台服务器</strong></p>
+<p>为了大家能更快速的找到合适的，我不会给大家很多的可选项，更不会告诉大家还有什么（不然你会觉得，我现在的可能不是最好的，我要尝试更多的。倘若这样的话，不知不觉间你就会浪费很多时间，莫不如跟着一个先搭建下来，等日后熟悉了，再更换其他的。）等到自己独立上手时，也能有个清晰的思路，不至于在某一点上花太多时间</p>
+<p><img src="https://img-blog.csdnimg.cn/a24e06bf834d4a5c901ceefc5ef9d090.png"></p>
+<h2 id="本地环境"><a href="#本地环境" class="headerlink" title="本地环境"></a>本地环境</h2><p>这一块呢，不用过多的介绍，可以理解为我们建房子需要水泥、铲子等工具和原料一样，本地的环境就是我们用到的铲子，是工具。而<strong>Hexo</strong>的博客框架就是水泥这样的原材料，我们需要用工具才开始干活，不然你***用手干啊……</p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p>简单描述下它用来做什么，Look Here：</p>
+<blockquote>
+<p>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持</p>
+</blockquote>
+<p>不必理会上面你从未听过的词汇，这么来。某度网盘用过吧，是不是有个自动备份，你选中本地的某个文件夹，当本地文件发生改变时，只要软件在后台运行，是不是云上也会和本地自动保持一致。过程就是这么个情况，但是<strong>git</strong>的操作目前你就可以相像成一个云，用一些命令你就可以把本地的代码“发送&#x2F;备份”到云上</p>
+<p>我并未深入展开讲<strong>git</strong>的分布式特性，命令等内容，这里推荐入门的朋友可以<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9naXQvZ2l0LWJhc2ljLW9wZXJhdGlvbnMuaHRtbA==">&gt; 看这里 &lt;<i class="fa fa-external-link-alt"></i></span>的教程，方便快速入门</p>
+<p>既然要使用Git，那么我们首先就要安装并配置Git的环境，<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS8=">点击这里<i class="fa fa-external-link-alt"></i></span>下载（Windows操作系统），点击Download按钮即可</p>
+<img src="https://oscimg.oschina.net/oscnet/2348e786eb7a4c2da133338a12aa6670.png" width="80%">
+
+<p>安装过程不再赘述，直接使用默认配置，一“Next(站)” 到底</p>
+<p>下面我们配置环境变量信息，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMTg4NzU5Njc=">详情参考此处<i class="fa fa-external-link-alt"></i></span>，打开 Path 变量后，添加本地环境安装目录（确保文件位置到达 cmd ）</p>
+<p><img src="https://img-blog.csdnimg.cn/3c49d776d6dd4ee4bc20bb3bde0cb9ba.png"></p>
+<p>安装完成后，你可能没有看到桌面的快捷方式，不要着急。我们在Windows搜索框中搜索Git就可以看到这样几个图标</p>
+<p><img src="https://img-blog.csdnimg.cn/ba1113bb892c45d6bbf5906242cf2de4.png"></p>
+<p>可以直接点击 Git Bash 或者在桌面任意位置右键，打开 Git Bash Here 就可以使用啦</p>
+<p><img src="https://img-blog.csdnimg.cn/1d89848f17c144a6a3823098892c6c44.png"></p>
+<h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><p><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2VuLw==">&gt; 下载直达 &lt;<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/f0bf90b791614bc1b09cc6f94105b00c.png"></p>
+<p>很多朋友纠结这两个版本，看下这个解释相信就知道需要哪个了，杰森用的是<strong>LTS版本</strong></p>
+<blockquote>
+<p><strong>LTS</strong>代表“Long Term Support（长期支持）”，Current代表“当前的”<br><strong>Current</strong>就代表最新发布的版本（每6个月一次的），它可能是奇数版本也可能是偶数版本</p>
+</blockquote>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>桌面右击，打开<strong>git bash here</strong>输入命令安装（默认位置即可，方面后续配置，不建议修改）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>这里我已经装过了，可能显示的和你的不一样，执行完后关闭窗口就行，此时本地已经有了<strong>hexo</strong>的环境。怎么样，是不是很简单呢？</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在你本地任意位置（但要记住路径）方便起见<strong>建议直接在除C盘的任意盘符下的跟目录新建</strong>，命名任意，比如我这里是在D盘新建的 hexo-jason-blog 文件夹，可以参考下</p>
+<p>本来我想用自己已经搭好的本地环境给大家演示，但是为了能真实体现“新手”的操作环境，杰森决定重新建立，一步步重新操作，只为大家能走好每一步，直到成功</p>
+<p>在该文件夹下打开 git bash here 输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/6922e3628acf441496d0d8a303cbc299.png"></p>
+<p>此时你可能会遇到这个错误，不要慌张，是从<strong>GitHub</strong>克隆时网络原因，多试几次就好</p>
+<p><img src="https://img-blog.csdnimg.cn/92bbacd9593b437990a8ef5d670349c2.png"></p>
+<p>关于此类问题的解决方案请<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZmFpcnlseWwvcC8xNTA1OTQzNy5odG1s">&gt; 参考这里 &lt;<i class="fa fa-external-link-alt"></i></span></p>
+<p>成功效果：</p>
+<p><img src="https://img-blog.csdnimg.cn/6f75f87ba4cf42fe85bd604fdfcb9277.png"></p>
+<p>根文件目录下多了这些文件</p>
+<p><img src="https://img-blog.csdnimg.cn/590bda80915546c1b3a904af3169057a.png"></p>
+<p>简单介绍下hexo的文件结构：</p>
+<ul>
+<li>public  最终所见网页的所有内容 </li>
+<li>node_modules  插件以及hexo所需node.js模块 </li>
+<li>_config.yml  站点配置文件，设定一些公开信息等</li>
+<li>package.json  应用程序信息，配置hexo运行所需js包</li>
+<li>scaffolds   模板文件夹，新建文章，会默认包含对应模板内容</li>
+<li>themes  存放主题文件，hexo根据主题生成静态网页（速度贼快）</li>
+<li>source 用于存放用户资源（除 <em>posts 文件夹，其余命名方式为 “</em> + 文件名”的文件被忽略）</li>
+</ul>
+<p>我们日常写文的操作都在 source&#x2F;_post下，既然我们已经有了建房子时“和泥”的工具——WebStorm，为什么不用呢？</p>
+<p>在WebStorm中打开根目录 hexo-jason-blog （直接将该文件拽到桌面WebStorm的快捷方式打开就行），打开终端并输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/1c60954ce9994f08b87502fc05662446.png"></p>
+<p>点击链接 <strong><span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo0MDAwLw==">http://localhost:4000<i class="fa fa-external-link-alt"></i></span></strong>（图中黄色下划线位置）进行本地预览，默认是hexo内置的landscape 主题</p>
+<p><img src="https://img-blog.csdnimg.cn/166b60aaca844a45848981e4c34af06a.png"></p>
+<p>光标停留在 Terminal 位置，组合键 <a class="btn" href="#">Ctrl</a> + <a class="btn" href="#">C</a> 停止本地预览，这就是本地最简单的一个网站啦</p>
+<p>emmm，默认的页面朋友们也预览成功了，大概呢，就是这样，嘿：</p>
+<p><img src="https://img-blog.csdnimg.cn/827a7d03aeec46a29e0fd9e315dc0fc2.gif"></p>
+<p>但总感觉，还是差了点什么东西。没有一些博客、网站该有的东西，那怎么能让它更像一个网站呢？</p>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>这里我们介绍下<strong>主题</strong>和<strong>框架</strong>，我们现在使用的<strong>Hexo</strong>是一款快速、简单的博客框架，主题就是开发者根据此框架开发的功能更加完备、页面样式、栏目更多的一种”配件“。就像你用的手机，换上手机壳，选手机壳时需要匹配自己手机的型号，不然也不配套啊是吧</p>
+<p>再举个“栗子”，像Android手机（IOS闭源，除非越狱），厂家生产时默认的桌面主题，在<strong>主题商店</strong>这个app里你能根据自己的喜好选择更好看的图标、背景、字体。就像是“换上新衣”，可以从这个角度理解我们下面要做的操作</p>
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><p>提及主题，肯定就会有很多啦。还是那句话，大家根据自己的喜好选择就好，这里是<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=">官方主题库<i class="fa fa-external-link-alt"></i></span>，我比较喜欢<strong>Butterfly</strong>这款主题，下面带大家给自己的网站“换新衣”</p>
+<h3 id="Butterfly"><a href="#Butterfly" class="headerlink" title="Butterfly"></a>Butterfly</h3><p>先给大家看下主题的页面</p>
+<p>博客主页</p>
+<p><img src="https://img-blog.csdnimg.cn/e875c1528ae748be83db91cf2058ad56.gif"></p>
+<p>博文页面</p>
+<p><img src="https://img-blog.csdnimg.cn/09ab60bd347540ca9bbe317babdaeaac.gif"></p>
+<p>从主题的文档中看，作者也是一直在维护的，时间很近。正所谓好的产品必须要有好的文档嘛，作者也是相当用心，大家可以跟着文档一步一步配置，非常简单，只是把一些工具组成链条罢了</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li>Terminal 输入命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b master https://gitee.com/immyw/hexo-theme-butterfly.git themes/butterfly</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/344b9b18ace74732b725f60bb3831e2a.png"></p>
+<p>等待安装完成，<strong>themes</strong>文件夹下显示了<strong>butterfly</strong>主题的一些文件</p>
+<p><img src="https://img-blog.csdnimg.cn/bd527d4926494ec8b27540dabb5cb0c2.png"></p>
+<ul>
+<li>安装插件</li>
+</ul>
+<p>安装 pug 以及 stylus 的渲染器，如果没有安装，预览界面是这样的</p>
+<p><img src="https://img-blog.csdnimg.cn/f28ea972cbce4c788723f02ba0adaba8.png"></p>
+<p>控制台输入命令，回车等待安装即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改配置文件</li>
+</ul>
+<p> 网站根目录下找到**_config.yml<strong>文件，修改主题为</strong>butterfly<strong>（注意</strong>yml**文件格式）</p>
+<p><img src="https://img-blog.csdnimg.cn/38d2cd795f084129b9d9ce2022dc0af2.png"></p>
+<ul>
+<li>本地预览</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //执行此命令后继续下一条</span><br><span class="line">hexo g //生成博客目录</span><br><span class="line">hexo s //本地预览</span><br></pre></td></tr></table></figure>
+
+<p>效果图</p>
+<p><img src="https://img-blog.csdnimg.cn/9d5acea822264f5d92d866944a0ae7d0.gif"></p>
+<p>可能看上去还是那么的“简陋”，额，这个问题呢，会涉及到后续的”主题美化“（其实就是加上了一些好看的图片而已，也很简单）。我的博客也没有优化的很细节，非常粗糙，时间有限，后面再说吧，可以看下，留个”念想“，相信你做的会比我更好</p>
+<p><img src="https://img-blog.csdnimg.cn/1dbf897a90c54e19b4bbe4f5b45fedf5.gif"></p>
+<h1 id="正式上线"><a href="#正式上线" class="headerlink" title="正式上线"></a>正式上线</h1><h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><p>这是个ma玩意啊？？？不要慌，大家不是看咱们默认主题的网站一点儿都不好看么，那是因为没图片啊，你要是给它换上一套配图，优化一下，是不是就好多了呢？那在网络中我们引用图片一种是本地上传，代码里放上路径引用；另一种则是通过网址，显然后者更方便（如果类比到后面要用到的服务器上，随着图片量日渐增多、存储空间慢慢减少，每次发文都需要连同图片一起上传，那得占用多大的空间呐）</p>
+<p>然而，如果我们自己有一个地方，能把本地图片转换成链接（人人通过这个链接都能访问到你发布的照片）是不是就很棒了nie。<strong>Picgo</strong>和一些其他插件就能实现</p>
+<p>前些时候更新过一片文章，使用<strong>GitHub</strong>和<strong>SM.MS</strong>。如果有不能类比操作的朋友，<span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjIyMzk1">&gt; 看这里 &lt;<i class="fa fa-external-link-alt"></i></span>由于<strong>GitHub</strong>毕竟是国外的，访问速度上会有点儿慢，<strong>SM.MS</strong>倒是一个运行了很久的老牌子了，但它俩在访问速度上都略慢</p>
+<p>杰森强烈推荐国内的<strong>码云（Gitee）</strong>，配合<strong>Picgo</strong>使用。稳定、快速，还不容易丢失。（ps：此处就会有些朋友问了，我公开了我的仓库，里面全放的是我的照片，会不会隐私存在隐私泄露什么的）对于这类问题，我只能说</p>
+<p><img src="https://img-blog.csdnimg.cn/27e0e65793664211a2893681263089a0.gif"></p>
+<p>谁天天闲的没事去看你仓库啊？？再者说，你能上传到仓库里XXX（自行想象）照片么？？所以说，放心用，不要想辣么多真的是</p>
+<p>另外，友情提示：<strong>Gitee对免费版账户存储容量最大为5G，仓库满了记得从软件中改下路径，使用后不要乱改自己Gitee账户的名称（不是昵称，英文那个名称），不然就等404吧</strong></p>
+<h2 id="Butterfly配置"><a href="#Butterfly配置" class="headerlink" title="Butterfly配置"></a>Butterfly配置</h2><p>直接放上<span class="exturl" data-url="aHR0cHM6Ly9idXR0ZXJmbHkuanMub3JnL3Bvc3RzLzRhYThhYmJlLw==">官方文档<i class="fa fa-external-link-alt"></i></span>，朋友们可以先配置一下，非常简单。你看到的页面可能是繁体中文，不要用浏览器自带的翻译引擎（可能翻译后，部分内容不显示）贴心的作者，早已想到了，我们只要在网站右下角设置中切换一下就好</p>
+<p><img src="https://img-blog.csdnimg.cn/ac0eb14b282649578572db051a27f47f.png"></p>
+<p>杰森在后面会专门出一期，来讲下主题配置中的一些问题，相信看到这里的小伙伴已经迫不及待想要把自己的网站发不到网上了吧，我们重点讲这个问题</p>
+<h2 id="GitHub-Pages配置"><a href="#GitHub-Pages配置" class="headerlink" title="GitHub Pages配置"></a>GitHub Pages配置</h2><p><strong>GitHub Pages</strong>是一种由<strong>GitHub</strong>中的仓库&#x2F;项目直接创建的网页。管理简单，在本地编辑仓库中的内容，上传到GitHub上，GitHub Pages就能快速完成更新，重点是<strong>不花钱，不花钱，不花钱</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/513ac1b27a354b1fba32011318edbf9f.png"></p>
+<p>新建仓库，填写内容如下，<strong>特别注意红框位置</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/c4f6cb765a774149a1231ee3479d3606.png"></p>
+<p>保证仓库<strong>public</strong>，名称填写正确<strong>用户名.github.io</strong>，系统自动变更为<strong>Pages</strong></p>
+<p>在仓库设置中找到<strong>Pages</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/e780856e478c4e72b51ac048b6cddea1.png"></p>
+<p>记住仓库地址，我们会将本地的文件上传到仓库</p>
+<p><img src="https://img-blog.csdnimg.cn/30700a47e4cb4c1680c7036a3ab3d944.png"></p>
+<p>如果你是在电脑上第一次使用<strong>git</strong>，请先配置<strong>SSH公钥</strong>（一种安全协议，你可以理解为登陆某网站需要的验证码）</p>
+<p>在<strong>WebStorm</strong>中链接到远程，添加仓库地址，这里<strong>不是发布网站需要的仓库</strong>（非“用户名”+github.io仓库，新建一个，为了管理本地代码）</p>
+<p><img src="https://img-blog.csdnimg.cn/9a6b98e6fc2147ceb39a16c932d1fa49.png"></p>
+<p>因为这里都是基本的<strong>git</strong>命令，前面也提到过，不清楚的小伙伴可以看这个专栏里的资料，都是一些基础操作，非常容易上手</p>
+<p>修改网站部署设置</p>
+<p><img src="https://img-blog.csdnimg.cn/9ac139c8fb2841cdaf4b206c1b15dc6a.png"></p>
+<p>在网站本地<strong>根目录</strong>下打开 git bash here 依次执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //执行此命令后继续下一条</span><br><span class="line">hexo g //生成博客目录</span><br><span class="line">hexo s //本地预览</span><br><span class="line">hexo d //部署项目</span><br></pre></td></tr></table></figure>
+
+<p>执行完毕后，所有人就能通过<strong>你的用户名+github.io</strong>这个域名访问你的网站了。到这儿，我们就成功上线了自己的网站</p>
+<p>如果感觉<strong>GitHub</strong>访问速度慢（嗯，其实就是慢，还会有打不开的情况）可以部署到<strong>Gitee</strong>，都是一样的操作，还是中文，不要太简单ei</p>
+<p>额，发布确实是发布了，那你觉得像<strong>用户名+github.io</strong>这样的名称方便记忆吗？？我想，如果是一个新手（可能都不知道<strong>GitHub</strong>是什么的用户，肯定是很困难了）</p>
+<p>那，怎么样方便记忆，而且足够个性化呢？</p>
+<p><img src="https://img-blog.csdnimg.cn/2457d271a3b7408d95bb092f6a585cae.png"></p>
+<p>当然，这部分肯定是不免费的了，哪儿有什么都白嫖的道理呢？对吧，推荐在<strong>阿里云</strong>或<strong>腾讯云</strong>完成下面的操作哦，如果你使用其他的平台，不是不行，但是建议购买域名和服务器都在相同的平台，方便管理</p>
+<p>国内的大厂，都有保障，无脑冲就可以啦。从经济性角度来看，哪个有活动，更实惠就选哪个，杰森是看到了<strong>阿里云</strong>当时的活动比<strong>腾讯云</strong>更实惠，so~~</p>
+<h2 id="服务器选购攻略"><a href="#服务器选购攻略" class="headerlink" title="服务器选购攻略"></a>服务器选购攻略</h2><p>收到有些朋友反应：那么多入口，都找不到从哪里买&#x2F;找不到活动入口。这里讲下怎么查看最新的活动，平台会有哪些优惠，入口在哪里</p>
+<h3 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h3><h4 id="学生专享"><a href="#学生专享" class="headerlink" title="学生专享"></a>学生专享</h4><p>账号中心完成学生认证购买更优惠</p>
+<h4 id="活动专享"><a href="#活动专享" class="headerlink" title="活动专享"></a>活动专享</h4><p>最新活动 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWxpeXVuLmNvbS9hY3Rpdml0eT9zcG09NTE3Ni4xOTcyMDI1OC5KXzgwNTg4MDMyNjAuMi4zNmY4MmM0YUxKREc4RQ==">&gt; 戳我直达 &lt;<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/de9c6fba2bed4ff78d3bee37ea4e680f.png"></p>
+<h3 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h3><p>不得不说，两家界面基本一致，熟悉一个就行，所以位置差不多都一样</p>
+<h4 id="学生专享-1"><a href="#学生专享-1" class="headerlink" title="学生专享"></a>学生专享</h4><p>学生党查看这里 <span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9hY3QvY2FtcHVzP3V0bV9zb3VyY2U9cWNsb3VkJnV0bV9tZWRpdW09bmF2aWdhdGlvbiZ1dG1fY2FtcGFpZ249Y2FtcHVz">&gt; 戳我直达 &lt;<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/c0b733075577441185e137f9aebbf171.png"></p>
+<h4 id="活动专享-1"><a href="#活动专享-1" class="headerlink" title="活动专享"></a>活动专享</h4><p>最新活动 <span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9hY3Q=">&gt; 戳我直达 &lt;<i class="fa fa-external-link-alt"></i></span><br><img src="https://img-blog.csdnimg.cn/2a0d06a2636b48b99bb23e78edfad445.png"></p>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><blockquote>
+<p>域名（英语：Domain Name），又称网域，是由一串用点分隔的名字组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时对计算机的定位标识（有时也指地理位置）<br>由于IP地址具有不方便记忆并且不能显示地址组织的名称和性质等缺点，人们设计出了域名，并通过网域名称系统（DNS，Domain Name System）来将域名和IP地址相互映射，使人更方便地访问互联网，而不用去记住能够被机器直接读取的IP地址数串</p>
+</blockquote>
+<p>如果你没有看懂，没关系，那听杰森细细道来。简单来说，在公网上访问的资源都有其固定地址<strong>IP</strong>，但是如果你要访问特定的<strong>IP</strong>，就需要记住它。但是呢，它不方便记忆，人们就想出了<strong>域名</strong>这东西</p>
+<p>给<strong>IP</strong>起了一个个性化的名称，比如攻城狮杰森是全称，朋友们喊我森森、阿森、小森，都是别名，但都指向“攻城狮杰森”这个人。那在网络中如何实现起别名呢？这里介绍下<strong>DNS</strong>，它是互联网中的一项服务，实<strong>域名</strong>和<strong>IP</strong>的相互映射，也就是说，你输入域名访问的就是域名所对应的<strong>IP地址</strong></p>
+<h3 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h3><p>既然理解了什么是<strong>域名</strong>，那我们先来买个域名吧！<br><span class="exturl" data-url="aHR0cHM6Ly93YW53YW5nLmFsaXl1bi5jb20vP3NwbT01MTc2LjIxMjEzMzAzLjExNTgwODEuMy43ZmY2M2VkYWhTRjRrVSZzY209MjAxNDA3MjIuU19jYXJkQEAlRTUlOEQlQTElRTclODklODdAQDU4MS5fLklEX2NhcmRAQCVFNSU4RCVBMSVFNyU4OSU4N0BANTgxLVJMXyVFNSU5RiU5RiVFNSU5MCU4RCVFOCVCNCVBRCVFNCVCOSVCMC1PUl9zZXItVl8yLVAwXzA=">&gt; 点击此处 &lt; <i class="fa fa-external-link-alt"></i></span>查询你想要的域名</p>
+<p>举个栗子，输入后查询，选好后加入清单，付款购买即可。不同的后缀价格不同，凭个人喜好</p>
+<blockquote>
+<p>域名后缀，亦被称为顶级域名，是指代表一个域名类型的符号。 不同后缀的域名有不同的含义。域名共分为两类：国别域名（ccTLD），例如中国的.cn、美国的.us、俄罗斯的.ru、以及国际通用域名（gTLD），例如.com、.xyz、.top、.wang、pub、.xin、.net等1000多种，所有域名后缀作用无差异，仅外观和本身含义不同，但只有少数例如举例中的域名后缀可以在国内支持网站的备案</p>
+</blockquote>
+<p>更多域名后缀信息，<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlOUYlOUYlRTUlOTAlOEQlRTUlOTAlOEUlRTclQkMlODAvNjY3NjQxIzp+OnRleHQ9JUU0JUI4JThEJUU1JTkwJThDJTIwJUU1JTkwJThFJUU3JUJDJTgwJTIwJUU3JTlBJTg0JUU1JTlGJTlGJUU1JTkwJThEJUU2JTlDJTg5JUU0JUI4JThEJUU1JTkwJThDJUU3JTlBJTg0JUU1JTkwJUFCJUU0JUI5JTg5JUUzJTgwJTgyJTIwJUU1JTlGJTlGJUU1JTkwJThEJUU1JTg1JUIxJUU1JTg4JTg2JUU0JUI4JUJBJUU0JUI4JUE0JUU3JUIxJUJCJUVGJUJDJTlBJTIwJUU1JTlCJUJEJUU1JTg4JUFCJUU1JTlGJTlGJUU1JTkwJThEJTIwJUVGJUJDJTg4Y2NUTEQlRUYlQkMlODklRUYlQkMlOEMlRTQlQkUlOEIlRTUlQTYlODIlRTQlQjglQUQlRTUlOUIlQkQlRTclOUElODQlMjAuY24lMjAlRTMlODAlODElRTclQkUlOEUlRTUlOUIlQkQlRTclOUElODQsLndhbmclMjAlRTMlODAlODFwdWIlRTMlODAlODElMjAueGluJTIwJUUzJTgwJTgxJTIwLm5ldCUyMCVFNyVBRCU4OTEwMDAlRTUlQTQlOUElRTclQTclOEQlRUYlQkMlOEMlRTYlODklODAlRTYlOUMlODklRTUlOUYlOUYlRTUlOTAlOEQlRTUlOTAlOEUlRTclQkMlODAlRTQlQkQlOUMlRTclOTQlQTglRTYlOTclQTAlRTUlQjclQUUlRTUlQkMlODIlRUYlQkMlOEMlRTQlQkIlODUlRTUlQTQlOTYlRTglQTclODIlRTUlOTIlOEMlRTYlOUMlQUMlRTglQkElQUIlRTUlOTAlQUIlRTQlQjklODklRTQlQjglOEQlRTUlOTAlOEMlRUYlQkMlOEMlRTQlQkQlODYlRTUlOEYlQUElRTYlOUMlODklRTUlQjAlOTElRTYlOTUlQjAlRTQlQkUlOEIlRTUlQTYlODIlRTQlQjglQkUlRTQlQkUlOEIlRTQlQjglQUQlRTclOUElODQlRTUlOUYlOUYlRTUlOTAlOEQlRTUlOTAlOEUlRTclQkMlODAlRTUlOEYlQUYlRTQlQkIlQTUlRTUlOUMlQTglRTUlOUIlQkQlRTUlODYlODUlRTYlOTQlQUYlRTYlOEMlODElRTclQkQlOTElRTclQUIlOTklRTclOUElODQlRTUlQTQlODclRTYlQTElODglMjAlNUIxJTVEJTIwJUUzJTgwJTgy">查看这里<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/35738d502013404cb72b871d0217770b.png"></p>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><h4 id="添加域名"><a href="#添加域名" class="headerlink" title="添加域名"></a>添加域名</h4><p>因为我们现在已经有了<strong>用户名.github.io</strong>这样一个网站，为了简单易记，我们将“用户名.github.io“解析”到所购买的域名，这样，网站就有了<strong>所有域名</strong>和<strong>username.github.io</strong>两个网址了</p>
+<p>打开仓库，找到设置，进入pages设置，添加域名</p>
+<p><img src="https://img-blog.csdnimg.cn/f6c18b9194714a92bd45f9470a611bb9.png"></p>
+<p>你还可以使用免费的<strong>强制HTTPS</strong></p>
+<blockquote>
+<p>HTTPS （全称：Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性<br>HTTPS 在HTTP 的基础下加入SSL，HTTPS 的安全基础是 SSL【SSL(Secure Sockets Layer 安全套接字协议),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议。TLS与SSL在传输层与应用层之间对网络连接进行加密】<br>因此加密的详细内容就需要 SSL。 HTTPS 存在不同于 HTTP 的默认端口及一个加密&#x2F;身份验证层（在 HTTP与 TCP 之间）。这个系统提供了身份验证与加密通讯方法。它被广泛用于万维网上安全敏感的通讯，例如交易支付等方面</p>
+</blockquote>
+<p>打开这个选项</p>
+<p><img src="https://img-blog.csdnimg.cn/615067c0e3b24bb3aa0ce864556f6eb4.png"></p>
+<h4 id="添加解析记录"><a href="#添加解析记录" class="headerlink" title="添加解析记录"></a>添加解析记录</h4><p>在<span class="exturl" data-url="aHR0cHM6Ly93d3cuYWxpeXVuLmNvbS8/c3BtPWEyYzFkLjgyNTE4OTIudG9wLW5hdi5kbG9nby41NjdhNWI3NnhNaXI2Uw==">阿里云官网<i class="fa fa-external-link-alt"></i></span>进入域名控制台</p>
+<p><img src="https://img-blog.csdnimg.cn/0aa958e53b3e411ebc6f25b3ac4b3b74.png"></p>
+<p>若没有，在此处搜索</p>
+<p><img src="https://img-blog.csdnimg.cn/109db46dbaf34bb0bf981356039cd1fc.png"></p>
+<p>找到需要与username.github.io绑定的域名，点击“解析”</p>
+<p><img src="https://img-blog.csdnimg.cn/5135e84c1069461a806c5c28126f4e2a.png"></p>
+<p>进入后，点击“添加记录”，需添加两次记录</p>
+<p>第一次</p>
+<p><img src="https://img-blog.csdnimg.cn/d202b956b5d1495f8205441325700c8c.png"></p>
+<p>第二次</p>
+<p><img src="https://img-blog.csdnimg.cn/4126b4b3299e4eb79e0214f77adaf573.png"></p>
+<p>DNS解析需要时间，稍等片刻后，若在浏览框中输入你的域名，正常访问则解析成功</p>
+<p>这里为什么要说是正式上线呢，毕竟网站到了服务器看得才，才正规一点儿是吧，像<strong>GitHub Pages</strong>，倒是免费，但是在国内，DNS解析后需要时间，总会有无法访问或者断连的情况，太不方便</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>先来看看，<strong>服务器</strong>是何方神圣？</p>
+<blockquote>
+<p>服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。服务器在网络中为其它客户机（如PC机、智能手机、ATM等终端甚至是火车系统等大型设备）提供计算或者应用服务。服务器具有高速的CPU运算能力、长时间的可靠运行、强大的I&#x2F;O外部数据吞吐能力以及更好的扩展性<br>根据服务器所提供的服务，一般来说服务器都具备承担响应服务请求、承担服务、保障服务的能力。服务器作为电子设备，其内部的结构十分的复杂，但与普通的计算机内部结构相差不大，如：cpu、硬盘、内存，系统、系统总线等</p>
+</blockquote>
+<p>简单理解：一台不断电，有空间的主题在“天上（云端）”一直在为你放置（部署）上去的资源而服务，能处理各种请求（比如你在导航栏输入域名访问网站）</p>
+<p>有两种类型的服务器<strong>国内</strong>和<strong>国外</strong>的，根据我国法律规定，中国大陆的网站需要备案，等待的时间可能会长一点。国外的到时不需要备案，但是稳定性和访问速度就不敢保证了，各位小伙伴自己衡量，杰森用的是<strong>阿里云的轻应用服务器</strong>部署的个人博客网站</p>
+<h3 id="购买-1"><a href="#购买-1" class="headerlink" title="购买"></a>购买</h3><p>这是我的服务器配置，大家可以参考下</p>
+<p><img src="https://img-blog.csdnimg.cn/c556344556d3449aabdc784454d3782e.png"></p>
+<p>如果你是初学者，这个入门级的配置已经足够学生机，可免费领取，具体规则详见社区 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9wbGFuL2dyb3ctdXA/c3BtPTUxNzYuMTk3MjAyNTguSl84MDU4ODAzMjYwLjE4LjM2ZjgyYzRhTEpERzhF">&gt; 戳我直达 &lt;<i class="fa fa-external-link-alt"></i></span></p>
+<p>开发者-&gt; 成长计划</p>
+<p><img src="https://img-blog.csdnimg.cn/f0f7b43eec49453fab77544b10825110.png"></p>
+<p>学生专享（体验后即可得到半月免费ECS服务器，社区内发表使用感受（发一篇博客）可免费续费两月），具体规则请查看官网</p>
+<p><img src="https://img-blog.csdnimg.cn/bb6086eaa76340cb8662ca19b22c22c0.png"></p>
+<p>账号中心-&gt; 基本信息位置完成学生认证即可</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWxpeXVuLmNvbS9hY3Rpdml0eT9zcG09NTE3Ni4xOTcyMDI1OC5KXzgwNTg4MDMyNjAuMi41MWZmMmM0YVpldXFOTA==">最新活动 <i class="fa fa-external-link-alt"></i></span>位置购买优惠力度会更大</p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><h4 id="密码设定"><a href="#密码设定" class="headerlink" title="密码设定"></a>密码设定</h4><p>在图示位置出更改远程连接密码，保存好</p>
+<p><img src="https://img-blog.csdnimg.cn/52be94e8cd38411a85dc935ed43408a5.png"></p>
+<p>虽然可以用浏览器<strong>远程连接</strong>，但是并不建议，因为有一些键盘上的快捷键会被系统误认为是对浏览器的操作，而不是对话框</p>
+<h4 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h4><p>为避免这样的问题出现，我们选择使用第三方工具<strong>Putty</strong>，具体操作步骤，阿里云的<span class="exturl" data-url="aHR0cHM6Ly9oZWxwLmFsaXl1bi5jb20vZG9jdW1lbnRfZGV0YWlsLzU5MDgzLmh0bWw/c3BtPTUxNzYuMTAxNzMyODkuaGVscC5kZXh0ZXJuYWwuNTRhMzJlNzdYcG5SYTYjd2luZG93cw==">帮助文档<i class="fa fa-external-link-alt"></i></span>已经非常详细，这里不再重复</p>
+<p>从这里开始看，根据提示完成操作</p>
+<p><img src="https://img-blog.csdnimg.cn/5c50fd8a5db4409585807e0413ce9ac3.png"></p>
+<p>启动<strong>Putty</strong>工具，链接服务器，登陆用户名为<strong>root</strong>，密码就是在服务器位置设置的密码（Linux操作系统中输入密码为了安全不显示，不必担心）出现以下界面时，说明配置正常，继续下一步即可</p>
+<p><img src="https://img-blog.csdnimg.cn/5f0160fa45044dddbc0552b570b25497.png"></p>
+<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>1.输入命令，安装<strong>git</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+
+<p>中途如果暂停，则根据提示输入 yes &#x2F; y &#x2F; Y，表示继续安装，知道最后出现complete表示安装成功</p>
+<p><img src="https://img-blog.csdnimg.cn/f8e16d644d0a4904a1771a6495e45125.png"></p>
+<p>2.创建git账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser git</span><br></pre></td></tr></table></figure>
+
+<p>3.添加git账户权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/1623aaf5c2164ddeb853a6ab804d3098.png"></p>
+<p>4.执行最后一条命令后，点击键盘 <a class="btn" href="#">i</a>键进入编辑模式，找到图示位置代码</p>
+<p><img src="https://img-blog.csdnimg.cn/7cc4471c3be14ee79be9404be2e6f7af.png"><br>在下面加入一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git     ALL=(ALL)     ALL</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/e233a87b04434ab29e2022146c1bc1f9.png"></p>
+<p>按 <a class="btn" href="#">Esc</a> 键并输入 &#x3D;&#x3D;:wq&#x3D;&#x3D;（含义：保存后退出）</p>
+<p><img src="https://img-blog.csdnimg.cn/8f83ceeef59340ca85095d2db4169ca8.png"><br>5.回改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 400 /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>6.设置git账户密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd git</span><br></pre></td></tr></table></figure>
+
+<p>输入命令回车后连续输入两次密码即可（不显示，正常），出现图示即成功</p>
+<p><img src="https://img-blog.csdnimg.cn/f0cfdaee37d044bbb05f47ba6877b260.png"></p>
+<p>7.切换至git账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br></pre></td></tr></table></figure>
+
+<p>创建 ~&#x2F;.ssh 和 ~&#x2F;.ssh&#x2F;authorized_keys 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.ssh</span><br><span class="line">vim ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>点击键盘 <a class="btn" href="#">i</a> 键进入编辑模式，粘贴本地电脑生成的<strong>SSH公钥</strong>，文件位置如图</p>
+<p><img src="https://img-blog.csdnimg.cn/2102e7ed1cc74076b912126da1a480e0.png"></p>
+<p>粘贴后，按 <a class="btn" href="#">Esc</a> 键并输入 &#x3D;&#x3D;:wq&#x3D;&#x3D;（含义：保存后退出）</p>
+<p>赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 /home/git/.ssh/authorized_keys</span><br><span class="line"><span class="built_in">chmod</span> 700 /home/git/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>8.本地 git bash here 中测试是否免密登陆成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@服务器公网IP</span><br></pre></td></tr></table></figure>
+
+<p>出现图示内容表示连接成功</p>
+<p><img src="https://img-blog.csdnimg.cn/28fc21232ec945af92ef992e7b384113.png"></p>
+<p>9.服务器中创建仓库并完成配置<br>切换到<strong>root</strong>账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su root</span><br></pre></td></tr></table></figure>
+
+<p>创建repo仓库目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /www/repo</span><br></pre></td></tr></table></figure>
+
+<p>赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="built_in">chown</span> -R git:git /www/repo</span><br><span class="line"><span class="built_in">chmod</span> -R 755 /www/repo</span><br></pre></td></tr></table></figure>
+
+<p>建立网站根目录<strong>hexo</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /www/hexo</span><br></pre></td></tr></table></figure>
+
+<p>赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> -R git:git /www/hexo</span><br><span class="line"><span class="built_in">chmod</span> -R 755 /www/hexo</span><br></pre></td></tr></table></figure>
+
+<p>新建空白的git仓库并初始化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /www/repo</span><br><span class="line">git init --bare hexo.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/84cc23976bd54622910092704b6ab5c5.png"></p>
+<p>10.创建 Git 钩子，用于自动部署</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /www/repo/hexo.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<p>同上，进入编辑模式，粘贴下面代码并保存退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">git --work-tree=/www/hexo --git-dir=/www/repo/hexo.git checkout -f</span><br></pre></td></tr></table></figure>
+
+<p>修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> -R git:git /www/repo/hexo.git/hooks/post-receive</span><br><span class="line"><span class="built_in">chmod</span> +x /www/repo/hexo.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<p>仓库建立完毕</p>
+<h4 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h4><blockquote>
+<p>Nginx是一款轻量级的Web 服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器，在BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好<br>Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务，其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、简单的配置文件和低系统资源的消耗而闻名</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>中途输入 y，表示继续安装（和上面一样）等待安装完成，会显示登陆网址和初始密码</p>
+<p><img src="https://img-blog.csdnimg.cn/3a5a73b6f96145de8922cdc263d44fce.png"></p>
+<p>注意红框位置，如果两个网址都无法访问，请在服务器安全组 &#x2F; 防火墙中放行8888端口</p>
+<p><img src="https://img-blog.csdnimg.cn/a524dc5b1160414d9896be2f3460759a.png"></p>
+<p>输入初始账户名、密码登陆</p>
+<p><img src="https://img-blog.csdnimg.cn/6d65cd9a9d0f4be8b2ec098d8023d955.png"></p>
+<p>进入后，搜索<strong>Nginx</strong>点击安装（我这里已经装过了）</p>
+<p><img src="https://img-blog.csdnimg.cn/16253457c6a64c19ae6efeba3fb90f6b.png"></p>
+<p>网站–&gt; 添加站点，域名形式<strong>xxx.com 无需任何前缀</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/c2983bc486a441289d401356afada3e8.png"></p>
+<p>设置–&gt; 配置文件，修改红框内容</p>
+<p><img src="https://img-blog.csdnimg.cn/17cf31a29db54e7eb96f653d790bfca7.png"></p>
+<p>设置–&gt; 网站目录，修改为 &#x3D;&#x3D;&#x2F;www&#x2F;hexo&#x3D;&#x3D; 并保存</p>
+<p><img src="https://img-blog.csdnimg.cn/f31bb768ecc446c2ae819f28fe2c17cb.png"></p>
+<p>服务器终端，重启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service bt restart</span><br></pre></td></tr></table></figure>
+
+<p>至此，服务器端配置完成</p>
+<h4 id="Hexo配置修改"><a href="#Hexo配置修改" class="headerlink" title="Hexo配置修改"></a>Hexo配置修改</h4><p>进入本地博客根目录，修改 <strong>_config.yml</strong> 文件部署位置</p>
+<p>GitHub Pages 设定</p>
+<p><img src="https://img-blog.csdnimg.cn/b1b9f368e30e4d68b12a59daf70840ce.png"></p>
+<p>服务器设置</p>
+<p><img src="https://img-blog.csdnimg.cn/5a5d15e6528f436ab6e333016cf1bbca.png"></p>
+<p>源码如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy: </span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@你的域名:/www/repo/hexo.git</span><br><span class="line">  branch: master <span class="comment"># 注意此处分支设定,需在仓库中选择默认的分支</span></span><br></pre></td></tr></table></figure>
+
+<p>打开<strong>Putty</strong>工具，连接服务器赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> -R git:git /www/repo/</span><br><span class="line"><span class="built_in">chown</span> -R git:git /www/hexo/</span><br></pre></td></tr></table></figure>
+
+<p>本地根目录下打开 git bash here执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean //清除缓存</span><br><span class="line">hexo d -g //快速部署</span><br></pre></td></tr></table></figure>
+
+<p>出现图示内容表示部署成功，等到备案完成后就可以通过域名访问了</p>
+<p><img src="https://img-blog.csdnimg.cn/c2eb2e1df4844367b6087158a38a9429.png"></p>
+<h2 id="备案"><a href="#备案" class="headerlink" title="备案"></a>备案</h2><p>杰森的网站也是最近才备案下来，所以如果你等不及，就另寻他路吧，在国内，咱可不敢造次啊啊啊<br>你会经历以下几个阶段</p>
+<p><img src="https://img-blog.csdnimg.cn/963c621501214b2f90812cac44557cd2.png"></p>
+<p>购买服务器后，绑定域名后系统会提示你没有备案，根据提示完成即可</p>
+<p><img src="https://img-blog.csdnimg.cn/4af64685da5349c4b53b6b4402669d2b.png"></p>
+<h3 id="ICP"><a href="#ICP" class="headerlink" title="ICP"></a>ICP</h3><blockquote>
+<p>英文全称：Internet Content Provider，中文全称：网络内容提供商<br>ICP可以理解为向广大用户提供互联网信息业务和增值业务的电信运营商，是经国家主管部门批准的正式运营企业或部门</p>
+</blockquote>
+<h3 id="联网备案"><a href="#联网备案" class="headerlink" title="联网备案"></a>联网备案</h3><p><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24v">进入官网<i class="fa fa-external-link-alt"></i></span> 在阿里云完成<strong>ICP</strong>备案后，系统也会提示你操作</p>
+<p>部署完成后，选择<strong>联网备案登陆</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/0590308ca7d644d7b48ceec2b2ea6951.png"></p>
+<p>提交网站所有人信息和一些基本材料等待审核通过，最后在网页底部插入代码即可，效果如图</p>
+<p><img src="https://img-blog.csdnimg.cn/e977ba93e0b246739ccb3ff83b602e06.png"></p>
+<hr>
+<p>到这里，你的个人网站就成功上线了，也部署到了服务器。内容会根据大家的反馈情况持续更新！！！</p>
+<p>最后，放上杰森的小破站地址，欢迎到访 haha</p>
+<div class="link-grid"><div class="link-grid-container">
+<object class="link-grid-image" data="/images/head_portrait.png"></object>
+<p>Jason's Blog</p><p>A blacksmith must be strong</p>
+<a target="_blank" rel="noopener" href="https://coder-jason.cn"></a>
+</div></div>
+
+<p><img src="https://img-blog.csdnimg.cn/6ee456fd0b11484a9b4d55f7d073bca7.png"></p>
+<hr>
+<p>参考资料</p>
+<ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cueXVxdWUuY29tL2RvY3Mvc2hhcmUvODNhYmIxMTQtNDk0Ny00YWFhLWIzOGUtMWFjOWFjZDRiZGFlI3RqcUtM">技术小白如何建站<i class="fa fa-external-link-alt"></i></span> </p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjIyMzk1">Picgo+Gitee搭建个人免费图床<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZmFpcnlseWwvcC8xNTA1OTQzNy5odG1s">Git 错误：OpenSSL SSL_read: Connection was reset, errno 10054<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/official-accounts.png" width="80%">
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/PDPENG/pdpeng.github.io/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/PDPENG/pdpeng.github.io/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/PDPENG/pdpeng.github.io/2022/01/19/setup-personal-blog/" title="快速搭建个人博客——保姆级教程">https://github.com/PDPENG/pdpeng.github.io/2022/01/19/setup-personal-blog/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/PDPENG/pdpeng.github.io/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/PDPENG/pdpeng.github.io/2022/02/08/python-turtle-BingDwenDwen/" rel="prev" title="你还没有抢到冰墩墩?">
+                  <i class="fa fa-chevron-left"></i> 你还没有抢到冰墩墩?
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/PDPENG/pdpeng.github.io/2021/12/14/code-draw-christmas-tree/" rel="next" title="用代码绘制圣诞树">
+                  用代码绘制圣诞树 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:56</span>
+  </span>
+</div>
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
+  <div class="busuanzi-count" style="display:inline-block">
+      <span class="post-meta-item" id="busuanzi_container_site_uv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="site-uv" title="总访客量">
+          <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span class="post-meta-item" id="busuanzi_container_site_pv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-eye"></i>
+        </span>
+        <span class="site-pv" title="总访问量">
+          <span id="busuanzi_value_site_pv"></span>
+        </span>
+      </span>
+  </div>
+  </span>
+</div>
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+      <img src="/PDPENG/pdpeng.github.io/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+  </div>
+
+
+<div class="powered-upyun-jsdelivr-aliyun">
+  <a href="https://www.upyun.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/upyun.png" width="7%" alt="upyun" style="display:inline;"></a>&nbsp;
+  <a href="https://www.jsdelivr.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/jsdelivr.svg" width="10%" alt="jsdelivr" style="display:inline;"></a>&nbsp;
+  <a href="https://www.aliyun.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/aliyun.png" width="8%" alt="aliyun" style="display:inline;"></a>&nbsp;
+   <a href="https://www.github.com" class="theme-link" rel="noopener" target="_blank"><img src="./images/github.png" width="7%" alt="github" style="display:inline;"></a> 提供CDN/云资源支持
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6157d91d9141f476" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/PDPENG/pdpeng.github.io/js/comments.js"></script><script src="/PDPENG/pdpeng.github.io/js/utils.js"></script><script src="/PDPENG/pdpeng.github.io/js/motion.js"></script><script src="/PDPENG/pdpeng.github.io/js/schemes/muse.js"></script><script src="/PDPENG/pdpeng.github.io/js/next-boot.js"></script><script src="/PDPENG/pdpeng.github.io/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/PDPENG/pdpeng.github.io/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
+<script src="/PDPENG/pdpeng.github.io/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qpUganIAeAN1PbLWuG7zCdbA-MdYXbMMI","app_key":"fDuhsPwm05Fj0DGcYhHLdg3x","server_url":null,"security":false}</script>
+  <script src="/PDPENG/pdpeng.github.io/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/Utterances-Comment-System","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/PDPENG/pdpeng.github.io/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
