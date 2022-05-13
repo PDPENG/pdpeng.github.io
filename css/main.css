@@ -2938,12 +2938,12 @@ hr {
 .links-of-author a {
   border-bottom-color: #555;
   display: inline-block;
-  margin-bottom: 10px;
+  border-bottom: 0px;
   margin-right: 10px;
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ffff4e;
+  background: #2ac359;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
