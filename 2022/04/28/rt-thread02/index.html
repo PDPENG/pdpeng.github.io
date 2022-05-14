@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="/live2d-widget/autoload.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pdpeng.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://pdpeng.github.io/2022/04/28/rt-thread02/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pdpeng.github.io/2022/04/28/rt-thread02/","path":"2022/04/28/rt-thread02/","title":"【玩转 RT-Thread】I2C 内核"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【玩转 RT-Thread】I2C 内核 | 杰森的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="杰森的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰森的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">全栈杰森</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">22</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81i2c%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.</span> <span class="nav-text">一、i2c协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81i2c%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">二、i2c物理层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81i2c%E5%8D%8F%E8%AE%AE%E5%B1%82"><span class="nav-number">3.</span> <span class="nav-text">三、i2c协议层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-i2c%E6%80%BB%E7%BA%BF%E7%9A%84%E4%BD%8D%E4%BC%A0%E8%BE%93"><span class="nav-number">3.1.</span> <span class="nav-text">1.i2c总线的位传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-i2c%E6%80%BB%E7%BA%BF%E7%9A%84%E5%BC%80%E5%A7%8B%E5%92%8C%E7%BB%93%E6%9D%9F%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.2.</span> <span class="nav-text">2.i2c总线的开始和结束信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-i2c%E5%BA%94%E7%AD%94%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.3.</span> <span class="nav-text">3.i2c应答信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-i2c%E6%80%BB%E7%BA%BF%E7%9A%84%E4%BB%B2%E8%A3%81%E6%9C%BA%E5%88%B6"><span class="nav-number">3.4.</span> <span class="nav-text">4.i2c总线的仲裁机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%AE%BF%E9%97%AEi2c%E6%80%BB%E7%BA%BF%E8%AE%BE%E5%A4%87"><span class="nav-number">4.</span> <span class="nav-text">四、访问i2c总线设备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%9F%A5%E6%89%BEi2c%E6%80%BB%E7%BA%BF%E8%AE%BE%E5%A4%87"><span class="nav-number">5.</span> <span class="nav-text">五、查找i2c总线设备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">6.</span> <span class="nav-text">六、数据传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81I2C-%E6%80%BB%E7%BA%BF%E8%AE%BE%E5%A4%87%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">七、I2C 总线设备使用示例</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <a href="/">
+    <img class="site-author-image" itemprop="image" alt="Jason"
+      src="/images/head_portrait.png">
+    </a>
+  <p class="site-author-name" itemprop="name">Jason</p>
+  <div class="site-description" itemprop="description" style="padding-bottom: 8px">A blacksmith must be strong</div>
+
+<html>
+<head>
+    <style>
+        .rss-button div {
+            display: block;
+            margin-top: 5px;
+            background-color: transparent;
+            position: relative;
+            font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .feed-link a {
+            display: inline-block;
+            padding: 0 15px;
+            color: #fc6423;
+            border: 2px solid #fc6423;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .feed-link a:hover {
+            background-color: #fc6423;
+            border-bottom-color: #fc6423;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="rss-button">
+    <div class="feed-link" title="RSS → /atom.xml">
+        <a href="/atom.xml">
+            <i class="fa fa-rss"> </i> RSS
+        </a>
+    </div>
+</body>
+</html>
+
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAzOTcxOTcxMzk1Mg==" title="FaceBook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100039719713952"><i class="fab fa-facebook fa-fw"></i>FaceBook</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbl9jb2Rpbmc=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jason_coding"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51269961"><i class="fa-solid fa-c fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RT-Thread/" rel="tag">RT-Thread</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLServer/" rel="tag">SQLServer</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP&#x2F;IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vivado/" rel="tag">Vivado</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" rel="tag">程序人生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/" rel="tag">职业认证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag">解析几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BEUEVORw==" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/28/rt-thread02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head_portrait.png">
+      <meta itemprop="name" content="Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰森的博客">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【玩转 RT-Thread】I2C 内核 | 杰森的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【玩转 RT-Thread】I2C 内核
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-28 19:28:34" itemprop="dateCreated datePublished" datetime="2022-04-28T19:28:34+08:00">2022-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/RT-Thread/" itemprop="url" rel="index"><span itemprop="name">RT-Thread</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/04/28/rt-thread02/" class="post-meta-item leancloud_visitors" data-flag-title="【玩转 RT-Thread】I2C 内核" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="一、i2c协议"><a href="#一、i2c协议" class="headerlink" title="一、i2c协议"></a>一、i2c协议</h1><p>由飞利浦公司开发，支持设备间的短距离通信。i2c通信需要的引脚少，硬件实现简单、可扩展性强，被广泛应用在系统内多个集成电路（IC）间的通信。</p>
+<h1 id="二、i2c物理层"><a href="#二、i2c物理层" class="headerlink" title="二、i2c物理层"></a>二、i2c物理层</h1><ul>
+<li><p>i2c通信总线可连接多个i2c通信设备，支持多个通信主机和多个通信从机。i2c通信只需要两条双向总线——SDA（串行数据线）和SCL（串行时钟线）。<br><code>SDA</code>：用于传输数据<br><code>SCL</code>：用于同步数据收发</p>
+</li>
+<li><p>每个连接到总线的设备都有一个独立地址，共7bit，主机正是利用该地址对设备进行访问</p>
+</li>
+<li><p>i2c支持多主控，任何时间点都只能有一个主控。<br><img src="https://img-blog.csdnimg.cn/01cc1805f0db4842a836a7dae9b11978.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>i2c器件的SDA引脚和SCL引脚是开漏电路形式，因此，SDA和SCL总线都需要连接上拉电阻，当总线空闲时，两条总线均为高电平。</p>
+</li>
+<li><p>各器件的SDA和SCL信号线在总线上都是<code>线与</code>关系。（即连接到总线上的任意器件输出低电平都会将总线信号拉低）</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="三、i2c协议层"><a href="#三、i2c协议层" class="headerlink" title="三、i2c协议层"></a>三、i2c协议层</h1><p>协议层定义了i2c的通信协议。一个完整的i2c数据传输包含开始信号，器件地址，读写控制，器件内访问地址，有效数据，应答信号和结束信号。</p>
+<h2 id="1-i2c总线的位传输"><a href="#1-i2c总线的位传输" class="headerlink" title="1.i2c总线的位传输"></a>1.i2c总线的位传输</h2><p>数据传输：当SCL位高电平时，SDA必须保持稳定，SDA上传1位数据。<br>数据改变：当SCL为低电平时，SDA才可以改变电平<br><code>i2c位传输时序图</code><br><img src="https://img-blog.csdnimg.cn/3bcc9522f82841b5a9808703e4c29fa9.png" alt="在这里插入图片描述"></p>
+<h2 id="2-i2c总线的开始和结束信号"><a href="#2-i2c总线的开始和结束信号" class="headerlink" title="2.i2c总线的开始和结束信号"></a>2.i2c总线的开始和结束信号</h2><p><code>开始信号</code>：SCL 为高电平时，主机将SDA 拉低，表示数据传输即将开始。<br><code>结束信号</code>：在SDA 为低电平时，主机将SCL 拉高并保持高电平，然后在将SDA 拉高，表示传输结束。</p>
+<h2 id="3-i2c应答信号"><a href="#3-i2c应答信号" class="headerlink" title="3.i2c应答信号"></a>3.i2c应答信号</h2><ul>
+<li>在<code>主机</code>发送完每一个字节数据后，释放SDA（保持高电平），被寻址的接收器在成功接收到每一个字节后，必须产生一个应答<code>ACK</code>（从机将SDA拉低，使它在这个时钟脉冲的高电平期间保持稳定的低电平）</li>
+<li>当<code>从机</code>接收不到数据或通信故障时，<code>从机</code>必须使SDA保持高电平，<code>主机</code>产生一个结束信号终止传输或者产生新的传输。</li>
+</ul>
+<h2 id="4-i2c总线的仲裁机制"><a href="#4-i2c总线的仲裁机制" class="headerlink" title="4.i2c总线的仲裁机制"></a>4.i2c总线的仲裁机制</h2><ul>
+<li>SDA的仲裁也是建立在总线具有<code>线与</code>逻辑功能的原理上的。</li>
+<li>节点在发送1位数据后，比较总线上所呈现的数据与自己发送的是否一致。是，继续发送；否则，退出竞争。</li>
+<li>SDA的仲裁可以保证i2c总线系统在多个主节点上同时企图控制总线时通信正常进行而且数据不丢失（总线系统通过仲裁只允许一个主节点可以继续占据总线）</li>
+<li>当SCL为高电平时，仲裁在SDA上发生。在其他主机发送低电平时，发送高电平的主机将会断开它的数据传输级，因为总线上的电平是<code>线与</code>连接。</li>
+</ul>
+<h1 id="四、访问i2c总线设备"><a href="#四、访问i2c总线设备" class="headerlink" title="四、访问i2c总线设备"></a>四、访问i2c总线设备</h1><p>一般情况下MCU 的I2C 器件都是作为主机和从机通讯，在RT-Thread 中将I2C 主机虚拟为I2C 总线设备，I2C 从机通过I2C 设备接口和I2C 总线通讯，相关接口如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rt_device_find()</td>
+<td>根据I2C 总线设备名称查找设备获取设备句柄</td>
+</tr>
+<tr>
+<td>rt_i2c_transfer()</td>
+<td>传输数据</td>
+</tr>
+</tbody></table>
+<h1 id="五、查找i2c总线设备"><a href="#五、查找i2c总线设备" class="headerlink" title="五、查找i2c总线设备"></a>五、查找i2c总线设备</h1><p>在使用I2C 总线设备前需要根据I2C 总线设备名称获取设备句柄，进而才可以操作I2C 总线设备，查找设备函数如下所示，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rt_device_t rt_device_find(const char* name);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>i2c总线设备名称</td>
+</tr>
+<tr>
+<td><strong>返回</strong></td>
+<td>–</td>
+</tr>
+<tr>
+<td>设备句柄</td>
+<td>查找到对应设备将返回相应的设备句柄</td>
+</tr>
+<tr>
+<td>RT-NULL</td>
+<td>没有找到相应的设备对象</td>
+</tr>
+</tbody></table>
+<p>一般情况下，注册到系统的I2C 设备名称为i2c0 ，i2c1 等，使用示例如下所示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_I2C_BUS_NAME <span class="string">&quot;i2c1&quot;</span> <span class="comment">/* 传感器连接的I2C总线设备名称*/</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_bus_device</span> *<span class="title">i2c_bus</span>;</span> <span class="comment">/* I2C总线设备句柄*/</span></span><br><span class="line"><span class="comment">/* 查找I2C总线设备， 获取I2C总线设备句柄*/</span></span><br><span class="line">i2c_bus = (<span class="keyword">struct</span> rt_i2c_bus_device *)rt_device_find(name);</span><br></pre></td></tr></table></figure>
+
+<h1 id="六、数据传输"><a href="#六、数据传输" class="headerlink" title="六、数据传输"></a>六、数据传输</h1><p>获取到I2C 总线设备句柄就可以使用rt_i2c_transfer() 进行数据传输。函数原型如下所示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_size_t</span> <span class="title function_">rt_i2c_transfer</span><span class="params">(<span class="keyword">struct</span> rt_i2c_bus_device *bus,</span></span><br><span class="line"><span class="params">										<span class="keyword">struct</span> rt_i2c_msg msgs[],</span></span><br><span class="line"><span class="params">										<span class="type">rt_uint32_t</span> num)</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bus</td>
+<td>i2c总线设备句柄</td>
+</tr>
+<tr>
+<td>msgs[]</td>
+<td>待传输的消息数组指针</td>
+</tr>
+<tr>
+<td>num</td>
+<td>消息数组的元素个数</td>
+</tr>
+<tr>
+<td><strong>返回</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>消息数组的元素个数</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>错误码</td>
+<td>失败</td>
+</tr>
+</tbody></table>
+<ul>
+<li>和SPI 总线的自定义传输接口一样，I2C 总线的自定义传输接口传输的数据也是以一个消息为单位。</li>
+<li>参数msgs[] 指向待传输的消息数组，用户可以自定义每条消息的内容，实现I2C 总线所支持的2 种不同的数据传输模式。如果主设备需要发送重复开始条件，则需要发送2 个消息。<br><code>!!! note “注意事项” 此函数会调用rt_mutex_take(), 不能在中断服务程序里面调用，会导致assertion报错。</code></li>
+</ul>
+<blockquote>
+<p>I2C 消息数据结构原型如下：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_msg</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="type">rt_uint16_t</span> addr; <span class="comment">/* 从机地址*/</span></span><br><span class="line"><span class="type">rt_uint16_t</span> flags; <span class="comment">/* 读、写标志等*/</span></span><br><span class="line"><span class="type">rt_uint16_t</span> len; <span class="comment">/* 读写数据字节数*/</span></span><br><span class="line"><span class="type">rt_uint8_t</span> *buf; <span class="comment">/* 读写数据缓冲区指针　*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从机地址addr：支持7 位和10 位二进制地址，需查看不同设备的数据手册。</li>
+<li>标志flags 可取值为以下宏定义，根据需要可以与其他宏使用位运算“|” 组合起来使用。<br>  <code>!!! note “注意事项” RT-Thread I2C 设备接口使用的从机地址均不包含读写位，读写位控制需修改标志flags。</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> RT_I2C_WR 0x0000 <span class="comment">/* 写标志*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_I2C_RD (1u &lt;&lt; 0) <span class="comment">/* 读标志*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_I2C_ADDR_10BIT (1u &lt;&lt; 2) <span class="comment">/* 10 位地址模式*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_I2C_NO_START (1u &lt;&lt; 4) <span class="comment">/* 无开始条件*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_I2C_IGNORE_NACK (1u &lt;&lt; 5) <span class="comment">/* 忽视NACK */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_I2C_NO_READ_ACK (1u &lt;&lt; 6) <span class="comment">/* 读的时候不发送ACK */</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用示例如下所示：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_I2C_BUS_NAME <span class="string">&quot;i2c1&quot;</span> <span class="comment">/* 传感器连接的I2C总线设备名称*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_ADDR 0x38 <span class="comment">/* 从机地址*/</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_bus_device</span> *<span class="title">i2c_bus</span>;</span> <span class="comment">/* I2C总线设备句柄*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 查找I2C总线设备， 获取I2C总线设备句柄*/</span></span><br><span class="line">i2c_bus = (<span class="keyword">struct</span> rt_i2c_bus_device *)rt_device_find(name);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 读传感器寄存器数据*/</span></span><br><span class="line"><span class="type">static</span> <span class="type">rt_err_t</span> <span class="title function_">read_regs</span><span class="params">(<span class="keyword">struct</span> rt_i2c_bus_device *bus, <span class="type">rt_uint8_t</span> len, <span class="type">rt_uint8_t</span></span></span><br><span class="line"><span class="params">*buf)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_msg</span> <span class="title">msgs</span>;</span></span><br><span class="line">	msgs.addr = AHT10_ADDR; <span class="comment">/* 从机地址*/</span></span><br><span class="line">	msgs.flags = RT_I2C_RD; <span class="comment">/* 读标志*/</span></span><br><span class="line">	msgs.buf = buf; <span class="comment">/* 读写数据缓冲区指针　*/</span></span><br><span class="line">	msgs.len = len; <span class="comment">/* 读写数据字节数*/</span></span><br><span class="line">	<span class="comment">/* 调用I2C设备接口传输数据*/</span></span><br><span class="line">	<span class="keyword">if</span> (rt_i2c_transfer(bus, &amp;msgs, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> RT_EOK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> -RT_ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="七、I2C-总线设备使用示例"><a href="#七、I2C-总线设备使用示例" class="headerlink" title="七、I2C 总线设备使用示例"></a>七、I2C 总线设备使用示例</h1><p>I2C 设备的具体使用方式可以参考如下示例代码，示例代码的主要步骤如下：</p>
+<ol>
+<li><pre><code>首先根据I2C 设备名称查找I2C 名称，获取设备句柄，然后初始化aht10 传感器。
+</code></pre>
+</li>
+<li><pre><code>控制传感器的2 的函数为写传感器寄存器write\_reg\(\) 和读传感器寄存器read\_regs\(\)
+</code></pre>
+</li>
+</ol>
+<p>这两个函数分别调用了rt_i2c_transfer() 传输数据。读取温湿度信息的函数read_temp_humi() 则是调用这两个函数完成功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 程序清单： 这是一个I2C 设备使用例程</span></span><br><span class="line"><span class="comment">* 例程导出了i2c_aht10_sample 命令到控制终端</span></span><br><span class="line"><span class="comment">* 命令调用格式： i2c_aht10_sample i2c1</span></span><br><span class="line"><span class="comment">* 命令解释： 命令第二个参数是要使用的I2C总线设备名称， 为空则使用默认的I2C总线设备</span></span><br><span class="line"><span class="comment">* 程序功能： 通过I2C 设备读取温湿度传感器aht10 的温湿度数据并打印</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;rtthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;rtdevice.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_I2C_BUS_NAME <span class="string">&quot;i2c1&quot;</span> <span class="comment">/* 传感器连接的I2C总线设备名称*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_ADDR 0x38 <span class="comment">/* 从机地址*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_CALIBRATION_CMD 0xE1 <span class="comment">/* 校准命令*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_NORMAL_CMD 0xA8 <span class="comment">/* 一般命令*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AHT10_GET_DATA 0xAC <span class="comment">/* 获取数据命令*/</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_bus_device</span> *<span class="title">i2c_bus</span> =</span> RT_NULL; <span class="comment">/* I2C总线设备句柄*/</span></span><br><span class="line"><span class="type">static</span> <span class="type">rt_bool_t</span> initialized = RT_FALSE; <span class="comment">/* 传感器初始化状态*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 写传感器寄存器*/</span></span><br><span class="line"><span class="type">static</span> <span class="type">rt_err_t</span> <span class="title function_">write_reg</span><span class="params">(<span class="keyword">struct</span> rt_i2c_bus_device *bus, <span class="type">rt_uint8_t</span> reg, <span class="type">rt_uint8_t</span>*data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">rt_uint8_t</span> buf[<span class="number">3</span>];</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_msg</span> <span class="title">msgs</span>;</span></span><br><span class="line">	buf[<span class="number">0</span>] = reg; <span class="comment">//cmd</span></span><br><span class="line">	buf[<span class="number">1</span>] = data[<span class="number">0</span>];</span><br><span class="line">	buf[<span class="number">2</span>] = data[<span class="number">1</span>];</span><br><span class="line">	msgs.addr = AHT10_ADDR;</span><br><span class="line">	msgs.flags = RT_I2C_WR;</span><br><span class="line">	msgs.buf = buf;</span><br><span class="line">	msgs.len = <span class="number">3</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 调用I2C设备接口传输数据*/</span></span><br><span class="line">	<span class="keyword">if</span> (rt_i2c_transfer(bus, &amp;msgs, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> RT_EOK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> -RT_ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 读传感器寄存器数据*/</span></span><br><span class="line"><span class="type">static</span> <span class="type">rt_err_t</span> <span class="title function_">read_regs</span><span class="params">(<span class="keyword">struct</span> rt_i2c_bus_device *bus, <span class="type">rt_uint8_t</span> len, <span class="type">rt_uint8_t</span>*buf)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">rt_i2c_msg</span> <span class="title">msgs</span>;</span></span><br><span class="line">	msgs.addr = AHT10_ADDR;</span><br><span class="line">	msgs.flags = RT_I2C_RD;</span><br><span class="line">	msgs.buf = buf;</span><br><span class="line">	msgs.len = len;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 调用I2C设备接口传输数据*/</span></span><br><span class="line">	<span class="keyword">if</span> (rt_i2c_transfer(bus, &amp;msgs, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> RT_EOK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> -RT_ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">read_temp_humi</span><span class="params">(<span class="type">float</span> *cur_temp, <span class="type">float</span> *cur_humi)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">rt_uint8_t</span> temp[<span class="number">6</span>];</span><br><span class="line">	write_reg(i2c_bus, AHT10_GET_DATA, <span class="number">0</span>); <span class="comment">/* 发送命令*/</span></span><br><span class="line">	rt_thread_mdelay(<span class="number">400</span>);</span><br><span class="line">	read_regs(i2c_bus, <span class="number">6</span>, temp); <span class="comment">/* 获取传感器数据*/</span></span><br><span class="line">	<span class="comment">/* 湿度数据转换*/</span></span><br><span class="line">	*cur_humi = (temp[<span class="number">1</span>] &lt;&lt; <span class="number">12</span> | temp[<span class="number">2</span>] &lt;&lt; <span class="number">4</span> | (temp[<span class="number">3</span>] &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>) * <span class="number">100.0</span> / (<span class="number">1</span>&lt;&lt; <span class="number">20</span>);</span><br><span class="line">	<span class="comment">/* 温度数据转换*/</span></span><br><span class="line">	*cur_temp = ((temp[<span class="number">3</span>] &amp; <span class="number">0xf</span>) &lt;&lt; <span class="number">16</span> | temp[<span class="number">4</span>] &lt;&lt; <span class="number">8</span> | temp[<span class="number">5</span>]) * <span class="number">200.0</span> / (<span class="number">1</span> &lt;&lt; <span class="number">20</span>)- <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">aht10_init</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *name)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">rt_uint8_t</span> temp[<span class="number">2</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">	<span class="comment">/* 查找I2C总线设备， 获取I2C总线设备句柄*/</span></span><br><span class="line">	i2c_bus = (<span class="keyword">struct</span> rt_i2c_bus_device *)rt_device_find(name);</span><br><span class="line">	<span class="keyword">if</span> (i2c_bus == RT_NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		rt_kprintf(<span class="string">&quot;can&#x27;t find %s device!\n&quot;</span>, name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		write_reg(i2c_bus, AHT10_NORMAL_CMD, temp);</span><br><span class="line">		rt_thread_mdelay(<span class="number">400</span>);</span><br><span class="line">		temp[<span class="number">0</span>] = <span class="number">0x08</span>;</span><br><span class="line">		temp[<span class="number">1</span>] = <span class="number">0x00</span>;</span><br><span class="line">		write_reg(i2c_bus, AHT10_CALIBRATION_CMD, temp);</span><br><span class="line">		rt_thread_mdelay(<span class="number">400</span>);</span><br><span class="line">		initialized = RT_TRUE;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">i2c_aht10_sample</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">float</span> humidity, temperature;</span><br><span class="line">	<span class="type">char</span> name[RT_NAME_MAX];</span><br><span class="line">	humidity = <span class="number">0.0</span>;</span><br><span class="line">	temperature = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">if</span> (argc == <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		rt_strncpy(name, argv[<span class="number">1</span>], RT_NAME_MAX);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		rt_strncpy(name, AHT10_I2C_BUS_NAME, RT_NAME_MAX);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!initialized)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">/* 传感器初始化*/</span></span><br><span class="line">		aht10_init(name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (initialized)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">/* 读取温湿度数据*/</span></span><br><span class="line">		read_temp_humi(&amp;temperature, &amp;humidity);</span><br><span class="line">		rt_kprintf(<span class="string">&quot;read aht10 sensor humidity : %d.%d %%\n&quot;</span>, (<span class="type">int</span>)humidity, (<span class="type">int</span>)</span><br><span class="line">		(humidity * <span class="number">10</span>) % <span class="number">10</span>);</span><br><span class="line">		<span class="keyword">if</span>( temperature &gt;= <span class="number">0</span> )</span><br><span class="line">		&#123;</span><br><span class="line">			rt_kprintf(<span class="string">&quot;read aht10 sensor temperature: %d.%d°C\n&quot;</span>, (<span class="type">int</span>)temperature,</span><br><span class="line">			(<span class="type">int</span>)(temperature * <span class="number">10</span>) % <span class="number">10</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			rt_kprintf(<span class="string">&quot;read aht10 sensor temperature: %d.%d°C\n&quot;</span>, (<span class="type">int</span>)temperature,</span><br><span class="line">			(<span class="type">int</span>)(-temperature * <span class="number">10</span>) % <span class="number">10</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		rt_kprintf(<span class="string">&quot;initialize sensor failed!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 导出到msh 命令列表中*/</span></span><br><span class="line">MSH_CMD_EXPORT(i2c_aht10_sample, i2c aht10 sample);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d5eDAyMjQvYXJ0aWNsZS9kZXRhaWxzLzgzMzg1MTY4">句柄详解<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAyMjMxMjE0NjM0MC5odG1s">《嵌入式系统设计》<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jbHViLnJ0LXRocmVhZC5vcmcvaW5kZXguaHRtbA==">RT-Thread 官方论坛<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25ndWxiL2FydGljbGUvZGV0YWlscy84MTE3NDIzMw==">开漏、开集电路详解<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z5bXgyMDMvYXJ0aWNsZS9kZXRhaWxzLzg5NDI2NDAz">上拉、下拉电阻的原理和作用<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <img src="/images/official-accounts.png" width="80%">
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pdpeng.github.io/2022/04/28/rt-thread02/" title="【玩转 RT-Thread】I2C 内核">https://pdpeng.github.io/2022/04/28/rt-thread02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/RT-Thread/" rel="tag"><i class="fa fa-tag"></i> RT-Thread</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/28/rt-thread01/" rel="prev" title="【玩转 RT-Thread】 RT-Thread Studio —— 按键控制电机正反转、蜂鸣器">
+                  <i class="fa fa-chevron-left"></i> 【玩转 RT-Thread】 RT-Thread Studio —— 按键控制电机正反转、蜂鸣器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/28/rt-thread03/" rel="next" title="【玩转 RT-Thread】线程管理原理">
+                  【玩转 RT-Thread】线程管理原理 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">294k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:27</span>
+  </span>
+</div>
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
+  <div class="busuanzi-count" style="display:inline-block">
+      <span class="post-meta-item" id="busuanzi_container_site_uv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="site-uv" title="总访客量">
+          <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span class="post-meta-item" id="busuanzi_container_site_pv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-eye"></i>
+        </span>
+        <span class="site-pv" title="总访问量">
+          <span id="busuanzi_value_site_pv"></span>
+        </span>
+      </span>
+  </div>
+  </span>
+</div>
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+      <img src="/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+  </div>
+
+
+<div class="powered-upyun-jsdelivr-aliyun">
+  <a href="https://www.upyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/upyun.png" width="7%" alt="upyun" style="display:inline;"></a>&nbsp;
+  <a href="https://www.jsdelivr.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/jsdelivr.svg" width="10%" alt="jsdelivr" style="display:inline;"></a>&nbsp;
+  <a href="https://www.aliyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/aliyun.PNG" width="8%" alt="aliyun" style="display:inline;"></a>&nbsp;
+   <a href="https://www.github.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/github.png" width="7%" alt="github" style="display:inline;"></a> 提供CDN/云资源支持
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6157d91d9141f476" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qpUganIAeAN1PbLWuG7zCdbA-MdYXbMMI","app_key":"fDuhsPwm05Fj0DGcYhHLdg3x","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/utterances-comments","issue_term":"url","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

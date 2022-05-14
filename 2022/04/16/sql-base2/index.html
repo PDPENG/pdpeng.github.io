@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="/live2d-widget/autoload.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pdpeng.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://pdpeng.github.io/2022/04/16/sql-base2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pdpeng.github.io/2022/04/16/sql-base2/","path":"2022/04/16/sql-base2/","title":"SQL 基础（二）数据表的创建、约束、修改、查看、删除"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL 基础（二）数据表的创建、约束、修改、查看、删除 | 杰森的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="杰森的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰森的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">全栈杰森</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">22</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">数据表示方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%9B%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">数据表创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Management-Studio-%E5%BB%BA%E8%A1%A8"><span class="nav-number">3.1.</span> <span class="nav-text">Management Studio 建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-%E6%8C%87%E4%BB%A4%E5%BB%BA%E8%A1%A8"><span class="nav-number">3.2.</span> <span class="nav-text">SQL 指令建表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.</span> <span class="nav-text">数据表约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Constrain"><span class="nav-number">4.1.</span> <span class="nav-text">Constrain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NULL-x2F-NOT-NULL"><span class="nav-number">4.1.1.</span> <span class="nav-text">NULL &#x2F; NOT NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNIQUE"><span class="nav-number">4.1.2.</span> <span class="nav-text">UNIQUE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">列约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">表约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PRIMARY-KEY"><span class="nav-number">4.1.3.</span> <span class="nav-text">PRIMARY KEY</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E7%BA%A6%E6%9D%9F-1"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">列约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%BA%A6%E6%9D%9F-1"><span class="nav-number">4.1.3.2.</span> <span class="nav-text">表约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FOREIGN-KEY"><span class="nav-number">4.1.4.</span> <span class="nav-text">FOREIGN KEY</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E7%BA%A6%E6%9D%9F-2"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">列约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%BA%A6%E6%9D%9F-2"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">表约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHECK"><span class="nav-number">4.1.5.</span> <span class="nav-text">CHECK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E7%BA%A6%E6%9D%9F-3"><span class="nav-number">4.1.5.1.</span> <span class="nav-text">列约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%BA%A6%E6%9D%9F-3"><span class="nav-number">4.1.5.2.</span> <span class="nav-text">表约束</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E4%BF%AE%E6%94%B9"><span class="nav-number">5.</span> <span class="nav-text">数据表修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Management-Studio-%E4%BF%AE%E6%94%B9%E8%A1%A8"><span class="nav-number">5.1.</span> <span class="nav-text">Management Studio 修改表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-%E6%8C%87%E4%BB%A4%E4%BF%AE%E6%94%B9%E8%A1%A8"><span class="nav-number">5.2.</span> <span class="nav-text">SQL 指令修改表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD"><span class="nav-number">5.2.1.</span> <span class="nav-text">ADD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALTER"><span class="nav-number">5.2.2.</span> <span class="nav-text">ALTER</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DROP"><span class="nav-number">5.2.3.</span> <span class="nav-text">DROP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%9F%A5%E7%9C%8B"><span class="nav-number">6.</span> <span class="nav-text">数据表查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%88%A0%E9%99%A4"><span class="nav-number">7.</span> <span class="nav-text">数据表删除</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Management-Studio-%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="nav-number">7.1.</span> <span class="nav-text">Management Studio 删除表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-%E6%8C%87%E4%BB%A4%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="nav-number">7.2.</span> <span class="nav-text">SQL 指令删除表</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <a href="/">
+    <img class="site-author-image" itemprop="image" alt="Jason"
+      src="/images/head_portrait.png">
+    </a>
+  <p class="site-author-name" itemprop="name">Jason</p>
+  <div class="site-description" itemprop="description" style="padding-bottom: 8px">A blacksmith must be strong</div>
+
+<html>
+<head>
+    <style>
+        .rss-button div {
+            display: block;
+            margin-top: 5px;
+            background-color: transparent;
+            position: relative;
+            font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .feed-link a {
+            display: inline-block;
+            padding: 0 15px;
+            color: #fc6423;
+            border: 2px solid #fc6423;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .feed-link a:hover {
+            background-color: #fc6423;
+            border-bottom-color: #fc6423;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="rss-button">
+    <div class="feed-link" title="RSS → /atom.xml">
+        <a href="/atom.xml">
+            <i class="fa fa-rss"> </i> RSS
+        </a>
+    </div>
+</body>
+</html>
+
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAzOTcxOTcxMzk1Mg==" title="FaceBook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100039719713952"><i class="fab fa-facebook fa-fw"></i>FaceBook</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbl9jb2Rpbmc=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jason_coding"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51269961"><i class="fa-solid fa-c fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RT-Thread/" rel="tag">RT-Thread</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLServer/" rel="tag">SQLServer</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP&#x2F;IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vivado/" rel="tag">Vivado</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" rel="tag">程序人生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/" rel="tag">职业认证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag">解析几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BEUEVORw==" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/16/sql-base2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head_portrait.png">
+      <meta itemprop="name" content="Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰森的博客">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL 基础（二）数据表的创建、约束、修改、查看、删除 | 杰森的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL 基础（二）数据表的创建、约束、修改、查看、删除
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-16 14:10:41" itemprop="dateCreated datePublished" datetime="2022-04-16T14:10:41+08:00">2022-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数据库原理</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/04/16/sql-base2/" class="post-meta-item leancloud_visitors" data-flag-title="SQL 基础（二）数据表的创建、约束、修改、查看、删除" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CHARACTER(n)</td>
+<td>字符&#x2F;字符串。固定长度 n。</td>
+</tr>
+<tr>
+<td>VARCHAR(n) 或 CHARACTER VARYING(n)</td>
+<td>字符&#x2F;字符串。可变长度。最大长度 n。</td>
+</tr>
+<tr>
+<td>BINARY(n)</td>
+<td>二进制串。固定长度 n。</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td>存储 TRUE 或 FALSE 值</td>
+</tr>
+<tr>
+<td>VARBINARY(n) 或  BINARY VARYING(n)</td>
+<td>二进制串。可变长度。最大长度 n。</td>
+</tr>
+<tr>
+<td>INTEGER(p)</td>
+<td>整数值（没有小数点）。精度 p。</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>整数值（没有小数点）。精度 5。</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>整数值（没有小数点）。精度 10。</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>整数值（没有小数点）。精度 19。</td>
+</tr>
+<tr>
+<td>DECIMAL(p,s)</td>
+<td>精确数值，精度 p，小数点后位数 s。例如：decimal(5,2) 是一个小数点前有 3 位数，小数点后有 2 位数的数字。</td>
+</tr>
+<tr>
+<td>NUMERIC(p,s)</td>
+<td>精确数值，精度 p，小数点后位数 s。（与 DECIMAL 相同）</td>
+</tr>
+<tr>
+<td>FLOAT(p)</td>
+<td>近似数值，尾数精度 p。一个采用以 10 为基数的指数计数法的浮点数。该类型的 size 参数由一个指定最小精度的单一数字组成。</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>近似数值，尾数精度 7。</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>近似数值，尾数精度 16。</td>
+</tr>
+<tr>
+<td>DOUBLE PRECISION</td>
+<td>近似数值，尾数精度 16。</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>存储年、月、日的值。</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>存储小时、分、秒的值。</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>存储年、月、日、小时、分、秒的值。</td>
+</tr>
+<tr>
+<td>INTERVAL</td>
+<td>由一些整数字段组成，代表一段时间，取决于区间的类型。</td>
+</tr>
+<tr>
+<td>ARRAY</td>
+<td>元素的固定长度的有序集合</td>
+</tr>
+<tr>
+<td>MULTISET</td>
+<td>元素的可变长度的无序集合</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h1 id="数据表示方式"><a href="#数据表示方式" class="headerlink" title="数据表示方式"></a>数据表示方式</h1><p>长度 <code>N</code> 、精度 <code>P</code> 、小数位数 <code>S</code></p>
+<p><code>numeric(P,[S])</code> 表示数据精度为 P，小数位数为 S</p>
+<p>数据精度：能精确到小数点后的位数，小数点右侧位数</p>
+<h1 id="数据表创建"><a href="#数据表创建" class="headerlink" title="数据表创建"></a>数据表创建</h1><h2 id="Management-Studio-建表"><a href="#Management-Studio-建表" class="headerlink" title="Management Studio 建表"></a>Management Studio 建表</h2><blockquote>
+<p>建立表格其实就是定义每一列的过程</p>
+</blockquote>
+<p>数据库表节点，新建</p>
+<p><img src="https://img-blog.csdnimg.cn/6a1b08c6e9dc4edfbecc275bc62b0d41.png"></p>
+<p>定义列属性，完成建表操作</p>
+<p><img src="https://img-blog.csdnimg.cn/4a7e2a38bb3f4f49b5043c7cec39ce15.png"></p>
+<h2 id="SQL-指令建表"><a href="#SQL-指令建表" class="headerlink" title="SQL 指令建表"></a>SQL 指令建表</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQL指令建立学生表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student</span><br><span class="line">(</span><br><span class="line">SNo <span class="type">varchar</span>(<span class="number">6</span>), <span class="comment">-- 非定长字符型</span></span><br><span class="line">SN nvarchar(<span class="number">10</span>), <span class="comment">-- Unicode 字符型(所能容纳字符数)</span></span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>) <span class="keyword">default</span> <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">Age <span class="type">int</span>, <span class="comment">-- 定长 4,精度10,小数位数0(本字段可存放10位无小数点整数,4字节大小)  无需设置精度和小数位数</span></span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/6cdff6f1e41a4ab49c2cf9b53e6d1bf4.png"></p>
+<h1 id="数据表约束"><a href="#数据表约束" class="headerlink" title="数据表约束"></a>数据表约束</h1><p>数据完整性</p>
+<blockquote>
+<p>保证数据库中数据的正确性、有效性、相容性，完整性机制主要有：</p>
+<ul>
+<li>约束 Constraint</li>
+<li>默认 Default</li>
+<li>规则 Rule</li>
+<li>触发器 Trigger</li>
+<li>存储过程 Stotred Procedure</li>
+</ul>
+</blockquote>
+<h2 id="Constrain"><a href="#Constrain" class="headerlink" title="Constrain"></a>Constrain</h2><h3 id="NULL-x2F-NOT-NULL"><a href="#NULL-x2F-NOT-NULL" class="headerlink" title="NULL &#x2F; NOT NULL"></a>NULL &#x2F; NOT NULL</h3><blockquote>
+<p>&#x3D;&#x3D;NULL 值表示“不知道、不确定、没有数据”&#x3D;&#x3D;，仅当某字段值 <code>必须输入</code> 才有效时可设置 <code>NOT NULL</code> （eg：主键），仅用于定义 <code>列约束</code></p>
+</blockquote>
+<p>定义约束名称后（若不定义，系统将自动创建），若数据录入错误，系统将提示报错信息，无 <code>NOT NULL</code> 约束下，系统缺省值为 <code>NULL</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- NOT NULL 约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s</span><br><span class="line">(</span><br><span class="line">Sno <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">constraint</span> s_cons <span class="keyword">not</span> <span class="keyword">null</span>, <span class="comment">-- s_cons 定义约束名称</span></span><br><span class="line">Sn <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h3><blockquote>
+<p>唯一约束，定义某一列或多列组合取值 <code>必须唯一</code>，被 UNIQUE 定义的列称为 <code>唯一键</code>，最多只能有一个 NULL 值，列约束、表约束均可</p>
+</blockquote>
+<h4 id="列约束"><a href="#列约束" class="headerlink" title="列约束"></a>列约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- UNIQUE 列约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s1</span><br><span class="line">(</span><br><span class="line">Sno <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">constraint</span> s_uniq <span class="keyword">UNIQUE</span>, <span class="comment">-- s_uniq 定义约束名称(可省略)</span></span><br><span class="line">Sn <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="表约束"><a href="#表约束" class="headerlink" title="表约束"></a>表约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- UNIQUE 表约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s2</span><br><span class="line">(</span><br><span class="line">Sno <span class="type">varchar</span>(<span class="number">6</span>),</span><br><span class="line">Sn <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>),</span><br><span class="line"><span class="keyword">constraint</span> s_unique <span class="keyword">UNIQUE</span>(Sn,Sex) <span class="comment">-- 表约束 语法格式 s_unique 定义约束名称(可省略) Sn+Sex 为唯一键</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h3><blockquote>
+<p>主键约束，其值不能重复，不能为 NULL，既可表约束又可列约束</p>
+</blockquote>
+<p>PRIMARY KEY  UNIQUE 区别：</p>
+<ul>
+<li>基本表中可定义多个 UNIQUE 约束，但仅可有一个 PRIMARY KEY</li>
+<li>UNIQUE 约束的唯一键值可为 NULL ，PRIMARY KEY 约束的一列或多列组合，任意列都不能出现 NULL 值</li>
+<li>同一列或同一组列，不能同时定义 PRIMARY KEY 和 UNIQUE</li>
+</ul>
+<h4 id="列约束-1"><a href="#列约束-1" class="headerlink" title="列约束"></a>列约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- PRIMARY KEY 列约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s3</span><br><span class="line">(</span><br><span class="line">Sno <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">constraint</span> s_prim <span class="keyword">PRIMARY</span> KEY, </span><br><span class="line">Sn <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="表约束-1"><a href="#表约束-1" class="headerlink" title="表约束"></a>表约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- PRIMARY KEY 表约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s4</span><br><span class="line">(</span><br><span class="line">Sno <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>, </span><br><span class="line">Sn <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>),</span><br><span class="line"><span class="keyword">constraint</span> s4_prim <span class="keyword">PRIMARY</span> KEY(Sno,Sn)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="FOREIGN-KEY"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h3><blockquote>
+<p>外键约束，约束某一列或几列作为外部键，包含外键的表称为从表（或参照表），主键所在表称为主表（或被参照表）。既可表约束又可列约束<br>为保证参照完整性，系统保证外键的取值为：</p>
+<ol>
+<li>空值 </li>
+<li>主键取值</li>
+</ol>
+</blockquote>
+<p>换言之，外键存在至少需要两张表，在第一张表中作为主键的属性在第二张表（从表，参照表）中做普通属性，则此键称为第一张表（主表，被参照表）的外键</p>
+<h4 id="列约束-2"><a href="#列约束-2" class="headerlink" title="列约束"></a>列约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- FOREIGN KEY 列约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s5</span><br><span class="line">(</span><br><span class="line">Sno <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">constraint</span> s5_foreign <span class="keyword">FOREIGN</span> KEY <span class="keyword">REFERENCES</span> s3(Sno), </span><br><span class="line">Sn <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="表约束-2"><a href="#表约束-2" class="headerlink" title="表约束"></a>表约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- FOREIGN KEY 表约束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 定义数据表 T</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T</span><br><span class="line">(</span><br><span class="line">TNo <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">constraint</span> T_Prim <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">TN nvarchar(<span class="number">10</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">Sex <span class="type">nchar</span>(<span class="number">1</span>),</span><br><span class="line">Age <span class="type">int</span>,</span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 定义数据表 C</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> C</span><br><span class="line">(</span><br><span class="line">CNo <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">constraint</span> C_Prim <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">CN nvarchar(<span class="number">10</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">CT <span class="type">int</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 建立 TC 表,定义 TNo、CNo 为 TC 外键</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> TC</span><br><span class="line">(</span><br><span class="line">TNo <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">constraint</span> T_Fore <span class="keyword">FOREIGN</span> KEY <span class="keyword">REFERENCES</span> T(TNo),</span><br><span class="line">CNo <span class="type">varchar</span>(<span class="number">6</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">constraint</span> C_Fore <span class="keyword">FOREIGN</span> KEY <span class="keyword">REFERENCES</span> C(CNo),</span><br><span class="line">Score <span class="type">NUMERIC</span>(<span class="number">4</span>,<span class="number">1</span>), <span class="comment">-- 精度为8,小数位数为1</span></span><br><span class="line">Dept nvarchar(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="CHECK"><a href="#CHECK" class="headerlink" title="CHECK"></a>CHECK</h3><blockquote>
+<p>检查约束，限定某字段只能录入允许范围内的值，既可表约束又可列约束</p>
+</blockquote>
+<p>注意：</p>
+<ul>
+<li>一个基本表中可定义多个 CHECK</li>
+<li>一个字段仅能定义一个 CHECK</li>
+<li>多个字段定义的 CHECK 必须为表约束</li>
+</ul>
+<h4 id="列约束-3"><a href="#列约束-3" class="headerlink" title="列约束"></a>列约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- CHECK 列约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> limit</span><br><span class="line">(</span><br><span class="line">sno <span class="type">varchar</span>(<span class="number">6</span>),</span><br><span class="line">cno <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">score <span class="type">numeric</span>(<span class="number">4</span>,<span class="number">1</span>) <span class="keyword">constraint</span> score_check <span class="keyword">CHECK</span>(score <span class="operator">&gt;=</span><span class="number">0</span> <span class="keyword">AND</span> score <span class="operator">&lt;=</span><span class="number">100</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="表约束-3"><a href="#表约束-3" class="headerlink" title="表约束"></a>表约束</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- CHECK 列约束</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> persons</span><br><span class="line">(</span><br><span class="line">P_Id <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">LastName <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">FirstName <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Address <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">Country <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line"><span class="keyword">CONSTRAINT</span> chk_Person <span class="keyword">CHECK</span> (P_Id<span class="operator">&gt;</span><span class="number">0</span> <span class="keyword">AND</span> Country<span class="operator">=</span><span class="string">&#x27;China&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据表修改"><a href="#数据表修改" class="headerlink" title="数据表修改"></a>数据表修改</h1><h2 id="Management-Studio-修改表"><a href="#Management-Studio-修改表" class="headerlink" title="Management Studio 修改表"></a>Management Studio 修改表</h2><p><img src="https://img-blog.csdnimg.cn/af2636a6d0c143d8b1b0c8b4f12eb033.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/45693c7e5d8a450cb63ba2d51c14d075.png"></p>
+<h2 id="SQL-指令修改表"><a href="#SQL-指令修改表" class="headerlink" title="SQL 指令修改表"></a>SQL 指令修改表</h2><h3 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h3><blockquote>
+<p>ADD 方式为新加列自动填充 NULL 值，不可指定 NOT NULL</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ADD</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S</span><br><span class="line"><span class="keyword">ADD</span> <span class="comment">--增加两项</span></span><br><span class="line">Class_No <span class="type">varchar</span>(<span class="number">6</span>),</span><br><span class="line">Address nvarchar(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> TC</span><br><span class="line"><span class="keyword">ADD</span></span><br><span class="line"><span class="keyword">CONSTRAINT</span> Score_chk <span class="keyword">CHECK</span>(Score <span class="keyword">BETWEEN</span> <span class="number">0</span> <span class="keyword">AND</span> <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h3><p>注意：</p>
+<ul>
+<li>列名不可变</li>
+<li>含 NULL 值得列不可指定为 NOT NULL</li>
+<li>存在于列中的数据不可改变数据类型、减少列宽</li>
+<li>仅能修改 NOT NULL 、NULL 约束，其他约束需要通过“删除后重新添加“的方式完成修改</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ALTER</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">COLUMN</span></span><br><span class="line">SN nvarchar(<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h3><blockquote>
+<p>仅用于删除完整性约束定义</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- DROP</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> s3</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">CONSTRAINT</span> s_prim</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据表查看"><a href="#数据表查看" class="headerlink" title="数据表查看"></a>数据表查看</h1><p>右键 表 ，属性</p>
+<p><img src="https://img-blog.csdnimg.cn/0d2e3dd88d284a20ab573ef2004db74d.png"></p>
+<p>查看表信息</p>
+<p><img src="https://img-blog.csdnimg.cn/b1b0611e5d834bfa91850f21690c142a.png"></p>
+<h1 id="数据表删除"><a href="#数据表删除" class="headerlink" title="数据表删除"></a>数据表删除</h1><h2 id="Management-Studio-删除表"><a href="#Management-Studio-删除表" class="headerlink" title="Management Studio 删除表"></a>Management Studio 删除表</h2><blockquote>
+<p>表存在依赖对象时，不可删除</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/3b9cf20021b54bf6b2aa8352a9d157ca.png"></p>
+<h2 id="SQL-指令删除表"><a href="#SQL-指令删除表" class="headerlink" title="SQL 指令删除表"></a>SQL 指令删除表</h2><blockquote>
+<p>仅可删除匹配用户建立的表，用户权限要对应</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除基本表</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> s</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <img src="/images/official-accounts.png" width="80%">
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pdpeng.github.io/2022/04/16/sql-base2/" title="SQL 基础（二）数据表的创建、约束、修改、查看、删除">https://pdpeng.github.io/2022/04/16/sql-base2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SQLServer/" rel="tag"><i class="fa fa-tag"></i> SQLServer</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/16/sql-base7/" rel="prev" title="SQL 基础（七）数据查询实战演练二">
+                  <i class="fa fa-chevron-left"></i> SQL 基础（七）数据查询实战演练二
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/15/mysql-server-error/" rel="next" title="MySQL 服务正在启动 MySQL 服务无法启动 服务没有报告任何错误 请键入 NET HELPMSG 3534 以获得更多的帮助">
+                  MySQL 服务正在启动 MySQL 服务无法启动 服务没有报告任何错误 请键入 NET HELPMSG 3534 以获得更多的帮助 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">294k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:27</span>
+  </span>
+</div>
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
+  <div class="busuanzi-count" style="display:inline-block">
+      <span class="post-meta-item" id="busuanzi_container_site_uv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="site-uv" title="总访客量">
+          <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span class="post-meta-item" id="busuanzi_container_site_pv">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-eye"></i>
+        </span>
+        <span class="site-pv" title="总访问量">
+          <span id="busuanzi_value_site_pv"></span>
+        </span>
+      </span>
+  </div>
+  </span>
+</div>
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+      <img src="/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+  </div>
+
+
+<div class="powered-upyun-jsdelivr-aliyun">
+  <a href="https://www.upyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/upyun.png" width="7%" alt="upyun" style="display:inline;"></a>&nbsp;
+  <a href="https://www.jsdelivr.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/jsdelivr.svg" width="10%" alt="jsdelivr" style="display:inline;"></a>&nbsp;
+  <a href="https://www.aliyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/aliyun.PNG" width="8%" alt="aliyun" style="display:inline;"></a>&nbsp;
+   <a href="https://www.github.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/github.png" width="7%" alt="github" style="display:inline;"></a> 提供CDN/云资源支持
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6157d91d9141f476" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qpUganIAeAN1PbLWuG7zCdbA-MdYXbMMI","app_key":"fDuhsPwm05Fj0DGcYhHLdg3x","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/utterances-comments","issue_term":"url","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
