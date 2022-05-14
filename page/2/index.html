@@ -344,7 +344,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.3k</span>
+      <span>9.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -362,12 +362,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、序言"><a href="#一、序言" class="headerlink" title="一、序言"></a>一、序言</h1><p>在日常生活中，我们通常会将一个大的问题拆分细化，拆开成若干个小问题，通过逐个解决小问题，大问题也就解决了。<br>同样的在RT-Thread多线程操作系统中，开发人员基于这种分而治之的思想，将一个复杂的应用问题抽象成若干个小的、可调度的、可序列化的程序单元。当合理地划分任务并正确地执行时，这种设计能够让系统满足实时系统的性能及时间的要求。</p>
+          <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在日常生活中，我们通常会将一个大的问题拆分细化，拆开成若干个小问题，通过逐个解决小问题，大问题也就解决了。<br>同样的在RT-Thread多线程操作系统中，开发人员基于这种分而治之的思想，将一个复杂的应用问题抽象成若干个小的、可调度的、可序列化的程序单元。当合理地划分任务并正确地执行时，这种设计能够让系统满足实时系统的性能及时间的要求。</p>
 <p>下面看一个例子：我们的任务是读取传感器上的数据，并将相关数据显示出来。通过拆分结构，我们可以发现主要有两个任务：</p>
 <blockquote>
 <p>1.读取数据<br>2.显示数据</p>
 </blockquote>
-<p>简单来说，就是一个子任务不间断地读取传感器数据，并将数据写到共享内存中，另外一个子任务周期性的从共享内存中读取数据，并将传感器数据输出到显示屏上。<br><img src="https://img-blog.csdnimg.cn/6d57696f2ffc4e859bf8c8c1ffc0789e.png"><br>在RT-Thread 中，与上述子任务对应的程序实体就是线程，<code>线程是实现任务的载体</code>。<br>它是RT-Thread中<code>最基本的调度单位</code>，它描述了一个任务执行的运行环境，也描述了这个任务所处的优先等级，重要的任务可设置相对较高的<code>优先级</code>，非重要的任务可以设置较低的优先级，不同的任务还可以设置相同的优先级，轮流运行。<br><code>上下文：</code>当线程运行时，它会认为自己是以独占CPU 的方式在运行，线程执行时的运行环境称为上下文，具体来说就是各个变量和数据，包括所有的寄存器变量、堆栈、内存信息等。</p>
+<p>简单来说，就是一个子任务不间断地读取传感器数据，并将数据写到共享内存中，另外一个子任务周期性的从共享内存中读取数据，并将传感器数据输出到显示屏上。  </p>
+<p><img src="https://img-blog.csdnimg.cn/6d57696f2ffc4e859bf8c8c1ffc0789e.png">  </p>
+<p>在RT-Thread 中，与上述子任务对应的程序实体就是线程，<code>线程是实现任务的载体</code>。<br>它是RT-Thread中<code>最基本的调度单位</code>，它描述了一个任务执行的运行环境，也描述了这个任务所处的优先等级，重要的任务可设置相对较高的<code>优先级</code>，非重要的任务可以设置较低的优先级，不同的任务还可以设置相同的优先级，轮流运行。<br><code>上下文：</code>当线程运行时，它会认为自己是以独占CPU 的方式在运行，线程执行时的运行环境称为上下文，具体来说就是各个变量和数据，包括所有的寄存器变量、堆栈、内存信息等。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/04/28/rt-thread03/#more" rel="contents">
@@ -817,7 +819,7 @@
 <blockquote>
 <p>Let us list the factors of the first seven triangle numbers:</p>
 </blockquote>
-<center><img src="https://img-blog.csdnimg.cn/cf3be2c00a464bcf84f265b57f648408.png" alt="列表图"></center>
+<center><img src="https://img-blog.csdnimg.cn/cf3be2c00a464bcf84f265b57f648408.png"></center>
 
 
 <blockquote>
@@ -1424,25 +1426,6 @@
 
   <footer class="footer">
     <div class="footer-inner">
-
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-      <span>站点总字数：</span>
-    <span title="站点总字数">294k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:27</span>
-  </span>
-</div>
-
-
 <div class="copyright">
   &copy; 2021 – 
   <span itemprop="copyrightYear">2022</span>
@@ -1450,24 +1433,22 @@
     <i class="fa fa-code"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
-  <div class="busuanzi-count" style="display:inline-block">
-      <span class="post-meta-item" id="busuanzi_container_site_uv">
-        <span class="post-meta-item-icon">
-          <i class="fa fa-user"></i>
-        </span>
-        <span class="site-uv" title="总访客量">
-          <span id="busuanzi_value_site_uv"></span>
-        </span>
-      </span>
-      <span class="post-meta-item" id="busuanzi_container_site_pv">
-        <span class="post-meta-item-icon">
-          <i class="fa fa-eye"></i>
-        </span>
-        <span class="site-pv" title="总访问量">
-          <span id="busuanzi_value_site_pv"></span>
-        </span>
-      </span>
-  </div>
+  </span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">293k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:27</span>
   </span>
 </div>
   <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
@@ -1508,7 +1489,6 @@
 
 
   
-  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
   <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"XnAU2LpE7JlHt34KKmw24BoM-MdYXbMMI","app_key":"vphcyLncudT8YkHIgks4F1r2","server_url":null,"security":false}</script>

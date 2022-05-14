@@ -1272,7 +1272,7 @@
           <blockquote>
 <p>👲👲<font color=#a2a837 size=3>作者主页</font>：🔗<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx">杰森的博客<i class="fa fa-external-link-alt"></i></span><br>📒📒<font color=#20b9cd size=3>本文摘要</font>：<strong>升级驱动到 mysql-connector-java 8.0.28 的注意事项</strong><br>💖💖如果本文对您有帮助的话，还请各位小伙伴👍点赞➕收藏⭐➕评论💭支持杰森呀✌️</p>
 </blockquote>
-<center><img src="https://img-blog.csdnimg.cn/a7dead605e9643a58a286a77bd691970.png" width="50"></center>
+<center><img src="https://img-blog.csdnimg.cn/a7dead605e9643a58a286a77bd691970.png" width="450"></center>
 
 <hr>
 <h1 id="🐛问题描述"><a href="#🐛问题描述" class="headerlink" title="🐛问题描述"></a>🐛问题描述</h1><p>升级驱动到 <code>mysql-connector-java 8.0.28</code> 后，部署执行各种报错，但是把连接器切换到 <code>mysql-connector-java-5.1.48</code> 又没有问题，很是疑惑！</p>
@@ -1589,14 +1589,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.9k</span>
+      <span>3.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -1607,14 +1607,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、初识RT-Thread"><a href="#一、初识RT-Thread" class="headerlink" title="一、初识RT-Thread"></a>一、初识RT-Thread</h1><p><code>做世界级的 OS，让万物互联，信息畅通无阻。</code><br><code>成为未来 AIoT 领域最为主流的操作系统平台。</code></p>
-<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><blockquote>
+          <h1 id="初识RT-Thread"><a href="#初识RT-Thread" class="headerlink" title="初识RT-Thread"></a>初识RT-Thread</h1><p><code>做世界级的 OS，让万物互联，信息畅通无阻。</code><br><code>成为未来 AIoT 领域最为主流的操作系统平台。</code></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
 <p>RT-Thread 是一个集<code>实时操作系统（RTOS）内核、中间件组件和开发者社区于一体</code>的技术平台，由<code>熊谱翔先生</code>带领并集合开源社区力量开发而成，RT-Thread 也是一个<code>组件完整丰富、高度可伸缩、简易开发、超低功耗、高安全性</code>的<code>物联网操作系统</code>。</p>
 </blockquote>
-<h2 id="2-前景"><a href="#2-前景" class="headerlink" title="2.前景"></a>2.前景</h2><blockquote>
+<h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><blockquote>
 <p>RT-Thread 具备一个 IoT OS 平台所需的所有关键组件，例如GUI、网络协议栈、安全传输、低功耗组件等等。经过11年的累积发展，RT-Thread 已经拥有一个<code>国内最大的嵌入式开源社区</code>，同时被广泛应用于能源、车载、医疗、消费电子等多个行业，累积装机量超过 14亿 台，成为国人<code>自主开发</code>、国内最成熟稳定和装机量最大的<code>开源 RTOS</code>。</p>
 </blockquote>
-<h2 id="3-软件生态"><a href="#3-软件生态" class="headerlink" title="3.软件生态"></a>3.软件生态</h2><blockquote>
+<h2 id="软件生态"><a href="#软件生态" class="headerlink" title="软件生态"></a>软件生态</h2><blockquote>
 <p>RT-Thread 拥有<code>良好的软件生态</code>，支持市面上所有主流的编译工具如 GCC、Keil、IAR 等，工具链完善、友好，支持各类标准接口，如 POSIX、CMSIS、C++应用环境、Javascript 执行环境等，方便开发者移植各类应用程序。商用支持所有主流MCU架构，如 ARM Cortex-M&#x2F;R&#x2F;A, MIPS, X86, Xtensa, C-Sky, RISC-V，几乎支持市场上所有主流的 MCU 和 Wi-Fi 芯片。</p>
 </blockquote>
           <!--noindex-->
@@ -1723,8 +1723,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、i2c协议"><a href="#一、i2c协议" class="headerlink" title="一、i2c协议"></a>一、i2c协议</h1><p>由飞利浦公司开发，支持设备间的短距离通信。i2c通信需要的引脚少，硬件实现简单、可扩展性强，被广泛应用在系统内多个集成电路（IC）间的通信。</p>
-<h1 id="二、i2c物理层"><a href="#二、i2c物理层" class="headerlink" title="二、i2c物理层"></a>二、i2c物理层</h1><ul>
+          <h1 id="i2c协议"><a href="#i2c协议" class="headerlink" title="i2c协议"></a>i2c协议</h1><p>由飞利浦公司开发，支持设备间的短距离通信。i2c通信需要的引脚少，硬件实现简单、可扩展性强，被广泛应用在系统内多个集成电路（IC）间的通信。</p>
+<h1 id="i2c物理层"><a href="#i2c物理层" class="headerlink" title="i2c物理层"></a>i2c物理层</h1><ul>
 <li><p>i2c通信总线可连接多个i2c通信设备，支持多个通信主机和多个通信从机。i2c通信只需要两条双向总线——SDA（串行数据线）和SCL（串行时钟线）。<br><code>SDA</code>：用于传输数据<br><code>SCL</code>：用于同步数据收发</p>
 </li>
 <li><p>每个连接到总线的设备都有一个独立地址，共7bit，主机正是利用该地址对设备进行访问</p>
@@ -1770,25 +1770,6 @@
 
   <footer class="footer">
     <div class="footer-inner">
-
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-      <span>站点总字数：</span>
-    <span title="站点总字数">294k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:27</span>
-  </span>
-</div>
-
-
 <div class="copyright">
   &copy; 2021 – 
   <span itemprop="copyrightYear">2022</span>
@@ -1796,24 +1777,22 @@
     <i class="fa fa-code"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
-  <div class="busuanzi-count" style="display:inline-block">
-      <span class="post-meta-item" id="busuanzi_container_site_uv">
-        <span class="post-meta-item-icon">
-          <i class="fa fa-user"></i>
-        </span>
-        <span class="site-uv" title="总访客量">
-          <span id="busuanzi_value_site_uv"></span>
-        </span>
-      </span>
-      <span class="post-meta-item" id="busuanzi_container_site_pv">
-        <span class="post-meta-item-icon">
-          <i class="fa fa-eye"></i>
-        </span>
-        <span class="site-pv" title="总访问量">
-          <span id="busuanzi_value_site_pv"></span>
-        </span>
-      </span>
-  </div>
+  </span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">293k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:27</span>
   </span>
 </div>
   <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
@@ -1854,7 +1833,6 @@
 
 
   
-  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
   <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"XnAU2LpE7JlHt34KKmw24BoM-MdYXbMMI","app_key":"vphcyLncudT8YkHIgks4F1r2","server_url":null,"security":false}</script>
