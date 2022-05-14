@@ -376,11 +376,11 @@
 <blockquote>
 <p>1.读取数据<br>2.显示数据</p>
 </blockquote>
-<p>简单来说，就是一个子任务不间断地读取传感器数据，并将数据写到共享内存中，另外一个子任务周期性的从共享内存中读取数据，并将传感器数据输出到显示屏上。<br><img src="https://img-blog.csdnimg.cn/6d57696f2ffc4e859bf8c8c1ffc0789e.png" alt="在这里插入图片描述"><br>在RT-Thread 中，与上述子任务对应的程序实体就是线程，<code>线程是实现任务的载体</code>。<br>它是RT-Thread中<code>最基本的调度单位</code>，它描述了一个任务执行的运行环境，也描述了这个任务所处的优先等级，重要的任务可设置相对较高的<code>优先级</code>，非重要的任务可以设置较低的优先级，不同的任务还可以设置相同的优先级，轮流运行。<br><code>上下文：</code>当线程运行时，它会认为自己是以独占CPU 的方式在运行，线程执行时的运行环境称为上下文，具体来说就是各个变量和数据，包括所有的寄存器变量、堆栈、内存信息等。</p>
+<p>简单来说，就是一个子任务不间断地读取传感器数据，并将数据写到共享内存中，另外一个子任务周期性的从共享内存中读取数据，并将传感器数据输出到显示屏上。<br><img src="https://img-blog.csdnimg.cn/6d57696f2ffc4e859bf8c8c1ffc0789e.png"><br>在RT-Thread 中，与上述子任务对应的程序实体就是线程，<code>线程是实现任务的载体</code>。<br>它是RT-Thread中<code>最基本的调度单位</code>，它描述了一个任务执行的运行环境，也描述了这个任务所处的优先等级，重要的任务可设置相对较高的<code>优先级</code>，非重要的任务可以设置较低的优先级，不同的任务还可以设置相同的优先级，轮流运行。<br><code>上下文：</code>当线程运行时，它会认为自己是以独占CPU 的方式在运行，线程执行时的运行环境称为上下文，具体来说就是各个变量和数据，包括所有的寄存器变量、堆栈、内存信息等。</p>
 <span id="more"></span>
 
 <h1 id="二、线程管理的功能特点"><a href="#二、线程管理的功能特点" class="headerlink" title="二、线程管理的功能特点"></a>二、线程管理的功能特点</h1><p>RT-Thread 线程管理的主要功能是<code>对线程进行管理和调度</code>，系统中总共存在两类线程，分别是<code>系统线程</code>和<code>用户线程</code>。系统线程是由RT-Thread 内核创建的线程，用户线程是由应用程序创建的线程，这两类线程都会从内核对象容器中分配线程对象，当线程被删除时，也会被从对象容器中删除。</p>
-<p>如图所示，每个线程都有重要的属性，如线程控制块、线程栈、入口函数等。<br><img src="https://img-blog.csdnimg.cn/5584a47897de430597897d3a6bddd710.png" alt="在这里插入图片描述"></p>
+<p>如图所示，每个线程都有重要的属性，如线程控制块、线程栈、入口函数等。<br><img src="https://img-blog.csdnimg.cn/5584a47897de430597897d3a6bddd710.png"></p>
 <ul>
 <li>RT-Thread 的线程调度器是<code>抢占式</code>的，主要的工作就是从就绪线程列表中查找最高优先级线程，保证最高优先级的线程能够被运行，最高优先级的任务一旦就绪，总能得到CPU 的使用权。</li>
 <li>当一个运行着的线程使一个比它优先级高的线程满足运行条件，当前线程的CPU 使用权就被剥夺了，或者说被让出了，高优先级的线程立刻得到了CPU 的使用权。<br>如果是中断服务程序使一个高优先级的线程满足运行条件，中断完成时，被中断的线程挂起，优先级高的线程开始运行。</li>
@@ -398,7 +398,7 @@
 <li>RT-Thread 线程具有独立的栈，当进行线程切换时，会将当前线程的上下文存在栈中，当线程要恢复运行时，再从栈中读取上下文信息，进行恢复。</li>
 <li>线程栈还用来存放函数中的局部变量：函数中的局部变量从线程栈空间中申请；函数中局部变量初始时从寄存器中分配（ARM 架构），当这个函数再调用另一个函数时，这些局部变量将放入栈中。</li>
 <li>对于线程第一次运行，可以以手工的方式构造这个上下文来设置一些初始的环境：入口函数（PC 寄存器）、入口参数（R0 寄存器）、返回位置（LR 寄存器）、当前机器运行状态（CPSR 寄存器）。</li>
-<li>线程栈的增长方向是芯片构架密切相关的，RT-Thread 3.1.0 以前的版本，均只支持栈由高地址向低地址增长的方式，对于ARM Cortex-M 架构，线程栈可构造如下图所示。<br><img src="https://img-blog.csdnimg.cn/041732b5e1fd43d5a62382931ad50360.png" alt="在这里插入图片描述"></li>
+<li>线程栈的增长方向是芯片构架密切相关的，RT-Thread 3.1.0 以前的版本，均只支持栈由高地址向低地址增长的方式，对于ARM Cortex-M 架构，线程栈可构造如下图所示。<br><img src="https://img-blog.csdnimg.cn/041732b5e1fd43d5a62382931ad50360.png"></li>
 </ul>
 <h3 id="（2）-线程状态"><a href="#（2）-线程状态" class="headerlink" title="（2） 线程状态"></a>（2） 线程状态</h3><p>线程运行的过程中，同一时间内只允许一个线程在处理器中运行，从运行的过程上划分，线程有多种不同的运行状态，如初始状态、挂起状态、就绪状态等。<br>在RT-Thread 中，线程包含五种状态，操作系统会自动根据它运行的情况来动态调整它的状态。如下表所示：</p>
 <table>
@@ -438,7 +438,7 @@
 <h3 id="（4）-时间片"><a href="#（4）-时间片" class="headerlink" title="（4） 时间片"></a>（4） 时间片</h3><blockquote>
 <p>每个线程都有时间片这个参数，但时间片仅对优先级相同的就绪态线程有效。系统对优先级相同的就绪态线程采用时间片轮转的调度方式进行调度时，时间片起到约束线程单次运行时长的作用，其单位是一个系统节拍（OS Tick）。</p>
 </blockquote>
-<p>假设有2 个<code>优先级相同的就绪态线程A 与B</code>，A 线程的时间片设置为10，B 线程的时间片设置为5，那么当系统中不存在比A 优先级高的就绪态线程时，系统会在A、B 线程间来回切换执行，并且每次对A 线程执行10 个节拍的时长，对B 线程执行5 个节拍的时长，如下图。<br><img src="https://img-blog.csdnimg.cn/31c4fb41bf8947c1a47864b12b9e602e.png" alt="在这里插入图片描述"></p>
+<p>假设有2 个<code>优先级相同的就绪态线程A 与B</code>，A 线程的时间片设置为10，B 线程的时间片设置为5，那么当系统中不存在比A 优先级高的就绪态线程时，系统会在A、B 线程间来回切换执行，并且每次对A 线程执行10 个节拍的时长，对B 线程执行5 个节拍的时长，如下图。<br><img src="https://img-blog.csdnimg.cn/31c4fb41bf8947c1a47864b12b9e602e.png"></p>
 <h3 id="（5）-线程的入口函数"><a href="#（5）-线程的入口函数" class="headerlink" title="（5） 线程的入口函数"></a>（5） 线程的入口函数</h3><p>线程控制块中的<code>entry</code>是线程的入口函数，它是线程实现预期功能的函数。</p>
 <p>线程的入口函数由用户设计实现，一般有以下两种代码形式：<br>1.<code>无限循环模式</code></p>
 <blockquote>
@@ -457,7 +457,7 @@
 
 <h3 id="（6）-常见的线程错误码"><a href="#（6）-常见的线程错误码" class="headerlink" title="（6） 常见的线程错误码"></a>（6） 常见的线程错误码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EOK 0 <span class="comment">/* 无错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ERROR 1 <span class="comment">/* 普通错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ETIMEOUT 2 <span class="comment">/* 超时错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EFULL 3 <span class="comment">/* 资源已满*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EEMPTY 4 <span class="comment">/* 无资源*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ENOMEM 5 <span class="comment">/* 无内存*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ENOSYS 6 <span class="comment">/* 系统不支持*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EBUSY 7 <span class="comment">/* 系统忙*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EIO 8 <span class="comment">/* IO 错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EINTR 9 <span class="comment">/* 中断系统调用*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EINVAL 10 <span class="comment">/* 非法参数*/</span></span></span><br></pre></td></tr></table></figure>
 
-<h2 id="3-线程状态切换"><a href="#3-线程状态切换" class="headerlink" title="3.线程状态切换"></a>3.线程状态切换</h2><p>RT-Thread 提供一系列的操作系统调用接口，使得线程的状态在这五个状态之间来回切换。几种状态间的转换关系如下图所示：<br><img src="https://img-blog.csdnimg.cn/3c79cc6198144f02b4830d4521384c30.png" alt="在这里插入图片描述"></p>
+<h2 id="3-线程状态切换"><a href="#3-线程状态切换" class="headerlink" title="3.线程状态切换"></a>3.线程状态切换</h2><p>RT-Thread 提供一系列的操作系统调用接口，使得线程的状态在这五个状态之间来回切换。几种状态间的转换关系如下图所示：<br><img src="https://img-blog.csdnimg.cn/3c79cc6198144f02b4830d4521384c30.png"></p>
 <blockquote>
 <ul>
 <li>线程通过调用函数<code>rt_thread_create/init()</code> 进入到初始状态<code>（RT_THREAD_INIT）</code>；</li>
@@ -482,26 +482,26 @@
 <li>空闲线程也提供了接口来运行用户设置的钩子函数，在空闲线程运行时会调用该钩子函数，适合钩入功耗管理、看门狗喂狗等工作。（关于<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxMzIxNzcvYXJ0aWNsZS9kZXRhaWxzLzExMDcwNDcyMT9vcHNfcmVxdWVzdF9taXNjPSZyZXF1ZXN0X2lkPSZiaXpfaWQ9MTAyJnV0bV90ZXJtPSVFOSU5MiVBOSVFNSVBRCU5MCVFNSU4NyVCRCVFNiU5NSVCMCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH5zb2JhaWR1d2VifmRlZmF1bHQtMC0xMTA3MDQ3MjEubm9uZWNhc2Umc3BtPTEwMTguMjIyNi4zMDAxLjQxODc=">钩子函数<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FzNDgwMTMzOTM3L2FydGljbGUvZGV0YWlscy85OTEyMTY0NT9vcHNfcmVxdWVzdF9taXNjPSUyNTdCJTI1MjJyZXF1ZXN0JTI1NUZpZCUyNTIyJTI1M0ElMjUyMjE2NDk4MzcwMDYxNjc4MDI2OTg3OTIxNSUyNTIyJTI1MkMlMjUyMnNjbSUyNTIyJTI1M0ElMjUyMjIwMTQwNzEzLjEzMDEwMjMzNC4uJTI1MjIlMjU3RCZyZXF1ZXN0X2lkPTE2NDk4MzcwMDYxNjc4MDI2OTg3OTIxNSZiaXpfaWQ9MCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH50b3BfcG9zaXRpdmV+ZGVmYXVsdC0xLTk5MTIxNjQ1LjE0MiU1RXY3JTVFYXJ0aWNsZV9zY29yZV9yYW5rLDE1NyU1RXY0JTVFY29udHJvbCZ1dG1fdGVybT0lRTclOUMlOEIlRTklOTclQTglRTclOEIlOTcmc3BtPTEwMTguMjIyNi4zMDAxLjQxODc=">看门狗<i class="fa fa-external-link-alt"></i></span>不懂的可以看这里）</li>
 </ul>
 <h3 id="（2）-主线程"><a href="#（2）-主线程" class="headerlink" title="（2） 主线程"></a>（2） 主线程</h3><p>在系统启动时，系统会创建main 线程，它的入口函数为main_thread_entry()，用户的应用入口函数main() 就是从这里真正开始的，系统调度器启动后，main 线程就开始运行。</p>
-<p>过程如下图，用户可以在main() 函数里添加自己的应用程序初始化代码。<br><img src="https://img-blog.csdnimg.cn/b08911ca57334476945d473ab814f006.png" alt="在这里插入图片描述"></p>
+<p>过程如下图，用户可以在main() 函数里添加自己的应用程序初始化代码。<br><img src="https://img-blog.csdnimg.cn/b08911ca57334476945d473ab814f006.png"></p>
 <h1 id="四、线程的管理方式"><a href="#四、线程的管理方式" class="headerlink" title="四、线程的管理方式"></a>四、线程的管理方式</h1><p>可以使用rt_thread_create() 创建一个动态线程，使用rt_thread_init() 初始化一个静态线程。</p>
 <p>动态线程与静态线程的区别是：动态线程是系统自动从动态内存堆上分配栈空间与线程句柄（初始化heap 之后才能使用create 创建动态线程），静态线程是由用户分配栈空间与线程句柄。</p>
-<p>下图描述了线程的相关操作，包含：创建&#x2F; 初始化线程、启动线程、运行线程、删除&#x2F; 脱离线程。<br><img src="https://img-blog.csdnimg.cn/fea91f8134b648ccaefeb5cf201de15f.png" alt="在这里插入图片描述"></p>
+<p>下图描述了线程的相关操作，包含：创建&#x2F; 初始化线程、启动线程、运行线程、删除&#x2F; 脱离线程。<br><img src="https://img-blog.csdnimg.cn/fea91f8134b648ccaefeb5cf201de15f.png"></p>
 <h2 id="1-创建和删除线程"><a href="#1-创建和删除线程" class="headerlink" title="1.创建和删除线程"></a>1.创建和删除线程</h2><h3 id="（1）创建线程"><a href="#（1）创建线程" class="headerlink" title="（1）创建线程"></a>（1）创建线程</h3><p>一个线程要成为可执行的对象，就必须由操作系统的内核来为它创建一个线程。可以通过如下的接口创建一个动态线程：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_thread_t</span> <span class="title function_">rt_thread_create</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* name,</span></span><br><span class="line"><span class="params">							 <span class="type">void</span> (*entry)(<span class="type">void</span>* parameter),</span></span><br><span class="line"><span class="params">							 <span class="type">void</span>* parameter,</span></span><br><span class="line"><span class="params">							 <span class="type">rt_uint32_t</span> stack_size,</span></span><br><span class="line"><span class="params">							 <span class="type">rt_uint8_t</span> priority,</span></span><br><span class="line"><span class="params">							 <span class="type">rt_uint32_t</span> tick)</span>;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>调用这个函数时，系统会从动态堆内存中分配一个线程句柄以及按照参数中指定的栈大小从动态堆内存中分配相应的空间。分配出来的栈空间是按照rtconfig.h 中配置的RT_ALIGN_SIZE 方式对齐。</p>
 </blockquote>
-<p>线程创建rt_thread_create() 的参数和返回值见下图：<br><img src="https://img-blog.csdnimg.cn/f1ba4c76de384fcc91060025bff4bef7.png" alt="在这里插入图片描述"></p>
+<p>线程创建rt_thread_create() 的参数和返回值见下图：<br><img src="https://img-blog.csdnimg.cn/f1ba4c76de384fcc91060025bff4bef7.png"></p>
 <h3 id="（2）删除线程"><a href="#（2）删除线程" class="headerlink" title="（2）删除线程"></a>（2）删除线程</h3><p>对于一些使用rt_thread_create() 创建出来的线程，当不需要使用，或者运行出错时，我们可以使用下面的函数接口来从系统中把线程完全删除掉：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_delete</span><span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
 
 <p>调用该函数后，线程对象将会被移出线程队列并且从内核对象管理器中删除，线程占用的堆栈空间也会被释放，收回的空间将重新用于其他的内存分配。实际上，用rt_thread_delete() 函数删除线程接口，仅仅是把相应的线程状态更改为RT_THREAD_CLOSE 状态，然后放入到rt_thread_defunct 队列中；而真正的删除动作（释放线程控制块和释放线程栈）需要到下一次执行空闲线程时，由空闲线程完成最后的线程删除动作。</p>
-<p>线程删除rt_thread_delete() 接口的参数和返回值见下图：<br><img src="https://img-blog.csdnimg.cn/eb9a07efdd95454c8873506f5178d1ff.png" alt="在这里插入图片描述"><br><code>这个函数仅在使能了系统动态堆时才有效（即RT_USING_HEAP 宏定义已经定义了）。</code></p>
+<p>线程删除rt_thread_delete() 接口的参数和返回值见下图：<br><img src="https://img-blog.csdnimg.cn/eb9a07efdd95454c8873506f5178d1ff.png"><br><code>这个函数仅在使能了系统动态堆时才有效（即RT_USING_HEAP 宏定义已经定义了）。</code></p>
 <h2 id="2-初始化和脱离线程"><a href="#2-初始化和脱离线程" class="headerlink" title="2.初始化和脱离线程"></a>2.初始化和脱离线程</h2><h3 id="（1）初始化线程"><a href="#（1）初始化线程" class="headerlink" title="（1）初始化线程"></a>（1）初始化线程</h3><p><code>线程的初始化</code>可以使用下面的函数接口完成，来初始化静态线程对象：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_init</span><span class="params">(<span class="keyword">struct</span> rt_thread* thread,</span></span><br><span class="line"><span class="params">					    <span class="type">const</span> <span class="type">char</span>* name,</span></span><br><span class="line"><span class="params">						<span class="type">void</span> (*entry)(<span class="type">void</span>* parameter), <span class="type">void</span>* parameter,</span></span><br><span class="line"><span class="params">						<span class="type">void</span>* stack_start, <span class="type">rt_uint32_t</span> stack_size,</span></span><br><span class="line"><span class="params">						<span class="type">rt_uint8_t</span> priority, <span class="type">rt_uint32_t</span> tick)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/c1e6ca6ef6b84ebe93d0888ff71332af.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/c1e6ca6ef6b84ebe93d0888ff71332af.png"></p>
 <h3 id="（2）脱离线程"><a href="#（2）脱离线程" class="headerlink" title="（2）脱离线程"></a>（2）脱离线程</h3><p>对于用rt_thread_init() 初始化的线程，使用rt_thread_detach() 将使线程对象在线程队列和内核对象管理器中被脱离。线程脱离函数如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_detach</span> <span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
 
@@ -532,14 +532,14 @@
 <h2 id="3-启动线程"><a href="#3-启动线程" class="headerlink" title="3.启动线程"></a>3.启动线程</h2><p>创建（初始化）的线程状态处于初始状态，并未进入就绪线程的调度队列，我们可以在线程初始化&#x2F;创建成功后调用下面的函数接口让该线程进入就绪态：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_startup</span><span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/431f38ae0feb46dc833f9835ec57577e.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/431f38ae0feb46dc833f9835ec57577e.png"></p>
 <blockquote>
 <p>当调用这个函数时，将把线程的状态更改为就绪状态，并放到相应优先级队列中等待调度。如果新启<br>动的线程优先级比当前线程优先级高，将立刻切换到这个线程。</p>
 </blockquote>
 <h2 id="4-获得当前线程"><a href="#4-获得当前线程" class="headerlink" title="4.获得当前线程"></a>4.获得当前线程</h2><p>在程序的运行过程中，相同的一段代码可能会被多个线程执行，在执行的时候可以通过下面的函数接口获得当前执行的线程句柄：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_thread_t</span> <span class="title function_">rt_thread_self</span><span class="params">(<span class="type">void</span>)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/33c1e79ddc8b42c0a28237a91e67b92c.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/33c1e79ddc8b42c0a28237a91e67b92c.png"></p>
 <h2 id="5-使线程出让处理器资源"><a href="#5-使线程出让处理器资源" class="headerlink" title="5.使线程出让处理器资源"></a>5.使线程出让处理器资源</h2><blockquote>
 <p>当前线程的时间片用完或者该线程主动要求让出处理器资源时，它将不再占有处理器，调度器会选择相同优先级的下一个线程执行。线程调用这个接口后，这个线程仍然在就绪队列中。</p>
 </blockquote>
@@ -555,7 +555,7 @@
 <p>线程睡眠可使用以下三个函数接口：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_sleep</span><span class="params">(<span class="type">rt_tick_t</span> tick)</span>;</span><br><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_delay</span><span class="params">(<span class="type">rt_tick_t</span> tick)</span>;</span><br><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_mdelay</span><span class="params">(<span class="type">rt_int32_t</span> ms)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/6ebefaeea61f48a7b26d43e0d6589055.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/6ebefaeea61f48a7b26d43e0d6589055.png"></p>
 <h2 id="7-挂起和恢复线程"><a href="#7-挂起和恢复线程" class="headerlink" title="7.挂起和恢复线程"></a>7.挂起和恢复线程</h2><h3 id="（1）线程挂起"><a href="#（1）线程挂起" class="headerlink" title="（1）线程挂起"></a>（1）线程挂起</h3><blockquote>
 <ul>
 <li>当线程调用rt_thread_delay() 时，线程将主动挂起；当调用rt_sem_take()，rt_mb_recv() 等函数时，资源不可使用也将导致线程挂起。</li>
@@ -565,18 +565,18 @@
 <p><code>线程挂起</code>使用下面的函数接口：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_suspend</span> <span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/eed2dcfd794040798637c029b253fb87.png" alt="在这里插入图片描述"><br><code>!!! note “注意事项” 通常不应该使用这个函数来挂起线程本身， 如果确实需要采用rt_thread_suspend() 函数挂起当前任务， 需要在调用rt_thread_suspend() 函数后立刻调用rt_schedule() 函数进行手动的线程上下文切换。</code></p>
+<p><img src="https://img-blog.csdnimg.cn/eed2dcfd794040798637c029b253fb87.png"><br><code>!!! note “注意事项” 通常不应该使用这个函数来挂起线程本身， 如果确实需要采用rt_thread_suspend() 函数挂起当前任务， 需要在调用rt_thread_suspend() 函数后立刻调用rt_schedule() 函数进行手动的线程上下文切换。</code></p>
 <h3 id="（2）恢复线程"><a href="#（2）恢复线程" class="headerlink" title="（2）恢复线程"></a>（2）恢复线程</h3><blockquote>
 <p>恢复线程就是让挂起的线程重新进入就绪状态，并将线程放入系统的就绪队列中；如果被恢复线程在<br>所有就绪态线程中，位于最高优先级链表的第一位，那么系统将进行线程上下文的切换。</p>
 </blockquote>
 <p><code>线程恢复</code>使用下面的函数接口：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_resume</span> <span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/0640fc789a1645d3b424f605d3aca937.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/0640fc789a1645d3b424f605d3aca937.png"></p>
 <h2 id="8-控制线程"><a href="#8-控制线程" class="headerlink" title="8.控制线程"></a>8.控制线程</h2><p>当需要对线程进行一些其他控制时，例如动态更改线程的优先级，可以调用如下函数接口：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_control</span><span class="params">(<span class="type">rt_thread_t</span> thread, <span class="type">rt_uint8_t</span> cmd, <span class="type">void</span>* arg)</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/348eb561864549528d9695d8f504af92.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/348eb561864549528d9695d8f504af92.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">指示控制命令cmd 当前支持的命令包括：</span><br><span class="line">•RT_THREAD_CTRL_CHANGE_PRIORITY：动态更改线程的优先级；</span><br><span class="line">•RT_THREAD_CTRL_STARTUP：开始运行一个线程，等同于rt_thread_startup() 函数调用；</span><br><span class="line">•RT_THREAD_CTRL_CLOSE：关闭一个线程，等同于rt_thread_delete() 函数调用。</span><br></pre></td></tr></table></figure>
 
 <h2 id="9-设置和删除空闲钩子"><a href="#9-设置和删除空闲钩子" class="headerlink" title="9.设置和删除空闲钩子"></a>9.设置和删除空闲钩子</h2><blockquote>

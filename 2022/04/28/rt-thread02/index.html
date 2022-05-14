@@ -377,7 +377,7 @@
 </li>
 <li><p>每个连接到总线的设备都有一个独立地址，共7bit，主机正是利用该地址对设备进行访问</p>
 </li>
-<li><p>i2c支持多主控，任何时间点都只能有一个主控。<br><img src="https://img-blog.csdnimg.cn/01cc1805f0db4842a836a7dae9b11978.png" alt="在这里插入图片描述"></p>
+<li><p>i2c支持多主控，任何时间点都只能有一个主控。<br><img src="https://img-blog.csdnimg.cn/01cc1805f0db4842a836a7dae9b11978.png"></p>
 </li>
 <li><p>i2c器件的SDA引脚和SCL引脚是开漏电路形式，因此，SDA和SCL总线都需要连接上拉电阻，当总线空闲时，两条总线均为高电平。</p>
 </li>
@@ -387,7 +387,7 @@
 <span id="more"></span>
 
 <h1 id="三、i2c协议层"><a href="#三、i2c协议层" class="headerlink" title="三、i2c协议层"></a>三、i2c协议层</h1><p>协议层定义了i2c的通信协议。一个完整的i2c数据传输包含开始信号，器件地址，读写控制，器件内访问地址，有效数据，应答信号和结束信号。</p>
-<h2 id="1-i2c总线的位传输"><a href="#1-i2c总线的位传输" class="headerlink" title="1.i2c总线的位传输"></a>1.i2c总线的位传输</h2><p>数据传输：当SCL位高电平时，SDA必须保持稳定，SDA上传1位数据。<br>数据改变：当SCL为低电平时，SDA才可以改变电平<br><code>i2c位传输时序图</code><br><img src="https://img-blog.csdnimg.cn/3bcc9522f82841b5a9808703e4c29fa9.png" alt="在这里插入图片描述"></p>
+<h2 id="1-i2c总线的位传输"><a href="#1-i2c总线的位传输" class="headerlink" title="1.i2c总线的位传输"></a>1.i2c总线的位传输</h2><p>数据传输：当SCL位高电平时，SDA必须保持稳定，SDA上传1位数据。<br>数据改变：当SCL为低电平时，SDA才可以改变电平<br><code>i2c位传输时序图</code><br><img src="https://img-blog.csdnimg.cn/3bcc9522f82841b5a9808703e4c29fa9.png"></p>
 <h2 id="2-i2c总线的开始和结束信号"><a href="#2-i2c总线的开始和结束信号" class="headerlink" title="2.i2c总线的开始和结束信号"></a>2.i2c总线的开始和结束信号</h2><p><code>开始信号</code>：SCL 为高电平时，主机将SDA 拉低，表示数据传输即将开始。<br><code>结束信号</code>：在SDA 为低电平时，主机将SCL 拉高并保持高电平，然后在将SDA 拉高，表示传输结束。</p>
 <h2 id="3-i2c应答信号"><a href="#3-i2c应答信号" class="headerlink" title="3.i2c应答信号"></a>3.i2c应答信号</h2><ul>
 <li>在<code>主机</code>发送完每一个字节数据后，释放SDA（保持高电平），被寻址的接收器在成功接收到每一个字节后，必须产生一个应答<code>ACK</code>（从机将SDA拉低，使它在这个时钟脉冲的高电平期间保持稳定的低电平）</li>
