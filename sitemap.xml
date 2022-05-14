@@ -956,7 +956,7 @@
 
   
   <url>
-    <loc>https://pdpeng.github.io/tags/Java/</loc>
+    <loc>https://pdpeng.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -970,7 +970,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
+    <loc>https://pdpeng.github.io/tags/Java/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -991,14 +991,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/tags/CDN/</loc>
+    <loc>https://pdpeng.github.io/tags/C/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1012,14 +1005,14 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/Python/</loc>
+    <loc>https://pdpeng.github.io/tags/CDN/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/C/</loc>
+    <loc>https://pdpeng.github.io/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1027,6 +1020,13 @@
   
   <url>
     <loc>https://pdpeng.github.io/tags/Git/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/tags/Python/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1061,14 +1061,14 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/MySQL/</loc>
+    <loc>https://pdpeng.github.io/tags/IOS/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/IOS/</loc>
+    <loc>https://pdpeng.github.io/tags/MySQL/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1089,7 +1089,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/Hexo/</loc>
+    <loc>https://pdpeng.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1103,14 +1103,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/tags/CPU/</loc>
+    <loc>https://pdpeng.github.io/tags/Hexo/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1118,6 +1111,13 @@
   
   <url>
     <loc>https://pdpeng.github.io/tags/SQLServer/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/tags/CPU/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1147,14 +1147,14 @@
 
   
   <url>
-    <loc>https://pdpeng.github.io/categories/Java/</loc>
+    <loc>https://pdpeng.github.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://pdpeng.github.io/categories/Java/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1175,14 +1175,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/categories/%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</loc>
+    <loc>https://pdpeng.github.io/categories/CPP/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1196,7 +1189,14 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/categories/CPP/</loc>
+    <loc>https://pdpeng.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/categories/%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
