@@ -389,7 +389,7 @@
 <p>可以看出这个序列从 $13$ 开始并到 $1$ 结束总共包含 $10$ 个数。<br>考拉兹猜想指出使用以上迭代规则，所有正整数都会最终回到一，虽然这个猜想仍未得到证明。<br>求在一百万以下，哪个起始数可以产生最长的考拉兹序列？<br>注意：序列中包含的数的个数可以超过一百万。</p>
 </blockquote>
 <h1 id="解题报告"><a href="#解题报告" class="headerlink" title="解题报告"></a>解题报告</h1><h2 id="考拉兹猜想"><a href="#考拉兹猜想" class="headerlink" title="考拉兹猜想"></a>考拉兹猜想</h2><p>考拉兹猜想（Collatz conjecture），又称为奇偶归一猜想、3n+1 猜想、冰雹猜想、角谷猜想、哈塞猜想、乌拉姆猜想或叙拉古猜想，<strong>是指对于每一个正整数，如果它是奇数，则对它乘 3 再加 1，如果它是偶数，则对它除以 2，如此循环，最终都能够得到 1</strong></p>
-<p>$$<br>\large f\left ( n \right )&#x3D;\left{\begin{matrix}<br>\frac{n}{2} \quad\quad\quad if , n\equiv 0\3n+1 \quad if , n\equiv 1<br>\end{matrix}\right.\left .\quad( mod ,, 2 \right )<br>$$</p>
+<p>$$<br>\large f\left ( n \right )&#x3D;\left\{\begin{matrix}\frac{n}{2} \quad\quad\quad if \, n\equiv 0\\3n+1 \quad if \, n\equiv 1\end{matrix}\right.\left .\quad( mod \,\, 2 \right )<br>$$</p>
 <h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><p>其实当你看到题目的时候，不知到你有没有和我想到一块儿去，那必然又是咱滴老朋友<strong>暴力算法</strong>啦</p>
 <p><img src="https://img-blog.csdnimg.cn/b4fe785c36964aceb37914a12f68ce2e.png#pic_center"></p>
 <p>显然，我们只要求算出一到一百万之间所有数字的<strong>考拉兹序列</strong>长度，然后在所有求出的序列长度值中找出最大值就能解决本题</p>

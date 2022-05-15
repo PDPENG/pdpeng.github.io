@@ -364,7 +364,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="单周期CPU设计与实现"><a href="#单周期CPU设计与实现" class="headerlink" title="单周期CPU设计与实现"></a>单周期CPU设计与实现</h2><p><img src="https://img-blog.csdn.net/20180607142902810"></p>
+        <h2 id="单周期CPU设计与实现"><a href="#单周期CPU设计与实现" class="headerlink" title="单周期CPU设计与实现"></a>单周期CPU设计与实现</h2><p><img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/20220515095544.png"></p>
 <h3 id="实验内容：学校资料"><a href="#实验内容：学校资料" class="headerlink" title="实验内容：学校资料"></a>实验内容：<code>学校资料</code></h3><p>设计一个单周期CPU，该CPU至少能实现以下指令功能操作。指令与格式如下：</p>
 <span id="more"></span>
 
@@ -539,7 +539,8 @@
 <li>结果写回(WB)：指令执行的结果或者访问存储器中得到的数据写回相应的目的寄存器中。</li>
 </ul>
 <p>单周期CPU，是在一个时钟周期内完成这五个阶段的处理。</p>
-<p>MIPS指令的三种格式：<br><img src="https://img-blog.csdn.net/20180607142722181"></p>
+<p>MIPS指令的三种格式：  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/20220515095728.png"></p>
 <h4 id="其中，"><a href="#其中，" class="headerlink" title="其中，"></a>其中，</h4><ul>
 <li>op：为操作码；</li>
 <li>rs：只读。为第1个源操作数寄存器，寄存器地址（编号）是00000~11111，00~1F；</li>
@@ -550,7 +551,7 @@
 <li>immediate：为16位立即数，用作无符号的逻辑操作数、有符号的算术操作数、数据加载（Load）&#x2F;数据保存（Store）指令的数据地址字节偏移量和分支指令中相对程序计数器（PC）的有符号偏移量；</li>
 <li>address：为地址。</li>
 </ul>
-<h4 id="单周期CPU数据通路和控制线路图："><a href="#单周期CPU数据通路和控制线路图：" class="headerlink" title="单周期CPU数据通路和控制线路图："></a>单周期CPU数据通路和控制线路图：</h4><p><img src="https://img-blog.csdn.net/20180607142902810"></p>
+<h4 id="单周期CPU数据通路和控制线路图："><a href="#单周期CPU数据通路和控制线路图：" class="headerlink" title="单周期CPU数据通路和控制线路图："></a>单周期CPU数据通路和控制线路图：</h4><p><img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/20220515095544.png"></p>
 <table>
 <thead>
 <tr>
@@ -953,7 +954,8 @@
 </tr>
 </tbody></table>
 <p><code>完成控制信号与相对应指令之间的关系以后该表后，对于如何实现单周期依旧感到很模糊，不知道相对应的信号量具体的控制意义，因此尝试结合实验原理中的图2单周期CPU数据通路和控制线路图，思考三种类型的指令，R型、I型、J型指令的CPU处理过程。对于R型指令而言，主要是一些算术运算指令和逻辑运算，主要为取指令，解析指令，执行指令，将运算结果写回寄存器组，其不需要访问数据寄存器，下一条指令顺序下一条，即pc←pc+4，其中的一些运算则由控制单元得到指令的操作码以后，设置控制信号，控制各个模块执行不同操作或者数据选择器选择相对应的输入作为输出；对于I型指令，其包含指令种类比较多，存储器指令，需要对存储器进行读或写的操作，对于pc没有别的特别影响，而分支指令则下一个pc可能不是pc+4，需要依据其运算结果做相对应的跳转操作或者顺序执行操作；对于J型指令，其是跳转指令，跳转到指令中相对应的地址中，主要对pc进行操作。不同类型的指令，其进行的过程并非完成相同的，不同类型指令所使用的模块并不是一样的，所有的指令也不是都需要完整的五个处理阶段。结合CPU数据通路图以及指令相对应的控制信号后，对于每种指令的数据通路有了一个比较清晰的了解，对于每个控制信号与相对应的功能模块更加熟悉和了解，理清了如何设计单周期CPU，即将其模块化，并且在控制单元中依据指令的操作码，对各个模块的控制信号进行一定的设定，执行指令相对应的操作。</code></p>
-<h5 id="CPU模块划分与实现"><a href="#CPU模块划分与实现" class="headerlink" title="CPU模块划分与实现"></a>CPU模块划分与实现</h5><p>依据图2 单周期CPU数据通路和控制线路图，将CPU划分为9个模块，没有完全依据单周期CPU数据通路图进行划分，主要依据数据通路图进行划分太冗余，因此将一些数据选择器合并进了部分功能模块中，实现简化。模块划分结果如图三所示。<br><img src="https://img-blog.csdn.net/20180607145620520"></p>
+<h5 id="CPU模块划分与实现"><a href="#CPU模块划分与实现" class="headerlink" title="CPU模块划分与实现"></a>CPU模块划分与实现</h5><p>依据图2 单周期CPU数据通路和控制线路图，将CPU划分为9个模块，没有完全依据单周期CPU数据通路图进行划分，主要依据数据通路图进行划分太冗余，因此将一些数据选择器合并进了部分功能模块中，实现简化。模块划分结果如图三所示。  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/20220515095701.png"></p>
 <h4 id="pcAdd"><a href="#pcAdd" class="headerlink" title="pcAdd"></a>pcAdd</h4><ul>
 <li><p>模块功能：根据控制信号PCSrc，计算获得下一个pc以及控制信号Reset重置。</p>
 </li>
