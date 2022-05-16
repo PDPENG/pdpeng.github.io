@@ -22,7 +22,7 @@
 
 # 交流探讨
 
-任何问题均可通过 [主页](https://github.com/PDPENG) 左侧邮箱，或 [推特](https://twitter.com/jasoni996) 等社交平台交流。如果您发现了博客中的内容错误，欢迎提交 `PR`
+任何问题均可通过 [主页](https://github.com/PDPENG) 左侧邮箱、[吉特](https://gitter.im/Blog-Jason/community) 或 [推特](https://twitter.com/jasoni996) 等社交平台交流。如果您发现了博客中的内容错误，欢迎提交 `PR`
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/86602255/166093155-d03ac762-59f5-4b91-92a2-995546c61f55.png" alt="wx" width="280">
@@ -30,7 +30,7 @@
 
 # 支持
 
-> 码字不易，若有关内容绑到了您，可以点亮页面右上角 `Star` 支持杰森
+> 码字不易，若有关内容帮到了您，可以点亮页面右上角 `Star` 支持杰森
 
 <div align="center">
   <a href="https://blog.csdn.net/m0_51269961"><img src="https://api.star-history.com/svg?repos=PDPENG/pdpeng.github.io&type=Date" alt="github-star-history"></a>
