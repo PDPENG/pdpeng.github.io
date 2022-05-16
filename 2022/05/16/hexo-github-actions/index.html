@@ -32,14 +32,14 @@
 
 
 
-<link rel="canonical" href="https://pdpeng.github.io/">
+<link rel="canonical" href="https://pdpeng.github.io/2022/05/16/hexo-github-actions/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pdpeng.github.io/2022/05/16/hexo-github-actions/","path":"2022/05/16/hexo-github-actions/","title":"Hexo 优化配置汇总【GitHub Actions 看板娘 数学公式 标签云 README 转义问题】"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>杰森的博客 - 全栈杰森</title>
+<title>Hexo 优化配置汇总【GitHub Actions 看板娘 数学公式 标签云 README 转义问题】 | 杰森的博客</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
@@ -78,7 +78,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">杰森的博客</h1>
+      <p class="site-title">杰森的博客</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">全栈杰森</p>
@@ -138,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -151,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Actions-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Actions 自动化部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RSS-%E8%AE%A2%E9%98%85%E6%8C%89%E9%92%AE"><span class="nav-number">2.</span> <span class="nav-text">RSS 订阅按钮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A4%BE%E4%BA%A4%E5%9B%BE%E6%A0%87%E5%8A%A0%E5%85%A5-CSDN"><span class="nav-number">3.</span> <span class="nav-text">社交图标加入 CSDN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E5%A4%B4%E5%83%8F%E8%BF%94%E5%9B%9E%E4%B8%BB%E9%A1%B5%E6%95%88%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">点击头像返回主页效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5%E5%BA%95%E9%83%A8%E6%A8%AA%E7%BA%BF"><span class="nav-number">5.</span> <span class="nav-text">删除社交链接底部横线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E7%9C%8B%E6%9D%BF%E5%A8%98"><span class="nav-number">6.</span> <span class="nav-text">加入看板娘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-404-%E9%A1%B5%E9%9D%A2"><span class="nav-number">7.</span> <span class="nav-text">自定义 404 页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%94%AF%E6%8C%81"><span class="nav-number">8.</span> <span class="nav-text">数学公式支持</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E6%8E%92%E9%94%99%E6%8C%87%E5%8D%97"><span class="nav-number">9.</span> <span class="nav-text">本地搜索功能排错指南</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AB%99%E7%82%B9%E9%A1%B5%E8%84%9A"><span class="nav-number">10.</span> <span class="nav-text">自定义站点页脚</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%A0%87%E7%AD%BE%E4%BA%91"><span class="nav-number">11.</span> <span class="nav-text">加入标签云</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#README-%E8%BD%AC%E4%B9%89%E9%97%AE%E9%A2%98"><span class="nav-number">12.</span> <span class="nav-text">README 转义问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -281,247 +282,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/01/19/setup-personal-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-              <span class="post-sticky-flag" title="置顶">
-                <i class="fa fa-thumbtack"></i>
-              </span><a href="/2022/01/19/setup-personal-blog/" class="post-title-link" itemprop="url">快速搭建个人博客——保姆级教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-19 11:23:04" itemprop="dateCreated datePublished" datetime="2022-01-19T11:23:04+08:00">2022-01-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" itemprop="url" rel="index"><span itemprop="name">网站建设</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/01/19/setup-personal-blog/" class="post-meta-item leancloud_visitors" data-flag-title="快速搭建个人博客——保姆级教程" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>13k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>12 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <div class="note danger"><p>本站点主题现已更换为 Next，文中除主题外的配置参数均不受影响</p>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/19/setup-personal-blog/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/08/tcp-ip-protocol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-              <span class="post-sticky-flag" title="置顶">
-                <i class="fa fa-thumbtack"></i>
-              </span><a href="/2022/04/08/tcp-ip-protocol/" class="post-title-link" itemprop="url">【图解】三次握手，四次挥手 —— 用心看这一篇就够了</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-08 19:41:31" itemprop="dateCreated datePublished" datetime="2022-04-08T19:41:31+08:00">2022-04-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/04/08/tcp-ip-protocol/" class="post-meta-item leancloud_visitors" data-flag-title="【图解】三次握手，四次挥手 —— 用心看这一篇就够了" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>👲👲<font color=#a2a837 size=3>作者主页</font>：🔗<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx">杰森的博客<i class="fa fa-external-link-alt"></i></span><br>📒📒<font color=#20b9cd size=3>本文摘要</font>：<strong>TCP 三次握手，四次挥手知识点精析。备考、面试前看两眼，加深记忆，祝你一臂之力。顺利通过考试、拿到 offer。</strong><br>💖💖如果本文帮助到你的话，还请各位小伙伴👍点赞➕收藏⭐➕评论💭支持杰森呀✌️</p>
-</blockquote>
-<center><img src="https://img-blog.csdnimg.cn/ec1b86b9ee7b4b939c433744378c4c51.png"></center>
-
-<hr>
-<h1 id="📚概述"><a href="#📚概述" class="headerlink" title="📚概述"></a>📚概述</h1><p>“什么是三次握手，四次挥手？”，该问题作为<strong>计算机网络</strong>学科中常见问题之一，无论是面试还是考研，我们都有必要细细参透其中的奥妙</p>
-<p>在学习之前，我们首先需要了解一些基本的概念</p>
-<h1 id="📚基础理论"><a href="#📚基础理论" class="headerlink" title="📚基础理论"></a>📚基础理论</h1><h2 id="📐传输控制协议"><a href="#📐传输控制协议" class="headerlink" title="📐传输控制协议"></a>📐传输控制协议</h2><blockquote>
-<p>传输控制协议（<strong>T</strong>ransmission <strong>C</strong>ontrol <strong>P</strong>rotocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议，在 OSI 模型中完成传输层指定功能。<br>TCP 使用<strong>校验和函数</strong>检验数据是否出现错误，在数据发送和接收时均需要计算<strong>校验和</strong>。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/08/tcp-ip-protocol/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/05/16/hexo-github-actions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -535,13 +306,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
+      <meta itemprop="name" content="Hexo 优化配置汇总【GitHub Actions 看板娘 数学公式 标签云 README 转义问题】 | 杰森的博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/16/hexo-github-actions/" class="post-title-link" itemprop="url">Hexo 优化配置汇总【GitHub Actions 看板娘 数学公式 标签云 README 转义问题】</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 优化配置汇总【GitHub Actions 看板娘 数学公式 标签云 README 转义问题】
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -595,7 +366,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
+        <blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9jb2Rlci1qYXNvbi5jbi8=">服务器<i class="fa fa-external-link-alt"></i></span> 快到期了，这几天迁移到 <code>GitHub</code> 上，用免费的 <code>GitHub Pages</code> 重新部署下 <a href="https://pdpeng.github.io/">杰森的博客</a> 。以下样式及优化配置基于 <code>Hexo</code>，主题 <code>Next</code></p>
 </blockquote>
 <h1 id="GitHub-Actions-自动化部署"><a href="#GitHub-Actions-自动化部署" class="headerlink" title="GitHub Actions 自动化部署"></a>GitHub Actions 自动化部署</h1><p><img src="https://img-blog.csdnimg.cn/667f5a66a56f4649a614f24662407fbd.png"></p>
@@ -718,7 +489,6 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pY3JvbWF0Y2gvbWljcm9tYXRjaCNleHRlbmRlZC1nbG9iYmluZw==">#extended-globbing<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 
-      
     </div>
 
     
@@ -726,123 +496,61 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/05/08/anniversary-creation01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/08/anniversary-creation01/" class="post-title-link" itemprop="url">我的一周年创作纪念日</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-08 23:37:54" itemprop="dateCreated datePublished" datetime="2022-05-08T23:37:54+08:00">2022-05-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%94%BB%E5%9F%8E%E7%8B%AE%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">攻城狮杂谈</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/05/08/anniversary-creation01/" class="post-meta-item leancloud_visitors" data-flag-title="我的一周年创作纪念日" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
+        </br>
+        <div class="official-accounts">
+             <img src="/images/official-accounts.png" width="80%">
         </div>
-      </header>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>👲👲<font color=#a2a837 size=3>作者主页</font>：🔗<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx">杰森的博客<i class="fa fa-external-link-alt"></i></span><br>📒📒<font color=#20b9cd size=3>本文摘要</font>：<strong>攻城狮杂谈，谈谈对创作的感受</strong><br>💖💖希望对你有所帮助👍点赞➕收藏⭐➕评论💭支持杰森呀✌️</p>
-</blockquote>
-<center><img src="https://img-blog.csdnimg.cn/e2b2f16a48b14478a8b44222999d4cb5.png" width="320"></center>
+  </div>
+</div>
 
-<hr>
-<blockquote>
-<p>今天咱们不聊技术，不谈知识要点，单纯聊聊✒️<strong>写博客</strong>✒️这件事情，分享下我的收获</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/08/anniversary-creation01/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pdpeng.github.io/2022/05/16/hexo-github-actions/" title="Hexo 优化配置汇总【GitHub Actions 看板娘 数学公式 标签云 README 转义问题】">https://pdpeng.github.io/2022/05/16/hexo-github-actions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          </div>
+
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/08/anniversary-creation01/" rel="next" title="我的一周年创作纪念日">
+                  我的一周年创作纪念日 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -850,1025 +558,9 @@
 
 
 
-    
 
 
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/05/01/idea-shortcut-key/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/01/idea-shortcut-key/" class="post-title-link" itemprop="url">IntelliJ Idea 常用快捷键列表</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-01 21:56:58" itemprop="dateCreated datePublished" datetime="2022-05-01T21:56:58+08:00">2022-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/05/01/idea-shortcut-key/" class="post-meta-item leancloud_visitors" data-flag-title="IntelliJ Idea 常用快捷键列表" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.6k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>👲👲<font color=#a2a837 size=3>作者主页</font>：🔗<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx">杰森的博客<i class="fa fa-external-link-alt"></i></span><br>📒📒<font color=#20b9cd size=3>本文摘要</font>：<strong>Idea 开发常用快捷键总结，祝你一臂之力，不加班！</strong><br>💖💖感觉本文不错的话，还请各位小伙伴👍点赞➕收藏⭐➕评论💭支持杰森呀✌️</p>
-</blockquote>
-<center><img src="https://img-blog.csdnimg.cn/3941e32c678044b2a71145ea22853854.gif" alt="like"></center>
-
-<hr>
-<h1 id="🚀1-高频快捷键列表"><a href="#🚀1-高频快捷键列表" class="headerlink" title="🚀1.高频快捷键列表"></a>🚀1.高频快捷键列表</h1><table>
-<thead>
-<tr>
-<th align="center">快捷键</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Ctrl+Shift + Enter</td>
-<td align="center">语句完成</td>
-</tr>
-<tr>
-<td align="center">！</td>
-<td align="center">否定完成，输入表达式时 “！”键</td>
-</tr>
-<tr>
-<td align="center">Ctrl+E</td>
-<td align="center">最近文件</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+E</td>
-<td align="center">最近更改的文件</td>
-</tr>
-<tr>
-<td align="center">Shift+Click</td>
-<td align="center">关闭文件</td>
-</tr>
-<tr>
-<td align="center">Ctrl+[ OR ]</td>
-<td align="center">可以跑到大括号的开头与结尾</td>
-</tr>
-<tr>
-<td align="center">Ctrl+F12</td>
-<td align="center">显示当前文件的结构</td>
-</tr>
-<tr>
-<td align="center">Ctrl+F7</td>
-<td align="center">查询当前元素在当前文件中的引用，按 F3 可以选择</td>
-</tr>
-<tr>
-<td align="center">Ctrl+N</td>
-<td align="center">快速打开类</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+N</td>
-<td align="center">快速打开文件</td>
-</tr>
-<tr>
-<td align="center">Alt+Q</td>
-<td align="center">可以看到当前方法的声明</td>
-</tr>
-<tr>
-<td align="center">Alt+Q</td>
-<td align="center">可以看到当前方法的声明</td>
-</tr>
-<tr>
-<td align="center">Ctrl+P</td>
-<td align="center">可以显示参数信息</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+Insert</td>
-<td align="center">可以选择剪贴板内容并插入</td>
-</tr>
-<tr>
-<td align="center">Alt+Insert</td>
-<td align="center">可以生成构造器&#x2F;Getter&#x2F;Setter等</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+V</td>
-<td align="center">可以引入变量。例如：new String(); 自动导入变量定义</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+T</td>
-<td align="center">可以把代码包在一个块内 例如：try&#x2F;catch</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Enter</td>
-<td align="center">导入包，自动修正</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+L</td>
-<td align="center">格式化代码</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+I</td>
-<td align="center">将选中的代码进行自动缩进编排，这个功能在编辑 JSP 文件时也可以工作</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+O</td>
-<td align="center">优化导入的类和包</td>
-</tr>
-<tr>
-<td align="center">Ctrl+R</td>
-<td align="center">替换文本</td>
-</tr>
-<tr>
-<td align="center">Ctrl+F</td>
-<td align="center">查找文本</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+Space</td>
-<td align="center">自动补全代码</td>
-</tr>
-<tr>
-<td align="center">Ctrl+空格</td>
-<td align="center">代码提示（与系统输入法快捷键冲突）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+Alt+N</td>
-<td align="center">查找类中的方法或变量</td>
-</tr>
-<tr>
-<td align="center">Alt+Shift+C</td>
-<td align="center">最近的更改</td>
-</tr>
-<tr>
-<td align="center">Alt+Shift+Up&#x2F;Down</td>
-<td align="center">上&#x2F;下移一行</td>
-</tr>
-<tr>
-<td align="center">Shift+F6</td>
-<td align="center">重构 – 重命名</td>
-</tr>
-<tr>
-<td align="center">Ctrl+X</td>
-<td align="center">删除行</td>
-</tr>
-<tr>
-<td align="center">Ctrl+D</td>
-<td align="center">复制行</td>
-</tr>
-<tr>
-<td align="center">Ctrl+&#x2F;或Ctrl+Shift+&#x2F;</td>
-<td align="center">注释（&#x2F;&#x2F;或者&#x2F;**&#x2F;）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+J</td>
-<td align="center">自动代码（例如：serr）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+J</td>
-<td align="center">用动态模板环绕</td>
-</tr>
-<tr>
-<td align="center">Ctrl+H</td>
-<td align="center">显示类结构图（类的继承层次）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Q</td>
-<td align="center">显示注释文档</td>
-</tr>
-<tr>
-<td align="center">Alt+F1</td>
-<td align="center">查找代码所在位置</td>
-</tr>
-<tr>
-<td align="center">Alt+1</td>
-<td align="center">快速打开或隐藏工程面板</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+left&#x2F;right</td>
-<td align="center">返回至上次浏览的位置</td>
-</tr>
-<tr>
-<td align="center">Alt+left&#x2F;right</td>
-<td align="center">切换代码视图</td>
-</tr>
-<tr>
-<td align="center">Alt+Up&#x2F;Down</td>
-<td align="center">在方法间快速移动定位</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+Up&#x2F;Down</td>
-<td align="center">向上&#x2F;下移动语句</td>
-</tr>
-<tr>
-<td align="center">F2 或 Shift+F2</td>
-<td align="center">高亮错误或警告快速定位</td>
-</tr>
-<tr>
-<td align="center">Tab</td>
-<td align="center">代码标签输入完成后，按 Tab，生成代码</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+F7</td>
-<td align="center">高亮显示所有该文本，按 Esc 高亮消失</td>
-</tr>
-<tr>
-<td align="center">Alt+F3</td>
-<td align="center">逐个往下查找相同文本，并高亮显示</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Up&#x2F;Down</td>
-<td align="center">光标中转到第一行或最后一行下</td>
-</tr>
-<tr>
-<td align="center">Ctrl+B&#x2F;Ctrl+Click</td>
-<td align="center">快速打开光标处的类或方法（跳转到定义处）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+B</td>
-<td align="center">跳转到方法实现处</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+Backspace</td>
-<td align="center">跳转到上次编辑的地方</td>
-</tr>
-<tr>
-<td align="center">Ctrl+O</td>
-<td align="center">重写方法</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+Space</td>
-<td align="center">类名自动完成</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+Up&#x2F;Down</td>
-<td align="center">快速跳转搜索结果</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+J</td>
-<td align="center">整合两行</td>
-</tr>
-<tr>
-<td align="center">Alt+F8</td>
-<td align="center">计算变量值</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+V</td>
-<td align="center">可以将最近使用的剪贴板内容选择插入到文本</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+Shift+V</td>
-<td align="center">简单粘贴</td>
-</tr>
-<tr>
-<td align="center">Shift+Esc</td>
-<td align="center">不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口</td>
-</tr>
-<tr>
-<td align="center">F12</td>
-<td align="center">把焦点从编辑器移到最近使用的工具窗口</td>
-</tr>
-<tr>
-<td align="center">Shift+F1</td>
-<td align="center">要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器</td>
-</tr>
-<tr>
-<td align="center">Ctrl+W</td>
-<td align="center">可以选择单词继而语句继而行继而函数</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+W</td>
-<td align="center">取消选择光标所在词</td>
-</tr>
-<tr>
-<td align="center">Alt+F7</td>
-<td align="center">查找整个工程中使用地某一个类、方法或者变量的位置</td>
-</tr>
-<tr>
-<td align="center">Ctrl+I</td>
-<td align="center">实现方法</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+U</td>
-<td align="center">大小写转化</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Y</td>
-<td align="center">删除当前行</td>
-</tr>
-<tr>
-<td align="center">Shift+Enter</td>
-<td align="center">向下插入新行</td>
-</tr>
-<tr>
-<td align="center">psvm&#x2F;sout</td>
-<td align="center">main&#x2F;System.out.println(); Ctrl+J，查看更多</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+F</td>
-<td align="center">全局查找</td>
-</tr>
-<tr>
-<td align="center">Ctrl+F</td>
-<td align="center">查找&#x2F;Shift+F3，向上查找&#x2F;F3，向下查找</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+S</td>
-<td align="center">高级搜索</td>
-</tr>
-<tr>
-<td align="center">Ctrl+U</td>
-<td align="center">转到父类</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+S</td>
-<td align="center">打开设置对话框</td>
-</tr>
-<tr>
-<td align="center">Alt+Shift+Inert</td>
-<td align="center">开启&#x2F;关闭列选择模式</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Alt+Shift+S</td>
-<td align="center">打开当前项目&#x2F;模块属性</td>
-</tr>
-<tr>
-<td align="center">Ctrl+G</td>
-<td align="center">定位行</td>
-</tr>
-<tr>
-<td align="center">Alt+Home</td>
-<td align="center">跳转到导航栏</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Enter</td>
-<td align="center">上插一行</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Backspace</td>
-<td align="center">按单词删除</td>
-</tr>
-<tr>
-<td align="center">Ctrl+”+&#x2F;-”</td>
-<td align="center">当前方法展开、折叠</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+”+&#x2F;-”</td>
-<td align="center">全部展开、折叠</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/01/idea-shortcut-key/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/05/01/projecteuler014/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/01/projecteuler014/" class="post-title-link" itemprop="url">【欧拉计划第 14 题】 最长的考拉兹序列 Longest Collatz sequence</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-01 09:19:38" itemprop="dateCreated datePublished" datetime="2022-05-01T09:19:38+08:00">2022-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AC%A7%E6%8B%89%E8%AE%A1%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">欧拉计划</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/05/01/projecteuler014/" class="post-meta-item leancloud_visitors" data-flag-title="【欧拉计划第 14 题】 最长的考拉兹序列 Longest Collatz sequence" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Problem-14-Longest-Collatz-sequence"><a href="#Problem-14-Longest-Collatz-sequence" class="headerlink" title="Problem 14 Longest Collatz sequence"></a>Problem 14 Longest Collatz sequence</h1><blockquote>
-<p>The following iterative sequence is defined for the set of positive integers:</p>
-</blockquote>
-<p>$$<br>\large n\rightarrow \frac{n}{2}\ \left ( n\ is\ even \right ) ,n\rightarrow3n+1\ \left ( \ n\ is\ odd \right )<br>$$</p>
-<blockquote>
-<p>Using the rule above and starting with $13$, we generate the following sequence:</p>
-</blockquote>
-<p>$$<br>\large 13\rightarrow40\rightarrow20\rightarrow10\rightarrow5\rightarrow16\rightarrow8\rightarrow4\rightarrow2\rightarrow1<br>$$</p>
-<blockquote>
-<p>It can be seen that this sequence (starting at $13$ and finishing at 1) contains $10$ terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at $1$.<br>Which starting number, under one million, produces the longest chain?<br>NOTE: Once the chain starts the terms are allowed to go above one million.</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/01/projecteuler014/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/29/jdbc-driver-update/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/29/jdbc-driver-update/" class="post-title-link" itemprop="url">JDBC 驱动升级到 Version 8.0.28 连接 MySQL 的踩坑记录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-29 21:28:10" itemprop="dateCreated datePublished" datetime="2022-04-29T21:28:10+08:00">2022-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/04/29/jdbc-driver-update/" class="post-meta-item leancloud_visitors" data-flag-title="JDBC 驱动升级到 Version 8.0.28 连接 MySQL 的踩坑记录" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>👲👲<font color=#a2a837 size=3>作者主页</font>：🔗<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx">杰森的博客<i class="fa fa-external-link-alt"></i></span><br>📒📒<font color=#20b9cd size=3>本文摘要</font>：<strong>升级驱动到 mysql-connector-java 8.0.28 的注意事项</strong><br>💖💖如果本文对您有帮助的话，还请各位小伙伴👍点赞➕收藏⭐➕评论💭支持杰森呀✌️</p>
-</blockquote>
-<center><img src="https://img-blog.csdnimg.cn/a7dead605e9643a58a286a77bd691970.png" width="450"></center>
-
-<hr>
-<h1 id="🐛问题描述"><a href="#🐛问题描述" class="headerlink" title="🐛问题描述"></a>🐛问题描述</h1><p>升级驱动到 <code>mysql-connector-java 8.0.28</code> 后，部署执行各种报错，但是把连接器切换到 <code>mysql-connector-java-5.1.48</code> 又没有问题，很是疑惑！</p>
-<p>报错的信息大都是无法找到该类、无法连接</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/29/jdbc-driver-update/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/29/approximate-number-calculate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/29/approximate-number-calculate/" class="post-title-link" itemprop="url">快速计算约数的个数——从基础到高级</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-29 21:27:45" itemprop="dateCreated datePublished" datetime="2022-04-29T21:27:45+08:00">2022-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/04/29/approximate-number-calculate/" class="post-meta-item leancloud_visitors" data-flag-title="快速计算约数的个数——从基础到高级" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>题目来源：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMjQyODIyNjc=">【欧拉计划第 12 题】 高度可除的三角数 Highly divisible triangular number<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<p>这道题我们在枚举完三角数后，最重要的是去判断何时某个三角数约数的个数大于 500</p>
-<p>下面我们来看下，针对<strong>计算约数的个数</strong>问题，用不同的算法解决，逐步求得最优解</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/29/approximate-number-calculate/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/29/sql-base9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/29/sql-base9/" class="post-title-link" itemprop="url">SQL 基础（九）视图与索引实战演练</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-29 12:12:08" itemprop="dateCreated datePublished" datetime="2022-04-29T12:12:08+08:00">2022-04-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数据库原理</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/04/29/sql-base9/" class="post-meta-item leancloud_visitors" data-flag-title="SQL 基础（九）视图与索引实战演练" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.6k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="实验任务-1"><a href="#实验任务-1" class="headerlink" title="实验任务 1"></a>实验任务 1</h1><blockquote>
-<p>在 <code>studen</code> 数据库中，以 <code>tb_student</code>、<code>tb_course</code> 和 <code>tb_score</code> 表为基础完成下列视图的设计与创建</p>
-</blockquote>
-<h1 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h1><ul>
-<li>tb_student(sno,sn,dept,sex,birthday,polity)</li>
-<li>tb_score(sno,cno,score)</li>
-<li>tb_cource(cno,cn,ct,th)
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/29/sql-base9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/28/rt-thread01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head_portrait.png">
-      <meta itemprop="name" content="Jason">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杰森的博客">
-      <meta itemprop="description" content="A blacksmith must be strong">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 杰森的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/28/rt-thread01/" class="post-title-link" itemprop="url">【玩转 RT-Thread】 RT-Thread Studio —— 按键控制电机正反转、蜂鸣器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-28 20:08:02" itemprop="dateCreated datePublished" datetime="2022-04-28T20:08:02+08:00">2022-04-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/RT-Thread/" itemprop="url" rel="index"><span itemprop="name">RT-Thread</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/04/28/rt-thread01/" class="post-meta-item leancloud_visitors" data-flag-title="【玩转 RT-Thread】 RT-Thread Studio —— 按键控制电机正反转、蜂鸣器" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="初识RT-Thread"><a href="#初识RT-Thread" class="headerlink" title="初识RT-Thread"></a>初识RT-Thread</h1><p><code>做世界级的 OS，让万物互联，信息畅通无阻。</code><br><code>成为未来 AIoT 领域最为主流的操作系统平台。</code></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
-<p>RT-Thread 是一个集<code>实时操作系统（RTOS）内核、中间件组件和开发者社区于一体</code>的技术平台，由<code>熊谱翔先生</code>带领并集合开源社区力量开发而成，RT-Thread 也是一个<code>组件完整丰富、高度可伸缩、简易开发、超低功耗、高安全性</code>的<code>物联网操作系统</code>。</p>
-</blockquote>
-<h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><blockquote>
-<p>RT-Thread 具备一个 IoT OS 平台所需的所有关键组件，例如GUI、网络协议栈、安全传输、低功耗组件等等。经过11年的累积发展，RT-Thread 已经拥有一个<code>国内最大的嵌入式开源社区</code>，同时被广泛应用于能源、车载、医疗、消费电子等多个行业，累积装机量超过 14亿 台，成为国人<code>自主开发</code>、国内最成熟稳定和装机量最大的<code>开源 RTOS</code>。</p>
-</blockquote>
-<h2 id="软件生态"><a href="#软件生态" class="headerlink" title="软件生态"></a>软件生态</h2><blockquote>
-<p>RT-Thread 拥有<code>良好的软件生态</code>，支持市面上所有主流的编译工具如 GCC、Keil、IAR 等，工具链完善、友好，支持各类标准接口，如 POSIX、CMSIS、C++应用环境、Javascript 执行环境等，方便开发者移植各类应用程序。商用支持所有主流MCU架构，如 ARM Cortex-M&#x2F;R&#x2F;A, MIPS, X86, Xtensa, C-Sky, RISC-V，几乎支持市场上所有主流的 MCU 和 Wi-Fi 芯片。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/28/rt-thread01/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 
@@ -1945,7 +637,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
