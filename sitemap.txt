@@ -1,4 +1,7 @@
 https://pdpeng.github.io/tags/index.html
+https://pdpeng.github.io/2022/04/17/projecteuler009/
+https://pdpeng.github.io/2022/04/17/projecteuler010/
+https://pdpeng.github.io/2022/04/18/projecteuler011/
 https://pdpeng.github.io/2022/04/21/projecteuler012/
 https://pdpeng.github.io/2022/04/21/projecteuler013/
 https://pdpeng.github.io/2022/05/01/projecteuler014/
@@ -100,9 +103,6 @@ https://pdpeng.github.io/2022/04/17/projecteuler005/
 https://pdpeng.github.io/2022/04/17/projecteuler006/
 https://pdpeng.github.io/2022/04/17/projecteuler007/
 https://pdpeng.github.io/2022/04/17/projecteuler008/
-https://pdpeng.github.io/2022/04/17/projecteuler009/
-https://pdpeng.github.io/2022/04/17/projecteuler010/
-https://pdpeng.github.io/2022/04/18/projecteuler011/
 https://pdpeng.github.io/404.html
 https://pdpeng.github.io/404/index.html
 https://pdpeng.github.io/
