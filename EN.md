@@ -22,7 +22,7 @@
 
 # Communication
 
-Any problem through [home](https://github.com/PDPENG) on the left side of the mailbox, or [twitter](https://twitter.com/jasoni996), and other social platform communication. If you find errors in the content of your blog, you are welcome to submit `PR`
+Any problem through [home](https://github.com/PDPENG) on the left side of the mailbox, [Gitter](https://gitter.im/Blog-Jason/community) or [twitter](https://twitter.com/jasoni996), and other social platform communication. If you find errors in the content of your blog, you are welcome to submit `PR`
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/86602255/168467434-7717cf6d-fbff-4453-aa54-da74cdbe495b.png" alt="telegram" width="280">
@@ -30,7 +30,7 @@ Any problem through [home](https://github.com/PDPENG) on the left side of the ma
 
 # Support
 
-> Code word is not easy, if the relevant content is tied to you, you can light up the top right corner of the page `Star` support Jason
+> Code word is not easy, if the relevant content helps you, you can light up the top right corner of the page `Star` support Jason
 
 <div align="center">
   <a href="https://pdpeng.github.io"><img src="https://api.star-history.com/svg?repos=PDPENG/pdpeng.github.io&type=Date" alt="github-star-history"></a>
