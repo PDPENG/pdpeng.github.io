@@ -1831,6 +1831,20 @@
       </tags>
   </entry>
   <entry>
+    <title>GitHub Actions</title>
+    <url>/2022/05/16/github-actions/</url>
+    <content><![CDATA[<p>test.md</p>
+<p>hello github actions</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/GithubActionsCICD.png"></p>
+]]></content>
+      <categories>
+        <category>网站建设</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开源仓库贡献 —— 提交 PR</title>
     <url>/2022/02/21/github-commit-pr/</url>
     <content><![CDATA[<blockquote>
