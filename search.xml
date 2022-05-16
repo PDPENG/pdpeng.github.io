@@ -234,57 +234,6 @@
       </tags>
   </entry>
   <entry>
-    <title>快速计算约数的个数——从基础到高级</title>
-    <url>/2022/04/29/approximate-number-calculate/</url>
-    <content><![CDATA[<blockquote>
-<p>题目来源：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMjQyODIyNjc=">【欧拉计划第 12 题】 高度可除的三角数 Highly divisible triangular number<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<p>这道题我们在枚举完三角数后，最重要的是去判断何时某个三角数约数的个数大于 500</p>
-<p>下面我们来看下，针对<strong>计算约数的个数</strong>问题，用不同的算法解决，逐步求得最优解</p>
-<span id="more"></span>
-
-<h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h1><p>最简单，更是非常容易理解的方法</p>
-<blockquote>
-<p>复杂度：$\large O_{\left ( n^{2} \right )}$</p>
-</blockquote>
-<p>主要思想：定义变量，使其在小于传入判断值的条件下从 1 开始自增，如果判断值和该变量进行<strong>模取</strong>运算后的值为 0，则说明该变量此时的值是判断值得一个约数。那么，程序计数器自增，记录下此值。循环结束后，输出计数器保存的值即为判断值约数的个数</p>
-<p>这种方法优点除易于理解外，怕是没有优点了。缺点当然就是时间复杂度太高，一个值就需要去从 1 一直判断到该值。试想，如果数据量呈指数增长，这种方法恐怕在一般的计算机上不容易很快得到答案</p>
-<p>实现代码如下</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">check</span><span class="params">(<span class="type">long</span> <span class="type">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i = <span class="number">1</span>; <span class="comment">//注意数据范围</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) <span class="comment">//成立,这说明此时 i 为 n 的一个约数</span></span><br><span class="line">        &#123;</span><br><span class="line">            count++; <span class="comment">//计数器自增</span></span><br><span class="line">        &#125;</span><br><span class="line">        i++; <span class="comment">//继续判断下一个数字是否为 i 的约数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2"></a>方法 2</h1><blockquote>
-<p>复杂度：$\large O_{\left ( \sqrt{n} \right )}$</p>
-</blockquote>
-<p>主要思想：对比可以看出，方法一和方法二差别不大，但影响最关键的是它们的复杂度，直接由 $O_{\left ( n^{2} \right )}$ 降至 $O_{\left ( \sqrt{n} \right )}$ </p>
-<p>同样，仍然是<strong>暴力枚举</strong>，只不过这里的判断条件由 <code>i &lt; = n</code> 变为 <code>i * i &lt; = n</code>，复杂度优化了些许。进入 <code>for()</code> 循环后，如果 <code>n % i == 0</code> ，那么说明此时的 <code>i</code> 值是 <code>n</code> 的一个约数</p>
-<p>大家在这里要注意的是 <code>if...else</code> 语句内容，这里主要解释下此处和方法一的差别</p>
-<p>举个例子，如果 <code>n = 4</code> ，<code>i = 2</code>，满足 <code>2 × 2 = 4</code> 的条件，但此时 <code>4</code> 的两个约数 <code>2</code> 相当于一个，程序计数器只能自增 <code>1</code> ，而不是 <code>2</code></p>
-<p>当然，如果进入 <code>for()</code> 循环后，不满足条件 <code>i * i = n</code> ，那么自然是两个不同的约数，此时程序计数器需要增加 <code>2</code>，而不是 <code>1</code></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">check</span><span class="params">(<span class="type">long</span> <span class="type">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">1</span>; i * i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i * i == n) <span class="comment">// 区别所在,重点理解</span></span><br><span class="line">                count++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                count += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="方法-3"><a href="#方法-3" class="headerlink" title="方法 3"></a>方法 3</h1><blockquote>
-<p><strong>试除法</strong>求解</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">get_divisors</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n / i; i++)</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(i);</span><br><span class="line">            <span class="keyword">if</span> (i != n / i)</span><br><span class="line">                res.<span class="built_in">push_back</span>(n / i);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">sort</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>LeetCode <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS1jbi5jb20vcHJvYmxlbXMvZm91ci1kaXZpc29ycy9zb2x1dGlvbi9zaGktY2h1LWZhLXFpdS15dWUtc2h1LWdlLXNodS15dWUtc2h1LXpoaS1oZS1ieS1obC8=">题解思路<i class="fa fa-external-link-alt"></i></span></p>
-<h1 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h1><p><strong>约数个数定理</strong></p>
-<p>设一个数可以表示为其素数幂的乘积，即：</p>
-<p>$$<br>\large n&#x3D;{p_{1}}^{e_{1}} \cdot {p_{2}}^{e_{2}} \cdot\cdot\cdot {p_{m}}^{e_{m}}<br>$$</p>
-<p>则该数的约数个数为：</p>
-<p>$$<br>\large \left ( e_{1}+1 \right )\cdot \left ( e_{2}+1 \right )\cdot \cdot \cdot \left ( e_{m}+1 \right )<br>$$</p>
-<p>参考代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> N, n, i, s, r;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;N) != EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (N--)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; n;</span><br><span class="line">            s = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">2</span>; i * i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                r = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (n % i == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    r++;</span><br><span class="line">                    n /= i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (r &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    r++;</span><br><span class="line">                    s *= r;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (n &gt; <span class="number">1</span>)</span><br><span class="line">                s *= <span class="number">2</span>;</span><br><span class="line">            cout &lt;&lt; s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的一周年创作纪念日</title>
     <url>/2022/05/08/anniversary-creation01/</url>
     <content><![CDATA[<blockquote>
@@ -344,6 +293,57 @@
       </categories>
       <tags>
         <tag>程序人生</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速计算约数的个数——从基础到高级</title>
+    <url>/2022/04/29/approximate-number-calculate/</url>
+    <content><![CDATA[<blockquote>
+<p>题目来源：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMjQyODIyNjc=">【欧拉计划第 12 题】 高度可除的三角数 Highly divisible triangular number<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>这道题我们在枚举完三角数后，最重要的是去判断何时某个三角数约数的个数大于 500</p>
+<p>下面我们来看下，针对<strong>计算约数的个数</strong>问题，用不同的算法解决，逐步求得最优解</p>
+<span id="more"></span>
+
+<h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h1><p>最简单，更是非常容易理解的方法</p>
+<blockquote>
+<p>复杂度：$\large O_{\left ( n^{2} \right )}$</p>
+</blockquote>
+<p>主要思想：定义变量，使其在小于传入判断值的条件下从 1 开始自增，如果判断值和该变量进行<strong>模取</strong>运算后的值为 0，则说明该变量此时的值是判断值得一个约数。那么，程序计数器自增，记录下此值。循环结束后，输出计数器保存的值即为判断值约数的个数</p>
+<p>这种方法优点除易于理解外，怕是没有优点了。缺点当然就是时间复杂度太高，一个值就需要去从 1 一直判断到该值。试想，如果数据量呈指数增长，这种方法恐怕在一般的计算机上不容易很快得到答案</p>
+<p>实现代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">check</span><span class="params">(<span class="type">long</span> <span class="type">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i = <span class="number">1</span>; <span class="comment">//注意数据范围</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) <span class="comment">//成立,这说明此时 i 为 n 的一个约数</span></span><br><span class="line">        &#123;</span><br><span class="line">            count++; <span class="comment">//计数器自增</span></span><br><span class="line">        &#125;</span><br><span class="line">        i++; <span class="comment">//继续判断下一个数字是否为 i 的约数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2"></a>方法 2</h1><blockquote>
+<p>复杂度：$\large O_{\left ( \sqrt{n} \right )}$</p>
+</blockquote>
+<p>主要思想：对比可以看出，方法一和方法二差别不大，但影响最关键的是它们的复杂度，直接由 $O_{\left ( n^{2} \right )}$ 降至 $O_{\left ( \sqrt{n} \right )}$ </p>
+<p>同样，仍然是<strong>暴力枚举</strong>，只不过这里的判断条件由 <code>i &lt; = n</code> 变为 <code>i * i &lt; = n</code>，复杂度优化了些许。进入 <code>for()</code> 循环后，如果 <code>n % i == 0</code> ，那么说明此时的 <code>i</code> 值是 <code>n</code> 的一个约数</p>
+<p>大家在这里要注意的是 <code>if...else</code> 语句内容，这里主要解释下此处和方法一的差别</p>
+<p>举个例子，如果 <code>n = 4</code> ，<code>i = 2</code>，满足 <code>2 × 2 = 4</code> 的条件，但此时 <code>4</code> 的两个约数 <code>2</code> 相当于一个，程序计数器只能自增 <code>1</code> ，而不是 <code>2</code></p>
+<p>当然，如果进入 <code>for()</code> 循环后，不满足条件 <code>i * i = n</code> ，那么自然是两个不同的约数，此时程序计数器需要增加 <code>2</code>，而不是 <code>1</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">check</span><span class="params">(<span class="type">long</span> <span class="type">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">1</span>; i * i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i * i == n) <span class="comment">// 区别所在,重点理解</span></span><br><span class="line">                count++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                count += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="方法-3"><a href="#方法-3" class="headerlink" title="方法 3"></a>方法 3</h1><blockquote>
+<p><strong>试除法</strong>求解</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">get_divisors</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n / i; i++)</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(i);</span><br><span class="line">            <span class="keyword">if</span> (i != n / i)</span><br><span class="line">                res.<span class="built_in">push_back</span>(n / i);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">sort</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>LeetCode <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS1jbi5jb20vcHJvYmxlbXMvZm91ci1kaXZpc29ycy9zb2x1dGlvbi9zaGktY2h1LWZhLXFpdS15dWUtc2h1LWdlLXNodS15dWUtc2h1LXpoaS1oZS1ieS1obC8=">题解思路<i class="fa fa-external-link-alt"></i></span></p>
+<h1 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h1><p><strong>约数个数定理</strong></p>
+<p>设一个数可以表示为其素数幂的乘积，即：</p>
+<p>$$<br>\large n&#x3D;{p_{1}}^{e_{1}} \cdot {p_{2}}^{e_{2}} \cdot\cdot\cdot {p_{m}}^{e_{m}}<br>$$</p>
+<p>则该数的约数个数为：</p>
+<p>$$<br>\large \left ( e_{1}+1 \right )\cdot \left ( e_{2}+1 \right )\cdot \cdot \cdot \left ( e_{m}+1 \right )<br>$$</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> N, n, i, s, r;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;N) != EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (N--)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; n;</span><br><span class="line">            s = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">2</span>; i * i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                r = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (n % i == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    r++;</span><br><span class="line">                    n /= i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (r &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    r++;</span><br><span class="line">                    s *= r;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (n &gt; <span class="number">1</span>)</span><br><span class="line">                s *= <span class="number">2</span>;</span><br><span class="line">            cout &lt;&lt; s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
       </tags>
   </entry>
   <entry>
@@ -437,33 +437,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常见字符编码介绍</title>
-    <url>/2022/03/25/character-encoding/</url>
-    <content><![CDATA[<h1 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h1><p>ASCII是美国(国家)信息交换标准(代)码，一种使用7个或8个二进制位进行编码的方案，最多可以给<code>256(2^80)</code>个字符 (包括字母、数字、标点符号、控制字符及其他符号)分配(或指定)数值。基本的 ASCII 字符集共有 <code>128</code> 个字符，其中有 <code>96</code> 个可打印字符，包括常用的字母、数字、标点符号等，另外还有 <code>32</code> 个控制字符。</p>
-<p>文件中每一个字都是美标形象码或空格码，这类文件称为“美标文本文件”，或略为“文本文件”，通常可在不同电脑系统间直接交换。 文件中含有控制码或非美标码的文件，通常不能在不同电脑系统间直接交换。这类文件有一个通称，叫“二进制文件”</p>
-<h1 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h1><p>为了扩充ASCII编码，以用于显示本国的语言，不同的国家和地区制定了不同的标准，由此产生了<code>GB2312</code>, <code>BIG5</code>, <code>JIS</code> 等各自的编码标准。这些使用 2 个字节来代表一个字符的各种汉字延伸编码方式，称为 <code>ANSI</code> 编码，又称为<code>MBCS（Muilti-Bytes Charecter Set，多字节字符集）</code>。在简体中文系统下，<code>ANSI</code> 编码代表 <code>GB2312</code> 编码，在日文操作系统下，<code>ANSI</code> 编码代表 <code>JIS</code> 编码，所以在中文 windows下要转码成<code>GB2312</code>,<code>GBK</code>(gb2312的扩展)只需要把文本保存为<code>ANSI</code> 编码即可。 不同 <code>ANSI</code> 编码之间互不兼容，当信息在国际间交流时，无法将属于两种语言的文字，存储在同一段 <code>ANSI</code> 编码的文本中。一个很大的缺点是，同一个编码值，在不同的编码体系里代表着不同的字。这样就容易造成混乱</p>
-<span id="more"></span>
-
-<h1 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h1><p><code>GB2312</code>是<code>ANSI</code>编码里的一种，对<code>ANSI</code>编码最初始的<code>ASCII</code>编码进行扩充，为了满足国内在计算机中使用汉字的需要，中国国家标准总局发布了一系列的汉字字符集国家标准编码，统称为GB码，或国标码。其中最有影响的是于1980年发布的《信息交换用汉字编码字符集 基本集》，标准号为GB 2312-1980,因其使用非常普遍，也常被通称为国标码。GB2312编码通行于我国内地；新加坡等地也采用此编码。几乎所有的中文系统和国际化的软件都支持<code>GB2312</code>。 <code>GB2312</code>是一个简体中文字符集，由<code>6763</code>个常用汉字和<code>682</code>个全角的非汉字字符组成</p>
-<h1 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h1><p><code>GB 2312</code>的出现，基本满足了汉字的计算机处理需要，但对于人名、古汉语等方面出现的罕用字，<code>GB 2312</code>不能处理，这导致了后来<code>GBK</code>及<code>GB 18030</code>汉字字符集的出现 <code>GBK</code>共收入21886个汉字和图形符号，其中汉字（包括部首和构件）<code>21003</code>个，图形符号<code>883</code>个。<code>GBK</code>编码标准兼容<code>GB2312</code>，共收录汉字<code>21003</code>个、符号<code>883</code>个，并提供<code>1894</code>个造字码位，简、繁体字融于一库。<code>GB2312</code>码是中华人民共和国国家汉字信息交换用编码，全称《信息交换用汉字编码字符集——基本集》，1980年由国家标准总局发布。基本集共收入汉字<code>6763</code>个和非汉字图形字符<code>682</code>个，通行于中国大陆。新加坡等地也使用此编码。GBK是对GB2312-80的扩展.</p>
-<h1 id="Big5"><a href="#Big5" class="headerlink" title="Big5"></a>Big5</h1><p>在台湾、香港与澳门地区，使用的是繁体中文字符集。而1980年发布的<code>GB2312</code>面向简体中文字符集，并不支持繁体汉字。在这些使用繁体中文字符集的地区，一度出现过很多不同厂商提出的字符集编码，这些编码彼此互不兼容，造成了信息交流的困难。为统一繁体字符集编码，1984年，台湾五大厂商宏碁、神通、佳佳、零壹以及大众一同制定了一种繁体中文编码方案，因其来源被称为五大码，英文写作Big5，后来按英文翻译回汉字后，普遍被称为大五码。大五码是一种繁体中文汉字字符集，其中繁体汉字<code>13053</code>个，<code>808</code>个标点符号、希腊字母及特殊符号。</p>
-<h1 id="unicode"><a href="#unicode" class="headerlink" title="unicode"></a>unicode</h1><p>为什么电子邮件和网页都经常会出现乱码，就是因为信息的提供者可能是日文的ANSI编码体系和信息的读取者可能是中文的编码体系，他们对同一个二进制编码值进行显示，采用了不同的编码，导致乱码。这个问题促使了unicode码的诞生。 如果有一种编码，将世界上所有的符号都纳入其中，无论是英文、日文、还是中文等，大家都使用这个编码表，就不会出现编码不匹配现象。每个符号对应一个唯一的编码，乱码问题就不存在了。这就是Unicode编码。</p>
-<p><code>unicode</code>，中文叫万国码，统一码，是统一码联盟为了世界上大多数文字系统进行整理和编码。 和<code>unicode</code>类似，iso组织也在做同样的事情，iso开展了 <code>ISO/IEC 10646</code>项目，名字叫<code>“ Universal Multiple-Octet Coded Character Set”</code>，简称<code>UCS</code>。 后来，双方意识到时间上不需要2套通用的字符集，所以双方开始进行整合，到<code>unicode2.0</code>时，<code>unicode</code>的编码和<code>ucs</code>的编码都基本一致。 但是又略有不同。</p>
-<p><code>Unicode</code>深入人心，且<code>UTF-8</code>(Unicode中的一种)大行其道，<code>UCS</code>编码基本被等同于<code>UTF-16</code>，<code>UTF-32</code>了，所以目前UCS基本谈出人们的视野中。</p>
-<h1 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h1><p><code>Unicode</code>固然统一了编码方式，但是它的效率不高，比如<code>UCS-4</code>(Unicode的标准之一)规定用4个字节存储一个符号，那么每个英文字母前都必然有三个字节是0，这对存储和传输来说都很耗资源。 为了提高<code>Unicode</code>的编码效率，于是就出现了<code>UTF-8</code>编码。<code>UTF-8</code>可以根据不同的符号自动选择编码的长短。比如英文字母可以只用1个字节就够了。</p>
-<h1 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h1><p><code>UTF-16</code>是<code>Unicode</code>的其中一个使用方式,<code>UTF-16</code>比起<code>UTF-8</code>，好处在于大部分字符都以固定长度的字节 (2字节) 储存，但<code>UTF-16</code>却无法兼容于<code>ASCII</code>编码。</p>
-<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>有的电子邮件系统(比如国外信箱)不支持非英文字母(比如汉字)传输，这是历史原因造成的(认为只有美国会使用电子邮件?)。因为一个英文字母使用ASCII编码来存储，占存储器的1个字节(8位)，实际上只用了7位2进制来存储，第一位并没有使用，设置为0，所以，这样的系统认为凡是第一位是1的字节都是错误的。而有的编码方案(比如GB2312)不但使用多个字节编码一个字符，并且第一位经常是1，于是邮件系统就把1换成0，这样收到邮件的人就会发现邮件乱码。</p>
-<p>为了能让邮件系统正常的收发信件，就需要把由其他编码存储的符号转换成ASCII码来传输。比如，在一端发送GB2312编码－&gt;根据Base64规则－&gt;转换成ASCII码，接收端收到ASCII码－&gt;根据Base64规则－&gt;还原到GB2312编码。</p>
-<h1 id="BMP"><a href="#BMP" class="headerlink" title="BMP"></a>BMP</h1><p>UCS-4根据最高位为0的最高字节分成2^7&#x3D;128个group。每个group再根据次高字节分为256个plane。每个plane根据第3个字节分为256行 (rows)，每行包含256个cells。当然同一行的cells只是最后一个字节不同，其余都相同。 group 0的plane 0被称作Basic Multilingual Plane, 即BMP。或者说UCS-4中，高两个字节为0的码位被称作BMP。 将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。在UCS-2的两个字节前加上两个零字节，就得到了UCS-4的BMP。而目前的UCS-4规范中还没有任何字符被分配在BMP之外</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>编码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CDN 网站部署全站加速服务</title>
     <url>/2022/02/17/cdn-config/</url>
     <content><![CDATA[<blockquote>
@@ -519,6 +492,33 @@
       </categories>
       <tags>
         <tag>CDN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见字符编码介绍</title>
+    <url>/2022/03/25/character-encoding/</url>
+    <content><![CDATA[<h1 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h1><p>ASCII是美国(国家)信息交换标准(代)码，一种使用7个或8个二进制位进行编码的方案，最多可以给<code>256(2^80)</code>个字符 (包括字母、数字、标点符号、控制字符及其他符号)分配(或指定)数值。基本的 ASCII 字符集共有 <code>128</code> 个字符，其中有 <code>96</code> 个可打印字符，包括常用的字母、数字、标点符号等，另外还有 <code>32</code> 个控制字符。</p>
+<p>文件中每一个字都是美标形象码或空格码，这类文件称为“美标文本文件”，或略为“文本文件”，通常可在不同电脑系统间直接交换。 文件中含有控制码或非美标码的文件，通常不能在不同电脑系统间直接交换。这类文件有一个通称，叫“二进制文件”</p>
+<h1 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h1><p>为了扩充ASCII编码，以用于显示本国的语言，不同的国家和地区制定了不同的标准，由此产生了<code>GB2312</code>, <code>BIG5</code>, <code>JIS</code> 等各自的编码标准。这些使用 2 个字节来代表一个字符的各种汉字延伸编码方式，称为 <code>ANSI</code> 编码，又称为<code>MBCS（Muilti-Bytes Charecter Set，多字节字符集）</code>。在简体中文系统下，<code>ANSI</code> 编码代表 <code>GB2312</code> 编码，在日文操作系统下，<code>ANSI</code> 编码代表 <code>JIS</code> 编码，所以在中文 windows下要转码成<code>GB2312</code>,<code>GBK</code>(gb2312的扩展)只需要把文本保存为<code>ANSI</code> 编码即可。 不同 <code>ANSI</code> 编码之间互不兼容，当信息在国际间交流时，无法将属于两种语言的文字，存储在同一段 <code>ANSI</code> 编码的文本中。一个很大的缺点是，同一个编码值，在不同的编码体系里代表着不同的字。这样就容易造成混乱</p>
+<span id="more"></span>
+
+<h1 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h1><p><code>GB2312</code>是<code>ANSI</code>编码里的一种，对<code>ANSI</code>编码最初始的<code>ASCII</code>编码进行扩充，为了满足国内在计算机中使用汉字的需要，中国国家标准总局发布了一系列的汉字字符集国家标准编码，统称为GB码，或国标码。其中最有影响的是于1980年发布的《信息交换用汉字编码字符集 基本集》，标准号为GB 2312-1980,因其使用非常普遍，也常被通称为国标码。GB2312编码通行于我国内地；新加坡等地也采用此编码。几乎所有的中文系统和国际化的软件都支持<code>GB2312</code>。 <code>GB2312</code>是一个简体中文字符集，由<code>6763</code>个常用汉字和<code>682</code>个全角的非汉字字符组成</p>
+<h1 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h1><p><code>GB 2312</code>的出现，基本满足了汉字的计算机处理需要，但对于人名、古汉语等方面出现的罕用字，<code>GB 2312</code>不能处理，这导致了后来<code>GBK</code>及<code>GB 18030</code>汉字字符集的出现 <code>GBK</code>共收入21886个汉字和图形符号，其中汉字（包括部首和构件）<code>21003</code>个，图形符号<code>883</code>个。<code>GBK</code>编码标准兼容<code>GB2312</code>，共收录汉字<code>21003</code>个、符号<code>883</code>个，并提供<code>1894</code>个造字码位，简、繁体字融于一库。<code>GB2312</code>码是中华人民共和国国家汉字信息交换用编码，全称《信息交换用汉字编码字符集——基本集》，1980年由国家标准总局发布。基本集共收入汉字<code>6763</code>个和非汉字图形字符<code>682</code>个，通行于中国大陆。新加坡等地也使用此编码。GBK是对GB2312-80的扩展.</p>
+<h1 id="Big5"><a href="#Big5" class="headerlink" title="Big5"></a>Big5</h1><p>在台湾、香港与澳门地区，使用的是繁体中文字符集。而1980年发布的<code>GB2312</code>面向简体中文字符集，并不支持繁体汉字。在这些使用繁体中文字符集的地区，一度出现过很多不同厂商提出的字符集编码，这些编码彼此互不兼容，造成了信息交流的困难。为统一繁体字符集编码，1984年，台湾五大厂商宏碁、神通、佳佳、零壹以及大众一同制定了一种繁体中文编码方案，因其来源被称为五大码，英文写作Big5，后来按英文翻译回汉字后，普遍被称为大五码。大五码是一种繁体中文汉字字符集，其中繁体汉字<code>13053</code>个，<code>808</code>个标点符号、希腊字母及特殊符号。</p>
+<h1 id="unicode"><a href="#unicode" class="headerlink" title="unicode"></a>unicode</h1><p>为什么电子邮件和网页都经常会出现乱码，就是因为信息的提供者可能是日文的ANSI编码体系和信息的读取者可能是中文的编码体系，他们对同一个二进制编码值进行显示，采用了不同的编码，导致乱码。这个问题促使了unicode码的诞生。 如果有一种编码，将世界上所有的符号都纳入其中，无论是英文、日文、还是中文等，大家都使用这个编码表，就不会出现编码不匹配现象。每个符号对应一个唯一的编码，乱码问题就不存在了。这就是Unicode编码。</p>
+<p><code>unicode</code>，中文叫万国码，统一码，是统一码联盟为了世界上大多数文字系统进行整理和编码。 和<code>unicode</code>类似，iso组织也在做同样的事情，iso开展了 <code>ISO/IEC 10646</code>项目，名字叫<code>“ Universal Multiple-Octet Coded Character Set”</code>，简称<code>UCS</code>。 后来，双方意识到时间上不需要2套通用的字符集，所以双方开始进行整合，到<code>unicode2.0</code>时，<code>unicode</code>的编码和<code>ucs</code>的编码都基本一致。 但是又略有不同。</p>
+<p><code>Unicode</code>深入人心，且<code>UTF-8</code>(Unicode中的一种)大行其道，<code>UCS</code>编码基本被等同于<code>UTF-16</code>，<code>UTF-32</code>了，所以目前UCS基本谈出人们的视野中。</p>
+<h1 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h1><p><code>Unicode</code>固然统一了编码方式，但是它的效率不高，比如<code>UCS-4</code>(Unicode的标准之一)规定用4个字节存储一个符号，那么每个英文字母前都必然有三个字节是0，这对存储和传输来说都很耗资源。 为了提高<code>Unicode</code>的编码效率，于是就出现了<code>UTF-8</code>编码。<code>UTF-8</code>可以根据不同的符号自动选择编码的长短。比如英文字母可以只用1个字节就够了。</p>
+<h1 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h1><p><code>UTF-16</code>是<code>Unicode</code>的其中一个使用方式,<code>UTF-16</code>比起<code>UTF-8</code>，好处在于大部分字符都以固定长度的字节 (2字节) 储存，但<code>UTF-16</code>却无法兼容于<code>ASCII</code>编码。</p>
+<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>有的电子邮件系统(比如国外信箱)不支持非英文字母(比如汉字)传输，这是历史原因造成的(认为只有美国会使用电子邮件?)。因为一个英文字母使用ASCII编码来存储，占存储器的1个字节(8位)，实际上只用了7位2进制来存储，第一位并没有使用，设置为0，所以，这样的系统认为凡是第一位是1的字节都是错误的。而有的编码方案(比如GB2312)不但使用多个字节编码一个字符，并且第一位经常是1，于是邮件系统就把1换成0，这样收到邮件的人就会发现邮件乱码。</p>
+<p>为了能让邮件系统正常的收发信件，就需要把由其他编码存储的符号转换成ASCII码来传输。比如，在一端发送GB2312编码－&gt;根据Base64规则－&gt;转换成ASCII码，接收端收到ASCII码－&gt;根据Base64规则－&gt;还原到GB2312编码。</p>
+<h1 id="BMP"><a href="#BMP" class="headerlink" title="BMP"></a>BMP</h1><p>UCS-4根据最高位为0的最高字节分成2^7&#x3D;128个group。每个group再根据次高字节分为256个plane。每个plane根据第3个字节分为256行 (rows)，每行包含256个cells。当然同一行的cells只是最后一个字节不同，其余都相同。 group 0的plane 0被称作Basic Multilingual Plane, 即BMP。或者说UCS-4中，高两个字节为0的码位被称作BMP。 将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。在UCS-2的两个字节前加上两个零字节，就得到了UCS-4的BMP。而目前的UCS-4规范中还没有任何字符被分配在BMP之外</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>编码</tag>
       </tags>
   </entry>
   <entry>
@@ -629,6 +629,44 @@
       </tags>
   </entry>
   <entry>
+    <title>【CSS】设置 border 长度</title>
+    <url>/2022/04/04/css-border-length/</url>
+    <content><![CDATA[<h1 id="场景举例"><a href="#场景举例" class="headerlink" title="场景举例"></a>场景举例</h1><blockquote>
+<p>如何实现 <strong>在线课程</strong> 字体下方的 <strong>短横线</strong> 样式效果</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/c343f1537cc941c4b3be74f822405453.png"></p>
+<span id="more"></span>
+
+<h1 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h1><h2 id="1-常规方案"><a href="#1-常规方案" class="headerlink" title="1.常规方案"></a>1.常规方案</h2><p>看到这样的样式效果，大多数人首先想到的一定是 <code>border-bottom</code> 吧，但是真正写在 <code>css</code> 中，你会发现，效果是这样的</p>
+<p><img src="https://img-blog.csdnimg.cn/d1842b761b974e828e12ef4eebb0ba17.png"></p>
+<p>实现了，却又好像没实现，无法设置长度，那么下面我们试着换一种思路去实现这个效果</p>
+<h2 id="2-优化方案"><a href="#2-优化方案" class="headerlink" title="2.优化方案"></a>2.优化方案</h2><p>我们不要把这个短横线看做 <strong>border</strong> ，使用 <strong>伪元素</strong> 实现，可以随意更改大小、宽度、长度等，非常的方便</p>
+<p><strong>伪元素</strong></p>
+<blockquote>
+<p>用于设置元素指定部分的样式，可用于设置元素的首字母、首行的样式，在元素的内容之前或之后插入内容等</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">selector::pseudo-element &#123;</span><br><span class="line">  property: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">h1</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">	<span class="comment">/* 必须设置 content 属性才能生效 */</span></span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="comment">/* border 宽度 */</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">    <span class="comment">/* border 高度 */</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="comment">/* border 位置 absolute(绝对定位) */</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">295px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">705px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">918px</span>;</span><br><span class="line">    <span class="comment">/* 自动内减 */</span></span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="通用格式"><a href="#通用格式" class="headerlink" title="通用格式"></a>通用格式</h1><blockquote>
+<p>抽象上述代码为通用格式，日后可应用在其他场景下</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">selector<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: ;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzc0MTg2Ny9hcnRpY2xlL2RldGFpbHMvMTA0OTYwNjY4">border-position属性详解<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Web 前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一文辨析 Java、JSP、JavaScript</title>
     <url>/2022/03/31/distinction-language/</url>
     <content><![CDATA[<blockquote>
@@ -673,44 +711,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【CSS】设置 border 长度</title>
-    <url>/2022/04/04/css-border-length/</url>
-    <content><![CDATA[<h1 id="场景举例"><a href="#场景举例" class="headerlink" title="场景举例"></a>场景举例</h1><blockquote>
-<p>如何实现 <strong>在线课程</strong> 字体下方的 <strong>短横线</strong> 样式效果</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/c343f1537cc941c4b3be74f822405453.png"></p>
-<span id="more"></span>
-
-<h1 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h1><h2 id="1-常规方案"><a href="#1-常规方案" class="headerlink" title="1.常规方案"></a>1.常规方案</h2><p>看到这样的样式效果，大多数人首先想到的一定是 <code>border-bottom</code> 吧，但是真正写在 <code>css</code> 中，你会发现，效果是这样的</p>
-<p><img src="https://img-blog.csdnimg.cn/d1842b761b974e828e12ef4eebb0ba17.png"></p>
-<p>实现了，却又好像没实现，无法设置长度，那么下面我们试着换一种思路去实现这个效果</p>
-<h2 id="2-优化方案"><a href="#2-优化方案" class="headerlink" title="2.优化方案"></a>2.优化方案</h2><p>我们不要把这个短横线看做 <strong>border</strong> ，使用 <strong>伪元素</strong> 实现，可以随意更改大小、宽度、长度等，非常的方便</p>
-<p><strong>伪元素</strong></p>
-<blockquote>
-<p>用于设置元素指定部分的样式，可用于设置元素的首字母、首行的样式，在元素的内容之前或之后插入内容等</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">selector::pseudo-element &#123;</span><br><span class="line">  property: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">h1</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">	<span class="comment">/* 必须设置 content 属性才能生效 */</span></span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="comment">/* border 宽度 */</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">    <span class="comment">/* border 高度 */</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="comment">/* border 位置 absolute(绝对定位) */</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">295px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">705px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">918px</span>;</span><br><span class="line">    <span class="comment">/* 自动内减 */</span></span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="通用格式"><a href="#通用格式" class="headerlink" title="通用格式"></a>通用格式</h1><blockquote>
-<p>抽象上述代码为通用格式，日后可应用在其他场景下</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">selector<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: ;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>参考资料：</p>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzc0MTg2Ny9hcnRpY2xlL2RldGFpbHMvMTA0OTYwNjY4">border-position属性详解<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Web 前端</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -1270,6 +1270,35 @@
       </tags>
   </entry>
   <entry>
+    <title>练习4-寻求特定值</title>
+    <url>/2021/08/10/exercise4/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>编写程序，从键盘上输入N个学生的考试成绩存入一维数组中，求该数组中成绩的最高分、最低分及平均分并输出到屏幕。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><blockquote>
+<p>（1）定义常量N值；<br>（2）建立用于存放数据的一维数组；<br>（3）接收用户输入；<br>（4）查询 &#x2F; 计算特定值；<br>（5）输出结果；</p>
+</blockquote>
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">float</span>[] array = <span class="keyword">new</span> <span class="title class_">float</span>[N];</span><br><span class="line">        <span class="type">float</span> Max, Min, Average = <span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;please enter the &quot;</span> + N + <span class="string">&quot; students test results in order:&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            array[i] = input.nextFloat();</span><br><span class="line">        &#125;</span><br><span class="line">        Max = Min = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] &gt; Max)</span><br><span class="line">                Max = array[i];</span><br><span class="line">            <span class="keyword">if</span> (array[i] &lt; Min)</span><br><span class="line">                Min = array[i];</span><br><span class="line">            Average += array[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Average /= N;</span><br><span class="line">        System.out.format(<span class="string">&quot;highest score:%.1f,lowest score:%.1f,the average score:%.2f&quot;</span>,Max,Min,Average);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><blockquote>
+<p>注意Java中接收用户输入的方法，同时考虑对一维数组“动态赋值”的操作。</p>
+</blockquote>
+<h1 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 10</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> <span class="built_in">array</span>[N], Max,Min,Average;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please enter the N students test results in order:&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>, &amp;<span class="built_in">array</span>[i]); </span><br><span class="line">    &#125;</span><br><span class="line">    Max =Min=<span class="built_in">array</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">array</span>[i] &gt; Max)</span><br><span class="line">            Max = <span class="built_in">array</span>[i];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[i] &lt; Min)</span><br><span class="line">            Min = <span class="built_in">array</span>[i];</span><br><span class="line">        Average += <span class="built_in">array</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    Average /= N;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;highest score:%.1f,lowest score:%.1f,the average score:%.3f&quot;</span>, Max, Min, Average);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><blockquote>
+<mark class="label ">`scanf()`中别丢弃 `& `取地址符</mark>(异常：输入数据后无输出)。求平均值无需增加变量`Sum`，可将变量`Average`放入循环体内求总和，在循环体外进行平均值求算。
+</blockquote>
+]]></content>
+      <categories>
+        <category>C</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>练习5-冒泡排序</title>
     <url>/2021/08/10/exercise5/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
@@ -1315,35 +1344,6 @@
 
 
 
-]]></content>
-      <categories>
-        <category>C</category>
-      </categories>
-      <tags>
-        <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>练习4-寻求特定值</title>
-    <url>/2021/08/10/exercise4/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>编写程序，从键盘上输入N个学生的考试成绩存入一维数组中，求该数组中成绩的最高分、最低分及平均分并输出到屏幕。</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><blockquote>
-<p>（1）定义常量N值；<br>（2）建立用于存放数据的一维数组；<br>（3）接收用户输入；<br>（4）查询 &#x2F; 计算特定值；<br>（5）输出结果；</p>
-</blockquote>
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">float</span>[] array = <span class="keyword">new</span> <span class="title class_">float</span>[N];</span><br><span class="line">        <span class="type">float</span> Max, Min, Average = <span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;please enter the &quot;</span> + N + <span class="string">&quot; students test results in order:&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            array[i] = input.nextFloat();</span><br><span class="line">        &#125;</span><br><span class="line">        Max = Min = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] &gt; Max)</span><br><span class="line">                Max = array[i];</span><br><span class="line">            <span class="keyword">if</span> (array[i] &lt; Min)</span><br><span class="line">                Min = array[i];</span><br><span class="line">            Average += array[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Average /= N;</span><br><span class="line">        System.out.format(<span class="string">&quot;highest score:%.1f,lowest score:%.1f,the average score:%.2f&quot;</span>,Max,Min,Average);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><blockquote>
-<p>注意Java中接收用户输入的方法，同时考虑对一维数组“动态赋值”的操作。</p>
-</blockquote>
-<h1 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 10</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> <span class="built_in">array</span>[N], Max,Min,Average;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please enter the N students test results in order:&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>, &amp;<span class="built_in">array</span>[i]); </span><br><span class="line">    &#125;</span><br><span class="line">    Max =Min=<span class="built_in">array</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">array</span>[i] &gt; Max)</span><br><span class="line">            Max = <span class="built_in">array</span>[i];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[i] &lt; Min)</span><br><span class="line">            Min = <span class="built_in">array</span>[i];</span><br><span class="line">        Average += <span class="built_in">array</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    Average /= N;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;highest score:%.1f,lowest score:%.1f,the average score:%.3f&quot;</span>, Max, Min, Average);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><blockquote>
-<mark class="label ">`scanf()`中别丢弃 `& `取地址符</mark>(异常：输入数据后无输出)。求平均值无需增加变量`Sum`，可将变量`Average`放入循环体内求总和，在循环体外进行平均值求算。
-</blockquote>
 ]]></content>
       <categories>
         <category>C</category>
@@ -5240,6 +5240,40 @@
       </tags>
   </entry>
   <entry>
+    <title>双击运行 jar 文件</title>
+    <url>/2022/03/22/run-jar-file/</url>
+    <content><![CDATA[<blockquote>
+<p>windows 下设置双击运行 jar 文件</p>
+</blockquote>
+<p>大家都知道，项目打包的 jar 文件应该是可以直接运行的，虽然我们也可以用指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
+
+<p>运行，但是总归是麻烦些，要是能双击直接打开岂不是很方便，下面我们就来一起看看怎么操作吧</p>
+<span id="more"></span>
+
+<p>首先确保本地 <code>java</code> 的开发环境配置成功，<code>cmd</code> 执行指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>正确显示版本号则配置无误，未配置过的朋友请<span class="exturl" data-url="aHR0cHM6Ly9kcC1qc29uLmJsb2cuY3Nkbi5uZXQvYXJ0aWNsZS9kZXRhaWxzLzExODg3NTk2Nw==">参考这里<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/dcf6e9547cde4c3786b12f6b84dd6c77.png"></p>
+<p>接下来我们找到一个可以执行的 <code>jar</code> 包，右键选择 <strong>打开方式</strong> 为 <code>jdk</code> 安装目录下的 <code>java\jdk1.8.0_221\bin\javaw.exe</code>，并勾选 <strong>始终用此程序打开</strong> </p>
+<p><img src="https://img-blog.csdnimg.cn/c6a7e1cdf07e4aef817ef22f9c2860e5.png"></p>
+<p><code>Win + R</code> 组合键输入 <code>regedit</code> 打开注册表编辑器找到<code>HKEY_CLASSES_ROOT\Applications\javaw.exe\shell\open\command</code></p>
+<p><img src="https://img-blog.csdnimg.cn/3a02f0db31474e6980c1c6d8b638b5fa.png"></p>
+<p>右键修改值，路径后添加 <code> -jar &quot;%1&quot; %*</code> 注意 <code> -</code> 前方有一个空格</p>
+<p><img src="https://img-blog.csdnimg.cn/27bd07380d334c4cb02b9d2a9ee3d4f0.png"></p>
+<p>修改后返回 <code>jar</code> 包的位置，发现已经改变了，双击即可运行</p>
+<p><img src="https://img-blog.csdnimg.cn/11e79d2bce91475899c97d52f5a721fa.png"></p>
+<p>有时候可能被电脑里的解压程序默认关联了文件格式，这时候如果未生效的话需要到相关软件中取消文件格式关联</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>服务器部署 code-server</title>
     <url>/2021/03/03/setup-code-server/</url>
     <content><![CDATA[<p><span class="exturl" data-url="aHR0cDovL3ZzYy5jb2Rlci1qYXNvbi5jbjo4MDgwLw==">效果预览<i class="fa fa-external-link-alt"></i></span></p>
@@ -5376,40 +5410,6 @@
       </categories>
       <tags>
         <tag>云存储</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>双击运行 jar 文件</title>
-    <url>/2022/03/22/run-jar-file/</url>
-    <content><![CDATA[<blockquote>
-<p>windows 下设置双击运行 jar 文件</p>
-</blockquote>
-<p>大家都知道，项目打包的 jar 文件应该是可以直接运行的，虽然我们也可以用指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
-
-<p>运行，但是总归是麻烦些，要是能双击直接打开岂不是很方便，下面我们就来一起看看怎么操作吧</p>
-<span id="more"></span>
-
-<p>首先确保本地 <code>java</code> 的开发环境配置成功，<code>cmd</code> 执行指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>正确显示版本号则配置无误，未配置过的朋友请<span class="exturl" data-url="aHR0cHM6Ly9kcC1qc29uLmJsb2cuY3Nkbi5uZXQvYXJ0aWNsZS9kZXRhaWxzLzExODg3NTk2Nw==">参考这里<i class="fa fa-external-link-alt"></i></span></p>
-<p><img src="https://img-blog.csdnimg.cn/dcf6e9547cde4c3786b12f6b84dd6c77.png"></p>
-<p>接下来我们找到一个可以执行的 <code>jar</code> 包，右键选择 <strong>打开方式</strong> 为 <code>jdk</code> 安装目录下的 <code>java\jdk1.8.0_221\bin\javaw.exe</code>，并勾选 <strong>始终用此程序打开</strong> </p>
-<p><img src="https://img-blog.csdnimg.cn/c6a7e1cdf07e4aef817ef22f9c2860e5.png"></p>
-<p><code>Win + R</code> 组合键输入 <code>regedit</code> 打开注册表编辑器找到<code>HKEY_CLASSES_ROOT\Applications\javaw.exe\shell\open\command</code></p>
-<p><img src="https://img-blog.csdnimg.cn/3a02f0db31474e6980c1c6d8b638b5fa.png"></p>
-<p>右键修改值，路径后添加 <code> -jar &quot;%1&quot; %*</code> 注意 <code> -</code> 前方有一个空格</p>
-<p><img src="https://img-blog.csdnimg.cn/27bd07380d334c4cb02b9d2a9ee3d4f0.png"></p>
-<p>修改后返回 <code>jar</code> 包的位置，发现已经改变了，双击即可运行</p>
-<p><img src="https://img-blog.csdnimg.cn/11e79d2bce91475899c97d52f5a721fa.png"></p>
-<p>有时候可能被电脑里的解压程序默认关联了文件格式，这时候如果未生效的话需要到相关软件中取消文件格式关联</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -7749,57 +7749,6 @@
       </tags>
   </entry>
   <entry>
-    <title>静态成员函数访问非静态数据成员</title>
-    <url>/2021/05/11/static-member-function-explain/</url>
-    <content><![CDATA[<h1 id="静态数据成员"><a href="#静态数据成员" class="headerlink" title="静态数据成员"></a>静态数据成员</h1><p><strong>定义格式：</strong></p>
-<blockquote>
-<p>static 类型名 静态数据成员名 ;</p>
-</blockquote>
-<p>详解：由于静态数据成员属于本类的所有对象共享，不属于特定类对象，因此在未产生类对象时作用域就可见，即：在未产生类的实例时，就可以对它进行操作</p>
-<p><strong>初始化：</strong></p>
-<blockquote>
-<p>类型 类名 :: 静态数据成员 &#x3D; 初始化值 ;</p>
-</blockquote>
-<p>详解：静态数据成员必须在类外初始化，不可在类体内，因为：构造函数中，如果可以，则每次建立对象，都会对静态数据成员的值进行修改，这违背静态数据成员的使用目的；类内也不可以初始化，不要忘记，类只是一种数据类型，数据类型中怎么能赋初值呢？</p>
-<span id="more"></span>
-
-<h1 id="静态成员函数"><a href="#静态成员函数" class="headerlink" title="静态成员函数"></a>静态成员函数</h1><p><strong>定义格式：</strong></p>
-<blockquote>
-<p>static 返回类型 静态成员函数名 (参数表) ;</p>
-</blockquote>
-<p><strong>调用方式：</strong></p>
-<blockquote>
-<p>类名 :: 静态成员函数名 (实参表) ;<br>对象名 . 静态成员函数名 (实参表) ;</p>
-</blockquote>
-<p><strong>注意：</strong></p>
-<div class="note danger"><p>类外定义静态成员函数时，定义格式和普通成员函数定义格式相同，<mark class="label ">不再使用static修饰</mark>；<br>使用对象名和成员运算符(.)调用成员函数时，并非该函数属于某一对象，只是类与对象间的桥梁，为了能处理静态数据成员；</p>
-</div>
-
-<p>静态成员函数不能<mark class="label ">默认引用</mark>本类非静态数据成员的原因：</p>
-<div class="note info"><p>当调用一个对象的非静态成员函数时，系统会将该对象的起始地址赋予成员函数的this指针。然而，静态成员函数不属于对象，无this指针。所以静态成员函数不能访问类的默认非静态成员（非静态成员函数和非静态数据成员）</p>
-</div>
-
-<p>举例说明一种静态成员函数访问非静态数据成员的方式：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">Point</span>(<span class="type">int</span> a) &#123;                      <span class="comment">//构造函数</span></span><br><span class="line">		x = a;</span><br><span class="line">		y += x; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">f1</span><span class="params">(Point m)</span></span>;           <span class="comment">//静态成员函数的原型声明</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="type">static</span> <span class="type">int</span> y;                      <span class="comment">//静态数据成员</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Point::f1</span><span class="params">(Point m)</span> </span>&#123;              <span class="comment">//静态成员函数的类外定义      参数表中创建对象</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;x=&quot;</span> &lt;&lt; m.x &lt;&lt; endl;       <span class="comment">//静态成员函数通过对象访问非静态数据成员</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;y=&quot;</span> &lt;&lt; y &lt;&lt; endl;         <span class="comment">//静态成员函数处理静态数据成员</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Point::y = <span class="number">0</span>;                      <span class="comment">//静态数据成员初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="function">Point <span class="title">P1</span><span class="params">(<span class="number">5</span>)</span>, <span class="title">p2</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">	Point::<span class="built_in">f1</span>(P1);                     <span class="comment">//静态成员函数调用时一般使用 类名::</span></span><br><span class="line">	Point::<span class="built_in">f1</span>(p2);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>程序运行结果:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">x=<span class="number">5</span></span><br><span class="line">y=<span class="number">15</span></span><br><span class="line">x=<span class="number">10</span></span><br><span class="line">y=<span class="number">15</span></span><br></pre></td></tr></table></figure>
-<p>对运行结果的分析，最后一次对静态数据成员y更新后，y&#x3D;15所以两次输出y的值都是15</p>
-<mark class="label ">只要对静态数据成员的值更新一次，就可以保证所有对象都会存取更新后的值</mark>
-
-<p>由本例可知：静态成员函数不能引用本类非静态成员并非绝对，只是不可以进行默认的访问，因为编译器不知道应该去寻找哪一个对象。若必须要访问，则有两种方式，且一般使用第二种居多</p>
-<blockquote>
-<p>对象名 . 非静态成员 ;<br>类名 :: 非静态成员 ;  </p>
-</blockquote>
-<p>故：<mark class="label ">实例化对象</mark>即可完成对非静态数据成员的访问</p>
-]]></content>
-      <categories>
-        <category>CPP</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL 基础（九）视图与索引实战演练</title>
     <url>/2022/04/29/sql-base9/</url>
     <content><![CDATA[<h1 id="实验任务-1"><a href="#实验任务-1" class="headerlink" title="实验任务 1"></a>实验任务 1</h1><blockquote>
@@ -7932,6 +7881,57 @@
       </categories>
       <tags>
         <tag>SQLServer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>静态成员函数访问非静态数据成员</title>
+    <url>/2021/05/11/static-member-function-explain/</url>
+    <content><![CDATA[<h1 id="静态数据成员"><a href="#静态数据成员" class="headerlink" title="静态数据成员"></a>静态数据成员</h1><p><strong>定义格式：</strong></p>
+<blockquote>
+<p>static 类型名 静态数据成员名 ;</p>
+</blockquote>
+<p>详解：由于静态数据成员属于本类的所有对象共享，不属于特定类对象，因此在未产生类对象时作用域就可见，即：在未产生类的实例时，就可以对它进行操作</p>
+<p><strong>初始化：</strong></p>
+<blockquote>
+<p>类型 类名 :: 静态数据成员 &#x3D; 初始化值 ;</p>
+</blockquote>
+<p>详解：静态数据成员必须在类外初始化，不可在类体内，因为：构造函数中，如果可以，则每次建立对象，都会对静态数据成员的值进行修改，这违背静态数据成员的使用目的；类内也不可以初始化，不要忘记，类只是一种数据类型，数据类型中怎么能赋初值呢？</p>
+<span id="more"></span>
+
+<h1 id="静态成员函数"><a href="#静态成员函数" class="headerlink" title="静态成员函数"></a>静态成员函数</h1><p><strong>定义格式：</strong></p>
+<blockquote>
+<p>static 返回类型 静态成员函数名 (参数表) ;</p>
+</blockquote>
+<p><strong>调用方式：</strong></p>
+<blockquote>
+<p>类名 :: 静态成员函数名 (实参表) ;<br>对象名 . 静态成员函数名 (实参表) ;</p>
+</blockquote>
+<p><strong>注意：</strong></p>
+<div class="note danger"><p>类外定义静态成员函数时，定义格式和普通成员函数定义格式相同，<mark class="label ">不再使用static修饰</mark>；<br>使用对象名和成员运算符(.)调用成员函数时，并非该函数属于某一对象，只是类与对象间的桥梁，为了能处理静态数据成员；</p>
+</div>
+
+<p>静态成员函数不能<mark class="label ">默认引用</mark>本类非静态数据成员的原因：</p>
+<div class="note info"><p>当调用一个对象的非静态成员函数时，系统会将该对象的起始地址赋予成员函数的this指针。然而，静态成员函数不属于对象，无this指针。所以静态成员函数不能访问类的默认非静态成员（非静态成员函数和非静态数据成员）</p>
+</div>
+
+<p>举例说明一种静态成员函数访问非静态数据成员的方式：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">Point</span>(<span class="type">int</span> a) &#123;                      <span class="comment">//构造函数</span></span><br><span class="line">		x = a;</span><br><span class="line">		y += x; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">f1</span><span class="params">(Point m)</span></span>;           <span class="comment">//静态成员函数的原型声明</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="type">static</span> <span class="type">int</span> y;                      <span class="comment">//静态数据成员</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Point::f1</span><span class="params">(Point m)</span> </span>&#123;              <span class="comment">//静态成员函数的类外定义      参数表中创建对象</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;x=&quot;</span> &lt;&lt; m.x &lt;&lt; endl;       <span class="comment">//静态成员函数通过对象访问非静态数据成员</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;y=&quot;</span> &lt;&lt; y &lt;&lt; endl;         <span class="comment">//静态成员函数处理静态数据成员</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Point::y = <span class="number">0</span>;                      <span class="comment">//静态数据成员初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="function">Point <span class="title">P1</span><span class="params">(<span class="number">5</span>)</span>, <span class="title">p2</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">	Point::<span class="built_in">f1</span>(P1);                     <span class="comment">//静态成员函数调用时一般使用 类名::</span></span><br><span class="line">	Point::<span class="built_in">f1</span>(p2);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>程序运行结果:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">x=<span class="number">5</span></span><br><span class="line">y=<span class="number">15</span></span><br><span class="line">x=<span class="number">10</span></span><br><span class="line">y=<span class="number">15</span></span><br></pre></td></tr></table></figure>
+<p>对运行结果的分析，最后一次对静态数据成员y更新后，y&#x3D;15所以两次输出y的值都是15</p>
+<mark class="label ">只要对静态数据成员的值更新一次，就可以保证所有对象都会存取更新后的值</mark>
+
+<p>由本例可知：静态成员函数不能引用本类非静态成员并非绝对，只是不可以进行默认的访问，因为编译器不知道应该去寻找哪一个对象。若必须要访问，则有两种方式，且一般使用第二种居多</p>
+<blockquote>
+<p>对象名 . 非静态成员 ;<br>类名 :: 非静态成员 ;  </p>
+</blockquote>
+<p>故：<mark class="label ">实例化对象</mark>即可完成对非静态数据成员的访问</p>
+]]></content>
+      <categories>
+        <category>CPP</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -8473,72 +8473,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vscode 搭建 C / C++ 开发环境</title>
-    <url>/2022/04/04/vscode-envc/</url>
-    <content><![CDATA[<blockquote>
-<p>将士出征，怎能没有一把利器，本文基于 VSC 搭建 C++ 开发环境</p>
-</blockquote>
-<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>相信多数计算机专业的同学都和我一样，步入大学首先要学习的就是 C 语言。那么，我想下面这个东西你一定见过</p>
-<p><img src="https://img-blog.csdnimg.cn/ccd1ad9d89554b9d93db6c69a27f2bfd.png"></p>
-<p>记得当时令我好奇的就是，为什么这个 VC++6.0 里，行号、插件、快捷键……什么都没有呢？？于是，历经 CodeBlocks、DevC++、VC++6.0 等编辑器后，我找到了致胜的法宝，今天的主角——VScode，这款工具在之前的博文中就有过推荐，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMTk0NjQyNzI=">点我直达<i class="fa fa-external-link-alt"></i></span></p>
-<p>下面我们来一起配置下 C++ 的开发环境</p>
-<span id="more"></span>
-
-<h1 id="Vscode-—-编辑器"><a href="#Vscode-—-编辑器" class="headerlink" title="Vscode — 编辑器"></a>Vscode — 编辑器</h1><blockquote>
-<p>编辑器就是你写代码的地方，一款好的编辑器支持语法高亮、超多快捷键、代码提示等诸多功能</p>
-</blockquote>
-<p><span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">访问官网<i class="fa fa-external-link-alt"></i></span>下载，不做细节介绍，一个字“好”</p>
-<p><img src="https://img-blog.csdnimg.cn/096921d398ad49e1bd81d51915a41c29.png"></p>
-<p>傻瓜式操作，直接下一步即可安装成功</p>
-<h1 id="mingw64-—-编译器"><a href="#mingw64-—-编译器" class="headerlink" title="mingw64 — 编译器"></a>mingw64 — 编译器</h1><blockquote>
-<p>将源码文件编译为计算机能够执行的二进制代码文件，简单来说，代码是写给人看的，二进制文件是电脑看的，代码是人和机器交流的通道</p>
-</blockquote>
-<p><span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2Vmb3JnZS5uZXQvcHJvamVjdHMvbWluZ3ctdzY0L2ZpbGVzLw==">访问链接<i class="fa fa-external-link-alt"></i></span>，下载编译器</p>
-<p><img src="https://img-blog.csdnimg.cn/1b6634ba3d9543e9910009a6e2d1c046.png"></p>
-<p>将下载下来的文件解压后，放到 <code>C:\Program Files</code> 文件夹下</p>
-<p><img src="https://img-blog.csdnimg.cn/65de7205aa1140c8abd02cd1ceec8a82.png"></p>
-<p>添加环境变量 <strong>Path</strong> ，<code>系统-&gt;关于-&gt;高级系统设置</code></p>
-<p><img src="https://img-blog.csdnimg.cn/b054d54bdcaa4797aa0caa331ee1dfdc.png"></p>
-<p>编辑 <strong>Path</strong> 变量</p>
-<p><img src="https://img-blog.csdnimg.cn/deb3e3b2ff2c44d49a429c50aa871165.png"></p>
-<p>加入 <code>C:\Program Files\mingw64\bin</code>，然后一路确定下去</p>
-<p><code>cmd</code> 窗口键入 <code>gcc --version</code> 验证配置状态</p>
-<p><img src="https://img-blog.csdnimg.cn/4227d319774242d6b8478f5ea836d84a.png"></p>
-<p>显示图示信息则配置成功</p>
-<h1 id="插件支持"><a href="#插件支持" class="headerlink" title="插件支持"></a>插件支持</h1><p>安装 C++ 语言支持拓展包</p>
-<p><img src="https://img-blog.csdnimg.cn/2cde183ba5634d468b4bbeb6fba52885.png"></p>
-<p>安装 coderunner （一键执行源程序）</p>
-<p><img src="https://img-blog.csdnimg.cn/a163d61f64114da5a5884b4dfc343471.png"></p>
-<h1 id="vscode-配置文件"><a href="#vscode-配置文件" class="headerlink" title=".vscode 配置文件"></a>.vscode 配置文件</h1><p>打开 vscode，导入一个空文件夹</p>
-<p><img src="https://img-blog.csdnimg.cn/6cbc7f33f64f48c9bcf3bb266db59128.png"></p>
-<p>点击<strong>新建文件夹</strong>按钮</p>
-<p><img src="https://img-blog.csdnimg.cn/37b1e135b0e24327b58b2269a7307a48.png"></p>
-<p>命名为 <code>.vscode</code>，然后点击<strong>新建文件</strong>按钮，依次建立图示文件结构</p>
-<p><img src="https://img-blog.csdnimg.cn/e650d803fd4f4d82b2f10025563fde72.png"></p>
-<p>其实对应的文件名称在后期编译时，vscode 会自动生成，但由于默认配置不太友好（比如生成的 exe 文件都在源文件下方，非常混乱），我们对此进行优化配置，&#x3D;&#x3D;注意对应的路径请填写你的配置路径&#x3D;&#x3D;</p>
-<blockquote>
-<p>下面给出常用的配置文件(包含 .exe 重定向)，可直接保存使用，定向 <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMTk2ODEyNDk=">详细参考<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<h2 id="c-cpp-properties-json"><a href="#c-cpp-properties-json" class="headerlink" title="c_cpp_properties.json"></a>c_cpp_properties.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Win32&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;includePath&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;/**&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;defines&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;_DEBUG&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;UNICODE&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;_UNICODE&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;windowsSdkVersion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10.0.17763.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;compilerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gcc.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cStandard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c17&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cppStandard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c++17&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;intelliSenseMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc-x64&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">4</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a>launch.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        </span><br><span class="line">        <span class="punctuation">&#123;</span><span class="comment">//包含Debug配置</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc.exe - 生成和调试活动文件&quot;</span><span class="punctuation">,</span><span class="comment">//配置名称</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppdbg&quot;</span><span class="punctuation">,</span> <span class="comment">//配置类型,对应cpptools提供的调试功能</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span> <span class="comment">//请求配置类型,可以是启动/附加类型[launch/attach]</span></span><br><span class="line">            <span class="comment">//&quot;program&quot;: &quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;,</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;\\build\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="punctuation">,</span><span class="comment">//待调试程序本地路径</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">//程序调试时传递给程序的命令行参数,设为空值</span></span><br><span class="line">            <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span><span class="comment">//改为true时程序暂停在程序入口位置,即main处打上断点</span></span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span><span class="punctuation">,</span> <span class="comment">//调试程序时的工作目录,这里表示源码目录</span></span><br><span class="line">            <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">//环境变量,设为空值</span></span><br><span class="line">            <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span> <span class="comment">//true:cmd窗口; false:Vscode的内置终端输出</span></span><br><span class="line">            <span class="attr">&quot;MIMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gdb&quot;</span><span class="punctuation">,</span> <span class="comment">//指定连接的调试器,gdb为minGW64中调试程序</span></span><br><span class="line">            <span class="attr">&quot;miDebuggerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gdb.exe&quot;</span><span class="punctuation">,</span> <span class="comment">//指定调试器所在路径,安装位置不同注意需要修改,间隔为\\</span></span><br><span class="line">            <span class="attr">&quot;setupCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;为 gdb 启用整齐打印&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-enable-pretty-printing&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;ignoreFailures&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;preLaunchTask&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C/C++: gcc.exe 生成活动文件&quot;</span> <span class="comment">//调试开始前执行需要执行的任务,调试前要编译构建 名称要和tasks.json的label保持一致</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="tasks-json"><a href="#tasks-json" class="headerlink" title="tasks.json"></a>tasks.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="comment">//构建配置项</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;shell&quot;</span><span class="punctuation">,</span><span class="comment">//任务类型,Vscode将预定义变量转义解析后直接传给command;shell-&gt;先打开shell再输入命令,因此args会经过shell再次解析</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C/C++: gcc.exe 生成活动文件&quot;</span><span class="punctuation">,</span><span class="comment">//任务名称</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gcc.exe&quot;</span><span class="punctuation">,</span><span class="comment">//本地编译器路径</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="comment">//包含传给gcc命令的参数,用于实现特定功能</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span><span class="punctuation">,</span> <span class="comment">//生成和调试有关的信息</span></span><br><span class="line">                <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span> <span class="comment">//指定编译文件为当前文件</span></span><br><span class="line">                <span class="string">&quot;-o&quot;</span><span class="punctuation">,</span><span class="comment">//指定输出文件的路径和名称</span></span><br><span class="line">                <span class="comment">//&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;\\build\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="comment">//修改.exe文件生成位置</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="comment">//&quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;</span></span><br><span class="line">                <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;problemMatcher&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;$gcc&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="comment">//包含很多task,归为group</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span><span class="comment">//表名该组任务类型是构建</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="comment">//表明此任务为此组任务中的默认任务</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;调试器生成的任务。&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="环境验证"><a href="#环境验证" class="headerlink" title="环境验证"></a>环境验证</h1><p>输入经典的 HelloWorld 程序，测试下环境</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-04 09:57:31</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-04 09:57:32</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   cout&lt;&lt;<span class="string">&quot;Hello World!&quot;</span>&lt;&lt;endl;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果你是用了上方的配置文件，请在根目录下新建 <code>build</code> 文件夹，<code>exe</code> 文件会自动归类到此文件下<br><img src="https://img-blog.csdnimg.cn/a139814c838b40c0ad4e147ebae6d4db.png"></p>
-<p>如果没有新建 build 文件夹，系统会提示你没有这样的文件夹，也就是<strong>找不到输出目录</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/5a04732ee6624a55a8362b73b3403996.png"></p>
-]]></content>
-      <categories>
-        <category>CPP</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《我的 Vivado 实战——单周期 CPU 指令分析》</title>
     <url>/2021/08/06/vivado-single-cycle-cpu/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>不知道你是否和我有过同样的感受，《计算机组成原理》这门学科学起来如此的艰难：一节课下来，教室黑板上留下了满满的 “足迹”，看上去也挺简单的，不就是 0 和 1 嘛。但这些看起来简简单单的 0 1 码却成为了我当时学习路上的绊脚石。源码、反码、补码等等等等，各种的码制转换令我一头雾水，我曾一度怀疑这就是计算机干的活儿吗？</p>
@@ -8609,6 +8543,72 @@
       </categories>
       <tags>
         <tag>Vivado</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vscode 搭建 C / C++ 开发环境</title>
+    <url>/2022/04/04/vscode-envc/</url>
+    <content><![CDATA[<blockquote>
+<p>将士出征，怎能没有一把利器，本文基于 VSC 搭建 C++ 开发环境</p>
+</blockquote>
+<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>相信多数计算机专业的同学都和我一样，步入大学首先要学习的就是 C 语言。那么，我想下面这个东西你一定见过</p>
+<p><img src="https://img-blog.csdnimg.cn/ccd1ad9d89554b9d93db6c69a27f2bfd.png"></p>
+<p>记得当时令我好奇的就是，为什么这个 VC++6.0 里，行号、插件、快捷键……什么都没有呢？？于是，历经 CodeBlocks、DevC++、VC++6.0 等编辑器后，我找到了致胜的法宝，今天的主角——VScode，这款工具在之前的博文中就有过推荐，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMTk0NjQyNzI=">点我直达<i class="fa fa-external-link-alt"></i></span></p>
+<p>下面我们来一起配置下 C++ 的开发环境</p>
+<span id="more"></span>
+
+<h1 id="Vscode-—-编辑器"><a href="#Vscode-—-编辑器" class="headerlink" title="Vscode — 编辑器"></a>Vscode — 编辑器</h1><blockquote>
+<p>编辑器就是你写代码的地方，一款好的编辑器支持语法高亮、超多快捷键、代码提示等诸多功能</p>
+</blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">访问官网<i class="fa fa-external-link-alt"></i></span>下载，不做细节介绍，一个字“好”</p>
+<p><img src="https://img-blog.csdnimg.cn/096921d398ad49e1bd81d51915a41c29.png"></p>
+<p>傻瓜式操作，直接下一步即可安装成功</p>
+<h1 id="mingw64-—-编译器"><a href="#mingw64-—-编译器" class="headerlink" title="mingw64 — 编译器"></a>mingw64 — 编译器</h1><blockquote>
+<p>将源码文件编译为计算机能够执行的二进制代码文件，简单来说，代码是写给人看的，二进制文件是电脑看的，代码是人和机器交流的通道</p>
+</blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2Vmb3JnZS5uZXQvcHJvamVjdHMvbWluZ3ctdzY0L2ZpbGVzLw==">访问链接<i class="fa fa-external-link-alt"></i></span>，下载编译器</p>
+<p><img src="https://img-blog.csdnimg.cn/1b6634ba3d9543e9910009a6e2d1c046.png"></p>
+<p>将下载下来的文件解压后，放到 <code>C:\Program Files</code> 文件夹下</p>
+<p><img src="https://img-blog.csdnimg.cn/65de7205aa1140c8abd02cd1ceec8a82.png"></p>
+<p>添加环境变量 <strong>Path</strong> ，<code>系统-&gt;关于-&gt;高级系统设置</code></p>
+<p><img src="https://img-blog.csdnimg.cn/b054d54bdcaa4797aa0caa331ee1dfdc.png"></p>
+<p>编辑 <strong>Path</strong> 变量</p>
+<p><img src="https://img-blog.csdnimg.cn/deb3e3b2ff2c44d49a429c50aa871165.png"></p>
+<p>加入 <code>C:\Program Files\mingw64\bin</code>，然后一路确定下去</p>
+<p><code>cmd</code> 窗口键入 <code>gcc --version</code> 验证配置状态</p>
+<p><img src="https://img-blog.csdnimg.cn/4227d319774242d6b8478f5ea836d84a.png"></p>
+<p>显示图示信息则配置成功</p>
+<h1 id="插件支持"><a href="#插件支持" class="headerlink" title="插件支持"></a>插件支持</h1><p>安装 C++ 语言支持拓展包</p>
+<p><img src="https://img-blog.csdnimg.cn/2cde183ba5634d468b4bbeb6fba52885.png"></p>
+<p>安装 coderunner （一键执行源程序）</p>
+<p><img src="https://img-blog.csdnimg.cn/a163d61f64114da5a5884b4dfc343471.png"></p>
+<h1 id="vscode-配置文件"><a href="#vscode-配置文件" class="headerlink" title=".vscode 配置文件"></a>.vscode 配置文件</h1><p>打开 vscode，导入一个空文件夹</p>
+<p><img src="https://img-blog.csdnimg.cn/6cbc7f33f64f48c9bcf3bb266db59128.png"></p>
+<p>点击<strong>新建文件夹</strong>按钮</p>
+<p><img src="https://img-blog.csdnimg.cn/37b1e135b0e24327b58b2269a7307a48.png"></p>
+<p>命名为 <code>.vscode</code>，然后点击<strong>新建文件</strong>按钮，依次建立图示文件结构</p>
+<p><img src="https://img-blog.csdnimg.cn/e650d803fd4f4d82b2f10025563fde72.png"></p>
+<p>其实对应的文件名称在后期编译时，vscode 会自动生成，但由于默认配置不太友好（比如生成的 exe 文件都在源文件下方，非常混乱），我们对此进行优化配置，&#x3D;&#x3D;注意对应的路径请填写你的配置路径&#x3D;&#x3D;</p>
+<blockquote>
+<p>下面给出常用的配置文件(包含 .exe 重定向)，可直接保存使用，定向 <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMTk2ODEyNDk=">详细参考<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h2 id="c-cpp-properties-json"><a href="#c-cpp-properties-json" class="headerlink" title="c_cpp_properties.json"></a>c_cpp_properties.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Win32&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;includePath&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;/**&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;defines&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;_DEBUG&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;UNICODE&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;_UNICODE&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;windowsSdkVersion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10.0.17763.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;compilerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gcc.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cStandard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c17&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cppStandard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c++17&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;intelliSenseMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc-x64&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">4</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a>launch.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        </span><br><span class="line">        <span class="punctuation">&#123;</span><span class="comment">//包含Debug配置</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc.exe - 生成和调试活动文件&quot;</span><span class="punctuation">,</span><span class="comment">//配置名称</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppdbg&quot;</span><span class="punctuation">,</span> <span class="comment">//配置类型,对应cpptools提供的调试功能</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span> <span class="comment">//请求配置类型,可以是启动/附加类型[launch/attach]</span></span><br><span class="line">            <span class="comment">//&quot;program&quot;: &quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;,</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;\\build\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="punctuation">,</span><span class="comment">//待调试程序本地路径</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">//程序调试时传递给程序的命令行参数,设为空值</span></span><br><span class="line">            <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span><span class="comment">//改为true时程序暂停在程序入口位置,即main处打上断点</span></span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span><span class="punctuation">,</span> <span class="comment">//调试程序时的工作目录,这里表示源码目录</span></span><br><span class="line">            <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">//环境变量,设为空值</span></span><br><span class="line">            <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span> <span class="comment">//true:cmd窗口; false:Vscode的内置终端输出</span></span><br><span class="line">            <span class="attr">&quot;MIMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gdb&quot;</span><span class="punctuation">,</span> <span class="comment">//指定连接的调试器,gdb为minGW64中调试程序</span></span><br><span class="line">            <span class="attr">&quot;miDebuggerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gdb.exe&quot;</span><span class="punctuation">,</span> <span class="comment">//指定调试器所在路径,安装位置不同注意需要修改,间隔为\\</span></span><br><span class="line">            <span class="attr">&quot;setupCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;为 gdb 启用整齐打印&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-enable-pretty-printing&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;ignoreFailures&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;preLaunchTask&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C/C++: gcc.exe 生成活动文件&quot;</span> <span class="comment">//调试开始前执行需要执行的任务,调试前要编译构建 名称要和tasks.json的label保持一致</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="tasks-json"><a href="#tasks-json" class="headerlink" title="tasks.json"></a>tasks.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="comment">//构建配置项</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;shell&quot;</span><span class="punctuation">,</span><span class="comment">//任务类型,Vscode将预定义变量转义解析后直接传给command;shell-&gt;先打开shell再输入命令,因此args会经过shell再次解析</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C/C++: gcc.exe 生成活动文件&quot;</span><span class="punctuation">,</span><span class="comment">//任务名称</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin\\gcc.exe&quot;</span><span class="punctuation">,</span><span class="comment">//本地编译器路径</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="comment">//包含传给gcc命令的参数,用于实现特定功能</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span><span class="punctuation">,</span> <span class="comment">//生成和调试有关的信息</span></span><br><span class="line">                <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span> <span class="comment">//指定编译文件为当前文件</span></span><br><span class="line">                <span class="string">&quot;-o&quot;</span><span class="punctuation">,</span><span class="comment">//指定输出文件的路径和名称</span></span><br><span class="line">                <span class="comment">//&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;\\build\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="comment">//修改.exe文件生成位置</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="comment">//&quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;</span></span><br><span class="line">                <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw64\\bin&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;problemMatcher&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;$gcc&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="comment">//包含很多task,归为group</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span><span class="comment">//表名该组任务类型是构建</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="comment">//表明此任务为此组任务中的默认任务</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;调试器生成的任务。&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="环境验证"><a href="#环境验证" class="headerlink" title="环境验证"></a>环境验证</h1><p>输入经典的 HelloWorld 程序，测试下环境</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-04 09:57:31</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-04 09:57:32</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   cout&lt;&lt;<span class="string">&quot;Hello World!&quot;</span>&lt;&lt;endl;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你是用了上方的配置文件，请在根目录下新建 <code>build</code> 文件夹，<code>exe</code> 文件会自动归类到此文件下<br><img src="https://img-blog.csdnimg.cn/a139814c838b40c0ad4e147ebae6d4db.png"></p>
+<p>如果没有新建 build 文件夹，系统会提示你没有这样的文件夹，也就是<strong>找不到输出目录</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/5a04732ee6624a55a8362b73b3403996.png"></p>
+]]></content>
+      <categories>
+        <category>CPP</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
