@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="/live2d-widget/autoload.js"></script>
+  <meta charset="UTF-8">
+<meta name="baidu-site-verification" content="code-QreKZHvhxr" />
+<meta name="google-site-verification" content="09pUELCUBq1DqCCF38Yh2tJ3Ym_AwCrftq7Nuj6RFKU" />
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pdpeng.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://pdpeng.github.io/2022/04/28/rt-thread03/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pdpeng.github.io/2022/04/28/rt-thread03/","path":"2022/04/28/rt-thread03/","title":"【玩转 RT-Thread】线程管理原理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【玩转 RT-Thread】线程管理原理 | 杰森的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="杰森的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰森的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">全栈杰森</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">22</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86%E7%9A%84%E5%8A%9F%E8%83%BD%E7%89%B9%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">线程管理的功能特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">线程的工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">线程控制块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">线程的重要属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%A0%88"><span class="nav-number">3.2.1.</span> <span class="nav-text">线程栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">3.2.2.</span> <span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">3.2.3.</span> <span class="nav-text">线程优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E7%89%87"><span class="nav-number">3.2.4.</span> <span class="nav-text">时间片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.5.</span> <span class="nav-text">线程的入口函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BA%BF%E7%A8%8B%E9%94%99%E8%AF%AF%E7%A0%81"><span class="nav-number">3.2.6.</span> <span class="nav-text">常见的线程错误码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%88%87%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">线程状态切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.4.</span> <span class="nav-text">系统线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.4.1.</span> <span class="nav-text">空闲线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.4.2.</span> <span class="nav-text">主线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">线程的管理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">创建和删除线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.1.1.</span> <span class="nav-text">创建线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.1.2.</span> <span class="nav-text">删除线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E8%84%B1%E7%A6%BB%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">初始化和脱离线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.2.1.</span> <span class="nav-text">初始化线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%B1%E7%A6%BB%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.2.2.</span> <span class="nav-text">脱离线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.3.</span> <span class="nav-text">启动线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E5%BD%93%E5%89%8D%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.4.</span> <span class="nav-text">获得当前线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%BA%BF%E7%A8%8B%E5%87%BA%E8%AE%A9%E5%A4%84%E7%90%86%E5%99%A8%E8%B5%84%E6%BA%90"><span class="nav-number">4.5.</span> <span class="nav-text">使线程出让处理器资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%BA%BF%E7%A8%8B%E7%9D%A1%E7%9C%A0"><span class="nav-number">4.6.</span> <span class="nav-text">使线程睡眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.7.</span> <span class="nav-text">挂起和恢复线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%8C%82%E8%B5%B7"><span class="nav-number">4.7.1.</span> <span class="nav-text">线程挂起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%81%A2%E5%A4%8D%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.7.2.</span> <span class="nav-text">恢复线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.8.</span> <span class="nav-text">控制线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%88%A0%E9%99%A4%E7%A9%BA%E9%97%B2%E9%92%A9%E5%AD%90"><span class="nav-number">4.9.</span> <span class="nav-text">设置和删除空闲钩子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%B0%83%E5%BA%A6%E5%99%A8%E9%92%A9%E5%AD%90"><span class="nav-number">4.10.</span> <span class="nav-text">设置调度器钩子</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <a href="/">
+    <img class="site-author-image" itemprop="image" alt="Jason"
+      src="/images/head_portrait.png">
+    </a>
+  <p class="site-author-name" itemprop="name">Jason</p>
+  <div class="site-description" itemprop="description" style="padding-bottom: 8px">A blacksmith must be strong</div>
+
+<html>
+<head>
+    <style>
+        .rss-button div {
+            display: block;
+            margin-top: 5px;
+            background-color: transparent;
+            position: relative;
+            font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .feed-link a {
+            display: inline-block;
+            padding: 0 15px;
+            color: #fc6423;
+            border: 2px solid #fc6423;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .feed-link a:hover {
+            background-color: #fc6423;
+            border-bottom-color: #fc6423;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="rss-button">
+    <div class="feed-link" title="RSS → /atom.xml">
+        <a href="/atom.xml">
+            <i class="fa fa-rss"> </i> RSS
+        </a>
+    </div>
+</body>
+</html>
+
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAzOTcxOTcxMzk1Mg==" title="FaceBook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100039719713952"><i class="fab fa-facebook fa-fw"></i>FaceBook</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbl9jb2Rpbmc=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jason_coding"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51269961"><i class="fa-solid fa-c fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RT-Thread/" rel="tag">RT-Thread</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLServer/" rel="tag">SQLServer</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP&#x2F;IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vivado/" rel="tag">Vivado</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" rel="tag">程序人生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/" rel="tag">职业认证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag">解析几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BEUEVORw==" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2022/04/28/rt-thread03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head_portrait.png">
+      <meta itemprop="name" content="Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰森的博客">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【玩转 RT-Thread】线程管理原理 | 杰森的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【玩转 RT-Thread】线程管理原理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-28 19:25:04" itemprop="dateCreated datePublished" datetime="2022-04-28T19:25:04+08:00">2022-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/RT-Thread/" itemprop="url" rel="index"><span itemprop="name">RT-Thread</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/04/28/rt-thread03/" class="post-meta-item leancloud_visitors" data-flag-title="【玩转 RT-Thread】线程管理原理" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在日常生活中，我们通常会将一个大的问题拆分细化，拆开成若干个小问题，通过逐个解决小问题，大问题也就解决了。<br>同样的在RT-Thread多线程操作系统中，开发人员基于这种分而治之的思想，将一个复杂的应用问题抽象成若干个小的、可调度的、可序列化的程序单元。当合理地划分任务并正确地执行时，这种设计能够让系统满足实时系统的性能及时间的要求。</p>
+<p>下面看一个例子：我们的任务是读取传感器上的数据，并将相关数据显示出来。通过拆分结构，我们可以发现主要有两个任务：</p>
+<blockquote>
+<p>1.读取数据<br>2.显示数据</p>
+</blockquote>
+<p>简单来说，就是一个子任务不间断地读取传感器数据，并将数据写到共享内存中，另外一个子任务周期性的从共享内存中读取数据，并将传感器数据输出到显示屏上。  </p>
+<p><img src="https://img-blog.csdnimg.cn/6d57696f2ffc4e859bf8c8c1ffc0789e.png">  </p>
+<p>在RT-Thread 中，与上述子任务对应的程序实体就是线程，<code>线程是实现任务的载体</code>。<br>它是RT-Thread中<code>最基本的调度单位</code>，它描述了一个任务执行的运行环境，也描述了这个任务所处的优先等级，重要的任务可设置相对较高的<code>优先级</code>，非重要的任务可以设置较低的优先级，不同的任务还可以设置相同的优先级，轮流运行。<br><code>上下文：</code>当线程运行时，它会认为自己是以独占CPU 的方式在运行，线程执行时的运行环境称为上下文，具体来说就是各个变量和数据，包括所有的寄存器变量、堆栈、内存信息等。</p>
+<span id="more"></span>
+
+<h1 id="线程管理的功能特点"><a href="#线程管理的功能特点" class="headerlink" title="线程管理的功能特点"></a>线程管理的功能特点</h1><p>RT-Thread 线程管理的主要功能是<code>对线程进行管理和调度</code>，系统中总共存在两类线程，分别是<code>系统线程</code>和<code>用户线程</code>。系统线程是由RT-Thread 内核创建的线程，用户线程是由应用程序创建的线程，这两类线程都会从内核对象容器中分配线程对象，当线程被删除时，也会被从对象容器中删除。</p>
+<p>如图所示，每个线程都有重要的属性，如线程控制块、线程栈、入口函数等。  </p>
+<p><img src="https://img-blog.csdnimg.cn/5584a47897de430597897d3a6bddd710.png"></p>
+<ul>
+<li>RT-Thread 的线程调度器是<code>抢占式</code>的，主要的工作就是从就绪线程列表中查找最高优先级线程，保证最高优先级的线程能够被运行，最高优先级的任务一旦就绪，总能得到CPU 的使用权。</li>
+<li>当一个运行着的线程使一个比它优先级高的线程满足运行条件，当前线程的CPU 使用权就被剥夺了，或者说被让出了，高优先级的线程立刻得到了CPU 的使用权。<br>如果是中断服务程序使一个高优先级的线程满足运行条件，中断完成时，被中断的线程挂起，优先级高的线程开始运行。</li>
+<li>当调度器调度线程切换时，先将当前线程上下文保存起来，当再切回到这个线程时，线程调度器将该线程上下文信息恢复。</li>
+</ul>
+<h1 id="线程的工作机制"><a href="#线程的工作机制" class="headerlink" title="线程的工作机制"></a>线程的工作机制</h1><h2 id="线程控制块"><a href="#线程控制块" class="headerlink" title="线程控制块"></a>线程控制块</h2><p>在RT-Thread 中，线程控制块由结构体struct rt_thread 表示，线程控制块是操作系统用于管理线程的一个数据结构，它会存放线程的一些信息，例如优先级、线程名称、线程状态等，也包含线程与线程之间连接用的链表结构，线程等待事件集合等，详细定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 线程控制块*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rt_thread</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="comment">/* rt 对象*/</span></span><br><span class="line">	<span class="type">char</span> name[RT_NAME_MAX]; <span class="comment">/* 线程名称*/</span></span><br><span class="line">	<span class="type">rt_uint8_t</span> type; <span class="comment">/* 对象类型*/</span></span><br><span class="line">	<span class="type">rt_uint8_t</span> flags; <span class="comment">/* 标志位*/</span></span><br><span class="line">	<span class="type">rt_list_t</span> <span class="built_in">list</span>; <span class="comment">/* 对象列表*/</span></span><br><span class="line">	<span class="type">rt_list_t</span> tlist; <span class="comment">/* 线程列表*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 栈指针与入口指针*/</span></span><br><span class="line">	<span class="type">void</span> *sp; <span class="comment">/* 栈指针*/</span></span><br><span class="line">	<span class="type">void</span> *entry; <span class="comment">/* 入口函数指针*/</span></span><br><span class="line">	<span class="type">void</span> *parameter; <span class="comment">/* 参数*/</span></span><br><span class="line">	<span class="type">void</span> *stack_addr; <span class="comment">/* 栈地址指针*/</span></span><br><span class="line">	<span class="type">rt_uint32_t</span> stack_size; <span class="comment">/* 栈大小*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 错误代码*/</span></span><br><span class="line">	<span class="type">rt_err_t</span> error; <span class="comment">/* 线程错误代码*/</span></span><br><span class="line">	<span class="type">rt_uint8_t</span> stat; <span class="comment">/* 线程状态*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 优先级*/</span></span><br><span class="line">	<span class="type">rt_uint8_t</span> current_priority; <span class="comment">/* 当前优先级*/</span></span><br><span class="line">	<span class="type">rt_uint8_t</span> init_priority; <span class="comment">/* 初始优先级*/</span></span><br><span class="line">	<span class="type">rt_uint32_t</span> number_mask;</span><br><span class="line">	......</span><br><span class="line">	<span class="type">rt_ubase_t</span> init_tick; <span class="comment">/* 线程初始化计数值*/</span></span><br><span class="line">	<span class="type">rt_ubase_t</span> remaining_tick; <span class="comment">/* 线程剩余计数值*/</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">rt_timer</span> <span class="title">thread_timer</span>;</span> <span class="comment">/* 内置线程定时器*/</span></span><br><span class="line"></span><br><span class="line">	<span class="type">void</span> (*cleanup)(<span class="keyword">struct</span> rt_thread *tid); <span class="comment">/* 线程退出清除函数*/</span></span><br><span class="line">	<span class="type">rt_uint32_t</span> user_data; <span class="comment">/* 用户数据*/</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>其中init_priority 是线程创建时指定的线程优先级，在线程运行过程当中是不会被改变的（除非用户 执行线程控制函数进行手动调整线程优先级）。</code></li>
+<li><code>cleanup 会在线程退出时，被空闲线程回调一次以执行用户设置的清理现场等工作。</code></li>
+<li><code>最后的一个成员user_data 可由用户挂接一些数据信息到线程控制块中，以提供类似线程私有数据的实现。</code></li>
+</ul>
+<h2 id="线程的重要属性"><a href="#线程的重要属性" class="headerlink" title="线程的重要属性"></a>线程的重要属性</h2><h3 id="线程栈"><a href="#线程栈" class="headerlink" title="线程栈"></a>线程栈</h3><ul>
+<li>RT-Thread 线程具有独立的栈，当进行线程切换时，会将当前线程的上下文存在栈中，当线程要恢复运行时，再从栈中读取上下文信息，进行恢复。</li>
+<li>线程栈还用来存放函数中的局部变量：函数中的局部变量从线程栈空间中申请；函数中局部变量初始时从寄存器中分配（ARM 架构），当这个函数再调用另一个函数时，这些局部变量将放入栈中。</li>
+<li>对于线程第一次运行，可以以手工的方式构造这个上下文来设置一些初始的环境：入口函数（PC 寄存器）、入口参数（R0 寄存器）、返回位置（LR 寄存器）、当前机器运行状态（CPSR 寄存器）。</li>
+<li>线程栈的增长方向是芯片构架密切相关的，RT-Thread 3.1.0 以前的版本，均只支持栈由高地址向低地址增长的方式，对于ARM Cortex-M 架构，线程栈可构造如下图所示。<br><img src="https://img-blog.csdnimg.cn/041732b5e1fd43d5a62382931ad50360.png"></li>
+</ul>
+<h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><p>线程运行的过程中，同一时间内只允许一个线程在处理器中运行，从运行的过程上划分，线程有多种不同的运行状态，如初始状态、挂起状态、就绪状态等。<br>在RT-Thread 中，线程包含五种状态，操作系统会自动根据它运行的情况来动态调整它的状态。如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>初始态</td>
+<td>当线程刚开始创建还没开始运行时就处于初始状态；在初始状态下，线程不参与调度。此状态在RT-Thread 中的宏定义为RT_THREAD_INIT</td>
+</tr>
+<tr>
+<td>就绪态</td>
+<td>在就绪状态下，线程按照优先级排队，等待被执行；一旦当前线程运行完毕让出处理器，操作系统会马上寻找最高优先级的就绪态线程运行。此状态在RT-Thread 中的宏定义为RT_THREAD_READY</td>
+</tr>
+<tr>
+<td>运行态</td>
+<td>线程当前正在运行。在单核系统中，只有rt_thread_self() 函数返回的线程处于运行状态；在多核系统中，可能就不止这一个线程处于运行状态。此状态在RT-Thread 中的宏定义为RT_THREAD_RUNNING</td>
+</tr>
+<tr>
+<td>挂起态</td>
+<td>也称阻塞态。它可能因为资源不可用而挂起等待，或线程主动延时一段时间而挂起。在挂起状态下，线程不参与调度。此状态在RT-Thread 中的宏定义为RT_THREAD_SUSPEND</td>
+</tr>
+<tr>
+<td>关闭态</td>
+<td>当线程运行结束时将处于关闭状态。关闭状态的线程不参与线程的调度。此状态在RT-Thread 中的宏定义为RT_THREAD_CLOSE</td>
+</tr>
+</tbody></table>
+<h3 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h3><ul>
+<li><p>RT-Thread 线程的优先级是表示线程被调度的优先程度。每个线程都具有优先级，线程越重要，赋予的优先级就应越高，线程被调度的可能才会越大。</p>
+</li>
+<li><p>RT-Thread 最大支持256 个线程优先级(0~255)，数值越小的优先级越高，0 为最高优先级。在一些资源比较紧张的系统中，可以根据实际情况选择只支持8 个或32 个优先级的系统配置；对于ARM Cortex-M系列，普遍采用32 个优先级。最低优先级默认分配给空闲线程使用，用户一般不使用。在系统中，当有比当前线程优先级更高的线程就绪时，当前线程将立刻被换出，高优先级线程抢占处理器运行。</p>
+</li>
+</ul>
+<h3 id="时间片"><a href="#时间片" class="headerlink" title="时间片"></a>时间片</h3><blockquote>
+<p>每个线程都有时间片这个参数，但时间片仅对优先级相同的就绪态线程有效。系统对优先级相同的就绪态线程采用时间片轮转的调度方式进行调度时，时间片起到约束线程单次运行时长的作用，其单位是一个系统节拍（OS Tick）。</p>
+</blockquote>
+<p>假设有2 个<code>优先级相同的就绪态线程A 与B</code>，A 线程的时间片设置为10，B 线程的时间片设置为5，那么当系统中不存在比A 优先级高的就绪态线程时，系统会在A、B 线程间来回切换执行，并且每次对A 线程执行10 个节拍的时长，对B 线程执行5 个节拍的时长，如下图。  </p>
+<p><img src="https://img-blog.csdnimg.cn/31c4fb41bf8947c1a47864b12b9e602e.png"></p>
+<h3 id="线程的入口函数"><a href="#线程的入口函数" class="headerlink" title="线程的入口函数"></a>线程的入口函数</h3><p>线程控制块中的<code>entry</code>是线程的入口函数，它是线程实现预期功能的函数。</p>
+<p>线程的入口函数由用户设计实现，一般有以下两种代码形式：  </p>
+<p>1.<code>无限循环模式</code></p>
+<blockquote>
+<p>在实时系统中，线程通常是被动式的：这个是由实时系统的特性所决定的，实时系统通常总是等待外<br>界事件的发生，而后进行相应的服务：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">thread_entry</span><span class="params">(<span class="type">void</span>* paramenter)</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">/* 等待事件的发生*/</span></span><br><span class="line">		<span class="comment">/* 对事件进行服务、进行处理*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>作为一个实时系统，一个优先级明确的实时系统，如果一个线程中的程序陷入了死循环操作，那么比它优先级低的线程都将不能够得到执行。<br>所以在实时操作系统中必须注意的一点就是：<strong>线程中不能陷入死循环操作，必须要有让出CPU使用权的动作，如循环中调用延时函数或者主动挂起。用户设计这种无线循环的线程的目的，就是为了让这个线程一直被系统循环调度运行，永不删除。</strong></p>
+</blockquote>
+<p>2.<code>顺序执行或有限次循环模式</code></p>
+<blockquote>
+<p>如简单的顺序语句、do whlie() 或for() 循环等，此类线程不会循环或不会永久循环，可谓是“一次性”线程，一定会被执行完毕。在执行完毕后，线程将被系统自动删除。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">thread_entry</span><span class="params">(<span class="type">void</span>* parameter)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">/* 处理事务#1 */</span></span><br><span class="line">	…</span><br><span class="line">	<span class="comment">/* 处理事务#2 */</span></span><br><span class="line">	…</span><br><span class="line">	<span class="comment">/* 处理事务#3 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见的线程错误码"><a href="#常见的线程错误码" class="headerlink" title="常见的线程错误码"></a>常见的线程错误码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EOK 0 <span class="comment">/* 无错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ERROR 1 <span class="comment">/* 普通错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ETIMEOUT 2 <span class="comment">/* 超时错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EFULL 3 <span class="comment">/* 资源已满*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EEMPTY 4 <span class="comment">/* 无资源*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ENOMEM 5 <span class="comment">/* 无内存*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_ENOSYS 6 <span class="comment">/* 系统不支持*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EBUSY 7 <span class="comment">/* 系统忙*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EIO 8 <span class="comment">/* IO 错误*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EINTR 9 <span class="comment">/* 中断系统调用*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RT_EINVAL 10 <span class="comment">/* 非法参数*/</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="线程状态切换"><a href="#线程状态切换" class="headerlink" title="线程状态切换"></a>线程状态切换</h2><p>RT-Thread 提供一系列的操作系统调用接口，使得线程的状态在这五个状态之间来回切换。几种状态间的转换关系如下图所示：<br><img src="https://img-blog.csdnimg.cn/3c79cc6198144f02b4830d4521384c30.png"></p>
+<blockquote>
+<ul>
+<li>线程通过调用函数<code>rt_thread_create/init()</code> 进入到初始状态<code>（RT_THREAD_INIT）</code>；</li>
+<li>初始状态的线程通过调用函数<code>rt_thread_startup()</code> 进入到就绪状态<code>（RT_THREAD_READY）</code>；</li>
+<li>就绪状态的线程被调度器调度后进入运行状态<code>（RT_THREAD_RUNNING）</code>；</li>
+<li>当处于运行状态的线程调用rt_thread_delay()，rt_sem_take()，rt_mutex_take()，rt_mb_recv() 等函数或者获取不到资源时， 将进入到挂起状态<code>（RT_THREAD_SUSPEND）</code>；</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>处于挂起状态的线程，如果等待超时依然未能获得资源或由于其他线程释放了资源，那么它将返回到就绪状态。</li>
+<li>挂起状态的线程，如果调用<code>rt_thread_delete/detach()</code> 函数，将更改为关闭状态<code>（RT_THREAD_CLOSE）</code>；</li>
+<li>而运行状态的线程，如果运行结束，就会在线程的最后部分执行<code>rt_thread_exit()</code> 函数，将状态更改为关闭状态。</li>
+</ul>
+</blockquote>
+<p><strong><code>!!! note “注意事项” RT-Thread 中，实际上线程并不存在运行状态，就绪状态和运行状态是等同的。</code></strong></p>
+<h2 id="系统线程"><a href="#系统线程" class="headerlink" title="系统线程"></a>系统线程</h2><p>系统线程是指由系统创建的线程，用户线程是由用户程序调用线程管理接口创建的线程，在RT-Thread 内核中的系统线程有空闲线程和主线程。</p>
+<h3 id="空闲线程"><a href="#空闲线程" class="headerlink" title="空闲线程"></a>空闲线程</h3><p><code>空闲线程</code>是系统创建的最低优先级的线程，线程状态<code>永远为就绪态</code>。当系统中无其他就绪线程存在时，调度器将调度到空闲线程，它通常是一个死循环，且永远不能被挂起。</p>
+<p>另外，空闲线程在RT-Thread 也有着它的特殊用途：</p>
+<ul>
+<li>若某线程运行完毕，系统将自动删除线程：自动执行rt_thread_exit() 函数，先将该线程从系统就绪队列中删除，再将该线程的状态更改为关闭状态，不再参与系统调度，然后挂入rt_thread_defunct 僵尸队列（资源未回收、处于关闭状态的线程队列）中，最后空闲线程会回收被删除线程的资源。</li>
+<li>空闲线程也提供了接口来运行用户设置的钩子函数，在空闲线程运行时会调用该钩子函数，适合钩入功耗管理、看门狗喂狗等工作。（关于<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxMzIxNzcvYXJ0aWNsZS9kZXRhaWxzLzExMDcwNDcyMT9vcHNfcmVxdWVzdF9taXNjPSZyZXF1ZXN0X2lkPSZiaXpfaWQ9MTAyJnV0bV90ZXJtPSVFOSU5MiVBOSVFNSVBRCU5MCVFNSU4NyVCRCVFNiU5NSVCMCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH5zb2JhaWR1d2VifmRlZmF1bHQtMC0xMTA3MDQ3MjEubm9uZWNhc2Umc3BtPTEwMTguMjIyNi4zMDAxLjQxODc=">钩子函数<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FzNDgwMTMzOTM3L2FydGljbGUvZGV0YWlscy85OTEyMTY0NT9vcHNfcmVxdWVzdF9taXNjPSUyNTdCJTI1MjJyZXF1ZXN0JTI1NUZpZCUyNTIyJTI1M0ElMjUyMjE2NDk4MzcwMDYxNjc4MDI2OTg3OTIxNSUyNTIyJTI1MkMlMjUyMnNjbSUyNTIyJTI1M0ElMjUyMjIwMTQwNzEzLjEzMDEwMjMzNC4uJTI1MjIlMjU3RCZyZXF1ZXN0X2lkPTE2NDk4MzcwMDYxNjc4MDI2OTg3OTIxNSZiaXpfaWQ9MCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH50b3BfcG9zaXRpdmV+ZGVmYXVsdC0xLTk5MTIxNjQ1LjE0MiU1RXY3JTVFYXJ0aWNsZV9zY29yZV9yYW5rLDE1NyU1RXY0JTVFY29udHJvbCZ1dG1fdGVybT0lRTclOUMlOEIlRTklOTclQTglRTclOEIlOTcmc3BtPTEwMTguMjIyNi4zMDAxLjQxODc=">看门狗<i class="fa fa-external-link-alt"></i></span>不懂的可以看这里）</li>
+</ul>
+<h3 id="主线程"><a href="#主线程" class="headerlink" title="主线程"></a>主线程</h3><p>在系统启动时，系统会创建main 线程，它的入口函数为main_thread_entry()，用户的应用入口函数main() 就是从这里真正开始的，系统调度器启动后，main 线程就开始运行。</p>
+<p>过程如下图，用户可以在main() 函数里添加自己的应用程序初始化代码。  </p>
+<p><img src="https://img-blog.csdnimg.cn/b08911ca57334476945d473ab814f006.png"></p>
+<h1 id="线程的管理方式"><a href="#线程的管理方式" class="headerlink" title="线程的管理方式"></a>线程的管理方式</h1><p>可以使用rt_thread_create() 创建一个动态线程，使用rt_thread_init() 初始化一个静态线程。</p>
+<p>动态线程与静态线程的区别是：动态线程是系统自动从动态内存堆上分配栈空间与线程句柄（初始化heap 之后才能使用create 创建动态线程），静态线程是由用户分配栈空间与线程句柄。</p>
+<p>下图描述了线程的相关操作，包含：创建&#x2F; 初始化线程、启动线程、运行线程、删除&#x2F; 脱离线程。</p>
+<p><img src="https://img-blog.csdnimg.cn/fea91f8134b648ccaefeb5cf201de15f.png"></p>
+<h2 id="创建和删除线程"><a href="#创建和删除线程" class="headerlink" title="创建和删除线程"></a>创建和删除线程</h2><h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><p>一个线程要成为可执行的对象，就必须由操作系统的内核来为它创建一个线程。可以通过如下的接口创建一个动态线程：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_thread_t</span> <span class="title function_">rt_thread_create</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* name,</span></span><br><span class="line"><span class="params">							 <span class="type">void</span> (*entry)(<span class="type">void</span>* parameter),</span></span><br><span class="line"><span class="params">							 <span class="type">void</span>* parameter,</span></span><br><span class="line"><span class="params">							 <span class="type">rt_uint32_t</span> stack_size,</span></span><br><span class="line"><span class="params">							 <span class="type">rt_uint8_t</span> priority,</span></span><br><span class="line"><span class="params">							 <span class="type">rt_uint32_t</span> tick)</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>调用这个函数时，系统会从动态堆内存中分配一个线程句柄以及按照参数中指定的栈大小从动态堆内存中分配相应的空间。分配出来的栈空间是按照rtconfig.h 中配置的RT_ALIGN_SIZE 方式对齐。</p>
+</blockquote>
+<p>线程创建rt_thread_create() 的参数和返回值见下图：  </p>
+<p><img src="https://img-blog.csdnimg.cn/f1ba4c76de384fcc91060025bff4bef7.png"></p>
+<h3 id="删除线程"><a href="#删除线程" class="headerlink" title="删除线程"></a>删除线程</h3><p>对于一些使用rt_thread_create() 创建出来的线程，当不需要使用，或者运行出错时，我们可以使用下面的函数接口来从系统中把线程完全删除掉：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_delete</span><span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>调用该函数后，线程对象将会被移出线程队列并且从内核对象管理器中删除，线程占用的堆栈空间也会被释放，收回的空间将重新用于其他的内存分配。实际上，用rt_thread_delete() 函数删除线程接口，仅仅是把相应的线程状态更改为RT_THREAD_CLOSE 状态，然后放入到rt_thread_defunct 队列中；而真正的删除动作（释放线程控制块和释放线程栈）需要到下一次执行空闲线程时，由空闲线程完成最后的线程删除动作。</p>
+<p>线程删除rt_thread_delete() 接口的参数和返回值见下图：  </p>
+<p><img src="https://img-blog.csdnimg.cn/eb9a07efdd95454c8873506f5178d1ff.png">  </p>
+<p><code>这个函数仅在使能了系统动态堆时才有效（即RT_USING_HEAP 宏定义已经定义了）。</code></p>
+<h2 id="初始化和脱离线程"><a href="#初始化和脱离线程" class="headerlink" title="初始化和脱离线程"></a>初始化和脱离线程</h2><h3 id="初始化线程"><a href="#初始化线程" class="headerlink" title="初始化线程"></a>初始化线程</h3><p><code>线程的初始化</code>可以使用下面的函数接口完成，来初始化静态线程对象：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_init</span><span class="params">(<span class="keyword">struct</span> rt_thread* thread,</span></span><br><span class="line"><span class="params">					    <span class="type">const</span> <span class="type">char</span>* name,</span></span><br><span class="line"><span class="params">						<span class="type">void</span> (*entry)(<span class="type">void</span>* parameter), <span class="type">void</span>* parameter,</span></span><br><span class="line"><span class="params">						<span class="type">void</span>* stack_start, <span class="type">rt_uint32_t</span> stack_size,</span></span><br><span class="line"><span class="params">						<span class="type">rt_uint8_t</span> priority, <span class="type">rt_uint32_t</span> tick)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/c1e6ca6ef6b84ebe93d0888ff71332af.png"></p>
+<h3 id="脱离线程"><a href="#脱离线程" class="headerlink" title="脱离线程"></a>脱离线程</h3><p>对于用rt_thread_init() 初始化的线程，使用rt_thread_detach() 将使线程对象在线程队列和内核对象管理器中被脱离。线程脱离函数如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_detach</span> <span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>thread</td>
+<td>线程句柄，它应该是由rt_thread_init 进行初始化的线程句柄。</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>—</td>
+</tr>
+<tr>
+<td>RT_EOK</td>
+<td>线程脱离成功</td>
+</tr>
+<tr>
+<td>-RT_ERROR</td>
+<td>线程脱离失败</td>
+</tr>
+</tbody></table>
+<h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><p>创建（初始化）的线程状态处于初始状态，并未进入就绪线程的调度队列，我们可以在线程初始化&#x2F;创建成功后调用下面的函数接口让该线程进入就绪态：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_startup</span><span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/431f38ae0feb46dc833f9835ec57577e.png"></p>
+<blockquote>
+<p>当调用这个函数时，将把线程的状态更改为就绪状态，并放到相应优先级队列中等待调度。如果新启<br>动的线程优先级比当前线程优先级高，将立刻切换到这个线程。</p>
+</blockquote>
+<h2 id="获得当前线程"><a href="#获得当前线程" class="headerlink" title="获得当前线程"></a>获得当前线程</h2><p>在程序的运行过程中，相同的一段代码可能会被多个线程执行，在执行的时候可以通过下面的函数接口获得当前执行的线程句柄：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_thread_t</span> <span class="title function_">rt_thread_self</span><span class="params">(<span class="type">void</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/33c1e79ddc8b42c0a28237a91e67b92c.png"></p>
+<h2 id="使线程出让处理器资源"><a href="#使线程出让处理器资源" class="headerlink" title="使线程出让处理器资源"></a>使线程出让处理器资源</h2><blockquote>
+<p>当前线程的时间片用完或者该线程主动要求让出处理器资源时，它将不再占有处理器，调度器会选择相同优先级的下一个线程执行。线程调用这个接口后，这个线程仍然在就绪队列中。</p>
+</blockquote>
+<p>线程让出处理器使用下面的函数接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_yield</span><span class="params">(<span class="type">void</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>调用该函数后，当前线程首先把自己从它所在的就绪优先级线程队列中删除，然后把自己挂到这个优先级队列链表的尾部，然后激活调度器进行线程上下文切换（如果当前优先级只有这一个线程，则这个线程继续执行，不进行上下文切换动作）。</p>
+</blockquote>
+<h2 id="使线程睡眠"><a href="#使线程睡眠" class="headerlink" title="使线程睡眠"></a>使线程睡眠</h2><blockquote>
+<p>在实际应用中，我们有时需要让运行的当前线程延迟一段时间，在指定的时间到达后重新运行，这就叫做“线程睡眠”。</p>
+</blockquote>
+<p>线程睡眠可使用以下三个函数接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_sleep</span><span class="params">(<span class="type">rt_tick_t</span> tick)</span>;</span><br><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_delay</span><span class="params">(<span class="type">rt_tick_t</span> tick)</span>;</span><br><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_mdelay</span><span class="params">(<span class="type">rt_int32_t</span> ms)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/6ebefaeea61f48a7b26d43e0d6589055.png"></p>
+<h2 id="挂起和恢复线程"><a href="#挂起和恢复线程" class="headerlink" title="挂起和恢复线程"></a>挂起和恢复线程</h2><h3 id="线程挂起"><a href="#线程挂起" class="headerlink" title="线程挂起"></a>线程挂起</h3><blockquote>
+<ul>
+<li>当线程调用rt_thread_delay() 时，线程将主动挂起；当调用rt_sem_take()，rt_mb_recv() 等函数时，资源不可使用也将导致线程挂起。</li>
+<li>处于挂起状态的线程，如果其等待的资源超时（超过其设定的等待时间），那么该线程将不再等待这些资源，并返回到就绪状态；或者，当其他线程释放掉该线程所等待的资源时，该线程也会返回到就绪状态。</li>
+</ul>
+</blockquote>
+<p><code>线程挂起</code>使用下面的函数接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_suspend</span> <span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/eed2dcfd794040798637c029b253fb87.png">  </p>
+<p><code>!!! note “注意事项” 通常不应该使用这个函数来挂起线程本身， 如果确实需要采用rt_thread_suspend() 函数挂起当前任务， 需要在调用rt_thread_suspend() 函数后立刻调用rt_schedule() 函数进行手动的线程上下文切换。</code></p>
+<h3 id="恢复线程"><a href="#恢复线程" class="headerlink" title="恢复线程"></a>恢复线程</h3><blockquote>
+<p>恢复线程就是让挂起的线程重新进入就绪状态，并将线程放入系统的就绪队列中；如果被恢复线程在<br>所有就绪态线程中，位于最高优先级链表的第一位，那么系统将进行线程上下文的切换。</p>
+</blockquote>
+<p><code>线程恢复</code>使用下面的函数接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_resume</span> <span class="params">(<span class="type">rt_thread_t</span> thread)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/0640fc789a1645d3b424f605d3aca937.png"></p>
+<h2 id="控制线程"><a href="#控制线程" class="headerlink" title="控制线程"></a>控制线程</h2><p>当需要对线程进行一些其他控制时，例如动态更改线程的优先级，可以调用如下函数接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_control</span><span class="params">(<span class="type">rt_thread_t</span> thread, <span class="type">rt_uint8_t</span> cmd, <span class="type">void</span>* arg)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/348eb561864549528d9695d8f504af92.png"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">指示控制命令cmd 当前支持的命令包括：</span><br><span class="line">•RT_THREAD_CTRL_CHANGE_PRIORITY：动态更改线程的优先级；</span><br><span class="line">•RT_THREAD_CTRL_STARTUP：开始运行一个线程，等同于rt_thread_startup() 函数调用；</span><br><span class="line">•RT_THREAD_CTRL_CLOSE：关闭一个线程，等同于rt_thread_delete() 函数调用。</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置和删除空闲钩子"><a href="#设置和删除空闲钩子" class="headerlink" title="设置和删除空闲钩子"></a>设置和删除空闲钩子</h2><blockquote>
+<p>空闲钩子函数是空闲线程的钩子函数，如果设置了空闲钩子函数，就可以在系统执行空闲线程时，自动执行空闲钩子函数来做一些其他事情，比如系统指示灯。</p>
+</blockquote>
+<p>设置&#x2F; 删除空闲钩子的接口如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_idle_sethook</span><span class="params">(<span class="type">void</span> (*hook)(<span class="type">void</span>))</span>;</span><br><span class="line"><span class="type">rt_err_t</span> <span class="title function_">rt_thread_idle_delhook</span><span class="params">(<span class="type">void</span> (*hook)(<span class="type">void</span>))</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hook</td>
+<td>设置&#x2F;删除的钩子函数</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>—</td>
+</tr>
+<tr>
+<td>RT-EOK</td>
+<td>设置&#x2F;删除成功</td>
+</tr>
+<tr>
+<td>-RT_EFULL</td>
+<td>设置失败</td>
+</tr>
+<tr>
+<td>-RT_ENOSYS</td>
+<td>删除失败</td>
+</tr>
+</tbody></table>
+<p><code>!!! note “注意事项” 空闲线程是一个线程状态永远为就绪态的线程，因此设置的钩子函数必须保证空闲线程在任何时刻都不会处于挂起状态，例如rt_thread_delay()，rt_sem_take() 等可能会导致线程挂起的函数都不能使用。</code></p>
+<h2 id="设置调度器钩子"><a href="#设置调度器钩子" class="headerlink" title="设置调度器钩子"></a>设置调度器钩子</h2><p><code>在整个系统的运行时，系统都处于线程运行、中断触发- 响应中断、切换到其他线程，甚至是线程间的切换过程中，或者说系统的上下文切换是系统中最普遍的事件。有时用户可能会想知道在一个时刻发生了什么样的线程切换，可以通过调用下面的函数接口设置一个相应的钩子函数。</code></p>
+<p>在系统线程切换时，这个钩子函数将被调用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">rt_scheduler_sethook</span><span class="params">(<span class="type">void</span> (*hook)(<span class="keyword">struct</span> rt_thread* from, <span class="keyword">struct</span> rt_thread* to))</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>设置调度器钩子函数的输入参数</code>如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hook</td>
+<td>表示用户定义的钩子函数指针</td>
+</tr>
+</tbody></table>
+<p><code>钩子函数hook() 的声明</code>如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void hook(struct rt_thread* from, struct rt_thread* to);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>from</td>
+<td>表示系统所要切换出的线程控制块指针</td>
+</tr>
+<tr>
+<td>to</td>
+<td>表示系统所要切换到的线程控制块指针</td>
+</tr>
+</tbody></table>
+<p><code>!!! note “注意事项” 请仔细编写你的钩子函数，稍有不慎将很可能导致整个系统运行不正常（在这个 钩子函数中，基本上不允许调用系统API，更不应该导致当前运行的上下文挂起）。</code></p>
+<hr>
+<p>参考资料：  </p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FzNDgwMTMzOTM3L2FydGljbGUvZGV0YWlscy85OTEyMTY0NT9vcHNfcmVxdWVzdF9taXNjPSUyNTdCJTI1MjJyZXF1ZXN0JTI1NUZpZCUyNTIyJTI1M0ElMjUyMjE2NDk4MzcwMDYxNjc4MDI2OTg3OTIxNSUyNTIyJTI1MkMlMjUyMnNjbSUyNTIyJTI1M0ElMjUyMjIwMTQwNzEzLjEzMDEwMjMzNC4uJTI1MjIlMjU3RCZyZXF1ZXN0X2lkPTE2NDk4MzcwMDYxNjc4MDI2OTg3OTIxNSZiaXpfaWQ9MCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH50b3BfcG9zaXRpdmV+ZGVmYXVsdC0xLTk5MTIxNjQ1LjE0MiU1RXY3JTVFYXJ0aWNsZV9zY29yZV9yYW5rLDE1NyU1RXY0JTVFY29udHJvbCZ1dG1fdGVybT0lRTclOUMlOEIlRTklOTclQTglRTclOEIlOTcmc3BtPTEwMTguMjIyNi4zMDAxLjQxODc=">【STM32】HAL库 STM32CubeMX教程五—-看门狗(独立看门狗,窗口看门狗)<i class="fa fa-external-link-alt"></i></span>  </li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxMzIxNzcvYXJ0aWNsZS9kZXRhaWxzLzExMDcwNDcyMT9vcHNfcmVxdWVzdF9taXNjPSZyZXF1ZXN0X2lkPSZiaXpfaWQ9MTAyJnV0bV90ZXJtPSVFOSU5MiVBOSVFNSVBRCU5MCVFNSU4NyVCRCVFNiU5NSVCMCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH5zb2JhaWR1d2VifmRlZmF1bHQtMC0xMTA3MDQ3MjEubm9uZWNhc2Umc3BtPTEwMTguMjIyNi4zMDAxLjQxODc=">什么是钩子函数<i class="fa fa-external-link-alt"></i></span>  </li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnQtdGhyZWFkLm9yZy9kb2N1bWVudC9zaXRlLyMv">RT-Thread文档中心<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU2OTE0MTQ2L2FydGljbGUvZGV0YWlscy8xMjQxNDUxNTM=">【操作系统】进程上下文和线程上下文<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <img src="/images/official-accounts.png" width="80%">
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pdpeng.github.io/2022/04/28/rt-thread03/" title="【玩转 RT-Thread】线程管理原理">https://pdpeng.github.io/2022/04/28/rt-thread03/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/RT-Thread/" rel="tag"><i class="fa fa-tag"></i> RT-Thread</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/28/rt-thread02/" rel="prev" title="【玩转 RT-Thread】I2C 内核">
+                  <i class="fa fa-chevron-left"></i> 【玩转 RT-Thread】I2C 内核
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/25/Idea-resource-load-error/" rel="next" title="Idea 中图片资源无法加载问题">
+                  Idea 中图片资源无法加载问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
+  </span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">293k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:27</span>
+  </span>
+</div>
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+      <img src="/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+  </div>
+
+
+<div class="powered-upyun-jsdelivr-aliyun">
+  <a href="https://www.upyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/upyun.png" width="7%" alt="upyun" style="display:inline;"></a>&nbsp;
+  <a href="https://www.jsdelivr.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/jsdelivr.svg" width="10%" alt="jsdelivr" style="display:inline;"></a>&nbsp;
+  <a href="https://www.aliyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/aliyun.PNG" width="8%" alt="aliyun" style="display:inline;"></a>&nbsp;
+   <a href="https://www.github.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/github.png" width="7%" alt="github" style="display:inline;"></a> 提供CDN/云资源支持
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6157d91d9141f476" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"XnAU2LpE7JlHt34KKmw24BoM-MdYXbMMI","app_key":"vphcyLncudT8YkHIgks4F1r2","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/pdpeng.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

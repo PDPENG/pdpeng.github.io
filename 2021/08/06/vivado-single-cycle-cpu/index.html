@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="/live2d-widget/autoload.js"></script>
+  <meta charset="UTF-8">
+<meta name="baidu-site-verification" content="code-QreKZHvhxr" />
+<meta name="google-site-verification" content="09pUELCUBq1DqCCF38Yh2tJ3Ym_AwCrftq7Nuj6RFKU" />
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pdpeng.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://pdpeng.github.io/2021/08/06/vivado-single-cycle-cpu/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pdpeng.github.io/2021/08/06/vivado-single-cycle-cpu/","path":"2021/08/06/vivado-single-cycle-cpu/","title":"《我的 Vivado 实战——单周期 CPU 指令分析》"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《我的 Vivado 实战——单周期 CPU 指令分析》 | 杰森的博客</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="杰森的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰森的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">全栈杰森</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">22</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E6%9C%BA%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.</span> <span class="nav-text">上机实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Addi"><span class="nav-number">2.1.</span> <span class="nav-text">Addi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ori"><span class="nav-number">2.2.</span> <span class="nav-text">Ori</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add"><span class="nav-number">2.3.</span> <span class="nav-text">Add</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sub"><span class="nav-number">2.4.</span> <span class="nav-text">Sub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#and"><span class="nav-number">2.5.</span> <span class="nav-text">and</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#or"><span class="nav-number">2.6.</span> <span class="nav-text">or</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sll"><span class="nav-number">2.7.</span> <span class="nav-text">sll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bne"><span class="nav-number">2.8.</span> <span class="nav-text">bne</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slti"><span class="nav-number">2.9.</span> <span class="nav-text">slti</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#beq"><span class="nav-number">2.10.</span> <span class="nav-text">beq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sw"><span class="nav-number">2.11.</span> <span class="nav-text">sw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lw"><span class="nav-number">2.12.</span> <span class="nav-text">lw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#j"><span class="nav-number">2.13.</span> <span class="nav-text">j</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#halt"><span class="nav-number">2.14.</span> <span class="nav-text">halt</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <a href="/">
+    <img class="site-author-image" itemprop="image" alt="Jason"
+      src="/images/head_portrait.png">
+    </a>
+  <p class="site-author-name" itemprop="name">Jason</p>
+  <div class="site-description" itemprop="description" style="padding-bottom: 8px">A blacksmith must be strong</div>
+
+<html>
+<head>
+    <style>
+        .rss-button div {
+            display: block;
+            margin-top: 5px;
+            background-color: transparent;
+            position: relative;
+            font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .feed-link a {
+            display: inline-block;
+            padding: 0 15px;
+            color: #fc6423;
+            border: 2px solid #fc6423;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .feed-link a:hover {
+            background-color: #fc6423;
+            border-bottom-color: #fc6423;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="rss-button">
+    <div class="feed-link" title="RSS → /atom.xml">
+        <a href="/atom.xml">
+            <i class="fa fa-rss"> </i> RSS
+        </a>
+    </div>
+</body>
+</html>
+
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAzOTcxOTcxMzk1Mg==" title="FaceBook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100039719713952"><i class="fab fa-facebook fa-fw"></i>FaceBook</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbl9jb2Rpbmc=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jason_coding"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51269961"><i class="fa-solid fa-c fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RT-Thread/" rel="tag">RT-Thread</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLServer/" rel="tag">SQLServer</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP&#x2F;IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vivado/" rel="tag">Vivado</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" rel="tag">程序人生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/" rel="tag">职业认证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag">解析几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BEUEVORw==" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2021/08/06/vivado-single-cycle-cpu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head_portrait.png">
+      <meta itemprop="name" content="Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰森的博客">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《我的 Vivado 实战——单周期 CPU 指令分析》 | 杰森的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《我的 Vivado 实战——单周期 CPU 指令分析》
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-06 16:35:14" itemprop="dateCreated datePublished" datetime="2021-08-06T16:35:14+08:00">2021-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/08/06/vivado-single-cycle-cpu/" class="post-meta-item leancloud_visitors" data-flag-title="《我的 Vivado 实战——单周期 CPU 指令分析》" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>不知道你是否和我有过同样的感受，《计算机组成原理》这门学科学起来如此的艰难：一节课下来，教室黑板上留下了满满的 “足迹”，看上去也挺简单的，不就是 0 和 1 嘛。但这些看起来简简单单的 0 1 码却成为了我当时学习路上的绊脚石。源码、反码、补码等等等等，各种的码制转换令我一头雾水，我曾一度怀疑这就是计算机干的活儿吗？</p>
+<p>随着后面慢慢了解《计算机组成原理》后，我愿称计算机为世界上最麻烦的电子产品。也形象的将计算机描述为一套有电源、有身体、有框架，但就是没有思想的空壳儿。这时候，我们的人类社会才萌生了许许多多“ 利用 ”它们的主人—程序“ 猿 ”</p>
+<p>程序员就是要为计算机这个富有 ” 聪明 “潜质的伙伴编写一套一套的 “程序” ，告诉它们应该去做什么亦或是怎么去做。正是由于它们能吃苦、不怕累的精神再加上完美程序的契合，我们的生活质量得以大幅度提升</p>
+<p><img src="https://img-blog.csdnimg.cn/d9e29e873bc84ad29fe504d8c01d22c9.jpg"></p>
+<p>即使你不是计算机专业的学生，相信对于CPU你也有所了解。正所谓CPU（Central Processing Unit），也就是中央处理器。负责解释计算机指令以及处理计算机软件中的数据。中央处理器主要包含控制器、运算器两部分，其中还包括cache以及实现它们之间信息互换的数据、总线<br>可千万别小看这个不起眼的 “小东西” ，它可是程序执行、机器正常运转必不可少的元器件。作为电子计算机三大核心部件（CPU、内存、I&#x2F;O设备）之一的CPU，在计算机体系结构中承载着控制调配硬件资源、执行通用运算等重要职责。下面我们来了解较为简单的单周期CPU功能指令</p>
+<span id="more"></span>
+<hr>
+<h1 id="上机实验"><a href="#上机实验" class="headerlink" title="上机实验"></a>上机实验</h1><p>分析实现单周期CPU的14条指令计算结果，比较理论与实践结果的正确性</p>
+<h2 id="Addi"><a href="#Addi" class="headerlink" title="Addi"></a>Addi</h2><p><img src="https://img-blog.csdnimg.cn/ba85a8085bd8402897ac6cf03bda40c0.png">分析第一个周期，指令地址为041008，在程序测试段中，可以看到，本条指令为addi，那么现在开始检验指令addi的实现过程：指令addi的功能是rt←rs + (sign-extend)immediate； immediate符号扩展再参加“加”运算</p>
+<p>首先找到rs在本周期中存放的源操作数地址，rs&#x3D;00；然后在Objects中添加immediate组件，找到立即数的值，immediate&#x3D;8；最后进入ALU分析计算结果，在ALU的代码文件中有两个引脚，ALUSrcA和ALUSrcB，它们在第一个周期中的值分别是0和1，则A端口进行ReadData1，B端口进行extend，计算结果为result&#x3D;8，指令执行正确，可以实现数据相加功能</p>
+<p><img src="https://img-blog.csdnimg.cn/6f8709919cd443a3a8c0888ad370ce45.png"></p>
+<h2 id="Ori"><a href="#Ori" class="headerlink" title="Ori"></a>Ori</h2><p><img src="https://img-blog.csdnimg.cn/c0dd475546ad4e30aeeb8e4fdb391d05.png"></p>
+<p>分析第二个周期，指令地址为40020002，在程序测试段中，可以看到，本条指令为ori，那么现在开始检验指令ori的实现过程：指令ori的功能是rt←rs | (zero-extend)immediate； immediate符号扩展再参加“或”运算。寄存器源操作数地址：rs&#x3D;0，immediate&#x3D;2；<br>进行zero-extend后，值为2</p>
+<p><img src="https://img-blog.csdnimg.cn/d707e234fec54ee8b057751db692f5ca.png"></p>
+<p>进行“或”运算，ALU两个引脚输入端口值为</p>
+<p><img src="https://img-blog.csdnimg.cn/1132e1365c894d69bdaa318dbdc2143e.png"></p>
+<p>计算结果为</p>
+<p><img src="https://img-blog.csdnimg.cn/70d71de7cc7e45f4abeed363dbf2743b.png"></p>
+<p>指令计算结果无误，指令运行正常</p>
+<h2 id="Add"><a href="#Add" class="headerlink" title="Add"></a>Add</h2><p><img src="https://img-blog.csdnimg.cn/4f42e234992f497aa416aafd950da353.png"></p>
+<p>分析第三个周期，指令地址为0411800，在程序测试段中，可以看到，本条指令为add，那么现在开始检验指令add的实现过程：指令add的功能是rd←rs + rt。源操作数地址：rs&#x3D;2，rt&#x3D;1；ALU两个引脚值都是0，读寄存器中的值，此时存入结果为03，程序运行正常，功能实现</p>
+<p><img src="https://img-blog.csdnimg.cn/f0ba839ffdaf4592819415a13dc9414e.png"></p>
+<h2 id="Sub"><a href="#Sub" class="headerlink" title="Sub"></a>Sub</h2><p><img src="https://img-blog.csdnimg.cn/2dceddf99f2a47beb0e18971311a12e7.png"></p>
+<p>分析第四个周期，指令地址为08622800，在程序测试段中，可以看到，本条指令为sub，那么现在开始检验指令sub的实现过程：指令sub的功能是rd←rs - rt。源操作数地址：rs&#x3D;3，rt&#x3D;2；ALU两个引脚值皆为0，程序读取寄存器中的值，此时存入结果为5，程序运行正常，功能完好</p>
+<p><img src="https://img-blog.csdnimg.cn/0827be61b81448d58c7a5c3e5bece093.png"></p>
+<h2 id="and"><a href="#and" class="headerlink" title="and"></a>and</h2><p><img src="https://img-blog.csdnimg.cn/fa60197cf2d64ee385dcdc3228d26281.png"></p>
+<p>分析第五个周期，指令地址为44a22000，在程序测试段中，可以看到，本条指令为and，那么现在开始检验指令and的实现过程：指令and的功能是rd←rs &amp; rt；（逻辑与运算）。源操作数寄存器地址：rs&#x3D;5，rt&#x3D;2；ALU引脚值为0，读取ALU计算结果为00000000，分别对源操作数5和2转为2进制为：0101、0010按位与后值为0，结果吻合，该单元工作正常，功能实现</p>
+<p><img src="https://img-blog.csdnimg.cn/9a9f74d997c84f62a6252f24d99ed877.png"></p>
+<h2 id="or"><a href="#or" class="headerlink" title="or"></a>or</h2><p><img src="https://img-blog.csdnimg.cn/3e779ca5a7724e2f972cd1865a96ce99.png"></p>
+<p>分析第六个周期，指令地址为48824000，在程序测试段中，可以看到，本条指令为or，那么现在开始检验指令or的实现过程：指令or的功能是rd←rs | rt；（逻辑或运算）。源操作数寄存器地址：rs&#x3D;04，rt&#x3D;02；ALU双引脚值为0，读取寄存器堆中的值，可以看到存放真值为0和2（取最后结果）。读取值为2</p>
+<p>分别对源操作数4和2转为2进制并按位或后值为2，与程序运行结果吻合，该单元工作正常，功能实现</p>
+<p><img src="https://img-blog.csdnimg.cn/d921a5397b664867917ec2b46e93d1c3.png"></p>
+<h2 id="sll"><a href="#sll" class="headerlink" title="sll"></a>sll</h2><p><img src="https://img-blog.csdnimg.cn/780db27a9c4f49049c31e0d9fc7499a0.png"></p>
+<p>分析第七个周期，指令地址为60084040，在程序测试段中，可以看到，本条指令为sll，那么现在开始检验指令sll的实现过程：指令sll的功能是rd&lt;－rt&lt;&lt;(zero-extend)sa，左移sa位 ，(zero-extend)sa。源操作数寄存器地址：rt&#x3D;08 ，寻求真值，移位数sa&#x3D;1,程序运行后 。在二进制数据计算中，左移一位就相当于乘以2，故程序结果正确，该单元工作正常</p>
+<h2 id="bne"><a href="#bne" class="headerlink" title="bne"></a>bne</h2><p><img src="https://img-blog.csdnimg.cn/69aea7d3a2e243898e9b41d19da3ae49.png"></p>
+<p>分析第八个周期，指令地址为c501fffe，在程序测试段中，可以看到，本条指令为bne，那么现在开始检验指令bne的实现过程：指令bne的功能是：if(rs!&#x3D;rt) pc←pc + 4 + (sign-extend)immediate &lt;&lt;2  else pc ←pc + 4【与beq不同：不等时转移，相等时顺序执行。】在寄存器堆中找到源操作数地址，寻得真值，找寻计算结果，结果吻合，单元工作正常</p>
+<p><img src="https://img-blog.csdnimg.cn/2418243ddb294a308fe208c2c8cd98fa.png"></p>
+<h2 id="slti"><a href="#slti" class="headerlink" title="slti"></a>slti</h2><p><img src="https://img-blog.csdnimg.cn/17de34a564c045e3aa7244f26222d2f4.png"></p>
+<p>分析第九个周期，指令地址为6c460008，在程序测试段中，可以看到，本条指令为slti，那么现在开始检验指令slti的实现过程：指令slti的功能是：if (rs &lt;(sign-extend)immediate)  rt &#x3D;1 else  rt&#x3D;0，源操作数地址找到后，对立即数进行sign-extend，然后判断是否满足if（）中的给定条件，程序结果完整无误，本单元工作正常</p>
+<p><img src="https://img-blog.csdnimg.cn/b16162cd12044c59bb598391f0ac2c51.png"></p>
+<h2 id="beq"><a href="#beq" class="headerlink" title="beq"></a>beq</h2><p><img src="https://img-blog.csdnimg.cn/01132021d3744f38a52b30bcd0b45bbc.png"></p>
+<p>第14个周期中，指令地址为c0e1fffe，在程序测试段中，可以看到，本条指令为beq，那么现在开始检验指令beq的实现过程：指令beq的功能是：if(rs&#x3D;rt) pc←pc + 4 + (sign-extend)immediate &lt;&lt;2  else pc ←pc + 4,immediate是从PC+4地址开始和转移到的指令之间指令条数</p>
+<p>immediate符号扩展之后左移2位再相加。左移2位是由于跳转到的指令地址肯定是4的倍数（每条指令占4个字节），最低两位是“00”，因此将immediate放进指令码中的时候，已经右移两位，这与上文 “指令之间指令条数”相契合。运算结果符合事实，单元工作正常</p>
+<p><img src="https://img-blog.csdnimg.cn/2b9d5421c8a34e0bb9876455e7ff2f08.png"></p>
+<h2 id="sw"><a href="#sw" class="headerlink" title="sw"></a>sw</h2><p><img src="https://img-blog.csdnimg.cn/945306ae6f2f42199b7928a6ecfe5083.png"></p>
+<p>第19个周期中，指令地址为98220004，在程序测试段中，可以看到，本条指令为sw，那么现在开始检验指令sw的实现过程：指令sw的功能是：memory[rs+ (sign-extend)immediate]←rt；immediate符号扩展再相加</p>
+<p>将rt寄存器的内容保存到rs寄存器内容和立即数符号扩展后的数相加作为地址的内存单元中。同样的依次找到源操作数在寄存器中的值，进入ALU运算后，检验结果，过程图展示如下，结果无误，单元功能实现完好</p>
+<p><img src="https://img-blog.csdnimg.cn/f13fca4fb6ec4362811231cb1ebd2f3c.png"></p>
+<h2 id="lw"><a href="#lw" class="headerlink" title="lw"></a>lw</h2><p><img src="https://img-blog.csdnimg.cn/0efbc72459be4029a494a7d8c297c25a.png"></p>
+<p>第20个周期中，指令地址为9c290004，在程序测试段中，可以看到，本条指令为lw，那么现在开始检验指令lw的实现过程：指令lw的功能是：rt ← memory[rs + (sign-extend)immediate]；immediate符号扩展再相加</p>
+<p>读取rs寄存器内容和立即数符号扩展后的数相加作为地址的内存单元中的数，然后保存到rt寄存器中。同样的依次找到源操作数在寄存器中的值，进入ALU运算后，检验结果，过程图展示如下，结果无误，单元功能实现完好</p>
+<p><img src="https://img-blog.csdnimg.cn/a11ee093c5d246d493ca8d581087e876.png"></p>
+<h2 id="j"><a href="#j" class="headerlink" title="j"></a>j</h2><p><img src="https://img-blog.csdnimg.cn/4cf52e7f6ba047439747bf11fc8bb0b1.png"></p>
+<p>第21个周期中，指令地址为e0000010，在程序测试段中，可以看到，本条指令为j，那么现在开始检验指令j的实现过程：指令j的功能是：pc &lt;－{(pc+4)[31..28],addr[27..2],2{0}}，无条件跳转</p>
+<p>由于MIPS32的指令代码长度占4个字节，所以指令地址二进制数最低2位均为0，将指令地址放进指令代码中时，可省掉！这样，除了最高6位操作码外，还有26位可用于存放地址，事实上，可存放28位地址了，剩下最高4位由pc+4最高4位拼接上。指令验证过程如下，最后结论为：单元工作正常，功能实现完好</p>
+<p><img src="https://img-blog.csdnimg.cn/28181332ce9c4e84bba938c04968e332.png"></p>
+<h2 id="halt"><a href="#halt" class="headerlink" title="halt"></a>halt</h2><p><img src="https://img-blog.csdnimg.cn/d8e73ac8cbf342c5a331339f77f6ea0c.png"></p>
+<p>第22个周期中，指令地址为fc000000，在程序测试段中，可以看到，本条指令为Halt，那么现在开始检验指令Halt的实现过程：指令Halt的功能是：停机；不改变PC的值，PC保持不变。从仿真后的波形图中，可以清晰看到，波形图在本指令后，电平恒定，不再发生变化，所以本指令功能实现，模块单元工作正常</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>深刻了解了一个简单单周期CPU的设计方法，无论是复杂亦或是简单的系统，最好的办法就是采用分层和模块化的设计方法。在众多信号状态中，首先从最高层开始梳理逻辑，划分模块，进而到每个模块的内部核心处继续划分，这样就避免了在信号条件变动很多的情况下不能够清晰的理清的问题</p>
+<p>硬件设施的不足让人感觉整个课程在“云端”，讲授的内容不能很好的和现有知识的应用契合，虽然第一次接触VerilogHDL硬件描述语言，但是这门语言的思想和我所学的C++语言使用了同样的逻辑架构，采用了自顶向下、分而治之的思想逐步剖析，正所谓“大厦的建立绝非一朝一夕”，采用“分步”的设计思想完成最终单周期CPU的设计与实现</p>
+<p>有些许遗憾的是未能在硬件上实现，如果能在开发板上烧写程序，接触到实物，应该能有更为深刻的理解，在模块调用使用端口绑定时，有一个小技巧：勿完全按照顺序赋值；因为这样的方法可以尽量减少程序出错的概率，而对于我们后期检查源文件时也无需完全分辨每一个参数的值，减少工作量</p>
+<p>维基百科、谷歌学术是非常不错的平台</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <img src="/images/official-accounts.png" width="80%">
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pdpeng.github.io/2021/08/06/vivado-single-cycle-cpu/" title="《我的 Vivado 实战——单周期 CPU 指令分析》">https://pdpeng.github.io/2021/08/06/vivado-single-cycle-cpu/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Vivado/" rel="tag"><i class="fa fa-tag"></i> Vivado</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/06/tools-develop/" rel="prev" title="实用工具【开发必备】">
+                  <i class="fa fa-chevron-left"></i> 实用工具【开发必备】
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/05/harmonyos-atomization-service/" rel="next" title="《HarmonyOS实战——入门到开发，浅析原子化服务》">
+                  《HarmonyOS实战——入门到开发，浅析原子化服务》 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason&nbsp;&nbsp;
+  </span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">293k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:27</span>
+  </span>
+</div>
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+      <img src="/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+  </div>
+
+
+<div class="powered-upyun-jsdelivr-aliyun">
+  <a href="https://www.upyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/upyun.png" width="7%" alt="upyun" style="display:inline;"></a>&nbsp;
+  <a href="https://www.jsdelivr.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/jsdelivr.svg" width="10%" alt="jsdelivr" style="display:inline;"></a>&nbsp;
+  <a href="https://www.aliyun.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/aliyun.PNG" width="8%" alt="aliyun" style="display:inline;"></a>&nbsp;
+   <a href="https://www.github.com" class="theme-link" rel="noopener" target="_blank"><img src="/images/github.png" width="7%" alt="github" style="display:inline;"></a> 提供CDN/云资源支持
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6157d91d9141f476" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"XnAU2LpE7JlHt34KKmw24BoM-MdYXbMMI","app_key":"vphcyLncudT8YkHIgks4F1r2","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/pdpeng.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
