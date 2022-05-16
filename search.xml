@@ -2019,6 +2019,8 @@
 <h1 id="GitHub-Actions-自动化部署"><a href="#GitHub-Actions-自动化部署" class="headerlink" title="GitHub Actions 自动化部署"></a>GitHub Actions 自动化部署</h1><p><img src="https://img-blog.csdnimg.cn/667f5a66a56f4649a614f24662407fbd.png"></p>
 <p>本文最具价值的配置莫过于此，没有用到 <code>GitHub Actions</code> 前，每次发文需要将 <code>markdown</code> 文件放入 <code>_post</code> 文件夹下，然后执行 <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s &amp;&amp; hexo g</code>一连串命令，执行无报错还好说，万一本地环境出现错误，还得花时间找错，非常麻烦</p>
 <p>使用 <code>GitHub Actions</code> 后，发文只需要在博客的源文件仓库中拖拽源文件或者 <code>push</code> 源文件到仓库，<code>GitHub Actions</code> 即可监测仓库状态，自动执行部署操作到指定位置，不必担心本地环境出错等系列问题</p>
+<span id="more"></span>
+
 <p>效果 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BEUEVORy9wZHBlbmcuZ2l0aHViLmlvL2FjdGlvbnM=">预览地址<i class="fa fa-external-link-alt"></i></span></p>
 <p><img src="https://img-blog.csdnimg.cn/ac3e2995981745c8b3c1836ba819ffc4.png"></p>
 <p>有关介绍和详细令牌、密钥配置请 <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dic3UyMDA0L2FydGljbGUvZGV0YWlscy8xMjI2NjExMTY=">参考此处<i class="fa fa-external-link-alt"></i></span>，以下主要是 <code>.github/workflows/deploy.yml</code> <span class="exturl" data-url="aHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20vUERQRU5HL2NjNjYyMDcwMTAwMWY4OWI2ZDMwY2Q5NzliZTI3ZWNl">文件<i class="fa fa-external-link-alt"></i></span> 的配置</p>
