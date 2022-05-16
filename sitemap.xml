@@ -11,6 +11,24 @@
   </url>
   
   <url>
+    <loc>https://pdpeng.github.io/2021/08/04/java-basics/</loc>
+    
+    <lastmod>2022-05-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/07/18/java-developenv-vscode-config/</loc>
+    
+    <lastmod>2022-05-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pdpeng.github.io/2022/04/29/jdbc-driver-update/</loc>
     
     <lastmod>2022-05-16</lastmod>
@@ -921,24 +939,6 @@
   
   <url>
     <loc>https://pdpeng.github.io/2021/06/08/ios15-beta-update/</loc>
-    
-    <lastmod>2022-05-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/04/java-basics/</loc>
-    
-    <lastmod>2022-05-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/07/18/java-developenv-vscode-config/</loc>
     
     <lastmod>2022-05-16</lastmod>
     
