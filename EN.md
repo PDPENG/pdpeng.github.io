@@ -28,7 +28,7 @@ Any problem through [home](https://github.com/PDPENG) on the left side of the ma
 <img src="https://user-images.githubusercontent.com/86602255/168467434-7717cf6d-fbff-4453-aa54-da74cdbe495b.png" alt="telegram" width="280">
 </div>
 
-# Contributing
+# Contributors
 
 <!-- readme: collaborators,contributors -start -->
 <!-- readme: collaborators,contributors -end -->

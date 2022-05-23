@@ -4340,41 +4340,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【欧拉计划第 7 题】第 10001 个素数 10001st prime</title>
-    <url>/2022/04/17/projecteuler007/</url>
-    <content><![CDATA[<h1 id="Problem-7-10001st-prime"><a href="#Problem-7-10001st-prime" class="headerlink" title="Problem 7 10001st prime"></a>Problem 7 10001st prime</h1><blockquote>
-<p>By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.<br>What is the 10 001st prime number?</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="问题-7-第-10001-个素数"><a href="#问题-7-第-10001-个素数" class="headerlink" title="问题 7 第 10001 个素数"></a>问题 7 第 10001 个素数</h1><blockquote>
-<p>通过列出前六个素数：2、3、5、7、11 和 13，我们可以看到第 6 个素数是 13。<br>第10001个质数是多少？</p>
-</blockquote>
-<h1 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h1><p>读完题目，发现题目还是比较容易的。枚举出范围内所有的素数，加入循环判断，等到判断条件是第 100001 个质数时输出就好</p>
-<h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><p>另外需要知道质数的概念</p>
-<blockquote>
-<p>质数（又称素数），指在大于1的自然数中，除了1和该数自身外，无法被其他自然数整除的数</p>
-</blockquote>
-<p>下面介绍一种比较容易理解的，在程序中判断数字是否为质数的方法</p>
-<p>因为，一个数如果可以进行因数分解，那么分解后，得到的两个数一定是<strong>一个小于等于 $sqrt(n)$，一个大于等于 $sqrt(n)$</strong></p>
-<p>所以，我们并不需要从 2 一直判断到 $n-1$ ，而只需遍历到 $sqrt(n)$ 即可。既然在左侧都找不到因数，那么右侧一定不存在咯</p>
-<p>贴下实现的代码，帮助理解</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-13 16:25:25</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-13 16:53:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> flag = <span class="number">0</span>; <span class="comment">// 标记当前是第几个素数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i; <span class="comment">// 注意考虑数据范围大小</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; flag &lt; <span class="number">10001</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">is_prime</span>(i)) <span class="comment">// 只有该数是素数,标记才自增 1</span></span><br><span class="line">            flag++;</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>答案：104743</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>欧拉计划</category>
-      </categories>
-      <tags>
-        <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【欧拉计划第 8 题】序列中最大的乘积 Largest product in a series</title>
     <url>/2022/04/17/projecteuler008/</url>
     <content><![CDATA[<h1 id="Problem-8-Largest-product-in-a-series"><a href="#Problem-8-Largest-product-in-a-series" class="headerlink" title="Problem 8 Largest product in a series"></a>Problem 8 Largest product in a series</h1><blockquote>
@@ -4405,6 +4370,41 @@
 
 <blockquote>
 <p>答案：23514624000</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>欧拉计划</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【欧拉计划第 7 题】第 10001 个素数 10001st prime</title>
+    <url>/2022/04/17/projecteuler007/</url>
+    <content><![CDATA[<h1 id="Problem-7-10001st-prime"><a href="#Problem-7-10001st-prime" class="headerlink" title="Problem 7 10001st prime"></a>Problem 7 10001st prime</h1><blockquote>
+<p>By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.<br>What is the 10 001st prime number?</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="问题-7-第-10001-个素数"><a href="#问题-7-第-10001-个素数" class="headerlink" title="问题 7 第 10001 个素数"></a>问题 7 第 10001 个素数</h1><blockquote>
+<p>通过列出前六个素数：2、3、5、7、11 和 13，我们可以看到第 6 个素数是 13。<br>第10001个质数是多少？</p>
+</blockquote>
+<h1 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h1><p>读完题目，发现题目还是比较容易的。枚举出范围内所有的素数，加入循环判断，等到判断条件是第 100001 个质数时输出就好</p>
+<h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><p>另外需要知道质数的概念</p>
+<blockquote>
+<p>质数（又称素数），指在大于1的自然数中，除了1和该数自身外，无法被其他自然数整除的数</p>
+</blockquote>
+<p>下面介绍一种比较容易理解的，在程序中判断数字是否为质数的方法</p>
+<p>因为，一个数如果可以进行因数分解，那么分解后，得到的两个数一定是<strong>一个小于等于 $sqrt(n)$，一个大于等于 $sqrt(n)$</strong></p>
+<p>所以，我们并不需要从 2 一直判断到 $n-1$ ，而只需遍历到 $sqrt(n)$ 即可。既然在左侧都找不到因数，那么右侧一定不存在咯</p>
+<p>贴下实现的代码，帮助理解</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-13 16:25:25</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-13 16:53:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> flag = <span class="number">0</span>; <span class="comment">// 标记当前是第几个素数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i; <span class="comment">// 注意考虑数据范围大小</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; flag &lt; <span class="number">10001</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">is_prime</span>(i)) <span class="comment">// 只有该数是素数,标记才自增 1</span></span><br><span class="line">            flag++;</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>答案：104743</p>
 </blockquote>
 ]]></content>
       <categories>
