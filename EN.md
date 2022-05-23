@@ -30,11 +30,11 @@ Any problem through [home](https://github.com/PDPENG) on the left side of the ma
 
 # Contributors
 
-<!-- readme: collaborators,contributors -start -->
-<!-- readme: collaborators,contributors -end -->
+<!-- en: collaborators,contributors -start -->
+<!-- en: collaborators,contributors -end -->
 
-<!-- readme: bots -start -->
-<!-- readme: bots -end -->
+<!-- en: bots -start -->
+<!-- en: bots -end -->
 
 # Support
 
