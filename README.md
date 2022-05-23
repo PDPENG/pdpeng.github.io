@@ -28,6 +28,14 @@
 <img src="https://user-images.githubusercontent.com/86602255/166093155-d03ac762-59f5-4b91-92a2-995546c61f55.png" alt="wx" width="280">
 </div>
 
+# 贡献者
+
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
+
+<!-- readme: bots -start -->
+<!-- readme: bots -end -->
+
 # 支持
 
 > 码字不易，若有关内容帮到了您，可以点亮页面右上角 `Star` 支持杰森
