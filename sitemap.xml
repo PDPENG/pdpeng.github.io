@@ -11,6 +11,24 @@
   </url>
   
   <url>
+    <loc>https://pdpeng.github.io/2022/04/17/projecteuler003/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/17/projecteuler004/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pdpeng.github.io/2022/04/17/projecteuler005/</loc>
     
     <lastmod>2022-05-25</lastmod>
@@ -929,16 +947,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/17/projecteuler003/</loc>
-    
-    <lastmod>2022-05-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/04/17/projecteuler004/</loc>
+    <loc>https://pdpeng.github.io/404/index.html</loc>
     
     <lastmod>2022-05-25</lastmod>
     
@@ -948,15 +957,6 @@
   
   <url>
     <loc>https://pdpeng.github.io/404.html</loc>
-    
-    <lastmod>2022-05-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/404/index.html</loc>
     
     <lastmod>2022-05-25</lastmod>
     

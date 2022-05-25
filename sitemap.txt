@@ -1,4 +1,6 @@
 https://pdpeng.github.io/tags/index.html
+https://pdpeng.github.io/2022/04/17/projecteuler003/
+https://pdpeng.github.io/2022/04/17/projecteuler004/
 https://pdpeng.github.io/2022/04/17/projecteuler005/
 https://pdpeng.github.io/2022/04/17/projecteuler006/
 https://pdpeng.github.io/2022/04/17/projecteuler007/
@@ -101,10 +103,8 @@ https://pdpeng.github.io/2022/04/15/mysql-server-error/
 https://pdpeng.github.io/2022/04/18/oj-term/
 https://pdpeng.github.io/2022/04/17/projecteuler001/
 https://pdpeng.github.io/2022/04/17/projecteuler002/
-https://pdpeng.github.io/2022/04/17/projecteuler003/
-https://pdpeng.github.io/2022/04/17/projecteuler004/
-https://pdpeng.github.io/404.html
 https://pdpeng.github.io/404/index.html
+https://pdpeng.github.io/404.html
 https://pdpeng.github.io/
 https://pdpeng.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/
 https://pdpeng.github.io/tags/%E5%89%8D%E7%AB%AF/
