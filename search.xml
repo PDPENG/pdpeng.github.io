@@ -7796,6 +7796,94 @@
       </tags>
   </entry>
   <entry>
+    <title>SQL 基础（八）数据更新操作实战演练</title>
+    <url>/2022/04/21/sql-base8/</url>
+    <content><![CDATA[<h1 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h1><blockquote>
+<p>根据数据库 <code>db_student</code> 中的 <code>tb_student</code> 表、<code>tb_score</code>、<code>tb_course</code>，完成下列更新语句</p>
+</blockquote>
+<h1 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h1><ul>
+<li>tb_student(sno,sn,dept,sex,birthday,polity)</li>
+<li>tb_score(sno,cno,score)</li>
+<li>tb_cource(cno,cn,ct,th)<span id="more"></span>
+<h1 id="任务题解"><a href="#任务题解" class="headerlink" title="任务题解"></a>任务题解</h1><h1 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h1></li>
+</ul>
+<blockquote>
+<p>向学生表中插入一条记录，学号为 00000000，姓名为 XXX，性别为 X 的记录。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_student(sno,sn,sex)</span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;00000000&#x27;</span>,<span class="string">&#x27;XXX&#x27;</span>,<span class="string">&#x27;X&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务二"><a href="#任务二" class="headerlink" title="任务二"></a>任务二</h1><blockquote>
+<p>向学生有中插入一条记录,各字段值依次为:00000000,name,sex,department，XXXX-XX-XX,polity。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_student(sno,sn,sex,dept,birthday,polity)</span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;00000000&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>,<span class="string">&#x27;department&#x27;</span>,<span class="string">&#x27;XXXX-XX-XX&#x27;</span>,<span class="string">&#x27;polity&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h1><blockquote>
+<p>在课程表中添加一门新课程，其信息为：（’C8’,’计算机新技术’,’XXX’）。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_course</span><br><span class="line"><span class="keyword">ADD</span> na <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">null</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_course(cno,cn,na) </span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;c8&#x27;</span>,<span class="string">&#x27;计算机新技术&#x27;</span>,<span class="string">&#x27;XXX&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务四"><a href="#任务四" class="headerlink" title="任务四"></a>任务四</h1><blockquote>
+<p>在选修关系表 SC 中添加所有学生对’C8’课程的选修关系记录，成绩暂定为 60，请用一条命令完成本批量添加任务。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_score(sno,cno,score) </span><br><span class="line"><span class="keyword">SELECT</span> sno,<span class="string">&#x27;c8&#x27;</span>,<span class="number">60</span> <span class="comment">-- cno/score 定值</span></span><br><span class="line"><span class="keyword">from</span> tb_student</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务五"><a href="#任务五" class="headerlink" title="任务五"></a>任务五</h1><blockquote>
+<p>将女生的所有数据形成一张新表,表名为 student_girl。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">INTO</span> student_girl </span><br><span class="line"><span class="keyword">FROM</span> tb_student <span class="keyword">WHERE</span> sex<span class="operator">=</span><span class="string">&#x27;女&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="任务六"><a href="#任务六" class="headerlink" title="任务六"></a>任务六</h1><blockquote>
+<p>将学生表中姓名为 XX 同学，性别改为女，出生日期为 1998-1-1。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_student</span><br><span class="line"><span class="keyword">SET</span> sex<span class="operator">=</span><span class="string">&#x27;女&#x27;</span>,birthday<span class="operator">=</span><span class="string">&#x27;1998-1-1&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> sn<span class="operator">=</span><span class="string">&#x27;XX&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="任务七"><a href="#任务七" class="headerlink" title="任务七"></a>任务七</h1><blockquote>
+<p>将 tb_score 表中的 c04 的课程折合为 60%并加上 40 分。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_score</span><br><span class="line"><span class="keyword">SET</span> score<span class="operator">=</span>score<span class="operator">*</span><span class="number">0.6</span><span class="operator">+</span><span class="number">40</span></span><br><span class="line"><span class="keyword">WHERE</span> cno<span class="operator">=</span><span class="string">&#x27;c04&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="任务八"><a href="#任务八" class="headerlink" title="任务八"></a>任务八</h1><blockquote>
+<p>将选修数据结构课程的学生成绩增加 15 分。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_score</span><br><span class="line"><span class="keyword">SET</span> score<span class="operator">=</span>score<span class="operator">+</span><span class="number">15</span></span><br><span class="line"><span class="keyword">WHERE</span> cno<span class="operator">=</span>(<span class="keyword">SELECT</span> cno </span><br><span class="line">		   <span class="keyword">FROM</span> tb_course </span><br><span class="line">		   <span class="keyword">WHERE</span> cn<span class="operator">=</span><span class="string">&#x27;数据结构&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务九"><a href="#任务九" class="headerlink" title="任务九"></a>任务九</h1><blockquote>
+<p>把选“计算机新技术”课程的男学生的成绩暂全部初始化重新设置为 0。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_score</span><br><span class="line"><span class="keyword">SET</span> score<span class="operator">=</span><span class="number">0</span></span><br><span class="line"><span class="keyword">WHERE</span> sno <span class="keyword">IN</span> (<span class="keyword">SELECT</span> sno</span><br><span class="line">			  <span class="keyword">FROM</span> tb_student</span><br><span class="line">			  <span class="keyword">WHERE</span> sex<span class="operator">=</span><span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"><span class="keyword">AND</span> cno<span class="operator">=</span>(<span class="keyword">SELECT</span> cno <span class="comment">-- 两个并列关系子查询</span></span><br><span class="line">		 <span class="keyword">FROM</span> tb_course</span><br><span class="line">		 <span class="keyword">WHERE</span> cn<span class="operator">=</span><span class="string">&#x27;计算机新技术&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务十"><a href="#任务十" class="headerlink" title="任务十"></a>任务十</h1><blockquote>
+<p> 删除学生表中所有姓张的同学。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">LEFT</span> <span class="keyword">JOIN</span>(sn,<span class="number">1</span>)<span class="operator">=</span><span class="string">&#x27;张&#x27;</span> <span class="comment">-- 或 WHERE sn LIKE &#x27;张%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="任务十一"><a href="#任务十一" class="headerlink" title="任务十一"></a>任务十一</h1><blockquote>
+<p>删除 student 表中不及格同学的所有信息。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"><span class="keyword">WHERE</span> sno<span class="operator">=</span>(<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> sno</span><br><span class="line">		   <span class="keyword">FROM</span> tb_score</span><br><span class="line">		   <span class="keyword">WHERE</span> score<span class="operator">&lt;</span><span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="任务十二"><a href="#任务十二" class="headerlink" title="任务十二"></a>任务十二</h1><blockquote>
+<p>XXX 同学的学生信息及其选课情况等全部删除。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 删除顺序颠倒会导致成绩表中无法找到XXX学生学号</span></span><br><span class="line"><span class="comment">-- 1.删除成绩表XXX成绩信息</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_score</span><br><span class="line"><span class="keyword">WHERE</span> sno<span class="operator">=</span>(<span class="keyword">SELECT</span> sno</span><br><span class="line">           <span class="keyword">FROM</span> tb_student</span><br><span class="line">		   <span class="keyword">WHERE</span> sn<span class="operator">=</span><span class="string">&#x27;XXX&#x27;</span>)</span><br><span class="line"><span class="comment">-- 2.删除XXX学生信息					 </span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"><span class="keyword">WHERE</span> sn<span class="operator">=</span><span class="string">&#x27;XXX&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="任务十三"><a href="#任务十三" class="headerlink" title="任务十三"></a>任务十三</h1><blockquote>
+<p>删除学生表中所有学生信息（两种方法）。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- method1</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"></span><br><span class="line"><span class="comment">-- method2</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> tb_student</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>在修改表信息书写 <code>SQL</code> 语句时，遵循 <code>SET</code>、<code>UPDATE</code>、<code>WHERE</code> 的书写顺序</p>
+<p>即首先设置值，然后选定作用范围，最后增加限制条件。这样思路会更加清晰</p>
+]]></content>
+      <categories>
+        <category>数据库原理</category>
+      </categories>
+      <tags>
+        <tag>SQLServer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL 基础（九）视图与索引实战演练</title>
     <url>/2022/04/29/sql-base9/</url>
     <content><![CDATA[<h1 id="实验任务-1"><a href="#实验任务-1" class="headerlink" title="实验任务 1"></a>实验任务 1</h1><blockquote>
@@ -8781,94 +8869,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL 基础（八）数据更新操作实战演练</title>
-    <url>/2022/04/21/sql-base8/</url>
-    <content><![CDATA[<h1 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h1><blockquote>
-<p>根据数据库 <code>db_student</code> 中的 <code>tb_student</code> 表、<code>tb_score</code>、<code>tb_course</code>，完成下列更新语句</p>
-</blockquote>
-<h1 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h1><ul>
-<li>tb_student(sno,sn,dept,sex,birthday,polity)</li>
-<li>tb_score(sno,cno,score)</li>
-<li>tb_cource(cno,cn,ct,th)<span id="more"></span>
-<h1 id="任务题解"><a href="#任务题解" class="headerlink" title="任务题解"></a>任务题解</h1><h1 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h1></li>
-</ul>
-<blockquote>
-<p>向学生表中插入一条记录，学号为 00000000，姓名为 XXX，性别为 X 的记录。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_student(sno,sn,sex)</span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;00000000&#x27;</span>,<span class="string">&#x27;XXX&#x27;</span>,<span class="string">&#x27;X&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务二"><a href="#任务二" class="headerlink" title="任务二"></a>任务二</h1><blockquote>
-<p>向学生有中插入一条记录,各字段值依次为:00000000,name,sex,department，XXXX-XX-XX,polity。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_student(sno,sn,sex,dept,birthday,polity)</span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;00000000&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>,<span class="string">&#x27;department&#x27;</span>,<span class="string">&#x27;XXXX-XX-XX&#x27;</span>,<span class="string">&#x27;polity&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h1><blockquote>
-<p>在课程表中添加一门新课程，其信息为：（’C8’,’计算机新技术’,’XXX’）。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_course</span><br><span class="line"><span class="keyword">ADD</span> na <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">null</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_course(cno,cn,na) </span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;c8&#x27;</span>,<span class="string">&#x27;计算机新技术&#x27;</span>,<span class="string">&#x27;XXX&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务四"><a href="#任务四" class="headerlink" title="任务四"></a>任务四</h1><blockquote>
-<p>在选修关系表 SC 中添加所有学生对’C8’课程的选修关系记录，成绩暂定为 60，请用一条命令完成本批量添加任务。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_score(sno,cno,score) </span><br><span class="line"><span class="keyword">SELECT</span> sno,<span class="string">&#x27;c8&#x27;</span>,<span class="number">60</span> <span class="comment">-- cno/score 定值</span></span><br><span class="line"><span class="keyword">from</span> tb_student</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务五"><a href="#任务五" class="headerlink" title="任务五"></a>任务五</h1><blockquote>
-<p>将女生的所有数据形成一张新表,表名为 student_girl。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">INTO</span> student_girl </span><br><span class="line"><span class="keyword">FROM</span> tb_student <span class="keyword">WHERE</span> sex<span class="operator">=</span><span class="string">&#x27;女&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="任务六"><a href="#任务六" class="headerlink" title="任务六"></a>任务六</h1><blockquote>
-<p>将学生表中姓名为 XX 同学，性别改为女，出生日期为 1998-1-1。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_student</span><br><span class="line"><span class="keyword">SET</span> sex<span class="operator">=</span><span class="string">&#x27;女&#x27;</span>,birthday<span class="operator">=</span><span class="string">&#x27;1998-1-1&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> sn<span class="operator">=</span><span class="string">&#x27;XX&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="任务七"><a href="#任务七" class="headerlink" title="任务七"></a>任务七</h1><blockquote>
-<p>将 tb_score 表中的 c04 的课程折合为 60%并加上 40 分。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_score</span><br><span class="line"><span class="keyword">SET</span> score<span class="operator">=</span>score<span class="operator">*</span><span class="number">0.6</span><span class="operator">+</span><span class="number">40</span></span><br><span class="line"><span class="keyword">WHERE</span> cno<span class="operator">=</span><span class="string">&#x27;c04&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="任务八"><a href="#任务八" class="headerlink" title="任务八"></a>任务八</h1><blockquote>
-<p>将选修数据结构课程的学生成绩增加 15 分。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_score</span><br><span class="line"><span class="keyword">SET</span> score<span class="operator">=</span>score<span class="operator">+</span><span class="number">15</span></span><br><span class="line"><span class="keyword">WHERE</span> cno<span class="operator">=</span>(<span class="keyword">SELECT</span> cno </span><br><span class="line">		   <span class="keyword">FROM</span> tb_course </span><br><span class="line">		   <span class="keyword">WHERE</span> cn<span class="operator">=</span><span class="string">&#x27;数据结构&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务九"><a href="#任务九" class="headerlink" title="任务九"></a>任务九</h1><blockquote>
-<p>把选“计算机新技术”课程的男学生的成绩暂全部初始化重新设置为 0。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tb_score</span><br><span class="line"><span class="keyword">SET</span> score<span class="operator">=</span><span class="number">0</span></span><br><span class="line"><span class="keyword">WHERE</span> sno <span class="keyword">IN</span> (<span class="keyword">SELECT</span> sno</span><br><span class="line">			  <span class="keyword">FROM</span> tb_student</span><br><span class="line">			  <span class="keyword">WHERE</span> sex<span class="operator">=</span><span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"><span class="keyword">AND</span> cno<span class="operator">=</span>(<span class="keyword">SELECT</span> cno <span class="comment">-- 两个并列关系子查询</span></span><br><span class="line">		 <span class="keyword">FROM</span> tb_course</span><br><span class="line">		 <span class="keyword">WHERE</span> cn<span class="operator">=</span><span class="string">&#x27;计算机新技术&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务十"><a href="#任务十" class="headerlink" title="任务十"></a>任务十</h1><blockquote>
-<p> 删除学生表中所有姓张的同学。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">LEFT</span> <span class="keyword">JOIN</span>(sn,<span class="number">1</span>)<span class="operator">=</span><span class="string">&#x27;张&#x27;</span> <span class="comment">-- 或 WHERE sn LIKE &#x27;张%&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="任务十一"><a href="#任务十一" class="headerlink" title="任务十一"></a>任务十一</h1><blockquote>
-<p>删除 student 表中不及格同学的所有信息。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"><span class="keyword">WHERE</span> sno<span class="operator">=</span>(<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> sno</span><br><span class="line">		   <span class="keyword">FROM</span> tb_score</span><br><span class="line">		   <span class="keyword">WHERE</span> score<span class="operator">&lt;</span><span class="number">60</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="任务十二"><a href="#任务十二" class="headerlink" title="任务十二"></a>任务十二</h1><blockquote>
-<p>XXX 同学的学生信息及其选课情况等全部删除。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 删除顺序颠倒会导致成绩表中无法找到XXX学生学号</span></span><br><span class="line"><span class="comment">-- 1.删除成绩表XXX成绩信息</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_score</span><br><span class="line"><span class="keyword">WHERE</span> sno<span class="operator">=</span>(<span class="keyword">SELECT</span> sno</span><br><span class="line">           <span class="keyword">FROM</span> tb_student</span><br><span class="line">		   <span class="keyword">WHERE</span> sn<span class="operator">=</span><span class="string">&#x27;XXX&#x27;</span>)</span><br><span class="line"><span class="comment">-- 2.删除XXX学生信息					 </span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"><span class="keyword">WHERE</span> sn<span class="operator">=</span><span class="string">&#x27;XXX&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="任务十三"><a href="#任务十三" class="headerlink" title="任务十三"></a>任务十三</h1><blockquote>
-<p>删除学生表中所有学生信息（两种方法）。</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- method1</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_student</span><br><span class="line"></span><br><span class="line"><span class="comment">-- method2</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> tb_student</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>在修改表信息书写 <code>SQL</code> 语句时，遵循 <code>SET</code>、<code>UPDATE</code>、<code>WHERE</code> 的书写顺序</p>
-<p>即首先设置值，然后选定作用范围，最后增加限制条件。这样思路会更加清晰</p>
-]]></content>
-      <categories>
-        <category>数据库原理</category>
-      </categories>
-      <tags>
-        <tag>SQLServer</tag>
       </tags>
   </entry>
 </search>
