@@ -347,38 +347,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【Apsara Clouder 认证】API 接口调用真题</title>
-    <url>/2022/04/08/apsara-clouder-api/</url>
-    <content><![CDATA[<h1 id="Apsara-Clouder-专项技能认证：实现调用API接口"><a href="#Apsara-Clouder-专项技能认证：实现调用API接口" class="headerlink" title="Apsara Clouder 专项技能认证：实现调用API接口"></a>Apsara Clouder 专项技能认证：实现调用API接口</h1><blockquote>
-<p>API 是一组封装好的函数，通过 API，你可以为应用快速扩展功能，而无需理解它们是如何实现的，从而提升开发效率</p>
-</blockquote>
-<span id="more"></span>
-
-<p><strong>1、调用API时，由于API服务商设置的用户流控值导致被流控，这种情况返回的错误码是（ ）</strong>【D】<br>A.400<br>B.401<br>C.402<br>D.403</p>
-<p><strong>2、关于API，下面说法错误的是（ ）</strong>【C】<br>A. 可以避免重复开发，提高开发效率<br>B. 减低代码的耦合度<br>C. 无论何时，都应该优先考虑使用API<br>D. 调用API实现某个功能时，无需了解该功能的原理和源码</p>
-<p><strong>3、关于JSON数据，以下哪个是错误的？</strong>【D】<br>A. 并列的数据之间用“，”分隔<br>B. 映射用：表示<br>C. 映射的集合（对象）用大括号{}表示<br>D. 并列数据的集合（数组）用大括号{}表示</p>
-<p><strong>4、关于API授权，说法错误的是（）</strong>【D】<br>A. 可以通过从数据市场购买API服务以及提供方主动授权方式获得API的授权<br>B. 购买了API服务就意味着已经获得了授权<br>C. 账号获得了授权，不代表每个APP都获得了授权，需要手动操作将已购买的API授权给哪些APP<br>D. 用户有权操作购买的API与APP的授权和解除授权，也可以解除由服务提供方授权给APP的API</p>
-<p><strong>5、通过Java代码调用阿里云市场中提供的ip查询API在应用中实现ip查询功能，这种API属于（）</strong>【C】<br>A. 系统API<br>B. 编程语API<br>C. Web API<br>D. 框架API</p>
-<p><strong>6、下面的JSON格式，写法正确的是（）</strong>【B】<br>A.{ firstName &#x3D; “Johm” }<br>B.{ “firstName” : “John” }<br>C.{ firstName : ‘John’ }<br>D.{ firstName : “John” }</p>
-<p><strong>7、阿里云API网关中，默认调用API的流控限制为单个IP的QPS不超过（）</strong>【B】<br>A.50<br>B.100<br>C.200<br>D.500</p>
-<p><strong>8、调用API，表示服务器端错误的返回码是（）</strong>【D】<br>A.2XX<br>B.3XX<br>C.4XX<br>D.5XX</p>
-<p><strong>9、HTTP&#x2F;HTTPS请求的返回结果包含（）（正确答案的数量：3）</strong>【BCD】<br>A. 请求方式<br>B. 状态码<br>C. 返回头（Header）<br>D. 返回体（Body）</p>
-<p><strong>10、调用云市场API需要的基础条件是（）（正确答案的数量：3）</strong>【ABD】<br>A. 即将要调用的API，明确API参数定义<br>B. 应用APP，作为调用API时的身份，有AppKey和AppSecret用于验证身份<br>C. API协议<br>D. API和APP的权限关系</p>
-<p><strong>11、通过阿里云API网关API需要的条件是？（）（正确答案的数量：3）</strong>【ABD】<br>A. 即将要调用的API，明确API参数定义。<br>B. 应用app(作为调用API时的身份，有AppKey和AppSecret用于验证身份）<br>C. API协议<br>D. API和App的权限关系</p>
-<p><strong>12、关于常用的API请求方式，下面说法正确的有（）（正确答案数量：3个）</strong>【ABD】<br>A. GET：请求服务器获取一个资源<br>B. POST：请求服务器创建一个新的资源<br>C. UPDATE：请求服务器编辑或更新一个已存在的资源<br>D. DELETE：请求服务器删除一个资源</p>
-<p><strong>13、关于HTTP请求响应模型，下面说法正确的有（）（正确答案的数量：2）</strong>【AB】<br>A. 客户端发起请求，服务器返回响应信息<br>B. 同一个客户端的这次请求和上次请求没有对应关系<br>C. 即时客户端没有发起请求，服务器也能将消息推送给客户端<br>D. 客户端发送请求时，请求类型可以省略</p>
-<p><strong>14、调用云市场API，可以使用下面哪些身份认证方法（）（正确答案的数量：2）</strong>【AC】<br>A. APPCODE简单身份认证<br>B. SSL身份认证<br>C. AppKey &amp; AppSecret签名认证<br>D. HTTP Basic认证</p>
-<p><strong>15、调用云市场中的图像识别API前，应该了解哪些元素（）（正确答案的数量：2）</strong>【AD】<br>A. 调用地址和请求方式<br>B. 图像识别功能的源码<br>C. 深度学习相关知识<br>D. APPCODE或者AppKey&#x2F;AppSecret</p>
-<p><strong>16、在调用阿里云市场中的Web API时，为构造有效的HTTP请求，报文中一般包含哪几个部分？（正确答案数量：4个）</strong>【ABDE】<br>A.URL（API调用地址）<br>B.请求方式<br>C.状态码<br>D.Headers（请求头）<br>E.Body（请求体）</p>
-]]></content>
-      <categories>
-        <category>资源合集</category>
-      </categories>
-      <tags>
-        <tag>职业认证</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++课程设计：图书管理系统</title>
     <url>/2021/07/15/c++course-design-BMS/</url>
     <content><![CDATA[<h3 id="课程设计目的"><a href="#课程设计目的" class="headerlink" title="课程设计目的"></a>课程设计目的</h3><div class="note info"><p>作为软件工程和计算机科学与技术专业的基本课程，课程设计不仅涵盖了C++语言的知识体系，又与工程的实际需要切实相关。通过课程设计的综合性训练，对开发者解决实际问题能力，编程能力，动手能力有很大的提升，更有助于样成良好的编程习惯</p>
@@ -492,6 +460,38 @@
       </categories>
       <tags>
         <tag>CDN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Apsara Clouder 认证】API 接口调用真题</title>
+    <url>/2022/04/08/apsara-clouder-api/</url>
+    <content><![CDATA[<h1 id="Apsara-Clouder-专项技能认证：实现调用API接口"><a href="#Apsara-Clouder-专项技能认证：实现调用API接口" class="headerlink" title="Apsara Clouder 专项技能认证：实现调用API接口"></a>Apsara Clouder 专项技能认证：实现调用API接口</h1><blockquote>
+<p>API 是一组封装好的函数，通过 API，你可以为应用快速扩展功能，而无需理解它们是如何实现的，从而提升开发效率</p>
+</blockquote>
+<span id="more"></span>
+
+<p><strong>1、调用API时，由于API服务商设置的用户流控值导致被流控，这种情况返回的错误码是（ ）</strong>【D】<br>A.400<br>B.401<br>C.402<br>D.403</p>
+<p><strong>2、关于API，下面说法错误的是（ ）</strong>【C】<br>A. 可以避免重复开发，提高开发效率<br>B. 减低代码的耦合度<br>C. 无论何时，都应该优先考虑使用API<br>D. 调用API实现某个功能时，无需了解该功能的原理和源码</p>
+<p><strong>3、关于JSON数据，以下哪个是错误的？</strong>【D】<br>A. 并列的数据之间用“，”分隔<br>B. 映射用：表示<br>C. 映射的集合（对象）用大括号{}表示<br>D. 并列数据的集合（数组）用大括号{}表示</p>
+<p><strong>4、关于API授权，说法错误的是（）</strong>【D】<br>A. 可以通过从数据市场购买API服务以及提供方主动授权方式获得API的授权<br>B. 购买了API服务就意味着已经获得了授权<br>C. 账号获得了授权，不代表每个APP都获得了授权，需要手动操作将已购买的API授权给哪些APP<br>D. 用户有权操作购买的API与APP的授权和解除授权，也可以解除由服务提供方授权给APP的API</p>
+<p><strong>5、通过Java代码调用阿里云市场中提供的ip查询API在应用中实现ip查询功能，这种API属于（）</strong>【C】<br>A. 系统API<br>B. 编程语API<br>C. Web API<br>D. 框架API</p>
+<p><strong>6、下面的JSON格式，写法正确的是（）</strong>【B】<br>A.{ firstName &#x3D; “Johm” }<br>B.{ “firstName” : “John” }<br>C.{ firstName : ‘John’ }<br>D.{ firstName : “John” }</p>
+<p><strong>7、阿里云API网关中，默认调用API的流控限制为单个IP的QPS不超过（）</strong>【B】<br>A.50<br>B.100<br>C.200<br>D.500</p>
+<p><strong>8、调用API，表示服务器端错误的返回码是（）</strong>【D】<br>A.2XX<br>B.3XX<br>C.4XX<br>D.5XX</p>
+<p><strong>9、HTTP&#x2F;HTTPS请求的返回结果包含（）（正确答案的数量：3）</strong>【BCD】<br>A. 请求方式<br>B. 状态码<br>C. 返回头（Header）<br>D. 返回体（Body）</p>
+<p><strong>10、调用云市场API需要的基础条件是（）（正确答案的数量：3）</strong>【ABD】<br>A. 即将要调用的API，明确API参数定义<br>B. 应用APP，作为调用API时的身份，有AppKey和AppSecret用于验证身份<br>C. API协议<br>D. API和APP的权限关系</p>
+<p><strong>11、通过阿里云API网关API需要的条件是？（）（正确答案的数量：3）</strong>【ABD】<br>A. 即将要调用的API，明确API参数定义。<br>B. 应用app(作为调用API时的身份，有AppKey和AppSecret用于验证身份）<br>C. API协议<br>D. API和App的权限关系</p>
+<p><strong>12、关于常用的API请求方式，下面说法正确的有（）（正确答案数量：3个）</strong>【ABD】<br>A. GET：请求服务器获取一个资源<br>B. POST：请求服务器创建一个新的资源<br>C. UPDATE：请求服务器编辑或更新一个已存在的资源<br>D. DELETE：请求服务器删除一个资源</p>
+<p><strong>13、关于HTTP请求响应模型，下面说法正确的有（）（正确答案的数量：2）</strong>【AB】<br>A. 客户端发起请求，服务器返回响应信息<br>B. 同一个客户端的这次请求和上次请求没有对应关系<br>C. 即时客户端没有发起请求，服务器也能将消息推送给客户端<br>D. 客户端发送请求时，请求类型可以省略</p>
+<p><strong>14、调用云市场API，可以使用下面哪些身份认证方法（）（正确答案的数量：2）</strong>【AC】<br>A. APPCODE简单身份认证<br>B. SSL身份认证<br>C. AppKey &amp; AppSecret签名认证<br>D. HTTP Basic认证</p>
+<p><strong>15、调用云市场中的图像识别API前，应该了解哪些元素（）（正确答案的数量：2）</strong>【AD】<br>A. 调用地址和请求方式<br>B. 图像识别功能的源码<br>C. 深度学习相关知识<br>D. APPCODE或者AppKey&#x2F;AppSecret</p>
+<p><strong>16、在调用阿里云市场中的Web API时，为构造有效的HTTP请求，报文中一般包含哪几个部分？（正确答案数量：4个）</strong>【ABDE】<br>A.URL（API调用地址）<br>B.请求方式<br>C.状态码<br>D.Headers（请求头）<br>E.Body（请求体）</p>
+]]></content>
+      <categories>
+        <category>资源合集</category>
+      </categories>
+      <tags>
+        <tag>职业认证</tag>
       </tags>
   </entry>
   <entry>
