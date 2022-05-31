@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <script src="/live2d-widget/autoload.js"></script>
   <meta charset="UTF-8">
 <meta name="baidu-site-verification" content="code-QreKZHvhxr" />
 <meta name="google-site-verification" content="09pUELCUBq1DqCCF38Yh2tJ3Ym_AwCrftq7Nuj6RFKU" />
@@ -168,7 +167,7 @@
 <html>
 <head>
     <style>
-        .rss-button div {
+        .chat-button div {
             display: block;
             margin-top: 5px;
             background-color: transparent;
@@ -195,10 +194,10 @@
     </style>
 </head>
 
-<body class="rss-button">
-    <div class="feed-link" title="RSS → /atom.xml">
-        <a href="/atom.xml">
-            <i class="fa fa-rss"> </i> RSS
+<body class="chat-button">
+    <div class="feed-link" title="Q&A → Blog-Jason/community">
+        <a target="_blank" rel="noopener" href="https://gitter.im/Blog-Jason/community">
+            <i class="#"></i> Q&A
         </a>
     </div>
 </body>
@@ -237,6 +236,9 @@
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51269961"><i class="fa-solid fa-c fa-fw"></i>CSDN</span>
@@ -1429,7 +1431,7 @@
   <footer class="footer">
     <div class="footer-inner">
 <div class="copyright">
-  &copy; 2021 – 
+  &copy; 2020 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-code"></i>
@@ -1509,9 +1511,6 @@
   
 <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
-<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"Blog-Jason/community"}</script>
-<script src="/js/third-party/chat/gitter.js"></script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
 
 
@@ -1531,7 +1530,7 @@
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/pdpeng.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/live2d-widget/autoload.js"></script><script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/pdpeng.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
 
 </body>

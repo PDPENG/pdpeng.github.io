@@ -667,6 +667,53 @@
       </tags>
   </entry>
   <entry>
+    <title>一文辨析 Java、JSP、JavaScript</title>
+    <url>/2022/03/31/distinction-language/</url>
+    <content><![CDATA[<blockquote>
+<p>还在傻傻分不清？Java、JSP、JavaScript ，本文带你辨析其区别与联系</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><p><img src="https://img-blog.csdnimg.cn/b7b065f2953d475c9bda7f7301c2b923.png"></p>
+<p><strong>文件格式：</strong> <code>.java</code></p>
+<p>Java 是印度尼西亚“爪哇岛”的英文名，因气候环境，地理位置等因素盛产咖啡而闻名。Java 语言中的许多命名都与其有关：如<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9KYXZhQmVhbnMvNTE1NTYxMg==">JavaBeans<i class="fa fa-external-link-alt"></i></span>。所以 Sun 和 Java 的 Logo 是个非常形象的图标—冒热气儿的咖啡</p>
+<p>早期的 Java 只是<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9TdW4lMjBNaWNyb3N5c3RlbXM=">Sun MicroSystems<i class="fa fa-external-link-alt"></i></span>公司在 1990 年 12 月开始研究的一个内部项目。Sun 公司一位名为帕特里克·诺顿的工程师因为其公司难于操作的 C++&#x2F;C 语言编译器而决定改用<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9uZXh0LzE3MTk0OTY=">NeXT<i class="fa fa-external-link-alt"></i></span>，同时他也获得了研究公司的一个叫做 “Stealth 计划” 的项目的机会</p>
+<p>“Stealth 计划”后来改名为“Green 计划”，詹姆斯·高斯林和 Mike Sheridan 也加入了帕特里克的工作小组。根据有限资金，乔伊决定开发一种集 C 语言和 Mesa 语言大成的新语言，在一份报告上，乔伊把它叫做“未来”。他将要创造出一种全新的语言，被他命名为 “Oak”，以办公室外的橡树命名</p>
+<blockquote>
+<p>总结：<code>Java</code> 是一种广泛使用的计算机<strong>编程语言</strong>，广泛应用于企业级 Web 应用开发和移动应用开发</p>
+</blockquote>
+<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><p><img src="https://img-blog.csdnimg.cn/b9a8008a90ce4894a2043805fc860148.png"></p>
+<p><strong>文件格式：</strong> <code>.jsp</code></p>
+<p>JSP（JavaServer Pages）由 Sun Microsystems 公司主导创建的一种<strong>动态网页技术标准</strong>。JSP 部署于网络服务器上，可以响应客户端发送的请求，并根据请求内容动态地生成 HTML、XML 或其他格式文档的 Web 网页，然后返回给请求者</p>
+<p>从上面的两张图片也可看出来，JSP 和 Java 编程语言存在联系，没错，JSP 技术<strong>以Java语言作为脚本语言</strong>，为用户的 HTTP 请求提供服务，并能与服务器上的其它 Java 程序共同处理复杂的业务需求</p>
+<blockquote>
+<p>总结：<code>JSP</code> 主要部署在服务器，构建动态网页</p>
+</blockquote>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p><img src="https://img-blog.csdnimg.cn/102ea97610ca47bc809117197c505170.png"></p>
+<p><strong>文件格式：</strong> <code>.js</code></p>
+<p>JavaScript（通常缩写为JS）是一种高级的、解释型的编程语言，是 Web 编程语言，几乎所有现代的 HTML 页面都使用 JavaScript，人们通常将 <code>html</code>、<code>css</code>、<code>javascript</code> 称为<strong>前端三件套</strong></p>
+<p>&#x3D;&#x3D;JavaScript 不缩写为 JSP，这里一定不要弄混淆了！！！&#x3D;&#x3D;</p>
+<p>JS 中有一条比较有意思的定律：</p>
+<p><strong>Atwood’s Law: any application that can be written in JavaScript, will eventually be written in JavaScript .</strong></p>
+<p>意思是说，<strong>任何可以用 JavaScript 编写的应用程序，最终都会用 JavaScript 编写</strong></p>
+<p>这足以体现它的重要性</p>
+<blockquote>
+<p>总结：<code>JavaScript</code> 是一种脚本，一种计算机编程语言，用于在网页上实现复杂的功能</p>
+</blockquote>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNvZGluZ2hvcnJvci5jb20vdGhlLXByaW5jaXBsZS1vZi1sZWFzdC1wb3dlcg==">The Principle of Least Power<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>秒懂 Git 与 Gitee（码云）</title>
     <url>/2021/08/02/distinguish-git-gitee/</url>
     <content><![CDATA[<h1 id="避坑"><a href="#避坑" class="headerlink" title="避坑"></a>避坑</h1><p>&amp;emsp;&amp;emsp;声明一个误区：Git并不是我们常用的GitHub，GitHub是基于Git的代码托管服务平台，而Git则是分布式版本控制系统。相信不少人都认为他们是同一个东西，最开始我也这么认为。</p>
@@ -712,53 +759,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一文辨析 Java、JSP、JavaScript</title>
-    <url>/2022/03/31/distinction-language/</url>
-    <content><![CDATA[<blockquote>
-<p>还在傻傻分不清？Java、JSP、JavaScript ，本文带你辨析其区别与联系</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><p><img src="https://img-blog.csdnimg.cn/b7b065f2953d475c9bda7f7301c2b923.png"></p>
-<p><strong>文件格式：</strong> <code>.java</code></p>
-<p>Java 是印度尼西亚“爪哇岛”的英文名，因气候环境，地理位置等因素盛产咖啡而闻名。Java 语言中的许多命名都与其有关：如<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9KYXZhQmVhbnMvNTE1NTYxMg==">JavaBeans<i class="fa fa-external-link-alt"></i></span>。所以 Sun 和 Java 的 Logo 是个非常形象的图标—冒热气儿的咖啡</p>
-<p>早期的 Java 只是<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9TdW4lMjBNaWNyb3N5c3RlbXM=">Sun MicroSystems<i class="fa fa-external-link-alt"></i></span>公司在 1990 年 12 月开始研究的一个内部项目。Sun 公司一位名为帕特里克·诺顿的工程师因为其公司难于操作的 C++&#x2F;C 语言编译器而决定改用<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9uZXh0LzE3MTk0OTY=">NeXT<i class="fa fa-external-link-alt"></i></span>，同时他也获得了研究公司的一个叫做 “Stealth 计划” 的项目的机会</p>
-<p>“Stealth 计划”后来改名为“Green 计划”，詹姆斯·高斯林和 Mike Sheridan 也加入了帕特里克的工作小组。根据有限资金，乔伊决定开发一种集 C 语言和 Mesa 语言大成的新语言，在一份报告上，乔伊把它叫做“未来”。他将要创造出一种全新的语言，被他命名为 “Oak”，以办公室外的橡树命名</p>
-<blockquote>
-<p>总结：<code>Java</code> 是一种广泛使用的计算机<strong>编程语言</strong>，广泛应用于企业级 Web 应用开发和移动应用开发</p>
-</blockquote>
-<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><p><img src="https://img-blog.csdnimg.cn/b9a8008a90ce4894a2043805fc860148.png"></p>
-<p><strong>文件格式：</strong> <code>.jsp</code></p>
-<p>JSP（JavaServer Pages）由 Sun Microsystems 公司主导创建的一种<strong>动态网页技术标准</strong>。JSP 部署于网络服务器上，可以响应客户端发送的请求，并根据请求内容动态地生成 HTML、XML 或其他格式文档的 Web 网页，然后返回给请求者</p>
-<p>从上面的两张图片也可看出来，JSP 和 Java 编程语言存在联系，没错，JSP 技术<strong>以Java语言作为脚本语言</strong>，为用户的 HTTP 请求提供服务，并能与服务器上的其它 Java 程序共同处理复杂的业务需求</p>
-<blockquote>
-<p>总结：<code>JSP</code> 主要部署在服务器，构建动态网页</p>
-</blockquote>
-<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p><img src="https://img-blog.csdnimg.cn/102ea97610ca47bc809117197c505170.png"></p>
-<p><strong>文件格式：</strong> <code>.js</code></p>
-<p>JavaScript（通常缩写为JS）是一种高级的、解释型的编程语言，是 Web 编程语言，几乎所有现代的 HTML 页面都使用 JavaScript，人们通常将 <code>html</code>、<code>css</code>、<code>javascript</code> 称为<strong>前端三件套</strong></p>
-<p>&#x3D;&#x3D;JavaScript 不缩写为 JSP，这里一定不要弄混淆了！！！&#x3D;&#x3D;</p>
-<p>JS 中有一条比较有意思的定律：</p>
-<p><strong>Atwood’s Law: any application that can be written in JavaScript, will eventually be written in JavaScript .</strong></p>
-<p>意思是说，<strong>任何可以用 JavaScript 编写的应用程序，最终都会用 JavaScript 编写</strong></p>
-<p>这足以体现它的重要性</p>
-<blockquote>
-<p>总结：<code>JavaScript</code> 是一种脚本，一种计算机编程语言，用于在网页上实现复杂的功能</p>
-</blockquote>
-<hr>
-<p>参考资料：</p>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNvZGluZ2hvcnJvci5jb20vdGhlLXByaW5jaXBsZS1vZi1sZWFzdC1wb3dlcg==">The Principle of Least Power<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -5375,6 +5375,40 @@
       </tags>
   </entry>
   <entry>
+    <title>双击运行 jar 文件</title>
+    <url>/2022/03/22/run-jar-file/</url>
+    <content><![CDATA[<blockquote>
+<p>windows 下设置双击运行 jar 文件</p>
+</blockquote>
+<p>大家都知道，项目打包的 jar 文件应该是可以直接运行的，虽然我们也可以用指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
+
+<p>运行，但是总归是麻烦些，要是能双击直接打开岂不是很方便，下面我们就来一起看看怎么操作吧</p>
+<span id="more"></span>
+
+<p>首先确保本地 <code>java</code> 的开发环境配置成功，<code>cmd</code> 执行指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>正确显示版本号则配置无误，未配置过的朋友请<span class="exturl" data-url="aHR0cHM6Ly9kcC1qc29uLmJsb2cuY3Nkbi5uZXQvYXJ0aWNsZS9kZXRhaWxzLzExODg3NTk2Nw==">参考这里<i class="fa fa-external-link-alt"></i></span></p>
+<p><img src="https://img-blog.csdnimg.cn/dcf6e9547cde4c3786b12f6b84dd6c77.png"></p>
+<p>接下来我们找到一个可以执行的 <code>jar</code> 包，右键选择 <strong>打开方式</strong> 为 <code>jdk</code> 安装目录下的 <code>java\jdk1.8.0_221\bin\javaw.exe</code>，并勾选 <strong>始终用此程序打开</strong> </p>
+<p><img src="https://img-blog.csdnimg.cn/c6a7e1cdf07e4aef817ef22f9c2860e5.png"></p>
+<p><code>Win + R</code> 组合键输入 <code>regedit</code> 打开注册表编辑器找到<code>HKEY_CLASSES_ROOT\Applications\javaw.exe\shell\open\command</code></p>
+<p><img src="https://img-blog.csdnimg.cn/3a02f0db31474e6980c1c6d8b638b5fa.png"></p>
+<p>右键修改值，路径后添加 <code> -jar &quot;%1&quot; %*</code> 注意 <code> -</code> 前方有一个空格</p>
+<p><img src="https://img-blog.csdnimg.cn/27bd07380d334c4cb02b9d2a9ee3d4f0.png"></p>
+<p>修改后返回 <code>jar</code> 包的位置，发现已经改变了，双击即可运行</p>
+<p><img src="https://img-blog.csdnimg.cn/11e79d2bce91475899c97d52f5a721fa.png"></p>
+<p>有时候可能被电脑里的解压程序默认关联了文件格式，这时候如果未生效的话需要到相关软件中取消文件格式关联</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>服务器部署 code-server</title>
     <url>/2021/03/03/setup-code-server/</url>
     <content><![CDATA[<p><span class="exturl" data-url="aHR0cDovL3ZzYy5jb2Rlci1qYXNvbi5jbjo4MDgwLw==">效果预览<i class="fa fa-external-link-alt"></i></span></p>
@@ -5511,40 +5545,6 @@
       </categories>
       <tags>
         <tag>云存储</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>双击运行 jar 文件</title>
-    <url>/2022/03/22/run-jar-file/</url>
-    <content><![CDATA[<blockquote>
-<p>windows 下设置双击运行 jar 文件</p>
-</blockquote>
-<p>大家都知道，项目打包的 jar 文件应该是可以直接运行的，虽然我们也可以用指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
-
-<p>运行，但是总归是麻烦些，要是能双击直接打开岂不是很方便，下面我们就来一起看看怎么操作吧</p>
-<span id="more"></span>
-
-<p>首先确保本地 <code>java</code> 的开发环境配置成功，<code>cmd</code> 执行指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>正确显示版本号则配置无误，未配置过的朋友请<span class="exturl" data-url="aHR0cHM6Ly9kcC1qc29uLmJsb2cuY3Nkbi5uZXQvYXJ0aWNsZS9kZXRhaWxzLzExODg3NTk2Nw==">参考这里<i class="fa fa-external-link-alt"></i></span></p>
-<p><img src="https://img-blog.csdnimg.cn/dcf6e9547cde4c3786b12f6b84dd6c77.png"></p>
-<p>接下来我们找到一个可以执行的 <code>jar</code> 包，右键选择 <strong>打开方式</strong> 为 <code>jdk</code> 安装目录下的 <code>java\jdk1.8.0_221\bin\javaw.exe</code>，并勾选 <strong>始终用此程序打开</strong> </p>
-<p><img src="https://img-blog.csdnimg.cn/c6a7e1cdf07e4aef817ef22f9c2860e5.png"></p>
-<p><code>Win + R</code> 组合键输入 <code>regedit</code> 打开注册表编辑器找到<code>HKEY_CLASSES_ROOT\Applications\javaw.exe\shell\open\command</code></p>
-<p><img src="https://img-blog.csdnimg.cn/3a02f0db31474e6980c1c6d8b638b5fa.png"></p>
-<p>右键修改值，路径后添加 <code> -jar &quot;%1&quot; %*</code> 注意 <code> -</code> 前方有一个空格</p>
-<p><img src="https://img-blog.csdnimg.cn/27bd07380d334c4cb02b9d2a9ee3d4f0.png"></p>
-<p>修改后返回 <code>jar</code> 包的位置，发现已经改变了，双击即可运行</p>
-<p><img src="https://img-blog.csdnimg.cn/11e79d2bce91475899c97d52f5a721fa.png"></p>
-<p>有时候可能被电脑里的解压程序默认关联了文件格式，这时候如果未生效的话需要到相关软件中取消文件格式关联</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
