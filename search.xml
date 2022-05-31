@@ -2146,6 +2146,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Idea 项目结构不显示解决方案</title>
+    <url>/2021/08/02/idea-project-structure-miss/</url>
+    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用IDEA的时候，忽然发现打开项目变成了这样</p>
+<p><img src="https://img-blog.csdnimg.cn/bf98986582f2435a91585e1e9c2f453b.png"></p>
+<p>怎么点击都无法打开项目结构，只能显示默认的配置文件夹和输出文件夹</p>
+<span id="more"></span>
+<p>非常疑惑，项目结构去了哪里，不能是整个文件丢失了吧，这不白给了嘛，一整个白忙活</p>
+<p><img src="https://img-blog.csdnimg.cn/dfb523db9fe347b8b735e18b4e92e88b.png"></p>
+<p>还好找到了解决办法，快来一起看看吧</p>
+<hr>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>左上角依次找到file-&gt;project structure-&gt;modules-&gt; +号-&gt;import modules，选择导入的项目文件</p>
+<p><img src="https://img-blog.csdnimg.cn/6096c629aec44261a5e975cd7791319b.png"></p>
+<p>选择这两项</p>
+<p><img src="https://img-blog.csdnimg.cn/52a8be8717a647498f25c3bc12d79464.png"></p>
+<p>最后点击 Finish就显示出来啦!</p>
+<p><img src="https://img-blog.csdnimg.cn/761eee8d6b2b4adebfaa345bcb3871fb.png"></p>
+<p>不说了，赶紧码代码去了~~</p>
+<p><img src="https://img-blog.csdnimg.cn/3c867c8d22ed4b16a9fd5eb6576344f3.png"></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>解决方案</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>idea 及 eclipse 配置 Tomcat 并发布 Web 项目</title>
     <url>/2022/03/22/idea-eclips-web-project/</url>
     <content><![CDATA[<blockquote>
@@ -2307,33 +2334,6 @@
       </categories>
       <tags>
         <tag>Tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Idea 项目结构不显示解决方案</title>
-    <url>/2021/08/02/idea-project-structure-miss/</url>
-    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用IDEA的时候，忽然发现打开项目变成了这样</p>
-<p><img src="https://img-blog.csdnimg.cn/bf98986582f2435a91585e1e9c2f453b.png"></p>
-<p>怎么点击都无法打开项目结构，只能显示默认的配置文件夹和输出文件夹</p>
-<span id="more"></span>
-<p>非常疑惑，项目结构去了哪里，不能是整个文件丢失了吧，这不白给了嘛，一整个白忙活</p>
-<p><img src="https://img-blog.csdnimg.cn/dfb523db9fe347b8b735e18b4e92e88b.png"></p>
-<p>还好找到了解决办法，快来一起看看吧</p>
-<hr>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>左上角依次找到file-&gt;project structure-&gt;modules-&gt; +号-&gt;import modules，选择导入的项目文件</p>
-<p><img src="https://img-blog.csdnimg.cn/6096c629aec44261a5e975cd7791319b.png"></p>
-<p>选择这两项</p>
-<p><img src="https://img-blog.csdnimg.cn/52a8be8717a647498f25c3bc12d79464.png"></p>
-<p>最后点击 Finish就显示出来啦!</p>
-<p><img src="https://img-blog.csdnimg.cn/761eee8d6b2b4adebfaa345bcb3871fb.png"></p>
-<p>不说了，赶紧码代码去了~~</p>
-<p><img src="https://img-blog.csdnimg.cn/3c867c8d22ed4b16a9fd5eb6576344f3.png"></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>解决方案</tag>
       </tags>
   </entry>
   <entry>
