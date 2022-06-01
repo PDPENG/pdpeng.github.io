@@ -3645,6 +3645,42 @@
       </tags>
   </entry>
   <entry>
+    <title>【2022 蓝桥杯 B 组 C/C++ 真题】快来看看你做对几题</title>
+    <url>/2022/04/09/lanqiao-2022-teamB/</url>
+    <content><![CDATA[<blockquote>
+<p>由于是第一时间发布，题解还没来的及写，大家可以先看下真题题目</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="试题-A"><a href="#试题-A" class="headerlink" title="试题 A"></a>试题 A</h1><p><img src="https://img-blog.csdnimg.cn/f1b78b0ab6cf40c289549fa37e99b70a.png"></p>
+<h1 id="试题-B"><a href="#试题-B" class="headerlink" title="试题 B"></a>试题 B</h1><p><img src="https://img-blog.csdnimg.cn/7eef097be69e4f6e9bc2321ad49a40ac.png"></p>
+<h1 id="试题-C"><a href="#试题-C" class="headerlink" title="试题 C"></a>试题 C</h1><p><img src="https://img-blog.csdnimg.cn/8357ed3072de4307b502c11ceabb87a6.png"></p>
+<h1 id="试题-D"><a href="#试题-D" class="headerlink" title="试题 D"></a>试题 D</h1><p><img src="https://img-blog.csdnimg.cn/654806617073405391338518ec0685b4.png"></p>
+<h1 id="试题-E"><a href="#试题-E" class="headerlink" title="试题 E"></a>试题 E</h1><p><img src="https://img-blog.csdnimg.cn/717c953283cd4366a524cbefa6083d8b.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/1fc7327be84f49a8ab6dc3a5f52f59bf.png"></p>
+<h1 id="试题-F"><a href="#试题-F" class="headerlink" title="试题 F"></a>试题 F</h1><p><img src="https://img-blog.csdnimg.cn/7013fdffe0f7457fa533bf0672c38f52.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ea0990c7842c414d818fc8834bb6d716.png"></p>
+<h1 id="试题-G"><a href="#试题-G" class="headerlink" title="试题 G"></a>试题 G</h1><p><img src="https://img-blog.csdnimg.cn/b56ef2f06bde4362a47d5ff18f03b356.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2777c594e0864a1ca29f952f90f4a466.png"></p>
+<h1 id="试题-H"><a href="#试题-H" class="headerlink" title="试题 H"></a>试题 H</h1><p><img src="https://img-blog.csdnimg.cn/395b39318bfc4a4d91d35da670332103.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/73381369ee684f9ca5d7ee96888ab1dd.png"></p>
+<h1 id="试题-I"><a href="#试题-I" class="headerlink" title="试题 I"></a>试题 I</h1><p><img src="https://img-blog.csdnimg.cn/1016f44f86554b3d9ab38c7813cf0938.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e20742ef2e794db5a5a81d49e7ade400.png"></p>
+<h1 id="试题-J"><a href="#试题-J" class="headerlink" title="试题 J"></a>试题 J</h1><p><img src="https://img-blog.csdnimg.cn/997beba2678f4063b097aaff44b7dfab.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/bcc7e0385d1c46feba2018a69c639aac.png"></p>
+<hr>
+<center><strong><font size=5>💯你一定是省一💯</font></strong></center>
+
+<p><img src="https://img-blog.csdnimg.cn/fe893b0c3288498cbd0a2d8782f70382.png#pic_center"></p>
+]]></content>
+      <categories>
+        <category>蓝桥杯</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【蓝桥杯冲刺】—— 2021 软件类 B 组 C/C++ 真题 A~B</title>
     <url>/2022/04/18/lanqiao-2021-teamB/</url>
     <content><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>本来计划好的各种复习方案，却因为种种原因没有执行，不找借口，就是不想学</p>
@@ -3680,42 +3716,6 @@
 </blockquote>
 <h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-04 19:32:45</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-04 20:39:46</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> array[<span class="number">10</span>]; <span class="comment">//数字 0~9 共 10 个数字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">piece</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">// 尝试拼出数字 num,成功返回 true,失败返回 false</span></span><br><span class="line">    <span class="keyword">while</span> (num)</span><br><span class="line">    &#123;</span><br><span class="line">        array[num % <span class="number">10</span>]--;       <span class="comment">// 使用了数字num,使用 % 剥离数字,数字对应个数减一</span></span><br><span class="line">        <span class="keyword">if</span> (array[num % <span class="number">10</span>] &lt; <span class="number">0</span>) <span class="comment">// 如果对应的数字剩余个数小于 0,说明该数字已经用尽,返回 false</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        num /= <span class="number">10</span>; <span class="comment">// 数字 1 和 10,均使用数字 1,故 / 10后商为 1,数字 1 的个数需要再次减一</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>; <span class="comment">//计数器,每次拼完一个数字,自增 1</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        array[i] = <span class="number">2021</span>; <span class="comment">// 数组中每个元素都赋值为 2021,代表数字 0~9的个数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>;; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">piece</span>(i))</span><br><span class="line">        &#123; <span class="comment">// 从数字1开始拼,每拼完一个数字,计数器自增 1</span></span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; count &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>蓝桥杯</category>
-      </categories>
-      <tags>
-        <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【2022 蓝桥杯 B 组 C/C++ 真题】快来看看你做对几题</title>
-    <url>/2022/04/09/lanqiao-2022-teamB/</url>
-    <content><![CDATA[<blockquote>
-<p>由于是第一时间发布，题解还没来的及写，大家可以先看下真题题目</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="试题-A"><a href="#试题-A" class="headerlink" title="试题 A"></a>试题 A</h1><p><img src="https://img-blog.csdnimg.cn/f1b78b0ab6cf40c289549fa37e99b70a.png"></p>
-<h1 id="试题-B"><a href="#试题-B" class="headerlink" title="试题 B"></a>试题 B</h1><p><img src="https://img-blog.csdnimg.cn/7eef097be69e4f6e9bc2321ad49a40ac.png"></p>
-<h1 id="试题-C"><a href="#试题-C" class="headerlink" title="试题 C"></a>试题 C</h1><p><img src="https://img-blog.csdnimg.cn/8357ed3072de4307b502c11ceabb87a6.png"></p>
-<h1 id="试题-D"><a href="#试题-D" class="headerlink" title="试题 D"></a>试题 D</h1><p><img src="https://img-blog.csdnimg.cn/654806617073405391338518ec0685b4.png"></p>
-<h1 id="试题-E"><a href="#试题-E" class="headerlink" title="试题 E"></a>试题 E</h1><p><img src="https://img-blog.csdnimg.cn/717c953283cd4366a524cbefa6083d8b.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/1fc7327be84f49a8ab6dc3a5f52f59bf.png"></p>
-<h1 id="试题-F"><a href="#试题-F" class="headerlink" title="试题 F"></a>试题 F</h1><p><img src="https://img-blog.csdnimg.cn/7013fdffe0f7457fa533bf0672c38f52.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/ea0990c7842c414d818fc8834bb6d716.png"></p>
-<h1 id="试题-G"><a href="#试题-G" class="headerlink" title="试题 G"></a>试题 G</h1><p><img src="https://img-blog.csdnimg.cn/b56ef2f06bde4362a47d5ff18f03b356.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/2777c594e0864a1ca29f952f90f4a466.png"></p>
-<h1 id="试题-H"><a href="#试题-H" class="headerlink" title="试题 H"></a>试题 H</h1><p><img src="https://img-blog.csdnimg.cn/395b39318bfc4a4d91d35da670332103.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/73381369ee684f9ca5d7ee96888ab1dd.png"></p>
-<h1 id="试题-I"><a href="#试题-I" class="headerlink" title="试题 I"></a>试题 I</h1><p><img src="https://img-blog.csdnimg.cn/1016f44f86554b3d9ab38c7813cf0938.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/e20742ef2e794db5a5a81d49e7ade400.png"></p>
-<h1 id="试题-J"><a href="#试题-J" class="headerlink" title="试题 J"></a>试题 J</h1><p><img src="https://img-blog.csdnimg.cn/997beba2678f4063b097aaff44b7dfab.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/bcc7e0385d1c46feba2018a69c639aac.png"></p>
-<hr>
-<center><strong><font size=5>💯你一定是省一💯</font></strong></center>
-
-<p><img src="https://img-blog.csdnimg.cn/fe893b0c3288498cbd0a2d8782f70382.png#pic_center"></p>
 ]]></content>
       <categories>
         <category>蓝桥杯</category>
