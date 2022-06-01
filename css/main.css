@@ -1747,7 +1747,7 @@ pre code {
   }
 }
 .noscript-warning {
-  background-color: #f55;
+  background-color: #9fe1ff;
   color: #fff;
   font-family: sans-serif;
   font-size: 1rem;
@@ -2189,7 +2189,7 @@ pre code {
   list-style: none;
   padding: 0.5em 1em;
   background: var(--card-bg-color);
-  border-left: 3px solid #ff2a2a;
+  border-left: 3px solid #87daff;
   margin: 1em 0 0;
 }
 .post-tags {
@@ -2665,8 +2665,8 @@ ul.breadcrumb li:last-child {
 }
 mark.search-keyword {
   background: transparent;
-  border-bottom: 1px dashed #ff2a2a;
-  color: #ff2a2a;
+  border-bottom: 1px dashed #87daff;
+  color: #87daff;
   font-weight: bold;
 }
 mjx-container[jax='CHTML'][display='true'],
@@ -2937,7 +2937,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #dff0ec;
+  background: #e4c80d;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
