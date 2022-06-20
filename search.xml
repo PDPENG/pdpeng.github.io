@@ -8837,6 +8837,57 @@
       </tags>
   </entry>
   <entry>
+    <title>什么？你居然不会微信分身</title>
+    <url>/2022/06/20/wechat-rolled/</url>
+    <content><![CDATA[<blockquote>
+<p>👲👲<font color=#a2a837 size=3>作者主页</font>：🔗<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx">杰森的博客<i class="fa fa-external-link-alt"></i></span><br>📒📒<font color=#20b9cd size=3>本文摘要</font>：<strong>微信分身（多开）教程</strong><br>💖💖如果本文帮助到你的话，还请各位小伙伴👍点赞➕收藏⭐➕评论💭支持杰森呀✌️</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/2ba19d080eb940e99ced56cc6a8ce6e7.png#pic_center"></p>
+<hr>
+<blockquote>
+<p>系统环境：Windows 11</p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>微信，相信已经是我们生活中离不开的东西之一了，但随着使用时间增多，我们添加的好友也越来越多。本来想着分分类，让工作和生活分离开来。但看着近千人的通讯录列表实在是苦于操作，于是我们注册了另一个账户。亦称，“小号”、“工作号”</p>
+<p>但随之而来的麻烦又来了，电脑只能登录一个微信账户。那这时候就有同学说了：“来回切换账户发消息，不累么？”</p>
+<p>当然，伟大的程序猿们怎么能浪费时间在这种事情上呢！那今天杰森教大家微信分身，一台电脑同时登录<strong>多个</strong>微信账户</p>
+<span id="more"></span>
+
+<h1 id="微信分身教程"><a href="#微信分身教程" class="headerlink" title="微信分身教程"></a>微信分身教程</h1><h2 id="1-脚本文件"><a href="#1-脚本文件" class="headerlink" title="1.脚本文件"></a>1.脚本文件</h2><p>桌面找到微信快捷方式，快捷键 <code>alt</code> + <code>enter</code> 查看快捷方式 <strong>目标位置</strong> 并复制路径</p>
+<p><img src="https://img-blog.csdnimg.cn/e9dae819b0ab48e19b2a5c2b2cf55d6b.png"></p>
+<p>桌面空白位置右击，新建 <strong>文本文档</strong>，需要同时登录几个微信就复制几条以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">start C:\IDE\SoftWare\WeChat\WeChat.exe -- 修改为你的微信目标路径</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/34be9a3e56e142a4b64f27dd0099394c.png"></p>
+<p>组合键  <code>ctrl</code>+ <code>shift</code> + <code>s</code> 另存为 <code>WeChat.bat</code>，此处 <strong>注意编码格式</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/add528259ae64b01a1a91f63ad19e4f5.png"></p>
+<h2 id="2-快捷方式"><a href="#2-快捷方式" class="headerlink" title="2.快捷方式"></a>2.快捷方式</h2><p>将 <code>WeChat.bat</code> 文件放在 <strong>除 C 盘外的其他盘符下</strong> ，右键 <code>WeChat.bat</code> 文件选择 <strong>发送到桌面快捷方式</strong> </p>
+<p><img src="https://img-blog.csdnimg.cn/4a2e3aaa676c437ea573696af6f31eef.png"></p>
+<p>找一个自己喜欢的图标文件 （<code>.ico</code> 格式），选中桌面快捷方式， <code>alt</code> + <code>enter</code> 键更改快捷方式图标</p>
+<blockquote>
+<p>网站推荐：</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaWNvbmZvbnQuY24v">阿里巴巴矢量图标库<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWNvbnZlcnQuY29tL2NuL2ljb24vcG5nLXRvLWljby8=">在线图片格式转换<i class="fa fa-external-link-alt"></i></span>（<code>.png</code> ~ <code>.ico</code>）</li>
+</ol>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/f93b037c7c2f436289a31d173571f3f1.png"></p>
+<p>选中快捷方式，<code>F2</code> 重命名，效果如下</p>
+<p><img src="https://img-blog.csdnimg.cn/827eb739f4f24b4bbbe971e743af4673.png"></p>
+<h2 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h2><p>双击 <strong>杰森</strong> 图标，拖拽登录框（重叠），分别登录就可以双开啦</p>
+<p><img src="https://img-blog.csdnimg.cn/61c6189e8ac64dbdb7e5c902c07b07dd.png"></p>
+<hr>
+<center><strong><font size=5>🐳又能愉快的和产品经理xx了🐳</font></strong></center>
+
+<p><img src="https://img-blog.csdnimg.cn/aba090e89e89495d8ca89d882bbb0171.png#pic_center"></p>
+]]></content>
+      <categories>
+        <category>资源合集</category>
+      </categories>
+      <tags>
+        <tag>解决方案</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WARNING：The remote SSH server rejected X11 forwarding request.</title>
     <url>/2022/04/11/xshell-ssh-warning/</url>
     <content><![CDATA[<blockquote>
