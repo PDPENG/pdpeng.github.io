@@ -1924,7 +1924,7 @@
     <title>恭喜，成功入坑 GitHub 。。。</title>
     <url>/2022/07/08/github-connection-refuse/</url>
     <content><![CDATA[<p>大家好，我是杰森。<code>GitHub</code> 对大家来说一定不陌生，无论是学习还是<code>交</code>（爬）<code>朋</code>（项）<code>友</code>（目）。但是今天，我好像和它失联了……</p>
-<p><img src="https://files.mdnice.com/user/26176/3858b411-7e67-4739-8eb4-48a76cbc63f6.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f57f96bfc3154e3da61c2113adb3358d.png"></p>
 <p>当我像往常一样<code>clone</code>项目时，却得到了这样的报错</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:appletdevelop/full-stack.git</span><br><span class="line">Cloning into ‘full-stack’...</span><br><span class="line">ssh: connect to host github.com port 22: Connection refused</span><br><span class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights and the repository exists.</span><br></pre></td></tr></table></figure>
 
@@ -1934,7 +1934,7 @@
 
 <p>日志显示，<code>IPv6</code> 和 <code>IPv4</code> 的 <code>localhost</code> 地址分别为 <code>::1</code> 和 <code>127.0.0.1</code>，这意味着我们在连接 <code>github</code> 时，其域名将会被解析为 <code>localhost</code> 地址，当然也就无法连接。</p>
 <p>打开<span class="exturl" data-url="aHR0cHM6Ly9pcGFkZHJlc3MuY29tL3dlYnNpdGUvZ2l0aHViLmNvbQ==" title="IP 查询网站">查询网站<i class="fa fa-external-link-alt"></i></span>，找到 <code>github.com</code> 的 <code>IP</code> 地址</p>
-<p><img src="https://files.mdnice.com/user/26176/fc696e2d-b5b9-4d34-aba8-8ba6c0e5af5f.png" alt="真实 IP 地址"></p>
+<p><img src="https://img-blog.csdnimg.cn/1a7f4301a95e431198b9fc55211f38df.png" alt="真实 IP 地址"></p>
 <p><code>Windows</code> 下，打开本机 <code>hosts</code> 文件</p>
 <blockquote>
 <p>C:\Windows\System32\drivers\etc</p>
@@ -1958,7 +1958,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi xxx! You’ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
 
 <p>这样访问 <code>GitHub</code> 时，<code>ssh</code> 就会连接 <code>443</code> 端口，不会报错。</p>
-<p><img src="https://files.mdnice.com/user/26176/68d3e5e1-5426-4bed-88dc-c0067c4b57b3.png" alt="拉取正常"></p>
+<p><img src="https://img-blog.csdnimg.cn/ddf31df46a6247f5b36316ec6dfe670d.png" alt="拉取正常"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总结下本次踩坑的原因，主要有两点：</p>
 <ul>
 <li>使用了科学上网小工具；</li>
