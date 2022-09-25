@@ -3826,7 +3826,8 @@
 </blockquote>
 <hr>
 <h1 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h1><p>[^这是脚注]</p>
-<p>脚注测试<a href="%E8%BF%99%E6%98%AF%E8%84%9A%E6%B3%A8">^Team</a></p>
+<p>脚注测试<code>[^Team]</code></p>
+<p><code>[^Team]</code>:这是脚注</p>
 <blockquote>
 <p>这时候光标放在Team处就有脚注提示，单击 1 跳转到文末<br>格式:<code> [^内容]</code>+<code>[^内容]:释义</code></p>
 </blockquote>
