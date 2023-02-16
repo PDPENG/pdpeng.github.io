@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="keywords" content="董哲朋,博客,杰森,工程师杰森,攻城狮杰森,程序员杰森,jason,jasoncoding,pdpeng.github.io,coder-jason,杰森,工程师,攻城狮,程序员,blog,杰森的博客,全栈杰森,Jason,全栈">
+<meta name="description" content="董哲朋的个人技术博客，进军 BAT">
+<meta name="baidu-site-verification" content="code-QreKZHvhxr" />
+<meta name="google-site-verification" content="09pUELCUBq1DqCCF38Yh2tJ3Ym_AwCrftq7Nuj6RFKU" />
+<meta name="baidu-site-verification" content="code-UgQbVCF7gr" />
+<meta name="google-site-verification" content="2Z5MbRq2MYkpxhxZigsnWu_02ovzdGiRJNOzHc_yq58" />
+<meta name="sogou_site_verification" content="kR3XmMWqhc" />
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+<link rel="preconnect" href="null//null" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="msvalidate.01" content="yRcH84LYotQhqYFJcwA5UzGRX_E_HGt7EWyA1hBqqWU">
+  <meta name="yandex-verification" content="8db608d56597d365">
+  <meta name="baidu-site-verification" content="code-SSriojapxO">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pdpeng.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://pdpeng.github.io/2023/02/16/chatgpt-for-wechat/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pdpeng.github.io/2023/02/16/chatgpt-for-wechat/","path":"2023/02/16/chatgpt-for-wechat/","title":"公众号接入 chatGPT 教程（附源码）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>公众号接入 chatGPT 教程（附源码） | 攻城狮杰森</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S6WNTLJG7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5S6WNTLJG7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?54526e66cdfa2807587689ebe8bf7298"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"88ac8d4f08101068"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="攻城狮杰森" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">攻城狮杰森</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">董哲朋的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">22</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">105</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">前置准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">域名配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AC%E4%BC%97%E5%8F%B7%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">公众号配置</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <a href="/">
+    <img class="site-author-image" itemprop="image" alt="董哲朋Jason"
+      src="/images/head_portrait.png">
+    </a>
+  <p class="site-author-name" itemprop="name">董哲朋Jason</p>
+  <div class="site-description" itemprop="description" style="padding-bottom: 8px">A blacksmith must be strong</div>
+
+<html>
+<head>
+    <style>
+        .chat-button div {
+            display: block;
+            margin-top: 5px;
+            background-color: transparent;
+            position: relative;
+            font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .feed-link a {
+            display: inline-block;
+            padding: 0 15px;
+            color: #fc6423;
+            border: 2px solid #fc6423;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .feed-link a:hover {
+            background-color: #fc6423;
+            border-bottom-color: #fc6423;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="chat-button">
+    <div class="feed-link" title="Q&A → Blog-Jason/community">
+        <a target="_blank" rel="noopener" href="https://gitter.im/Blog-Jason/community">
+            Q&A
+        </a>
+    </div>
+</body>
+</html>
+
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Rvbmd6aGVwZW5n" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;dongzhepeng"><i class="fab fa-linkedin fa-fw"></i>Linkedin</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9qYXNvbmk5OTY=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jasoni996"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmphc29uLnBlbmcuY29kZUBnbWFpbC5jb20=" title="E-Mail → mailto:jason.peng.code@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS91c2Vycy8xNjY0ODc1NA==" title="S.O. → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;16648754"><i class="fab fa-stack-overflow fa-fw"></i>S.O.</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYx" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51269961"><i class="fa-solid fa-c fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU/" rel="tag">CPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HarmonyOS/" rel="tag">HarmonyOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/" rel="tag">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RT-Thread/" rel="tag">RT-Thread</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLServer/" rel="tag">SQLServer</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP&#x2F;IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vivado/" rel="tag">Vivado</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E5%AD%98%E5%82%A8/" rel="tag">云存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" rel="tag">程序人生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A%E8%AE%A4%E8%AF%81/" rel="tag">职业认证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag">解决方案</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag">解析几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BEUEVORw==" title="Follow Jason on GitHub" aria-label="Follow Jason on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pdpeng.github.io/2023/02/16/chatgpt-for-wechat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head_portrait.png">
+      <meta itemprop="name" content="董哲朋Jason">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="攻城狮杰森">
+      <meta itemprop="description" content="A blacksmith must be strong">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="公众号接入 chatGPT 教程（附源码） | 攻城狮杰森">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          公众号接入 chatGPT 教程（附源码）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-16 17:51:32" itemprop="dateCreated datePublished" datetime="2023-02-16T17:51:32+08:00">2023-02-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2023/02/16/chatgpt-for-wechat/" class="post-meta-item leancloud_visitors" data-flag-title="公众号接入 chatGPT 教程（附源码）" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>声明：本文仅供技术交流使用，阅读本文需具备一定的开发能力</p>
+</blockquote>
+<h1 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h1><ol>
+<li>一个域名</li>
+<li>一台服务器</li>
+<li>一个公众号</li>
+</ol>
+<h1 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h1><p>在你的域名服务商新建二级域名并绑定服务器主机IP</p>
+<h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>上传下面的python文件到你的服务器，并修改代码段中相应位置代码（token、api-key、port）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,make_response,request</span><br><span class="line"><span class="keyword">import</span> openai</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> xml.etree.cElementTree <span class="keyword">as</span> ET</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">cnt = <span class="number">0</span></span><br><span class="line">my_wx_token = <span class="string">&quot;&quot;</span> <span class="comment"># 自定义字母和数字组合即可，后续需要填入公众号后台</span></span><br><span class="line">my_gpt_key = <span class="string">&quot;&quot;</span> <span class="comment"># 这里填写你在OpenAI后台创建的API-KEY</span></span><br><span class="line">my_switch_chatgpt = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">env_dist = os.environ</span><br><span class="line">cache = Cache(app, config=&#123;<span class="string">&#x27;CACHE_TYPE&#x27;</span>: <span class="string">&#x27;simple&#x27;</span>, <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">30</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>,methods=[<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">wechat</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        signature = request.args.get(<span class="string">&quot;signature&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">        timestamp= request.args.get(<span class="string">&quot;timestamp&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">        nonce= request.args.get(<span class="string">&quot;nonce&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">        echostr= request.args.get(<span class="string">&quot;echostr&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(signature, timestamp, nonce, echostr)</span><br><span class="line"></span><br><span class="line">        token=my_wx_token</span><br><span class="line"></span><br><span class="line">        data =[token, timestamp, nonce]</span><br><span class="line"></span><br><span class="line">        data.sort()</span><br><span class="line"></span><br><span class="line">        temp = <span class="string">&#x27;&#x27;</span>.join(data)</span><br><span class="line"></span><br><span class="line">        sha1 = hashlib.sha1(temp.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line">        hashcode=sha1.hexdigest()</span><br><span class="line">        <span class="built_in">print</span>(hashcode)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> hashcode == signature:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;wechat commit check OK&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> echostr</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;GET error input msg&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;error-return\r\n&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        xmlData = ET.fromstring(request.stream.read())</span><br><span class="line">        msg_type = xmlData.find(<span class="string">&#x27;MsgType&#x27;</span>).text</span><br><span class="line">        <span class="keyword">if</span> msg_type == <span class="string">&#x27;text&#x27;</span>:</span><br><span class="line">            ToUserName = xmlData.find(<span class="string">&#x27;ToUserName&#x27;</span>).text</span><br><span class="line">            FromUserName = xmlData.find(<span class="string">&#x27;FromUserName&#x27;</span>).text</span><br><span class="line">            CreateTime = xmlData.find(<span class="string">&#x27;CreateTime&#x27;</span>).text</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">print</span>(ToUserName)</span><br><span class="line">            <span class="built_in">print</span>(FromUserName)</span><br><span class="line">            <span class="built_in">print</span>(CreateTime)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">global</span> cnt</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;-------&gt; &#x27;</span> + <span class="built_in">str</span>(cnt))</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> generate_response_xml(FromUserName, ToUserName, xmlData.find(<span class="string">&#x27;Content&#x27;</span>).text)</span><br><span class="line">                           </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">text_reply</span>(<span class="params">FromUserName, ToUserName, output_content</span>):</span><br><span class="line">    reply = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    &lt;xml&gt;</span></span><br><span class="line"><span class="string">    &lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;</span></span><br><span class="line"><span class="string">    &lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;</span></span><br><span class="line"><span class="string">    &lt;CreateTime&gt;%s&lt;/CreateTime&gt;</span></span><br><span class="line"><span class="string">    &lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;</span></span><br><span class="line"><span class="string">    &lt;Content&gt;&lt;![CDATA[%s]]&gt;&lt;/Content&gt;</span></span><br><span class="line"><span class="string">    &lt;/xml&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    response = make_response(reply % (FromUserName, ToUserName, <span class="built_in">str</span>(<span class="built_in">int</span>(time.time())), output_content))</span><br><span class="line">    response.content_type = <span class="string">&#x27;application/xml&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_response_xml</span>(<span class="params">FromUserName, ToUserName, input_content</span>):</span><br><span class="line">    output_content = generate_response(input_content)</span><br><span class="line">    <span class="keyword">return</span> text_reply(FromUserName, ToUserName, output_content)</span><br><span class="line"></span><br><span class="line">outofsevice_txt = <span class="string">&quot;抱歉，&lt;a href=\&quot;https://mp.weixin.qq.com/s/0LN37YiERJgMyvIDpzRcAQ\&quot;&gt;攻城狮杰森的ChatGPT服务助手&lt;/a&gt;正在维护中，暂时无法预估维护持续时间，请明天再来尝试吧。&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">60</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_response</span>(<span class="params">prompt</span>):</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> my_switch_chatgpt:</span><br><span class="line">        <span class="keyword">return</span> outofsevice_txt</span><br><span class="line">        </span><br><span class="line">    openai.api_key = my_gpt_key</span><br><span class="line">    </span><br><span class="line">    response = openai.Completion.create(</span><br><span class="line">        model=<span class="string">&quot;text-davinci-003&quot;</span>,</span><br><span class="line">        prompt=prompt,</span><br><span class="line">        temperature=<span class="number">0</span>,</span><br><span class="line">        max_tokens=<span class="number">1024</span>,</span><br><span class="line">        top_p=<span class="number">1</span>,</span><br><span class="line">        frequency_penalty=<span class="number">0.0</span>,</span><br><span class="line">        presence_penalty=<span class="number">0.0</span>,</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    message = response.choices[<span class="number">0</span>].text</span><br><span class="line">    <span class="built_in">print</span>(message)</span><br><span class="line">    </span><br><span class="line">    ans = message.strip()</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">               </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=xxxx, debug=<span class="literal">True</span>)<span class="comment">#开放xxxx端口</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用<strong>宝塔</strong>是比较快捷的配置方式，安装宝塔面板后，进入<strong>软件商店</strong>，安装下面两个插件</p>
+<p><img src="https://img-blog.csdnimg.cn/f2afb78b514c433089ea7eca423c93a1.png"></p>
+<p>打开 <strong>python 项目管理器</strong> ，简单配置下我们要启动的项目</p>
+<p><img src="https://img-blog.csdnimg.cn/45312fd500064250acdcd551b10811d5.png"></p>
+<p>启动后映射项目域名，顶级域和二级域都可以，比如我这里填入的是 <code>chatgpt.coder-jason.cn</code> </p>
+<p><img src="https://img-blog.csdnimg.cn/aef70f2d35f74717a0c8ebcca5ecaff1.png"></p>
+<h1 id="公众号配置"><a href="#公众号配置" class="headerlink" title="公众号配置"></a>公众号配置</h1><p>进入公众号后台，找到<strong>设置与开发</strong>，进入<strong>基本配置</strong>，由于我这里已经配置好了，这里仅演示下怎么添加启用</p>
+<p><img src="https://img-blog.csdnimg.cn/cdca0ba80c6f43d083a798a1be26684c.png"></p>
+<p>点击<strong>添加配置</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/53196088a4ec47caa23c0884618b011f.png"></p>
+<p>token 值就是在上述代码段中填入的值，自定义字母和数字组合即可</p>
+<p>点击提交后，如果服务器中的项目启动无误，则会提示 <strong>token校验成功</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/28eeabde89f2455996d74124a0940b7e.png"></p>
+<p>接下来就可以回到公众号和 chatGPT 愉快的交流啦~，欢迎来公粽号 <strong>攻城狮杰森</strong> 体验</p>
+<p><img src="https://img-blog.csdnimg.cn/ef7646192602477a82e129abf7d888c8.jpeg"></p>
+<p>如果你对 chatGPT 感兴趣或配置过程中遇到任何问题，欢迎与我取得联系，vx：jasoni996</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        </br>
+        <div class="official-accounts">
+             <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/PDPENG/jason-storage/blog-img/Jason%20wechat%20account.png">
+                 <img src="/images/official-accounts.png" width="80%">
+             </a>
+        </div>
+          <div class="reward-container">
+  <div>Thank you for your support to Jason ~</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="董哲朋Jason 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="董哲朋Jason 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>董哲朋Jason
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pdpeng.github.io/2023/02/16/chatgpt-for-wechat/" title="公众号接入 chatGPT 教程（附源码）">https://pdpeng.github.io/2023/02/16/chatgpt-for-wechat/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/08/github-connection-refuse/" rel="next" title="恭喜，成功入坑 GitHub 。。。">
+                  恭喜，成功入坑 GitHub 。。。 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">董哲朋Jason
+
+
+<div class="sitetime" style="display: inline-block;">
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		var t1 = Date.UTC(2020,09,23,13,15,00); //北京时间 2021-09-23 13:15:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 本站已安全运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒 ";
+	}
+	siteTime();
+</script>
+</div>
+  </span>
+</div>
+<div class="wordcount" style="display: inline-block;">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">312k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:43</span>
+  </span>
+    <div class="beian" style="display: inline-block;">
+        <img src="/images/beian.png" alt=""><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPTQxMDU4MTAyMDAwMjQx">豫公网安备 41058102000241号 </span>
+        <img src="/images/beian.png" alt=""><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">豫ICP备2021028259号-1 </span>
+    </div>
+
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"XnAU2LpE7JlHt34KKmw24BoM-MdYXbMMI","app_key":"vphcyLncudT8YkHIgks4F1r2","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/PDPENG/live2d-widget@latest/autoload.js"></script><script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"PDPENG/pdpeng.github.io","issue_term":"pathname","theme":"preferred-color-scheme"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
