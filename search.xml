@@ -755,6 +755,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Dos 命令运行 Java 版 HelloWorld</title>
+    <url>/2021/08/30/dos-java-helloworld/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>写给刚刚入坑 Java 的各位，无论你是计算机领域从业者，亦或是科班出身的专业人才。当然也包括我在内，Hello World 相信大家都不陌生，找了好久才找到我入行以来的第一段程序</p>
+<image src="https://img-blog.csdnimg.cn/68bda6e17f79487e825d2e0d13c87438.png" width="50%">
+
+<p>有没有让你回想起当年用 VC ++ 6.0 码代码的日子呢？像 Python、C、C++、VB 等编程语言，它们有着不同的语法结构，实现方式各不相同，今天使用 Dos命令实现 Java 版 Hello World</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>在这之前请确保设备已安装好 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9qZGsvMTAxMQ==">JDK<i class="fa fa-external-link-alt"></i></span>，配置详情<span class="exturl" data-url="aHR0cHM6Ly9kcC1qc29uLmJsb2cuY3Nkbi5uZXQvYXJ0aWNsZS9kZXRhaWxzLzExODg3NTk2Nw==">参阅这里<i class="fa fa-external-link-alt"></i></span><br>D盘下建立 HelloWorld.txt 文件，输入代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另存文件格式为 <mark class="label ">.java</mark></p>
+<image src="https://img-blog.csdnimg.cn/6d9c585f1af44388af9572a89483836e.png" width="65%">
+
+<p>组合键 <a class="btn" href="#">Windows</a>+<a class="btn" href="#">R</a>，输入 cmd 打开命令提示工具 cmd.exe</p>
+<image src="https://img-blog.csdnimg.cn/383d0fffa9ca4ff1aad0aacb4e15657a.png" width="40%">
+
+<p>依次输入命令</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">d:                         <span class="comment">//切换到该目录下</span></span><br><span class="line">javac HelloWorld.java      <span class="comment">//javac:编译器,将程序转换成字节码</span></span><br><span class="line">java HelloWorld            <span class="comment">//java:运行编译后的java程序(文件后缀.class)</span></span><br></pre></td></tr></table></figure>
+<h1 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h1><image src="https://img-blog.csdnimg.cn/419c6eb0be714bf88cf460f7b5f7f875.png" width="50%">]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>秒懂 Git 与 Gitee（码云）</title>
     <url>/2021/08/02/distinguish-git-gitee/</url>
     <content><![CDATA[<h1 id="避坑"><a href="#避坑" class="headerlink" title="避坑"></a>避坑</h1><p>声明一个误区：Git并不是我们常用的GitHub，GitHub是基于Git的代码托管服务平台，而Git则是分布式版本控制系统。相信不少人都认为他们是同一个东西，最开始我也这么认为。</p>
@@ -800,31 +825,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dos 命令运行 Java 版 HelloWorld</title>
-    <url>/2021/08/30/dos-java-helloworld/</url>
-    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>写给刚刚入坑 Java 的各位，无论你是计算机领域从业者，亦或是科班出身的专业人才。当然也包括我在内，Hello World 相信大家都不陌生，找了好久才找到我入行以来的第一段程序</p>
-<image src="https://img-blog.csdnimg.cn/68bda6e17f79487e825d2e0d13c87438.png" width="50%">
-
-<p>有没有让你回想起当年用 VC ++ 6.0 码代码的日子呢？像 Python、C、C++、VB 等编程语言，它们有着不同的语法结构，实现方式各不相同，今天使用 Dos命令实现 Java 版 Hello World</p>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>在这之前请确保设备已安装好 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9qZGsvMTAxMQ==">JDK<i class="fa fa-external-link-alt"></i></span>，配置详情<span class="exturl" data-url="aHR0cHM6Ly9kcC1qc29uLmJsb2cuY3Nkbi5uZXQvYXJ0aWNsZS9kZXRhaWxzLzExODg3NTk2Nw==">参阅这里<i class="fa fa-external-link-alt"></i></span><br>D盘下建立 HelloWorld.txt 文件，输入代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另存文件格式为 <mark class="label ">.java</mark></p>
-<image src="https://img-blog.csdnimg.cn/6d9c585f1af44388af9572a89483836e.png" width="65%">
-
-<p>组合键 <a class="btn" href="#">Windows</a>+<a class="btn" href="#">R</a>，输入 cmd 打开命令提示工具 cmd.exe</p>
-<image src="https://img-blog.csdnimg.cn/383d0fffa9ca4ff1aad0aacb4e15657a.png" width="40%">
-
-<p>依次输入命令</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">d:                         <span class="comment">//切换到该目录下</span></span><br><span class="line">javac HelloWorld.java      <span class="comment">//javac:编译器,将程序转换成字节码</span></span><br><span class="line">java HelloWorld            <span class="comment">//java:运行编译后的java程序(文件后缀.class)</span></span><br></pre></td></tr></table></figure>
-<h1 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h1><image src="https://img-blog.csdnimg.cn/419c6eb0be714bf88cf460f7b5f7f875.png" width="50%">]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1850,28 +1850,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 版本更新</title>
-    <url>/2021/09/01/git-update/</url>
-    <content><![CDATA[<p>操作平台：windows</p>
-<span id="more"></span>
-
-<hr>
-<p>打开 Git bash 工具</p>
-<p><img src="https://img-blog.csdnimg.cn/6f65025ba2cc44bfaf293190aab936e3.jpg"></p>
-<p>查看当前 git 版本信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<p>输入命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git update //旧版</span><br><span class="line">git update-git-for-windows //新版</span><br></pre></td></tr></table></figure>
-<p>等待完成即可<br><img src="https://img-blog.csdnimg.cn/86337057ac794a0f8cee3c545fba46f1.png"></p>
-]]></content>
-      <categories>
-        <category>版本控制</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开源仓库贡献 —— 提交 PR</title>
     <url>/2022/02/21/github-commit-pr/</url>
     <content><![CDATA[<blockquote>
@@ -1953,6 +1931,28 @@
 <p><img src="https://img-blog.csdnimg.cn/2b204addfa094b92a0fe74a7d950757b.png"><br>在一个技术社区和其他开发者交流，就像写博客可以得到一些回应一样，我们都将不断进步，比昨天的自己更强一些</p>
 <p>看到自己所做的东西被认可是一件很棒的事情，虽然我也只是用了其他的工具做了一些简单的修改罢了。总之，Github 上真的有很多有趣的事情，你也可以通过学习<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Bob2RhbC9naXRodWI=">《Github 漫游指南》<i class="fa fa-external-link-alt"></i></span>来找到一些自己喜欢的东西，开源大法是真滴好诶</p>
 <p><img src="https://img-blog.csdnimg.cn/ae9b1580dd644801b061945fc210987a.png"></p>
+]]></content>
+      <categories>
+        <category>版本控制</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 版本更新</title>
+    <url>/2021/09/01/git-update/</url>
+    <content><![CDATA[<p>操作平台：windows</p>
+<span id="more"></span>
+
+<hr>
+<p>打开 Git bash 工具</p>
+<p><img src="https://img-blog.csdnimg.cn/6f65025ba2cc44bfaf293190aab936e3.jpg"></p>
+<p>查看当前 git 版本信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<p>输入命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git update //旧版</span><br><span class="line">git update-git-for-windows //新版</span><br></pre></td></tr></table></figure>
+<p>等待完成即可<br><img src="https://img-blog.csdnimg.cn/86337057ac794a0f8cee3c545fba46f1.png"></p>
 ]]></content>
       <categories>
         <category>版本控制</category>
@@ -2401,33 +2401,6 @@
       </categories>
       <tags>
         <tag>Tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Idea 项目结构不显示解决方案</title>
-    <url>/2021/08/02/idea-project-structure-miss/</url>
-    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用IDEA的时候，忽然发现打开项目变成了这样</p>
-<p><img src="https://img-blog.csdnimg.cn/bf98986582f2435a91585e1e9c2f453b.png"></p>
-<p>怎么点击都无法打开项目结构，只能显示默认的配置文件夹和输出文件夹</p>
-<span id="more"></span>
-<p>非常疑惑，项目结构去了哪里，不能是整个文件丢失了吧，这不白给了嘛，一整个白忙活</p>
-<p><img src="https://img-blog.csdnimg.cn/dfb523db9fe347b8b735e18b4e92e88b.png"></p>
-<p>还好找到了解决办法，快来一起看看吧</p>
-<hr>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>左上角依次找到file-&gt;project structure-&gt;modules-&gt; +号-&gt;import modules，选择导入的项目文件</p>
-<p><img src="https://img-blog.csdnimg.cn/6096c629aec44261a5e975cd7791319b.png"></p>
-<p>选择这两项</p>
-<p><img src="https://img-blog.csdnimg.cn/52a8be8717a647498f25c3bc12d79464.png"></p>
-<p>最后点击 Finish就显示出来啦!</p>
-<p><img src="https://img-blog.csdnimg.cn/761eee8d6b2b4adebfaa345bcb3871fb.png"></p>
-<p>不说了，赶紧码代码去了~~</p>
-<p><img src="https://img-blog.csdnimg.cn/3c867c8d22ed4b16a9fd5eb6576344f3.png"></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>解决方案</tag>
       </tags>
   </entry>
   <entry>
@@ -3281,33 +3254,30 @@
       </tags>
   </entry>
   <entry>
-    <title>解决 Idea 下 Tomcat 乱码（淇℃伅璀﹀憡）问题</title>
-    <url>/2022/04/12/idea-tomcat-encode-error/</url>
-    <content><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>我们在配置好 Tomcat 服务后（<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMjM2NDM5OTA=">详见此处<i class="fa fa-external-link-alt"></i></span>），总是会在控制台看到类似于这样的信息</p>
-<p><img src="https://img-blog.csdnimg.cn/74a4e51f89a140b48c05a0025757d6fd.png"></p>
-<p>显然，这是发生了乱码，虽然不影响正常的项目调试，但是看着非常的难受，下面让我们一招来解决这个问题</p>
+    <title>Idea 项目结构不显示解决方案</title>
+    <url>/2021/08/02/idea-project-structure-miss/</url>
+    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用IDEA的时候，忽然发现打开项目变成了这样</p>
+<p><img src="https://img-blog.csdnimg.cn/bf98986582f2435a91585e1e9c2f453b.png"></p>
+<p>怎么点击都无法打开项目结构，只能显示默认的配置文件夹和输出文件夹</p>
 <span id="more"></span>
-
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>控制台输出信息</p>
-<blockquote>
-<p>12-Apr-2022 15:45:44.180 璀﹀憡 [main] org.apache.catalina.startup.SetAllPropertiesRule.begin [SetAllPropertiesRule]{Server&#x2F;Service&#x2F;Connector} Setting property ‘URLEncoding’ to ‘UTF-8’ did not find a matching property.<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.鏈嶅姟鍣ㄧ増鏈�: Apache Tomcat&#x2F;8.5.77<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log 鏈嶅姟鍣ㄦ瀯寤�:        Mar 13 2022 19:13:33 UTC<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log 鏈嶅姟鍣ㄧ増鏈彿:      8.5.77.0<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log 鎿嶄綔绯荤粺鍚嶇О:      Windows 10<br>……</p>
-</blockquote>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>找了很多的解决方案，但是日志文件和控制台信息只能解决一个，不能兼得，下面给出最佳方案</p>
-<p><strong>1.打开 Tomcat 安装目录并找到 conf 文件夹</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/c40274fe57ff44b2baef1eafcc754b0f.png"></p>
-<p><strong>2.用记事本打开 conf 文件夹下的 logging.properties 文件</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/7f159b2b7f9342d0a453a77cd887f3a4.png"></p>
-<p><strong>3.将文件中所有的 UTF-8 修改为 GBK 并保存</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/6c17ed5ee3c2467e88f6a747502967ac.png"></p>
-<h1 id="操作验证"><a href="#操作验证" class="headerlink" title="操作验证"></a>操作验证</h1><p>重启 Idea 再次调试，查看控制台信息</p>
-<p><img src="https://img-blog.csdnimg.cn/ee2b7598efb543d882c559fbb1b3ad7e.png"></p>
-<p>乱码情况已解决</p>
+<p>非常疑惑，项目结构去了哪里，不能是整个文件丢失了吧，这不白给了嘛，一整个白忙活</p>
+<p><img src="https://img-blog.csdnimg.cn/dfb523db9fe347b8b735e18b4e92e88b.png"></p>
+<p>还好找到了解决办法，快来一起看看吧</p>
+<hr>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>左上角依次找到file-&gt;project structure-&gt;modules-&gt; +号-&gt;import modules，选择导入的项目文件</p>
+<p><img src="https://img-blog.csdnimg.cn/6096c629aec44261a5e975cd7791319b.png"></p>
+<p>选择这两项</p>
+<p><img src="https://img-blog.csdnimg.cn/52a8be8717a647498f25c3bc12d79464.png"></p>
+<p>最后点击 Finish就显示出来啦!</p>
+<p><img src="https://img-blog.csdnimg.cn/761eee8d6b2b4adebfaa345bcb3871fb.png"></p>
+<p>不说了，赶紧码代码去了~~</p>
+<p><img src="https://img-blog.csdnimg.cn/3c867c8d22ed4b16a9fd5eb6576344f3.png"></p>
 ]]></content>
       <categories>
-        <category>Java Web</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>Tomcat</tag>
+        <tag>解决方案</tag>
       </tags>
   </entry>
   <entry>
@@ -3383,6 +3353,36 @@
       </categories>
       <tags>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 Idea 下 Tomcat 乱码（淇℃伅璀﹀憡）问题</title>
+    <url>/2022/04/12/idea-tomcat-encode-error/</url>
+    <content><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>我们在配置好 Tomcat 服务后（<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUxMjY5OTYxL2FydGljbGUvZGV0YWlscy8xMjM2NDM5OTA=">详见此处<i class="fa fa-external-link-alt"></i></span>），总是会在控制台看到类似于这样的信息</p>
+<p><img src="https://img-blog.csdnimg.cn/74a4e51f89a140b48c05a0025757d6fd.png"></p>
+<p>显然，这是发生了乱码，虽然不影响正常的项目调试，但是看着非常的难受，下面让我们一招来解决这个问题</p>
+<span id="more"></span>
+
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>控制台输出信息</p>
+<blockquote>
+<p>12-Apr-2022 15:45:44.180 璀﹀憡 [main] org.apache.catalina.startup.SetAllPropertiesRule.begin [SetAllPropertiesRule]{Server&#x2F;Service&#x2F;Connector} Setting property ‘URLEncoding’ to ‘UTF-8’ did not find a matching property.<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.鏈嶅姟鍣ㄧ増鏈�: Apache Tomcat&#x2F;8.5.77<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log 鏈嶅姟鍣ㄦ瀯寤�:        Mar 13 2022 19:13:33 UTC<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log 鏈嶅姟鍣ㄧ増鏈彿:      8.5.77.0<br>12-Apr-2022 15:45:44.213 淇℃伅 [main] org.apache.catalina.startup.VersionLoggerListener.log 鎿嶄綔绯荤粺鍚嶇О:      Windows 10<br>……</p>
+</blockquote>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>找了很多的解决方案，但是日志文件和控制台信息只能解决一个，不能兼得，下面给出最佳方案</p>
+<p><strong>1.打开 Tomcat 安装目录并找到 conf 文件夹</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/c40274fe57ff44b2baef1eafcc754b0f.png"></p>
+<p><strong>2.用记事本打开 conf 文件夹下的 logging.properties 文件</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/7f159b2b7f9342d0a453a77cd887f3a4.png"></p>
+<p><strong>3.将文件中所有的 UTF-8 修改为 GBK 并保存</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/6c17ed5ee3c2467e88f6a747502967ac.png"></p>
+<h1 id="操作验证"><a href="#操作验证" class="headerlink" title="操作验证"></a>操作验证</h1><p>重启 Idea 再次调试，查看控制台信息</p>
+<p><img src="https://img-blog.csdnimg.cn/ee2b7598efb543d882c559fbb1b3ad7e.png"></p>
+<p>乱码情况已解决</p>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -4435,41 +4435,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【欧拉计划第 7 题】第 10001 个素数 10001st prime</title>
-    <url>/2022/04/17/projecteuler007/</url>
-    <content><![CDATA[<h1 id="Problem-7-10001st-prime"><a href="#Problem-7-10001st-prime" class="headerlink" title="Problem 7 10001st prime"></a>Problem 7 10001st prime</h1><blockquote>
-<p>By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.<br>What is the 10 001st prime number?</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="问题-7-第-10001-个素数"><a href="#问题-7-第-10001-个素数" class="headerlink" title="问题 7 第 10001 个素数"></a>问题 7 第 10001 个素数</h1><blockquote>
-<p>通过列出前六个素数：2、3、5、7、11 和 13，我们可以看到第 6 个素数是 13。<br>第10001个质数是多少？</p>
-</blockquote>
-<h1 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h1><p>读完题目，发现题目还是比较容易的。枚举出范围内所有的素数，加入循环判断，等到判断条件是第 100001 个质数时输出就好</p>
-<h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><p>另外需要知道质数的概念</p>
-<blockquote>
-<p>质数（又称素数），指在大于1的自然数中，除了1和该数自身外，无法被其他自然数整除的数</p>
-</blockquote>
-<p>下面介绍一种比较容易理解的，在程序中判断数字是否为质数的方法</p>
-<p>因为，一个数如果可以进行因数分解，那么分解后，得到的两个数一定是<strong>一个小于等于 $sqrt(n)$，一个大于等于 $sqrt(n)$</strong></p>
-<p>所以，我们并不需要从 2 一直判断到 $n-1$ ，而只需遍历到 $sqrt(n)$ 即可。既然在左侧都找不到因数，那么右侧一定不存在咯</p>
-<p>贴下实现的代码，帮助理解</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-13 16:25:25</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-13 16:53:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> flag = <span class="number">0</span>; <span class="comment">// 标记当前是第几个素数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i; <span class="comment">// 注意考虑数据范围大小</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; flag &lt; <span class="number">10001</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">is_prime</span>(i)) <span class="comment">// 只有该数是素数,标记才自增 1</span></span><br><span class="line">            flag++;</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>答案：104743</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>欧拉计划</category>
-      </categories>
-      <tags>
-        <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【欧拉计划第 8 题】序列中最大的乘积 Largest product in a series</title>
     <url>/2022/04/17/projecteuler008/</url>
     <content><![CDATA[<h1 id="Problem-8-Largest-product-in-a-series"><a href="#Problem-8-Largest-product-in-a-series" class="headerlink" title="Problem 8 Largest product in a series"></a>Problem 8 Largest product in a series</h1><blockquote>
@@ -4500,6 +4465,41 @@
 
 <blockquote>
 <p>答案：23514624000</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>欧拉计划</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【欧拉计划第 7 题】第 10001 个素数 10001st prime</title>
+    <url>/2022/04/17/projecteuler007/</url>
+    <content><![CDATA[<h1 id="Problem-7-10001st-prime"><a href="#Problem-7-10001st-prime" class="headerlink" title="Problem 7 10001st prime"></a>Problem 7 10001st prime</h1><blockquote>
+<p>By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.<br>What is the 10 001st prime number?</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="问题-7-第-10001-个素数"><a href="#问题-7-第-10001-个素数" class="headerlink" title="问题 7 第 10001 个素数"></a>问题 7 第 10001 个素数</h1><blockquote>
+<p>通过列出前六个素数：2、3、5、7、11 和 13，我们可以看到第 6 个素数是 13。<br>第10001个质数是多少？</p>
+</blockquote>
+<h1 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h1><p>读完题目，发现题目还是比较容易的。枚举出范围内所有的素数，加入循环判断，等到判断条件是第 100001 个质数时输出就好</p>
+<h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><p>另外需要知道质数的概念</p>
+<blockquote>
+<p>质数（又称素数），指在大于1的自然数中，除了1和该数自身外，无法被其他自然数整除的数</p>
+</blockquote>
+<p>下面介绍一种比较容易理解的，在程序中判断数字是否为质数的方法</p>
+<p>因为，一个数如果可以进行因数分解，那么分解后，得到的两个数一定是<strong>一个小于等于 $sqrt(n)$，一个大于等于 $sqrt(n)$</strong></p>
+<p>所以，我们并不需要从 2 一直判断到 $n-1$ ，而只需遍历到 $sqrt(n)$ 即可。既然在左侧都找不到因数，那么右侧一定不存在咯</p>
+<p>贴下实现的代码，帮助理解</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: coder-jason</span></span><br><span class="line"><span class="comment"> * @Date: 2022-04-13 16:25:25</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2022-04-13 16:53:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> flag = <span class="number">0</span>; <span class="comment">// 标记当前是第几个素数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(num); i++)</span><br><span class="line">        <span class="keyword">if</span> (num % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i; <span class="comment">// 注意考虑数据范围大小</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; flag &lt; <span class="number">10001</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">is_prime</span>(i)) <span class="comment">// 只有该数是素数,标记才自增 1</span></span><br><span class="line">            flag++;</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>答案：104743</p>
 </blockquote>
 ]]></content>
       <categories>
@@ -5579,70 +5579,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Typora 搭建免费图床</title>
-    <url>/2021/09/05/setup-image-storage/</url>
-    <content><![CDATA[<p>文章开始前，先给大家科普下 Typora 和 SM.MS 是什么，当然，对于经常写博客的小伙伴并不陌生</p>
-<h1 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h1><image src="https://img-blog.csdnimg.cn/fb30d63fee9f4d4c8c0cd55881e60edf.gif" width="80%">
-
-<p><span class="exturl" data-url="aHR0cHM6Ly90eXBvcmEuaW8vIw==">Typora<i class="fa fa-external-link-alt"></i></span> 是一款<strong>支持实时预览的 Markdown 文本编辑器</strong>，拥有 OS X、Windows、Linux 三大平台版本，且完全免费</p>
-<span id="more"></span>
-
-<p>它的功能巨多，进入 “偏好设置” 选项卡中，你就会知道这款编辑器设计的有多么地人性化，多么地细节，简直是众多 Markdown 编辑器里的领头羊，像打字机模式、专注模式、源代码模式、实时预览、文件&#x2F;大纲侧边栏等一系列功能应有尽有</p>
-<p>官方特性介绍：Typora为您提供了一个无缝的体验，作为读者和作者。它删除了预览窗口，模式切换器，markdown源代码的语法符号，和所有其他不必要的干扰。相反 ,它提供了一个真实的实时预览功能，以帮助您集中精力于内容本身</p>
-<p>对于经常写博客的小伙伴，特别是在多平台分享的朋友，拥有这样一个 “利器” ，搭配上程序猿们忠爱的 GitHub 主题，那感觉简直不要太爽</p>
-<h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><p>举个栗子，这篇博客里你所看到的图片，它们存放的位置是哪里呢？图片在我电脑的某个磁盘里，你是怎么看到的呢？显然，你看到的是 “网上” 的图片，图床就是储存图片的服务器，我们发朋友圈、空间、微博里的图片都上传到了各个平台自家的图床，供天涯海角的小伙伴查看</p>
-<p>图床有国内和国外之分：国外的图床由于网络、距离等因素访问速度较慢，严重影响图片显示速度，国内也分为单线空间、多线空间和 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9DRE4vNDIwOTUx">CDN加速<i class="fa fa-external-link-alt"></i></span> 三种</p>
-<h1 id="Typora配置图床"><a href="#Typora配置图床" class="headerlink" title="Typora配置图床"></a>Typora配置图床</h1><p>打开 Typora 中的 “偏好设置”，下载 PicGo（一个用于快速上传图片并获取图片 URL 链接的工具）</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/ceeb8d6c3df2318db880f34b6bb798c9.png"></p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vbHVuZXJmaW5uL1BpY0dvL3JlbGVhc2Vz">GitHub地址<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMV9rNlFmZ19helBYUFNobGlDZ0Y3YWc=">网盘地址<i class="fa fa-external-link-alt"></i></span>，提取码：peng</p>
-<p>设定图片插入规则</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/a18233ac2882580a6a36c85b549271a6.png"></p>
-<p>软件主界面</p>
-<p><img src="https://img-blog.csdnimg.cn/6a4c1678e8a142a7bd7eb846a90fcd52.png"></p>
-<p>图床这个东西，还是稳定的好，选择一些老牌子，服务运行久的较为可靠，不然没几天停服可是</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/fda8da72cd8dbc977dd4a32535de1784.png"></p>
-<h1 id="SM-MS图床"><a href="#SM-MS图床" class="headerlink" title="SM.MS图床"></a>SM.MS图床</h1><p>打开 <span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy8=">SM.MS<i class="fa fa-external-link-alt"></i></span> ，获取Token</p>
-<div class="note info"><p>Token，就是汉语 “令牌” 的意思，是服务端生成的一串字符串，作为客户端进行请求的一个令牌，当第一次登录后，服务器生成一个 Token 便将此 Token 返回到客户端，日后客户端只需要附带此 Token 前来请求数据即可，无需再次带上用户名和密码</p>
-</div>
-
-<p><img src="https://img-blog.csdnimg.cn/img_convert/7054f4088da597f4c0fb3a49ddb496c9.png"></p>
-<p>进入 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9hcGkvMTAxNTQ=">API<i class="fa fa-external-link-alt"></i></span> Token</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/1bd6a4fc11be2d356439d31a46b6a5a2.png"></p>
-<p>打开图床设置，粘贴 SM.MS 图床的 Token</p>
-<p><img src="https://img-blog.csdnimg.cn/c6fc2bc7f73a4a2ebbf9cd5bede70539.png"></p>
-<p>好了，现在就可以使用 Typora 这款神仙级 Markdown 编辑器记笔记、写博客了，再也没有发布文章需要一张张重新上传图片的烦恼了</p>
-<h1 id="GitHub图床"><a href="#GitHub图床" class="headerlink" title="GitHub图床"></a>GitHub图床</h1><p>有时候我们总会在想这些图床的服务器到底靠不靠谱，能不能长时间维护，万一哪天崩了，作为使用者的我们岂不是凉凉。这里还有一个方法，那就是用代码托管仓库来建立图床，国内的<strong>Gitee</strong>在图片上传速度上可能更具优势，但是<strong>PicGo</strong>工具对于码云的配置更为繁琐，需要安装插件，比较简单的还是直接上手<strong>GitHub</strong>吧</p>
-<p>新建仓库</p>
-<p><img src="https://img-blog.csdnimg.cn/677b881224ca42b4bba5f4954532d2d9.png"></p>
-<p>获取<strong>Token</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/ec78dbafed114d488680ff8e31687ecd.png"></p>
-<p>创建<strong>Token</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/ff8fb263fd1d40d3a364316e53beeda5.png"></p>
-<p>创建成功后，注意：<strong>Token只显示一次，可以记录在文档中保存下来，忘记的话重新Get一个就好</strong></p>
-<p>设置PicGo</p>
-<p><img src="https://img-blog.csdnimg.cn/1fcfabbe56d4473b977c1a01597544c7.png"></p>
-<p>测试上传</p>
-<p><img src="https://img-blog.csdnimg.cn/119bbe3bbdb949c79c9b9a5adeb806c6.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/61aabbbaf47349e9a82c95138d32261d.png"></p>
-<hr>
-<p>参考资料</p>
-<ul>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9waWNnby5naXRodWIuaW8vUGljR28tRG9jL3poL2d1aWRlLyMlRTUlQkElOTQlRTclOTQlQTglRTYlQTYlODIlRTglQkYlQjA=">PicGo | PicGo<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9zc3BhaS5jb20vcG9zdC80MDQ5OQ==">图片就交给它了<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mjg3NTI0NS9hcnRpY2xlL2RldGFpbHMvMTA4NTU0OTI2">Typora + PicGo 图床配置以及 PicGo 上传失败的解决方案<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>网站建设</category>
-      </categories>
-      <tags>
-        <tag>云存储</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>快速搭建个人博客 —— 保姆级教程</title>
     <url>/2022/01/19/setup-personal-blog/</url>
     <content><![CDATA[<div class="note danger"><p>本站点主题现已更换为 Next，文中除主题外的配置参数均不受影响</p>
@@ -6060,6 +5996,70 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typora 搭建免费图床</title>
+    <url>/2021/09/05/setup-image-storage/</url>
+    <content><![CDATA[<p>文章开始前，先给大家科普下 Typora 和 SM.MS 是什么，当然，对于经常写博客的小伙伴并不陌生</p>
+<h1 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h1><image src="https://img-blog.csdnimg.cn/fb30d63fee9f4d4c8c0cd55881e60edf.gif" width="80%">
+
+<p><span class="exturl" data-url="aHR0cHM6Ly90eXBvcmEuaW8vIw==">Typora<i class="fa fa-external-link-alt"></i></span> 是一款<strong>支持实时预览的 Markdown 文本编辑器</strong>，拥有 OS X、Windows、Linux 三大平台版本，且完全免费</p>
+<span id="more"></span>
+
+<p>它的功能巨多，进入 “偏好设置” 选项卡中，你就会知道这款编辑器设计的有多么地人性化，多么地细节，简直是众多 Markdown 编辑器里的领头羊，像打字机模式、专注模式、源代码模式、实时预览、文件&#x2F;大纲侧边栏等一系列功能应有尽有</p>
+<p>官方特性介绍：Typora为您提供了一个无缝的体验，作为读者和作者。它删除了预览窗口，模式切换器，markdown源代码的语法符号，和所有其他不必要的干扰。相反 ,它提供了一个真实的实时预览功能，以帮助您集中精力于内容本身</p>
+<p>对于经常写博客的小伙伴，特别是在多平台分享的朋友，拥有这样一个 “利器” ，搭配上程序猿们忠爱的 GitHub 主题，那感觉简直不要太爽</p>
+<h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><p>举个栗子，这篇博客里你所看到的图片，它们存放的位置是哪里呢？图片在我电脑的某个磁盘里，你是怎么看到的呢？显然，你看到的是 “网上” 的图片，图床就是储存图片的服务器，我们发朋友圈、空间、微博里的图片都上传到了各个平台自家的图床，供天涯海角的小伙伴查看</p>
+<p>图床有国内和国外之分：国外的图床由于网络、距离等因素访问速度较慢，严重影响图片显示速度，国内也分为单线空间、多线空间和 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9DRE4vNDIwOTUx">CDN加速<i class="fa fa-external-link-alt"></i></span> 三种</p>
+<h1 id="Typora配置图床"><a href="#Typora配置图床" class="headerlink" title="Typora配置图床"></a>Typora配置图床</h1><p>打开 Typora 中的 “偏好设置”，下载 PicGo（一个用于快速上传图片并获取图片 URL 链接的工具）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ceeb8d6c3df2318db880f34b6bb798c9.png"></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vbHVuZXJmaW5uL1BpY0dvL3JlbGVhc2Vz">GitHub地址<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMV9rNlFmZ19helBYUFNobGlDZ0Y3YWc=">网盘地址<i class="fa fa-external-link-alt"></i></span>，提取码：peng</p>
+<p>设定图片插入规则</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a18233ac2882580a6a36c85b549271a6.png"></p>
+<p>软件主界面</p>
+<p><img src="https://img-blog.csdnimg.cn/6a4c1678e8a142a7bd7eb846a90fcd52.png"></p>
+<p>图床这个东西，还是稳定的好，选择一些老牌子，服务运行久的较为可靠，不然没几天停服可是</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/fda8da72cd8dbc977dd4a32535de1784.png"></p>
+<h1 id="SM-MS图床"><a href="#SM-MS图床" class="headerlink" title="SM.MS图床"></a>SM.MS图床</h1><p>打开 <span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy8=">SM.MS<i class="fa fa-external-link-alt"></i></span> ，获取Token</p>
+<div class="note info"><p>Token，就是汉语 “令牌” 的意思，是服务端生成的一串字符串，作为客户端进行请求的一个令牌，当第一次登录后，服务器生成一个 Token 便将此 Token 返回到客户端，日后客户端只需要附带此 Token 前来请求数据即可，无需再次带上用户名和密码</p>
+</div>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7054f4088da597f4c0fb3a49ddb496c9.png"></p>
+<p>进入 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9hcGkvMTAxNTQ=">API<i class="fa fa-external-link-alt"></i></span> Token</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1bd6a4fc11be2d356439d31a46b6a5a2.png"></p>
+<p>打开图床设置，粘贴 SM.MS 图床的 Token</p>
+<p><img src="https://img-blog.csdnimg.cn/c6fc2bc7f73a4a2ebbf9cd5bede70539.png"></p>
+<p>好了，现在就可以使用 Typora 这款神仙级 Markdown 编辑器记笔记、写博客了，再也没有发布文章需要一张张重新上传图片的烦恼了</p>
+<h1 id="GitHub图床"><a href="#GitHub图床" class="headerlink" title="GitHub图床"></a>GitHub图床</h1><p>有时候我们总会在想这些图床的服务器到底靠不靠谱，能不能长时间维护，万一哪天崩了，作为使用者的我们岂不是凉凉。这里还有一个方法，那就是用代码托管仓库来建立图床，国内的<strong>Gitee</strong>在图片上传速度上可能更具优势，但是<strong>PicGo</strong>工具对于码云的配置更为繁琐，需要安装插件，比较简单的还是直接上手<strong>GitHub</strong>吧</p>
+<p>新建仓库</p>
+<p><img src="https://img-blog.csdnimg.cn/677b881224ca42b4bba5f4954532d2d9.png"></p>
+<p>获取<strong>Token</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/ec78dbafed114d488680ff8e31687ecd.png"></p>
+<p>创建<strong>Token</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/ff8fb263fd1d40d3a364316e53beeda5.png"></p>
+<p>创建成功后，注意：<strong>Token只显示一次，可以记录在文档中保存下来，忘记的话重新Get一个就好</strong></p>
+<p>设置PicGo</p>
+<p><img src="https://img-blog.csdnimg.cn/1fcfabbe56d4473b977c1a01597544c7.png"></p>
+<p>测试上传</p>
+<p><img src="https://img-blog.csdnimg.cn/119bbe3bbdb949c79c9b9a5adeb806c6.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/61aabbbaf47349e9a82c95138d32261d.png"></p>
+<hr>
+<p>参考资料</p>
+<ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9waWNnby5naXRodWIuaW8vUGljR28tRG9jL3poL2d1aWRlLyMlRTUlQkElOTQlRTclOTQlQTglRTYlQTYlODIlRTglQkYlQjA=">PicGo | PicGo<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9zc3BhaS5jb20vcG9zdC80MDQ5OQ==">图片就交给它了<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mjg3NTI0NS9hcnRpY2xlL2RldGFpbHMvMTA4NTU0OTI2">Typora + PicGo 图床配置以及 PicGo 上传失败的解决方案<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>网站建设</category>
+      </categories>
+      <tags>
+        <tag>云存储</tag>
       </tags>
   </entry>
   <entry>
@@ -8114,6 +8114,44 @@
       </tags>
   </entry>
   <entry>
+    <title>SVN 修订版本关键字</title>
+    <url>/2022/03/28/svn-reversion-keyword/</url>
+    <content><![CDATA[<blockquote>
+<p>来自阿里的一道测试题目，刚好了解下 SVN 中修订版本关键字，评论留言你的答案</p>
+</blockquote>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>【单选题】关于SVN中修订版本关键字，描述错误的是?</p>
+<p><strong>A. HEAD工作拷贝中的最新的版本</strong></p>
+<p><strong>B. BASE工作拷贝中一个条目的修订版本号,如果这个版本在本地修改了，则“BASE版本’就是这个条目在本地未修改的版本</strong></p>
+<p><strong>C. COMMITTED项目最近修改的修订版本，与BASE相同或更早</strong></p>
+<p><strong>D. PREV一个项目最后修改版本之前的那个版本,技术上可以认为是COMMITTED-1</strong></p>
+<h1 id="Revision-Keywords"><a href="#Revision-Keywords" class="headerlink" title="Revision Keywords"></a>Revision Keywords</h1><p>The Subversion client understands a number of revision keywords. These keywords can be used instead of integer arguments to the <code>--revision (-r)</code> option, and are resolved into specific revision numbers by Subversion:</p>
+<p>Subversion客户端可以理解一些修订版本关键字，这些关键字可以用来代替 <code>--revision (r) </code>的数字参数，这会被Subversion解释到特定修订版本号：</p>
+<span id="more"></span>
+
+<h2 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h2><p>The latest (or “youngest”) revision in the repository .</p>
+<p><code>版本库</code>中最新的(或者是“最年轻的”)版本</p>
+<h2 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h2><p>The revision number of an item in a working copy . If the item has been locally modified, this refers to the way the item appears without those local modifications.</p>
+<p><code>工作拷贝</code>中一个条目的修订版本号，如果这个版本在本地修改了，则“BASE版本”就是这个条目在本地未修改的版本</p>
+<h2 id="COMMITTED"><a href="#COMMITTED" class="headerlink" title="COMMITTED"></a>COMMITTED</h2><p>The most recent revision prior to, or equal to, BASE, in which an item changed.</p>
+<p>项目最近修改的修订版本，与 BASE 相同或更早</p>
+<h2 id="PREV"><a href="#PREV" class="headerlink" title="PREV"></a>PREV</h2><p>The revision immediately before the last revision in which an item changed. Technically, this boils down to COMMITTED-1.</p>
+<p>一个项目最后修改版本 <strong>之前</strong> 的版本，技术上可以认为是  COMMITTED -1</p>
+<p>As can be derived from their descriptions, the PREV , BASE , and COMMITTED revision keywords are used only when referring to a working copy path—they don’t apply to repository URLs.  HEAD, on the other hand, can be used in conjunction with both of these path types.</p>
+<p>因而可以从描述中得到，关键字<code>PREV</code>，<code>BASE</code>和<code>COMMITTED</code>只在引用工作拷贝路径时使用，而不能用于版本库URL， 而关键字 <code>HEAD</code> 则可以用于两种路径类型</p>
+<hr>
+<p>参考资料</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zdm5ib29rLnJlZC1iZWFuLmNvbS9lbi8xLjcvc3ZuLWJvb2sucGRm">Version Control with Subversion For Subversion 1.7<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>版本控制</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>静态成员函数访问非静态数据成员</title>
     <url>/2021/05/11/static-member-function-explain/</url>
     <content><![CDATA[<h1 id="静态数据成员"><a href="#静态数据成员" class="headerlink" title="静态数据成员"></a>静态数据成员</h1><p><strong>定义格式：</strong></p>
@@ -8162,44 +8200,6 @@
       </categories>
       <tags>
         <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SVN 修订版本关键字</title>
-    <url>/2022/03/28/svn-reversion-keyword/</url>
-    <content><![CDATA[<blockquote>
-<p>来自阿里的一道测试题目，刚好了解下 SVN 中修订版本关键字，评论留言你的答案</p>
-</blockquote>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>【单选题】关于SVN中修订版本关键字，描述错误的是?</p>
-<p><strong>A. HEAD工作拷贝中的最新的版本</strong></p>
-<p><strong>B. BASE工作拷贝中一个条目的修订版本号,如果这个版本在本地修改了，则“BASE版本’就是这个条目在本地未修改的版本</strong></p>
-<p><strong>C. COMMITTED项目最近修改的修订版本，与BASE相同或更早</strong></p>
-<p><strong>D. PREV一个项目最后修改版本之前的那个版本,技术上可以认为是COMMITTED-1</strong></p>
-<h1 id="Revision-Keywords"><a href="#Revision-Keywords" class="headerlink" title="Revision Keywords"></a>Revision Keywords</h1><p>The Subversion client understands a number of revision keywords. These keywords can be used instead of integer arguments to the <code>--revision (-r)</code> option, and are resolved into specific revision numbers by Subversion:</p>
-<p>Subversion客户端可以理解一些修订版本关键字，这些关键字可以用来代替 <code>--revision (r) </code>的数字参数，这会被Subversion解释到特定修订版本号：</p>
-<span id="more"></span>
-
-<h2 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h2><p>The latest (or “youngest”) revision in the repository .</p>
-<p><code>版本库</code>中最新的(或者是“最年轻的”)版本</p>
-<h2 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h2><p>The revision number of an item in a working copy . If the item has been locally modified, this refers to the way the item appears without those local modifications.</p>
-<p><code>工作拷贝</code>中一个条目的修订版本号，如果这个版本在本地修改了，则“BASE版本”就是这个条目在本地未修改的版本</p>
-<h2 id="COMMITTED"><a href="#COMMITTED" class="headerlink" title="COMMITTED"></a>COMMITTED</h2><p>The most recent revision prior to, or equal to, BASE, in which an item changed.</p>
-<p>项目最近修改的修订版本，与 BASE 相同或更早</p>
-<h2 id="PREV"><a href="#PREV" class="headerlink" title="PREV"></a>PREV</h2><p>The revision immediately before the last revision in which an item changed. Technically, this boils down to COMMITTED-1.</p>
-<p>一个项目最后修改版本 <strong>之前</strong> 的版本，技术上可以认为是  COMMITTED -1</p>
-<p>As can be derived from their descriptions, the PREV , BASE , and COMMITTED revision keywords are used only when referring to a working copy path—they don’t apply to repository URLs.  HEAD, on the other hand, can be used in conjunction with both of these path types.</p>
-<p>因而可以从描述中得到，关键字<code>PREV</code>，<code>BASE</code>和<code>COMMITTED</code>只在引用工作拷贝路径时使用，而不能用于版本库URL， 而关键字 <code>HEAD</code> 则可以用于两种路径类型</p>
-<hr>
-<p>参考资料</p>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdm5ib29rLnJlZC1iZWFuLmNvbS9lbi8xLjcvc3ZuLWJvb2sucGRm">Version Control with Subversion For Subversion 1.7<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>版本控制</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
