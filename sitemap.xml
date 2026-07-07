@@ -11,52 +11,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/04/vscode-envc/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/02/20/vscode-terminal-gitbash/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/06/20/wechat-rolled/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://pdpeng.github.io/2022/04/11/xshell-ssh-warning/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/about/index.html</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -74,34 +29,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/18/sql-base4/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/04/18/sql-base5/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/04/22/sql-base6/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/04/16/sql-base7/</loc>
+    <loc>https://pdpeng.github.io/about/index.html</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -120,6 +48,15 @@
   
   <url>
     <loc>https://pdpeng.github.io/2022/04/29/sql-base9/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/16/sql-base7/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -209,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/28/rt-thread03/</loc>
+    <loc>https://pdpeng.github.io/2022/04/04/vscode-envc/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -218,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/03/22/run-jar-file/</loc>
+    <loc>https://pdpeng.github.io/2021/08/13/vscode-modify-exefile-place/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -227,7 +164,16 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2021/03/03/setup-code-server/</loc>
+    <loc>https://pdpeng.github.io/2022/02/20/vscode-terminal-gitbash/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/06/20/wechat-rolled/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -290,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/17/projecteuler004/</loc>
+    <loc>https://pdpeng.github.io/2022/04/18/sql-base4/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -299,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/17/projecteuler005/</loc>
+    <loc>https://pdpeng.github.io/2022/04/18/sql-base5/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -308,16 +254,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/17/projecteuler006/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/04/17/projecteuler007/</loc>
+    <loc>https://pdpeng.github.io/2022/04/22/sql-base6/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -327,6 +264,15 @@
   
   <url>
     <loc>https://pdpeng.github.io/2022/04/17/projecteuler008/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/17/projecteuler007/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -434,7 +380,25 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2021/12/08/idea-ultimate-connect-mysql/</loc>
+    <loc>https://pdpeng.github.io/2022/04/28/rt-thread03/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/03/22/run-jar-file/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/03/03/setup-code-server/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -444,6 +408,15 @@
   
   <url>
     <loc>https://pdpeng.github.io/2021/06/08/ios15-beta-update/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/12/08/idea-ultimate-connect-mysql/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -552,6 +525,69 @@
   
   <url>
     <loc>https://pdpeng.github.io/2022/04/17/projecteuler003/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/17/projecteuler004/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/17/projecteuler005/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/17/projecteuler006/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/12/exercise7/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/13/exercise8/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/14/exercise9/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/04/05/expression-linear-equation/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -677,168 +713,6 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2021/08/02/distinguish-git-gitee/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/30/dos-java-helloworld/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/03/29/emmet-html-css/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/07/exercise1/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/17/exercise10/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/29/exercise11/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/29/exercise12/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/29/exercise13/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/30/exercise14/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/10/exercise2/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/10/exercise3/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/10/exercise4/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/10/exercise5/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/11/exercise6/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/12/exercise7/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/13/exercise8/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2021/08/14/exercise9/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pdpeng.github.io/2022/04/05/expression-linear-equation/</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://pdpeng.github.io/2022/04/20/3d-pictures-wall/</loc>
     
     <lastmod>2026-07-07</lastmod>
@@ -857,7 +731,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/05/08/anniversary-creation01/</loc>
+    <loc>https://pdpeng.github.io/2022/04/29/approximate-number-calculate/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -866,7 +740,7 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/2022/04/29/approximate-number-calculate/</loc>
+    <loc>https://pdpeng.github.io/2022/05/08/anniversary-creation01/</loc>
     
     <lastmod>2026-07-07</lastmod>
     
@@ -965,6 +839,132 @@
   </url>
   
   <url>
+    <loc>https://pdpeng.github.io/2021/08/02/distinguish-git-gitee/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/30/dos-java-helloworld/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2022/03/29/emmet-html-css/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/07/exercise1/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/17/exercise10/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/29/exercise11/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/29/exercise12/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/30/exercise14/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/29/exercise13/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/10/exercise2/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/10/exercise4/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/10/exercise5/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/10/exercise3/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pdpeng.github.io/2021/08/11/exercise6/</loc>
+    
+    <lastmod>2026-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pdpeng.github.io/2022/02/10/3d-olympics/</loc>
     
     <lastmod>2026-07-07</lastmod>
@@ -1001,14 +1001,14 @@
 
   
   <url>
-    <loc>https://pdpeng.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
+    <loc>https://pdpeng.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://pdpeng.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1022,14 +1022,14 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/</loc>
+    <loc>https://pdpeng.github.io/tags/ACM/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/ACM/</loc>
+    <loc>https://pdpeng.github.io/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1120,14 +1120,14 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/MySQL/</loc>
+    <loc>https://pdpeng.github.io/tags/IOS/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/tags/IOS/</loc>
+    <loc>https://pdpeng.github.io/tags/MySQL/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1213,14 +1213,14 @@
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/categories/%E6%94%BB%E5%9F%8E%E7%8B%AE%E6%9D%82%E8%B0%88/</loc>
+    <loc>https://pdpeng.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pdpeng.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://pdpeng.github.io/categories/%E6%94%BB%E5%9F%8E%E7%8B%AE%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
